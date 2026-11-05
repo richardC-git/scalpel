@@ -12,6 +12,8 @@ src/shared/paraglide/
 
 # TypeScript accidental in-place emits
 /src/**/*.js
+# Prebuilt plugins shipped with the app (see src/main/plugins/bundled.ts)
+!/src/main/plugins/bundled/**/*.js
 /src/**/*.jsx
 /src/**/*.js.map
 /src/**/*.jsx.map

@@ -74,6 +74,7 @@ import { flushAll as flushPluginStorage } from './plugins/storage'
 import { registerCheatSheetProtocol } from './cheat-sheet-protocol'
 import { registerScalpelInternalProtocol, registerScalpelInternalSchemePrivileges } from './plugins/protocol'
 import { registerScalpelPluginProtocol, registerScalpelPluginSchemePrivileges } from './plugins/plugin-protocol'
+import { seedBundledPlugins } from './plugins/bundled'
 import { getRegisteredPluginTabs } from './plugins/tab-registry'
 import { getInstalledPlugins } from './plugins/manager'
 import {
@@ -334,6 +335,7 @@ app.whenReady().then(() => {
   if (!IS_E2E) createTray({ store, showAppWindow })
 
   registerScalpelInternalProtocol()
+  if (!IS_E2E) seedBundledPlugins()
   registerScalpelPluginProtocol()
   registerCheatSheetProtocol()
 
