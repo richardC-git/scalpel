@@ -310,6 +310,7 @@ export function processDenseResponse(resp: DenseResponse, entriesOut: PriceEntry
         divineValue: info.divineValue,
         graph: line.graph,
         ninjaType: overview.type,
+        ...(line.variant ? { variant: line.variant } : {}),
       })
     }
   }

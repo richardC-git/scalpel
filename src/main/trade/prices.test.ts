@@ -327,6 +327,31 @@ describe('processDenseResponse price entries', () => {
     _setPricesForTests([])
   })
 
+  it('keeps ninja variant labels so same-named gem lines stay distinguishable', () => {
+    const resp = {
+      currencyOverviews: [],
+      itemOverviews: [
+        {
+          type: 'SkillGem',
+          lines: [
+            { name: 'Multistrike Support', variant: '20/20', chaos: 74 },
+            { name: 'Multistrike Support', variant: '1', chaos: 8 },
+          ],
+        },
+        { type: 'DivinationCard', lines: [{ name: 'The Doctor', chaos: 1000 }] },
+      ],
+    }
+    const entries: PriceEntry[] = []
+    processDenseResponse(resp as never, entries)
+
+    const gems = entries.filter((e) => e.name === 'Multistrike Support')
+    expect(gems.map((e) => [e.variant, e.chaosValue])).toEqual([
+      ['20/20', 74],
+      ['1', 8],
+    ])
+    expect(entries.find((e) => e.name === 'The Doctor')).not.toHaveProperty('variant')
+  })
+
   it('tags currency entries with category "currency", keeps display names, backfills divine', () => {
     const resp = {
       currencyOverviews: [
