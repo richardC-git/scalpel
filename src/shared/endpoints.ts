@@ -74,14 +74,18 @@ export const POE_NINJA_EXCHANGE_DETAILS: Record<1 | 2, string> = {
  *  Support Development link in Settings. */
 export const GITHUB_REPO_URL = 'https://github.com/scalpelpoe/scalpel'
 
+/** Repo this build takes updates from. This is the gem-scanner fork, so
+ *  auto-update must not pull an upstream release over the patched build. */
+export const RELEASES_REPO = 'richardC-git/scalpel'
+
 /** GitHub releases page (user-facing, for manual download links in banners) */
-export const GITHUB_RELEASES_PAGE = `${GITHUB_REPO_URL}/releases/latest`
+export const GITHUB_RELEASES_PAGE = `https://github.com/${RELEASES_REPO}/releases/latest`
 
 /** GitHub new-issue page, opened (with a prefilled body) by the bug reporter */
 export const GITHUB_NEW_ISSUE_URL = `${GITHUB_REPO_URL}/issues/new`
 
 /** GitHub API for update checks */
-export const GITHUB_RELEASES_API = 'https://api.github.com/repos/scalpelpoe/scalpel/releases/latest'
+export const GITHUB_RELEASES_API = `https://api.github.com/repos/${RELEASES_REPO}/releases/latest`
 
 /** GitHub for Electron binary downloads (only during full version upgrades) */
 export const ELECTRON_RELEASES = 'https://github.com/electron/electron/releases/download'
