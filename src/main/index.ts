@@ -87,7 +87,13 @@ import {
 import { registerWhiteboardOverlay, toggleWhiteboard } from './whiteboard'
 import { togglePluginOverlay } from './plugin-overlay'
 import { registerPinnedZoneOverlay, applyPinnedZoneEnabled } from './pinned-zone'
-import { getOverlayAnchor, setMainOverlayGetter, setOnLeaveScalpel, subscribeToPoeMoves } from './windowing'
+import {
+  getOverlayAnchor,
+  isAnyScalpelWindowFocused,
+  setMainOverlayGetter,
+  setOnLeaveScalpel,
+  subscribeToPoeMoves,
+} from './windowing'
 import { initAppMacrosRefresh, withPluginHotkeys } from './app-macros'
 import { runRadialPluginIconMigration, runRadialScaleMigration } from './radial-scale-migration'
 import { runRegexMacroMigration } from './regex-macro-migration'
@@ -330,7 +336,19 @@ app.whenReady().then(() => {
   if (!IS_E2E)
     getOverlayAttachStrategy(store).createInitialOverlay((store.get(PROFILE_VERSION_KEY) as GameVariant) ?? 1)
   setMainOverlayGetter(getOverlayWindow)
-  if (!IS_E2E) setOnLeaveScalpel(() => suspendHotkeysForFocusAway())
+  if (!IS_E2E) {
+    setOnLeaveScalpel(() => suspendHotkeysForFocusAway())
+    // Secondary overlays report leaving Scalpel from their own blur handler,
+    // but the main overlay and app window had no such path: PoE -> main
+    // overlay (e.g. a plugin's openTab) -> another app left every gameplay
+    // hotkey armed in that app until PoE regained focus.
+    app.on('browser-window-blur', () => {
+      setImmediate(() => {
+        if (OverlayController.targetHasFocus || isAnyScalpelWindowFocused()) return
+        suspendHotkeysForFocusAway()
+      })
+    })
+  }
   createAppWindow(store)
   if (!IS_E2E) createTray({ store, showAppWindow })
 
