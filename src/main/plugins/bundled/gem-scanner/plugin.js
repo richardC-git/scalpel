@@ -157,12 +157,12 @@ const dA = DA("diamonds", !1, function(A) {
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
   }));
-}), y = 12, O = 5, JA = 649 / 1080, tA = 588 / 1080, XA = 52.6 / 1080, EA = { offsetX: 0, offsetY: 0, cellScale: 1 };
+}), y = 12, O = 5, tA = 649 / 1080, JA = 588 / 1080, XA = 52.6 / 1080, EA = { offsetX: 0, offsetY: 0, cellScale: 1 };
 function WA(A, Q) {
   const E = A.height;
   return {
-    x: A.width - E * JA + Q.offsetX,
-    y: E * tA + Q.offsetY,
+    x: A.width - E * tA + Q.offsetX,
+    y: E * JA + Q.offsetY,
     cell: E * XA * Q.cellScale
   };
 }
@@ -1759,11 +1759,11 @@ function GA(A, Q, E, g, I, B = TA) {
   for (let k = e; k < i; k++) {
     const W = Math.floor((k + 0.5 - E) / I * B);
     if (!(W < 0 || W >= B))
-      for (let J = n; J < U; J++) {
-        const m = Math.floor((J + 0.5 - Q) / g * B);
+      for (let t = n; t < U; t++) {
+        const m = Math.floor((t + 0.5 - Q) / g * B);
         if (m < 0 || m >= B) continue;
-        const t = (k * A.width + J) * 4, X = A.pixels[t + 3], p = W * B + m;
-        l[p] += A.pixels[t] * X, a[p] += A.pixels[t + 1] * X, F[p] += A.pixels[t + 2] * X, M[p] += X, Y[p]++;
+        const J = (k * A.width + t) * 4, X = A.pixels[J + 3], p = W * B + m;
+        l[p] += A.pixels[J] * X, a[p] += A.pixels[J + 1] * X, F[p] += A.pixels[J + 2] * X, M[p] += X, Y[p]++;
       }
   }
   for (let k = 0; k < B * B; k++)
@@ -2132,7 +2132,7 @@ async function eE(A) {
   (E === "value" || E === "inventory") && V({ order: E }), A.registerHotkey({ label: "Scan inventory gems" }, async () => {
     await iA(A), A.openTab();
   }), A.registerTab({
-    label: "Gem Scanner",
+    label: "Vivid Watcher Helper",
     icon: FA(/* @__PURE__ */ w(dA, { theme: "two-tone", fill: ["currentColor", "rgba(255,255,255,0.2)"] })),
     render: (g) => (S = lA(g), S.render(/* @__PURE__ */ w(IE, { ctx: A })), () => {
       S == null || S.unmount(), S = null;
