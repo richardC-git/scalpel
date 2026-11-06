@@ -46,6 +46,9 @@ export function PluginHost(props: PluginHostProps): JSX.Element | null {
   // drained by unloadPlugin so a reload (or uninstall) leaves nothing running.
   const pluginDisposersRef = useRef<Map<string, Array<() => void>>>(new Map())
   const pluginTeardownRef = useRef<Map<string, () => void>>(new Map())
+  // Plugins skipped because their manifest's poeVersions excludes the game
+  // active at load time. Loaded when the user switches to a matching game.
+  const skippedForVersionRef = useRef<Map<string, { manifest: PluginManifest; entryUrl: string }>>(new Map())
   // Latest-value refs let our captured-once subscribe callbacks return current values.
   const poeVersionRef = useRef(props.poeVersion)
   const leagueRef = useRef(props.league)
@@ -85,7 +88,11 @@ export function PluginHost(props: PluginHostProps): JSX.Element | null {
   // across renders; all prop callbacks are read through refs.
   const loadPlugin = useCallback(async (entry: { manifest: PluginManifest; entryUrl: string }): Promise<void> => {
     const m = entry.manifest
-    if (m.poeVersions && !m.poeVersions.includes(poeVersionRef.current)) return
+    if (m.poeVersions && !m.poeVersions.includes(poeVersionRef.current)) {
+      skippedForVersionRef.current.set(m.id, entry)
+      return
+    }
+    skippedForVersionRef.current.delete(m.id)
     const disposers: Array<() => void> = []
     try {
       const mod = (await importPluginModule(entry.entryUrl)) as { default: PluginActivate }
@@ -247,6 +254,7 @@ export function PluginHost(props: PluginHostProps): JSX.Element | null {
       pluginDisposersRef.current.delete(pluginId)
     }
     setTabs((prev) => prev.filter((t) => t.pluginId !== pluginId))
+    skippedForVersionRef.current.delete(pluginId)
     pluginHotkeyHandlersRef.current.delete(pluginId)
     pendingOverlayRef.current.delete(pluginId)
     void window.api.pluginUnregisterHotkey(pluginId)
@@ -271,6 +279,17 @@ export function PluginHost(props: PluginHostProps): JSX.Element | null {
       cancelled = true
     }
   }, [props.ready])
+
+  // Game switch: load plugins the initial pass skipped for the other game.
+  // Already-loaded plugins stay loaded, matching the host's existing behaviour.
+  useEffect(() => {
+    if (!loadedRef.current) return
+    void (async () => {
+      for (const entry of Array.from(skippedForVersionRef.current.values())) {
+        if (entry.manifest.poeVersions?.includes(props.poeVersion)) await loadPlugin(entry)
+      }
+    })()
+  }, [props.poeVersion, loadPlugin])
 
   // Hot-install: load a newly installed plugin without restart.
   useEffect(() => {

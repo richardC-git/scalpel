@@ -198,6 +198,47 @@ describe('PluginHost', () => {
     expect(activate).not.toHaveBeenCalled()
   })
 
+  it('loads a version-skipped plugin once the user switches to a matching game', async () => {
+    installedList.push({
+      manifest: { ...manifest, poeVersions: [1] },
+      entryUrl: 'file:///fake/plugin.js',
+    })
+    const activate = vi.fn()
+    ;(window as unknown as { __pluginImport: (u: string) => Promise<unknown> }).__pluginImport = vi.fn(async () => ({
+      default: activate,
+    }))
+    const { PluginHost } = await import('./PluginHost')
+    const host = (poeVersion: 1 | 2) => (
+      <PluginHost
+        ready
+        poeVersion={poeVersion}
+        league="Mirage"
+        currentItem={null}
+        currentZone={null}
+        onSubscribeCurrentItem={() => () => {}}
+        onSubscribeCurrentZone={() => () => {}}
+        onSubscribeLeagueChange={() => () => {}}
+        onOpenExternal={() => {}}
+        onTabsChange={() => {}}
+        onOpenPluginTab={() => {}}
+        onCopyAndEvaluateItem={async () => null}
+      />
+    )
+    const { rerender } = render(host(2))
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10))
+    })
+    expect(activate).not.toHaveBeenCalled()
+    rerender(host(1))
+    await waitFor(() => expect(activate).toHaveBeenCalledTimes(1))
+    rerender(host(2))
+    rerender(host(1))
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10))
+    })
+    expect(activate).toHaveBeenCalledTimes(1)
+  })
+
   it('dispatches plugin-macro events to the matching plugin hotkey handler', async () => {
     installedList.push({ manifest, entryUrl: 'file:///fake/plugin.js' })
     const hotkeyHandler = vi.fn()
