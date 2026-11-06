@@ -1,51 +1,51 @@
-import { jsxs as a, jsx as o, Fragment as TA } from "react/jsx-runtime";
-import { createRoot as cA } from "react-dom/client";
-import { renderToStaticMarkup as ZA } from "react-dom/server";
-import X, { useContext as GA, useMemo as L, createContext as HA, useState as z, useEffect as AA, useRef as UA, useLayoutEffect as rA, useSyncExternalStore as xA } from "react";
-import { Button as D, ErrorBanner as oA, ScrubInput as G, formatPrice as r, Label as x } from "@scalpelpoe/plugin-sdk";
-var LA = ["size", "strokeWidth", "strokeLinecap", "strokeLinejoin", "theme", "fill", "className", "spin"];
-function iA(A, g) {
-  var E = Object.keys(A);
+import { jsxs as s, jsx as c, Fragment as hA } from "react/jsx-runtime";
+import { createRoot as nA } from "react-dom/client";
+import { renderToStaticMarkup as LA } from "react-dom/server";
+import W, { useContext as xA, useMemo as f, createContext as NA, useState as L, useEffect as BA, useRef as YA, useLayoutEffect as yA, useSyncExternalStore as uA } from "react";
+import { Button as m, ErrorBanner as O, ScrubInput as r, formatPrice as H, Label as T } from "@scalpelpoe/plugin-sdk";
+var PA = ["size", "strokeWidth", "strokeLinecap", "strokeLinejoin", "theme", "fill", "className", "spin"];
+function iA(A, E) {
+  var g = Object.keys(A);
   if (Object.getOwnPropertySymbols) {
     var Q = Object.getOwnPropertySymbols(A);
-    g && (Q = Q.filter(function(I) {
-      return Object.getOwnPropertyDescriptor(A, I).enumerable;
-    })), E.push.apply(E, Q);
+    E && (Q = Q.filter(function(B) {
+      return Object.getOwnPropertyDescriptor(A, B).enumerable;
+    })), g.push.apply(g, Q);
   }
-  return E;
+  return g;
 }
-function wA(A) {
-  for (var g = 1; g < arguments.length; g++) {
-    var E = arguments[g] != null ? arguments[g] : {};
-    g % 2 ? iA(Object(E), !0).forEach(function(Q) {
-      fA(A, Q, E[Q]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(A, Object.getOwnPropertyDescriptors(E)) : iA(Object(E)).forEach(function(Q) {
-      Object.defineProperty(A, Q, Object.getOwnPropertyDescriptor(E, Q));
+function lA(A) {
+  for (var E = 1; E < arguments.length; E++) {
+    var g = arguments[E] != null ? arguments[E] : {};
+    E % 2 ? iA(Object(g), !0).forEach(function(Q) {
+      zA(A, Q, g[Q]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(A, Object.getOwnPropertyDescriptors(g)) : iA(Object(g)).forEach(function(Q) {
+      Object.defineProperty(A, Q, Object.getOwnPropertyDescriptor(g, Q));
     });
   }
   return A;
 }
-function fA(A, g, E) {
-  return g in A ? Object.defineProperty(A, g, { value: E, enumerable: !0, configurable: !0, writable: !0 }) : A[g] = E, A;
+function zA(A, E, g) {
+  return E in A ? Object.defineProperty(A, E, { value: g, enumerable: !0, configurable: !0, writable: !0 }) : A[E] = g, A;
 }
-function NA(A, g) {
+function vA(A, E) {
   if (A == null) return {};
-  var E = yA(A, g), Q, I;
+  var g = OA(A, E), Q, B;
   if (Object.getOwnPropertySymbols) {
-    var B = Object.getOwnPropertySymbols(A);
-    for (I = 0; I < B.length; I++)
-      Q = B[I], !(g.indexOf(Q) >= 0) && Object.prototype.propertyIsEnumerable.call(A, Q) && (E[Q] = A[Q]);
+    var o = Object.getOwnPropertySymbols(A);
+    for (B = 0; B < o.length; B++)
+      Q = o[B], !(E.indexOf(Q) >= 0) && Object.prototype.propertyIsEnumerable.call(A, Q) && (g[Q] = A[Q]);
   }
-  return E;
+  return g;
 }
-function yA(A, g) {
+function OA(A, E) {
   if (A == null) return {};
-  var E = {}, Q = Object.keys(A), I, B;
-  for (B = 0; B < Q.length; B++)
-    I = Q[B], !(g.indexOf(I) >= 0) && (E[I] = A[I]);
-  return E;
+  var g = {}, Q = Object.keys(A), B, o;
+  for (o = 0; o < Q.length; o++)
+    B = Q[o], !(E.indexOf(B) >= 0) && (g[B] = A[B]);
+  return g;
 }
-var OA = {
+var KA = {
   size: "1em",
   strokeWidth: 4,
   strokeLinecap: "round",
@@ -74,181 +74,181 @@ var OA = {
   },
   prefix: "i"
 };
-function zA() {
+function qA() {
   return "icon-" + ((1 + Math.random()) * 4294967296 | 0).toString(16).substring(1);
 }
-function PA(A, g, E) {
-  var Q = typeof g.fill == "string" ? [g.fill] : g.fill || [], I = [], B = g.theme || E.theme;
-  switch (B) {
+function _A(A, E, g) {
+  var Q = typeof E.fill == "string" ? [E.fill] : E.fill || [], B = [], o = E.theme || g.theme;
+  switch (o) {
     case "outline":
-      I.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), I.push("none"), I.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), I.push("none");
+      B.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), B.push("none"), B.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), B.push("none");
       break;
     case "filled":
-      I.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), I.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), I.push("#FFF"), I.push("#FFF");
+      B.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), B.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), B.push("#FFF"), B.push("#FFF");
       break;
     case "two-tone":
-      I.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), I.push(typeof Q[1] == "string" ? Q[1] : E.colors.twoTone.twoTone), I.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), I.push(typeof Q[1] == "string" ? Q[1] : E.colors.twoTone.twoTone);
+      B.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), B.push(typeof Q[1] == "string" ? Q[1] : g.colors.twoTone.twoTone), B.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), B.push(typeof Q[1] == "string" ? Q[1] : g.colors.twoTone.twoTone);
       break;
     case "multi-color":
-      I.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), I.push(typeof Q[1] == "string" ? Q[1] : E.colors.multiColor.outFillColor), I.push(typeof Q[2] == "string" ? Q[2] : E.colors.multiColor.innerStrokeColor), I.push(typeof Q[3] == "string" ? Q[3] : E.colors.multiColor.innerFillColor);
+      B.push(typeof Q[0] == "string" ? Q[0] : "currentColor"), B.push(typeof Q[1] == "string" ? Q[1] : g.colors.multiColor.outFillColor), B.push(typeof Q[2] == "string" ? Q[2] : g.colors.multiColor.innerStrokeColor), B.push(typeof Q[3] == "string" ? Q[3] : g.colors.multiColor.innerFillColor);
       break;
   }
   return {
-    size: g.size || E.size,
-    strokeWidth: g.strokeWidth || E.strokeWidth,
-    strokeLinecap: g.strokeLinecap || E.strokeLinecap,
-    strokeLinejoin: g.strokeLinejoin || E.strokeLinejoin,
-    colors: I,
+    size: E.size || g.size,
+    strokeWidth: E.strokeWidth || g.strokeWidth,
+    strokeLinecap: E.strokeLinecap || g.strokeLinecap,
+    strokeLinejoin: E.strokeLinejoin || g.strokeLinejoin,
+    colors: B,
     id: A
   };
 }
-var FA = /* @__PURE__ */ HA(OA);
-FA.Provider;
-function KA(A, g, E) {
+var dA = /* @__PURE__ */ NA(KA);
+dA.Provider;
+function $A(A, E, g) {
   return function(Q) {
-    var I = Q.size, B = Q.strokeWidth, c = Q.strokeLinecap, e = Q.strokeLinejoin, w = Q.theme, l = Q.fill, U = Q.className, n = Q.spin, i = NA(Q, LA), k = GA(FA), s = L(zA, []), t = PA(s, {
-      size: I,
-      strokeWidth: B,
-      strokeLinecap: c,
-      strokeLinejoin: e,
-      theme: w,
-      fill: l
-    }, k), Y = [k.prefix + "-icon"];
-    return Y.push(k.prefix + "-icon-" + A), n && Y.push(k.prefix + "-icon-spin"), U && Y.push(U), /* @__PURE__ */ X.createElement("span", wA(wA({}, i), {}, {
-      className: Y.join(" ")
-    }), E(t));
+    var B = Q.size, o = Q.strokeWidth, I = Q.strokeLinecap, i = Q.strokeLinejoin, l = Q.theme, w = Q.fill, k = Q.className, e = Q.spin, n = vA(Q, PA), U = xA(dA), a = f(qA, []), t = _A(a, {
+      size: B,
+      strokeWidth: o,
+      strokeLinecap: I,
+      strokeLinejoin: i,
+      theme: l,
+      fill: w
+    }, U), p = [U.prefix + "-icon"];
+    return p.push(U.prefix + "-icon-" + A), e && p.push(U.prefix + "-icon-spin"), k && p.push(k), /* @__PURE__ */ W.createElement("span", lA(lA({}, n), {}, {
+      className: p.join(" ")
+    }), g(t));
   };
 }
-const uA = KA("diamonds", !1, function(A) {
-  return /* @__PURE__ */ X.createElement("svg", {
+const AE = $A("diamonds", !1, function(A) {
+  return /* @__PURE__ */ W.createElement("svg", {
     width: A.size,
     height: A.size,
     viewBox: "0 0 48 48",
     fill: "none"
-  }, /* @__PURE__ */ X.createElement("path", {
+  }, /* @__PURE__ */ W.createElement("path", {
     d: "M12 8H36L44 18L24 42L4 18L12 8Z",
     fill: A.colors[1],
     stroke: A.colors[0],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ X.createElement("path", {
+  }), /* @__PURE__ */ W.createElement("path", {
     d: "M4 18L44 18",
     stroke: A.colors[2],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ X.createElement("path", {
+  }), /* @__PURE__ */ W.createElement("path", {
     d: "M24 42L16 18",
     stroke: A.colors[2],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ X.createElement("path", {
+  }), /* @__PURE__ */ W.createElement("path", {
     d: "M24 42L32 18",
     stroke: A.colors[2],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ X.createElement("path", {
+  }), /* @__PURE__ */ W.createElement("path", {
     d: "M8 13L4 18L24 42L44 18L40 13",
     stroke: A.colors[0],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
   }));
-}), N = 12, y = 5, vA = 649 / 1080, qA = 588 / 1080, _A = 52.6 / 1080, MA = { offsetX: 0, offsetY: 0, cellScale: 1 };
-function $A(A, g) {
-  const E = A.height;
+}), y = 12, u = 5, EE = 649 / 1080, gE = 588 / 1080, QE = 52.6 / 1080, CA = { offsetX: 0, offsetY: 0, cellScale: 1 };
+function BE(A, E) {
+  const g = A.height;
   return {
-    x: A.width - E * vA + g.offsetX,
-    y: E * qA + g.offsetY,
-    cell: E * _A * g.cellScale
+    x: A.width - g * EE + E.offsetX,
+    y: g * gE + E.offsetY,
+    cell: g * QE * E.cellScale
   };
 }
-function Ag(A) {
+function oE(A) {
   return A.kind === "exact" ? [A.chaos, A.chaos] : A.kind === "range" ? [A.min, A.max] : null;
 }
-function gA(A, g, E) {
-  const Q = [...g], I = Q.map((c) => E.lookup(c.name)), B = I.map(Ag).filter((c) => c !== null);
+function oA(A, E, g) {
+  const Q = [...E], B = Q.map((I) => g.lookup(I.name)), o = B.map(oE).filter((I) => I !== null);
   return {
     key: A,
     candidates: Q,
     count: 1,
-    prices: I,
-    unitMin: B.length ? Math.min(...B.map((c) => c[0])) : null,
-    unitMax: B.length ? Math.max(...B.map((c) => c[1])) : null
+    prices: B,
+    unitMin: o.length ? Math.min(...o.map((I) => I[0])) : null,
+    unitMax: o.length ? Math.max(...o.map((I) => I[1])) : null
   };
 }
-function gg(A, g) {
-  return A.filter((E) => E.status !== "empty").sort((E, Q) => E.col - Q.col || E.row - Q.row).map((E) => ({ ...gA(`${E.col},${E.row}`, E.status === "matched" ? E.candidates : [], g), slot: { col: E.col, row: E.row } }));
+function cE(A, E) {
+  return A.filter((g) => g.status !== "empty").sort((g, Q) => g.col - Q.col || g.row - Q.row).map((g) => ({ ...oA(`${g.col},${g.row}`, g.status === "matched" ? g.candidates : [], E), slot: { col: g.col, row: g.row } }));
 }
-function Eg(A, g) {
-  const E = /* @__PURE__ */ new Map();
+function IE(A, E) {
+  const g = /* @__PURE__ */ new Map();
   let Q = 0;
-  for (const B of A) {
-    if (B.status === "unknown" && Q++, B.status !== "matched") continue;
-    const e = B.candidates.map((l) => l.name).sort().join(" | "), w = E.get(e);
-    if (w) {
-      w.count++;
+  for (const o of A) {
+    if (o.status === "unknown" && Q++, o.status !== "matched") continue;
+    const i = o.candidates.map((w) => w.name).sort().join(" | "), l = g.get(i);
+    if (l) {
+      l.count++;
       continue;
     }
-    E.set(e, gA(e, B.candidates, g));
+    g.set(i, oA(i, o.candidates, E));
   }
-  const I = [...E.values()].sort((B, c) => (c.unitMax ?? -1) * c.count - (B.unitMax ?? -1) * B.count);
+  const B = [...g.values()].sort((o, I) => (I.unitMax ?? -1) * I.count - (o.unitMax ?? -1) * o.count);
   return {
-    rows: I,
-    gems: I.reduce((B, c) => B + c.count, 0),
+    rows: B,
+    gems: B.reduce((o, I) => o + I.count, 0),
     unknown: Q,
-    totalMin: I.reduce((B, c) => B + (c.unitMin ?? 0) * c.count, 0),
-    totalMax: I.reduce((B, c) => B + (c.unitMax ?? 0) * c.count, 0)
+    totalMin: B.reduce((o, I) => o + (I.unitMin ?? 0) * I.count, 0),
+    totalMax: B.reduce((o, I) => o + (I.unitMax ?? 0) * I.count, 0)
   };
 }
-const tA = "overlay";
-function Qg(A) {
-  const { capture: g, grid: E, offset: Q } = A, I = E.cell / g.scale;
+const FA = "overlay";
+function eE(A) {
+  const { capture: E, grid: g, offset: Q } = A, B = g.cell / E.scale;
   return {
-    x: g.origin.x + (E.x + Q.dx) / g.scale,
-    y: g.origin.y + (E.y + Q.dy) / g.scale,
-    width: I * N,
-    height: I * y
+    x: E.origin.x + (g.x + Q.dx) / E.scale,
+    y: E.origin.y + (g.y + Q.dy) / E.scale,
+    width: B * y,
+    height: B * u
   };
 }
-function Bg(A, g) {
-  return g && A >= g ? `${O(A / g)}d` : A >= 1e3 ? `${O(A / 1e3)}kc` : `${O(A)}c`;
+function nE(A, E) {
+  return E && A >= E ? `${z(A / E)}d` : A >= 1e3 ? `${z(A / 1e3)}kc` : `${z(A)}c`;
 }
-function O(A) {
+function z(A) {
   return A < 10 ? String(Math.round(A * 10) / 10) : String(Math.round(A));
 }
-function Ig(A, g, E, Q = !1, I = !1) {
-  const { capture: B, grid: c, offset: e } = A, w = c.cell / B.scale, l = B.origin.x + (c.x + e.dx) / B.scale, U = B.origin.y + (c.y + e.dy) / B.scale, n = [];
-  for (const i of A.cells) {
-    if (i.status === "empty") continue;
-    const k = { x: l + i.col * w, y: U + i.row * w, size: w };
-    if (i.status === "unknown") {
-      n.push({ ...k, kind: "unknown", label: "?" });
+function iE(A, E, g, Q = !1, B = !1) {
+  const { capture: o, grid: I, offset: i } = A, l = I.cell / o.scale, w = o.origin.x + (I.x + i.dx) / o.scale, k = o.origin.y + (I.y + i.dy) / o.scale, e = [];
+  for (const n of A.cells) {
+    if (n.status === "empty") continue;
+    const U = { x: w + n.col * l, y: k + n.row * l, size: l };
+    if (n.status === "unknown") {
+      e.push({ ...U, kind: "unknown", label: "?" });
       continue;
     }
-    const s = gA("", i.candidates, g).unitMax;
-    if (s === null) {
-      Q || n.push({ ...k, kind: "unpriced", label: "no price" });
+    const a = oA("", n.candidates, E).unitMax;
+    if (a === null) {
+      e.push({ ...U, kind: Q ? "below" : "unpriced", label: "no price" });
       continue;
     }
-    const t = i.candidates.length > 1, Y = Bg(s, I ? null : g.divineChaos) + (t ? "?" : ""), F = E !== null && s < E ? "below" : t ? "lookalike" : "above";
-    n.push({ ...k, kind: F, label: Y });
+    const t = n.candidates.length > 1, p = nE(a, B ? null : E.divineChaos) + (t ? "?" : ""), d = g !== null && a < g ? "below" : t ? "lookalike" : "above";
+    e.push({ ...U, kind: d, label: p });
   }
-  return n;
+  return e;
 }
-const cg = 500, og = {
+const lE = 500, sE = {
   above: "2px solid #46a758",
   below: "1px solid rgba(255,255,255,0.08)",
   lookalike: "2px solid #f5a623",
   unpriced: "2px dashed rgba(255,255,255,0.45)",
   unknown: "2px solid #e5484d"
 };
-function ig({ mark: A }) {
-  const g = A.kind === "below", E = Math.max(10, Math.round(A.size * 0.24));
-  return /* @__PURE__ */ o(
+function wE({ mark: A }) {
+  const E = A.kind === "below", g = Math.max(10, Math.round(A.size * 0.24));
+  return /* @__PURE__ */ c(
     "div",
     {
       style: {
@@ -258,10 +258,10 @@ function ig({ mark: A }) {
         width: A.size,
         height: A.size,
         boxSizing: "border-box",
-        border: og[A.kind],
-        background: g ? "rgba(0,0,0,0.62)" : void 0
+        border: sE[A.kind],
+        background: E ? "rgba(0,0,0,0.62)" : void 0
       },
-      children: /* @__PURE__ */ o(
+      children: /* @__PURE__ */ c(
         "span",
         {
           style: {
@@ -270,12 +270,12 @@ function ig({ mark: A }) {
             right: 0,
             bottom: 1,
             textAlign: "center",
-            fontSize: g ? Math.max(9, Math.round(E * 0.8)) : E,
-            fontWeight: g ? 400 : 700,
+            fontSize: E ? Math.max(9, Math.round(g * 0.8)) : g,
+            fontWeight: E ? 400 : 700,
             lineHeight: 1.1,
-            color: g ? "rgba(255,255,255,0.4)" : "#fff",
+            color: E ? "rgba(255,255,255,0.4)" : "#fff",
             textShadow: "0 0 2px #000, 0 0 3px #000",
-            background: g ? void 0 : "rgba(0,0,0,0.55)",
+            background: E ? void 0 : "rgba(0,0,0,0.55)",
             whiteSpace: "nowrap",
             overflow: "hidden"
           },
@@ -285,24 +285,26 @@ function ig({ mark: A }) {
     }
   );
 }
-const eA = 26;
-function wg({ ctx: A, payload: g }) {
-  const E = UA(null), { grid: Q, status: I } = g;
-  return rA(() => {
-    const B = E.current;
-    if (!B) return;
-    const c = B.getBoundingClientRect();
-    return A.setInteractiveRegion({ x: c.left, y: c.top, width: c.width, height: c.height }), () => A.setInteractiveRegion(null);
-  }, [A, Q.x, Q.y, Q.width, I]), /* @__PURE__ */ a(
+const sA = 26;
+function aE({ ctx: A, payload: E }) {
+  const g = YA(null), { grid: Q, status: B } = E;
+  return yA(() => {
+    const o = g.current;
+    if (!o) return;
+    const I = o.getBoundingClientRect();
+    return A.setInteractiveRegion({ x: I.left, y: I.top, width: I.width, height: I.height }), () => A.setInteractiveRegion(null);
+  }, [A, Q.x, Q.y, Q.width, B]), /* @__PURE__ */ s(
     "div",
     {
-      ref: E,
+      ref: g,
       style: {
         position: "absolute",
-        left: Q.x + Q.width,
-        top: Math.max(0, Q.y - eA - 4),
-        transform: "translateX(-100%)",
-        height: eA,
+        // Anchored by its right edge so it sizes to its text; a left anchor
+        // near the window edge shrank it and wrapped the status line.
+        right: `calc(100% - ${Q.x + Q.width}px)`,
+        top: Math.max(0, Q.y - sA - 4),
+        whiteSpace: "nowrap",
+        height: sA,
         display: "flex",
         alignItems: "center",
         gap: 8,
@@ -315,8 +317,8 @@ function wg({ ctx: A, payload: g }) {
         pointerEvents: "auto"
       },
       children: [
-        I && /* @__PURE__ */ o("span", { children: I }),
-        /* @__PURE__ */ o(
+        B && /* @__PURE__ */ c("span", { children: B }),
+        /* @__PURE__ */ c(
           "button",
           {
             type: "button",
@@ -341,218 +343,238 @@ function wg({ ctx: A, payload: g }) {
     }
   );
 }
-function eg({ ctx: A }) {
-  const [g, E] = z(null);
-  return AA(() => {
-    let Q = !0, I = -1;
-    const B = async () => {
-      const w = await A.storage.get(tA);
-      !Q || !w || w.stamp === I || (I = w.stamp, E(w));
+function tE({ ctx: A }) {
+  const [E, g] = L(null);
+  return BA(() => {
+    let Q = !0, B = -1;
+    const o = async () => {
+      const l = await A.storage.get(FA);
+      !Q || !l || l.stamp === B || (B = l.stamp, g(l));
     };
-    B();
-    const c = setInterval(() => void B(), cg), e = A.onOverlayVisibility((w) => {
-      w && B();
+    o();
+    const I = setInterval(() => void o(), lE), i = A.onOverlayVisibility((l) => {
+      l && o();
     });
     return () => {
-      Q = !1, clearInterval(c), e();
+      Q = !1, clearInterval(I), i();
     };
-  }, [A]), /* @__PURE__ */ a("div", { style: { position: "absolute", inset: 0, pointerEvents: "none" }, children: [
-    g == null ? void 0 : g.marks.map((Q) => /* @__PURE__ */ o(ig, { mark: Q }, `${Q.x},${Q.y}`)),
-    (g == null ? void 0 : g.grid) && /* @__PURE__ */ o(wg, { ctx: A, payload: g })
+  }, [A]), /* @__PURE__ */ s("div", { style: { position: "absolute", inset: 0, pointerEvents: "none" }, children: [
+    E == null ? void 0 : E.marks.map((Q) => /* @__PURE__ */ c(wE, { mark: Q }, `${Q.x},${Q.y}`)),
+    (E == null ? void 0 : E.grid) && /* @__PURE__ */ c(aE, { ctx: A, payload: E })
   ] });
 }
-const EA = "craftLog", CA = 2, f = 3, QA = { version: CA, batches: [], snapshot: {} };
-function ng(A) {
-  return A.map((g) => g.name).sort().join(" | ");
+const cA = "craftLog", pA = 2, x = 3, IA = { version: pA, batches: [], snapshot: {} };
+function UE(A) {
+  return A.map((E) => E.name).sort().join(" | ");
 }
-const lg = 2, sg = 0.2, ag = 0.25;
-function kg(A, g, E) {
-  const Q = g.filter((i) => i.status !== "empty"), I = Q.filter((i) => i.status === "unknown").length;
-  if (I > lg && I > Q.length * sg)
-    return { log: A, outcome: { kind: "skipped", reason: `${I} unreadable cells` } };
-  const B = {}, c = [];
-  for (const i of Q) {
-    const k = `${i.col},${i.row}`;
-    if (i.status !== "matched") {
-      A.snapshot[k] && (B[k] = A.snapshot[k]);
+const kE = 2, ME = 0.2, hE = 0.25;
+function YE(A, E, g) {
+  const Q = E.filter((n) => n.status !== "empty"), B = Q.filter((n) => n.status === "unknown").length;
+  if (B > kE && B > Q.length * ME)
+    return { log: A, outcome: { kind: "skipped", reason: `${B} unreadable cells` } };
+  const o = {}, I = [];
+  for (const n of Q) {
+    const U = `${n.col},${n.row}`;
+    if (n.status !== "matched") {
+      A.snapshot[U] && (o[U] = A.snapshot[U]);
       continue;
     }
-    const s = ng(i.candidates);
-    B[k] = s, c.push({ slot: k, key: s, distance: i.distance, unchanged: A.snapshot[k] === s });
+    const a = UE(n.candidates);
+    o[U] = a, I.push({ slot: U, key: a, distance: n.distance, unchanged: A.snapshot[U] === a });
   }
-  const e = c.filter((i) => i.unchanged).length, w = e > 0 && e < c.length * ag, l = c.filter((i) => w || !i.unchanged).map((i) => ({
-    slot: i.slot,
-    key: i.key,
-    ...i.distance === void 0 ? {} : { distance: Math.round(i.distance * 10) / 10 },
-    chaos: E.value(i.key)
-  })), U = { ...A, version: CA, snapshot: B };
-  if (!l.length) return { log: U, outcome: { kind: "none-new" } };
-  const n = {
-    at: E.at,
-    league: E.league,
-    plugin: E.plugin,
-    refs: E.refs,
-    ...w ? { newRun: w } : {},
-    gems: l
+  const i = I.filter((n) => n.unchanged).length, l = i > 0 && i < I.length * hE, w = I.filter((n) => l || !n.unchanged).map((n) => ({
+    slot: n.slot,
+    key: n.key,
+    ...n.distance === void 0 ? {} : { distance: Math.round(n.distance * 10) / 10 },
+    chaos: g.value(n.key)
+  })), k = { ...A, version: pA, snapshot: o };
+  if (!w.length) return { log: k, outcome: { kind: "none-new" } };
+  const e = {
+    at: g.at,
+    league: g.league,
+    plugin: g.plugin,
+    refs: g.refs,
+    ...l ? { newRun: l } : {},
+    gems: w
   };
   return {
-    log: { ...U, batches: [...A.batches, n] },
-    outcome: { kind: "recorded", count: l.length, newRun: w }
+    log: { ...k, batches: [...A.batches, e] },
+    outcome: { kind: "recorded", count: w.length, newRun: l }
   };
 }
-function Ug(A, g) {
-  return g.outcome.kind === "skipped" ? g : { log: { ...g.log, batches: A.batches }, outcome: { kind: "disabled" } };
+function dE(A, E) {
+  return E.outcome.kind === "skipped" ? E : { log: { ...E.log, batches: A.batches }, outcome: { kind: "disabled" } };
 }
-function Fg(A) {
-  const g = A.batches[A.batches.length - 1];
-  if (!g) return A;
-  const E = { ...A.snapshot };
-  for (const Q of g.gems) E[Q.slot] === Q.key && delete E[Q.slot];
-  return { ...A, batches: A.batches.slice(0, -1), snapshot: E };
+function CE(A) {
+  const E = A.batches[A.batches.length - 1];
+  if (!E) return A;
+  const g = { ...A.snapshot };
+  for (const Q of E.gems) g[Q.slot] === Q.key && delete g[Q.slot];
+  return { ...A, batches: A.batches.slice(0, -1), snapshot: g };
 }
-function Mg(A) {
-  const g = /* @__PURE__ */ new Map();
-  for (const E of A.batches) for (const Q of E.gems) g.set(Q.key, (g.get(Q.key) ?? 0) + 1);
-  return g;
+function FE(A) {
+  const E = /* @__PURE__ */ new Map();
+  for (const g of A.batches) for (const Q of g.gems) E.set(Q.key, (E.get(Q.key) ?? 0) + 1);
+  return E;
 }
-function tg(A) {
+function pE(A) {
   return A.kind === "exact" ? A.chaos : A.kind === "range" ? (A.min + A.max) / 2 : null;
 }
-function YA(A, g) {
-  const E = A.split(" | ").map((Q) => tg(g.lookup(Q))).filter((Q) => Q !== null);
-  return E.length ? E.reduce((Q, I) => Q + I, 0) / E.length : null;
+function VA(A, E) {
+  const g = A.split(" | ").map((Q) => pE(E.lookup(Q))).filter((Q) => Q !== null);
+  return g.length ? g.reduce((Q, B) => Q + B, 0) / g.length : null;
 }
-function Cg(A, g, E) {
-  const Q = Mg(A);
-  let I = 0, B = 0, c = 0, e = 0;
-  const w = [];
-  for (const [k, s] of Q) {
-    const t = YA(k, g);
-    t === null && (e += s);
-    const Y = t ?? 0;
-    I += s, B += Y * s, c += Y * Y * s, w.push({ key: k, count: s, unit: t, share: 0 });
+function VE(A, E, g) {
+  const Q = FE(A);
+  let B = 0, o = 0, I = 0, i = 0;
+  const l = [];
+  for (const [U, a] of Q) {
+    const t = VA(U, E);
+    t === null && (i += a);
+    const p = t ?? 0;
+    B += a, o += p * a, I += p * p * a, l.push({ key: U, count: a, unit: t, share: 0 });
   }
-  const l = I ? B / I : 0, U = I > 1 ? Math.max(0, (c - I * l * l) / (I - 1)) : 0;
-  for (const k of w) k.share = B ? (k.unit ?? 0) * k.count / B : 0;
-  w.sort((k, s) => s.share - k.share || s.count - k.count);
-  const n = f * l, i = E === null ? null : n - E;
+  const w = B ? o / B : 0, k = B > 1 ? Math.max(0, (I - B * w * w) / (B - 1)) : 0;
+  for (const U of l) U.share = o ? (U.unit ?? 0) * U.count / o : 0;
+  l.sort((U, a) => a.share - U.share || a.count - U.count);
+  const e = x * w, n = g === null ? null : e - g;
   return {
-    gems: I,
-    unpriced: e,
-    meanGem: l,
-    evPerBeast: n,
-    ci95: I > 1 ? f * 1.96 * Math.sqrt(U / I) : 0,
-    beastChaos: E,
-    profitPerBeast: i,
-    roi: i === null || !E ? null : i / E,
-    rows: w
+    gems: B,
+    unpriced: i,
+    meanGem: w,
+    evPerBeast: e,
+    ci95: B > 1 ? x * 1.96 * Math.sqrt(k / B) : 0,
+    craftCost: g,
+    profitPerBeast: n,
+    roi: n === null || !g ? null : n / g,
+    rows: l
   };
 }
-const Yg = ["logged_at", "league", "slot", "gem", "candidates", "match_distance", "chaos_at_log", "plugin", "refs"];
-function hg(A) {
+const RE = ["logged_at", "league", "slot", "gem", "candidates", "match_distance", "chaos_at_log", "plugin", "refs"];
+function XE(A) {
   if (A == null) return "";
-  const g = String(A);
-  return /[",\n]/.test(g) ? `"${g.replace(/"/g, '""')}"` : g;
+  const E = String(A);
+  return /[",\n]/.test(E) ? `"${E.replace(/"/g, '""')}"` : E;
 }
-function Vg(A) {
-  const g = [Yg.join(",")];
-  for (const E of A.batches)
-    for (const Q of E.gems) {
-      const [I, B] = Q.slot.split(",").map(Number);
-      g.push(
+function mE(A) {
+  const E = [RE.join(",")];
+  for (const g of A.batches)
+    for (const Q of g.gems) {
+      const [B, o] = Q.slot.split(",").map(Number);
+      E.push(
         [
-          new Date(E.at).toISOString(),
-          E.league,
-          `${I + 1}-${B + 1}`,
+          new Date(g.at).toISOString(),
+          g.league,
+          `${B + 1}-${o + 1}`,
           Q.key,
           Q.key.split(" | ").length,
           Q.distance,
           Q.chaos,
-          E.plugin,
-          E.refs
-        ].map(hg).join(",")
+          g.plugin,
+          g.refs
+        ].map(XE).join(",")
       );
     }
-  return `${g.join(`
+  return `${E.join(`
 `)}
 `;
 }
-const P = "20/20", Rg = "skill-gem";
-function dg(A, g, E) {
-  const Q = A, I = Q.some((e) => typeof e.variant == "string"), B = /* @__PURE__ */ new Map();
-  for (const e of Q) {
-    const w = e.name.toLowerCase(), l = B.get(w);
-    l ? l.push(e) : B.set(w, [e]);
+const SE = 5;
+function bE(A) {
+  const E = /* @__PURE__ */ new Map();
+  for (const g of A)
+    !g.name.endsWith(" Support") || g.name.startsWith("Awakened ") || E.set(g.name, Math.max(E.get(g.name) ?? 0, g.gemLevel));
+  return new Set([...E].filter(([, g]) => g <= SE).map(([g]) => g));
+}
+function wA(A, E) {
+  const g = bE(A), Q = /* @__PURE__ */ new Map();
+  for (const B of A) {
+    if (!g.has(B.name) || B.corrupted || B.chaosValue <= 0) continue;
+    const o = Q.get(B.name);
+    (!o || B.chaosValue < o.chaosValue || B.chaosValue === o.chaosValue && B.listingCount > o.listingCount) && Q.set(B.name, B);
   }
-  const c = g.find((e) => e.name === "Divine Orb");
+  return [...Q.values()].filter((B) => E === null || B.chaosValue <= E).map((B) => ({ name: B.name, variant: B.variant, chaos: B.chaosValue, listings: B.listingCount })).sort((B, o) => o.listings - B.listings || B.chaos - o.chaos);
+}
+const K = "20/20", DE = "skill-gem";
+function WE(A, E, g) {
+  const Q = A, B = Q.some((i) => typeof i.variant == "string"), o = /* @__PURE__ */ new Map();
+  for (const i of Q) {
+    const l = i.name.toLowerCase(), w = o.get(l);
+    w ? w.push(i) : o.set(l, [i]);
+  }
+  const I = E.find((i) => i.name === "Divine Orb");
   return {
-    hasVariants: I,
-    divineChaos: (c == null ? void 0 : c.chaosValue) ?? null,
-    updatedAt: E,
-    lookup(e) {
-      const w = B.get(e.toLowerCase());
-      if (!(w != null && w.length)) return { kind: "none" };
-      if (I) {
-        const U = w.find((n) => n.variant === P);
-        return U ? { kind: "exact", chaos: U.chaosValue } : { kind: "none" };
+    hasVariants: B,
+    divineChaos: (I == null ? void 0 : I.chaosValue) ?? null,
+    updatedAt: g,
+    lookup(i) {
+      const l = o.get(i.toLowerCase());
+      if (!(l != null && l.length)) return { kind: "none" };
+      if (B) {
+        const k = l.find((e) => e.variant === K);
+        return k ? { kind: "exact", chaos: k.chaosValue } : { kind: "none" };
       }
-      const l = w.map((U) => U.chaosValue);
-      return { kind: "range", min: Math.min(...l), max: Math.max(...l) };
+      const w = l.map((k) => k.chaosValue);
+      return { kind: "range", min: Math.min(...w), max: Math.max(...w) };
     }
   };
 }
-let K = {
+let q = {
   scan: null,
   scanning: !1,
   error: null,
-  calibration: MA,
+  calibration: CA,
   order: "value",
   book: null,
   threshold: null,
   hideUnpriced: !1,
   chaosOnly: !1,
-  log: QA,
+  log: IA,
   logStatus: null,
   beastChaos: null,
   beastOverride: null,
-  logging: !0
+  logging: !0,
+  listings: null,
+  exceptionalMax: 10,
+  exceptional: null,
+  yellowBeast: null
 };
-const u = /* @__PURE__ */ new Set();
-function p() {
-  return K;
+const _ = /* @__PURE__ */ new Set();
+function X() {
+  return q;
 }
-function R(A) {
-  K = { ...K, ...A };
-  for (const g of u) g();
+function F(A) {
+  q = { ...q, ...A };
+  for (const E of _) E();
 }
-function hA(A) {
-  return u.add(A), () => {
-    u.delete(A);
+function RA(A) {
+  return _.add(A), () => {
+    _.delete(A);
   };
 }
-function BA() {
-  return xA(hA, p);
+function P() {
+  return uA(RA, X);
 }
-const H = "Vivid Watcher";
-let T = null;
-function VA(A) {
-  if (T) return T;
-  const g = async () => {
-    const [E, Q, I] = await Promise.all([
-      A.prices.getPrices({ category: Rg }),
+const N = "Vivid Watcher";
+let Z = null;
+function XA(A) {
+  if (Z) return Z;
+  const E = async () => {
+    const [g, Q, B] = await Promise.all([
+      A.prices.getPrices({ category: DE }),
       A.prices.getPrices({ category: "currency" }),
       A.prices.getPrices({ category: "beast" })
-    ]), B = I.prices.find((c) => c.name === H) ?? (await A.prices.getPrices()).prices.find((c) => c.name === H);
-    R({
-      book: dg(E.prices, Q.prices, E.updatedAt),
-      beastChaos: (B == null ? void 0 : B.chaosValue) ?? null
+    ]), o = B.prices.find((I) => I.name === N) ?? (await A.prices.getPrices()).prices.find((I) => I.name === N);
+    F({
+      book: WE(g.prices, Q.prices, g.updatedAt),
+      beastChaos: (o == null ? void 0 : o.chaosValue) ?? null
     });
   };
-  return A.prices.onChange(() => void g()), T = g().catch((E) => {
-    throw T = null, E;
-  }), T;
+  return A.prices.onChange(() => void E()), Z = E().catch((g) => {
+    throw Z = null, g;
+  }), Z;
 }
-const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
+const rE = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", jE = [
   {
     name: "Added Chaos Damage Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0FkZGVkQ2hhb3NEYW1hZ2UiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/a89e2281e4/AddedChaosDamage.png",
@@ -594,12 +616,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L01pcmFnZVN0cmlrZSIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/e51b75463c/MirageStrike.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApphNcGdOpYxRoYVhMi43YVpbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXFQ6nJlggWNCcU0ukWA7goFqjYl7AwMKBwAAAAAAAAAAAAAAAAAAAAAAAAAA5rlwiGo4YC4XTBgCTh0GZycebCEVeFwtiHpULCIaAAABAAAAAAAAAAAAAAAAr5hbl3I/aR8Dej0hUiEbcyoqbjkmjncxYygZayIZiXRfAwAAAAAAAAAAAAAAvplnqItWfCMReSISpnx3o4ZuinlR0sl4ulZQijwuYB0SiUxEdlpCWzgSAAAAAAAAmIM4h2s+jy0YejcojnpTclMtn246tHFM3WNo1kFJjAsCcgwFoIlnIAAAAAAAAAAASQAAdFgphXEspI9Il0I/c2As4T1C5EBH1EpLsGJimwoCkAsDkX1VTAIAAAAAAAAANz4rdF8ox8FthioZo0lDb2E0YRER3UBC30NIeTcqo1M8jAoCkXJJFAAAAAAAAAAAcm4njlAnnDIsmjMvpT4+fWspSAIDhyIjjT45SQUC5bSGhUM9gW1FAgAAAAAAAAAAt6FmmW9Cp1lV1kZXu0dYno9DMhACPBYFdTcZrhgPjDIiqHtfNy4dBgEAAAAAAAAAg29BqaBer4uCwFVWvVFTqZ1vdGcnOhkBWSYKjC4SmSYedmtKAQAAAAAAAAAAAAAAAAAAwquAmJZxgjkmnEs5hG45vKtRRiIMXCcMc0g2j31gHAoBAwIBAAAAAAAAAAAAAAAAAAAAd2hQkIVOhV06gmstglk9iEcnemZEmI9qMREBBgYDAAAAAAAAAAAAAAAAAAAAAAAAAAAAf2tRGxgPKiIcYEsjPTAkBAQEPDQmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQEBAAAAAAAAAAAAAVCuyMfAcgwAAAAAAAAADLD+//////7WIwAAAAAAAbD+/////////9UJAAAAAVT+///////////+aQEAAAG+/////////////7kBAAAB7P/////////////HAQAABvr/////////////xwEAAATt/////////////68BAAABsP////////////5bAQAAAD79///////////IBQAAAAABfP7///////7aHAAAAAAAAAFX1/79/vCTEAAAAAAAAAAAAAMmMzAJAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
-  },
-  {
-    name: "Annihilation Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L09ibGl0ZXJhdGlvblN1cHBvcnQiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/b8374aaed8/ObliterationSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNjUltuV193V2B7SE9iKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrV150qqibf29siIV0cmpNeYmdXGqFRE1iLzVFJy04DA4RFhkfOTxITFJmZ2d6hYaLuqeFk3VTpJdkTiwafi0sr3g8nZ+CbHqVZ3eSNj1MDg4RGRwkaXeNlpuzf36Gb0MdYBsQnZJqRi0ThSkvrDQymDNGj0c1qqJyXGmEMzpJCQoMFhcdaXSKr7jPbFU8g2M8aEwjYEUig21FeEE3kjMtsDU8ojdPq3tDWFxzWGZ/IScxHyQuYG6JkpSkZz8jcE8ndmEziHNPlmg0ZUgnpVpX02RilTE9jVYudWVLMzpMJSk2JSs7eYukf29dakggdFEsTD0nNS0fqnw+e1hN5H1/uGpolDM5gj4wgF4kJy4/Iyg2OEFSeoqlUUY8ZkYZkGw5QiwTh2YsfVEYiF870W17qkxQgCMrhDc1cVAcJCw5ICUuRFFnfJGxVExEdU8hRSwablUvTjAKtYApUyYWjjQ8ullfwVtpfkktSzYmKS8+HSEsGB0nZHOMZGZvYUMll4loWjQnf1cgRykIYBEMjigspUFNk1ddinIxRklgNj5RICQwHCErLDNDS1FhfGtNUiUVfVIiPyMDUzUobRoMgB0dfisrkXUuWVJPSlNwOEBTERIXFBcdJSk0XGFqUFJYXT4kjDAuelwqelcaTRQJgUglm4NCVlBAU153VWJ+Qk5eERQYDhATKSwyExUZGhwfFBgdVkxJYVNNYVZBcmE5ZWVPOT1MQEdcLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1pcHuPOkRRLzpBJCs4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0h1kTIofm/v7////////88duZITzc/f////////////76wiIu3v//////////////+tRLKtn//////////////+isakrs///////////////TZUVj7/z/////////////21Y9gPT5/////////////9GQXUzy/P/////////////zzmdh4OTk///////////57rclUsDDxP3////////33dOhJh1lOXnn7fb39ObcxqOBWxMIGhgSLpHBw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Arcane Surge Support",
@@ -726,24 +742,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1N1cHBvcnRQbHVzL0VsZW1lbnRhbEZvY3VzUGx1cyIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/a84d493e28/ElementalFocusPlus.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAmYlPJhgTKRoQj3RHAwACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVUEYh3c6taVbhng/e3ZNppFUSjQXLBgZAAAAAAAAAAAAAAAAAAAAAAAAAAAAuHgOpHMeblQ1HBY1DBxdGztoQWlwdm5FZEkdGA8FAAAAAAAAAAAAAAAAAAAAAAAATC8EdmRANC5qa2JUc2pgLUppRnKiOHt/b2dQGBQMAgAAAAAAAAAAAAAAAAAApYQ4dWQ3b2hkVFpXXG6RfFmjbWJcPWqfWWZrQjckYFo2CQ0HAAAAAAAAAAAAAAAAXFA2SEdMi39gGD57BB1QLklxVUtsf3RZLz5YK0ldc109BQUFAAAAAAAAAAAAAAAAWzwTim87OElZX2lzIDNaamRdTkFOdWx3O0pPI0JhVUkoAgQBAAAAAAAAAAAAAAAALgsIblcgYFM9TmlufXFNHRYVdWtQXVdWZ2RBSWVvQTMaAQAAAAAAAAAAAAAAAAAABwcEVEIZd46wV7XeAwoyAAU2ChBJM1BfQjooWFRBDAcDFxYOAAAAAAAAAAAATUk/hH1UYk46a2tYRICsSUtfCQ47HStoIyxZSEI6LyEOLBsMintXGhcOXFUtHnt6h3VMZk8sVT4jPiUSbmdGamRSW1dXalc7WFA4MCYdHxAHiG8+cFcsvaFTLCAPEQYCak8tZ0QlbVksxLV7t4hBSisSLxgLLBkKXUAfhV8ugEwgaEonaFQ0VzofAgEAIA4ENBYETBUIWCIQViINXy8VXj0eUDgZQScSbUkidEQfV0cscFAuWzscTTcdAwIBAAAAAQIBJgQARRAFTSANWyMOWiEOURoKVSUPVDETflgvbUMjWT0fPysWAwIBAAAAAAAAAQAAAgEABgEAAwEABgEAMQcBRRQIOxQHQicSVDQaSTEcCAQBAwIBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQEABgEAAgEAAgABAwIBAwIBAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAQEBAAAAAAAAAAAAAAAAEoG1tY8uAQAAAAAAAAAAPen+///++HACAAAAAAAAFen////////5PgAAAAAAAZ7+/////////7sGAAAAAA/z///////////tGwAAAAAu/v//////////6CAAAAAAK/7//////////8wSAAAAAA3k//////////+NBgAAAAAwhv/////////md5YHAABL+Pv///////////f+rBoD1/////////////////w9AXj+///////////////ZHwASf73n/v/////+//e0RAUAAAMPKFaWw+Xt7sxiFQEAAAAAAAAABRElMjMdAwAAAA=="
-  },
-  {
-    name: "Awakened Empower Support",
-    icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1N1cHBvcnRQbHVzL0VtcG93ZXJQbHVzIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/eb0e6f91ed/EmpowerPlus.png",
-    rgb: "AAAAAAAAAAAAAAAAOS4VAAAAAgIBCAYDAAAAAgIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFRAILCISFxMKEw4HEQ0IEAwHCAYDAgIBFhEIBgQCAAAAAAAAAAAAAAAAAAAAAAAAoHY9hmU0JBgNfGQyXS8YYkIlaVEqIxoMb1QsEg0IAAAAAAAAAAAAAAAAAAAAAAAABwQCdVYsjmk+nUEzvS8psmFUb0kpXkkpfF4wCQYEAAAAAAAAAAAAAAAAAAAAFA8HfmA/qYtfyTs00y5DmyE2nhccRAILlHRZh2Y3NicWAwIBAAAAAAAAAAAAHRUJPCoPdFo2pXBcuy9B3UBGoAoKmyAghhMWeikfm4puhGpLLx4IBAMBAAAAAAAABwYELCARknBGiVEytS40xVJTqAoQbCwswyYbdw0Ff2tKiGc7KxwNBAMBAAAAAAAAPTMedVk1l3NCclUpiDg4wicqnAkbOgURlwsDfCUUj245XEkzAAABAAAAAAAAAAAARy8TaUYecFc0eFotcUIiaAMERg4UEgUFhBIKn2M0XUcruZNcTjceCQcDAAAAAAAAZlI0TUAkKyQVWj8bkG01VCISHAICZhYSlXE6TjgbgGAzY0geZlMwDw0IXFUtHnt5h3VLZk8tVj8jSjMZPSwYflEsQg8Kj1U0bVEpclElUDAVfWo8W0MivKBTLCAPEQYCak8tZ0QlbVksxLV8rH88YkEfQCIRakomSTIYTTAXhVEkaEonalY0VzofAgEAIA4ENBYETBUIWCIQViINXy8VXDweTzcZQCYSbUkidEQfV0cscFAuWzscTTcdAwIBAAAAAQIBJgQARRAFTSANWyMOWiEOURoKVSUPVDETflgvbUMjWT0fPysWAwIBAAAAAAAAAQAAAgEABgEAAwEABgEAMQcBRRQIOxQHQicSVDQaSTEcCAQBAwIBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQEABgEAAgEAAgABAwIBAwIBAAAAAAAAAAAAAAAA",
-    alpha: "AAAAAAAAAQAAAQAAAAAAAAAAAAElCw4RDgoCIAEAAAAAAAEBfoa6vrabUacHAAEAAAADB83+//////fPDgEBAAAABXj/////////+0sKAQAAAVb8///////////ZHAEAAAA4+P///////////pkFAAACpP7//////////+hOBAAAAaT+///////////+ngUAAAGjs////////////coOAABM+fv///////////3/rBoD1/////////////////w9AXj+///////////////ZHwASf73n/v/////+//e0RAUAAAMPKFaWw+Xt7sxiFQEAAAAAAAAABRElMjMdAwAAAA=="
-  },
-  {
-    name: "Awakened Enhance Support",
-    icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1N1cHBvcnRQbHVzL2VuaGFuY2VwbHVzIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/d3de7b3bd1/enhanceplus.png",
-    rgb: "AAAAAAAAAAAAAAAAdTUKCgQBAQEAAAAAAAAAFwsEAwEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANhsGJBEFLyYNOCYJflgcKBEGCgICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwsDYj8ZOCANWEQUYEIOd1oaUjMTLBgIAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMGmGo+eVEWNDwRQnYsPGcpOS8NlXlFEhUSPCMTAAAAAAAAAAAAAAAAAAAAq4lgqolpnX5XUW8mNakiJcIMVec7RY4qhXJFt5x5bUEiFQkGAAAAAAAAAAAAHhIFHQ8FSicSemlXLHQVJKEQIKkLPr0bNr8hmYpqQiMHRCIMDQQCAQAAAAAAAAAAIBcJPCYQgl02a0wvHV4RKZERIcEIOL4fVqpSeGhIaTwVQSUPAgEBAAAAAAAAAAAADwgDLRgJm2IvbEotL1kZP7YlKL8KPOwmK4MjYkw3lWU3NCUVAwIBAAAAAAAAAAAACgUCMRoJZ0Ygf08hcE4oM48bH2sPK3obYVknaEEef1Qtb0QiEQgDBwMBAAAAAAAAYl5HPzQhHhoPeU0ic1ApUV8hIFYTYlgpRywTilspXT8bUjITd2pKFxUMXFQtHnt6h3VLZk4sUz0iTCkSJxMHTj0ULVEPWjkWe1cyeEsdRSENbFQub1YsvaFTLCAPEQYCak8tZ0QlbVksvLB3uItETTAVNR4ORSsXRy4VVTUZj1IiaEsnaFQ0VzofAgEAIA4ENBYETBUIWCIQViINXy8VXTweTTYZQCYSbEgicUIeV0cscFAuWzscTTcdAwIBAAAAAQIBJgQARRAFTSANWyMOWiEOURoKVSUPUzETflgvbUMjWT0fPysWAwIBAAAAAAAAAQAAAgEABgEAAwEABgEAMQcBRRQIOxQHQicSVDQaSTEcCAQBAwIBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQEABgEAAgEAAgABAwIBAwIBAAAAAAAAAAAAAAAA",
-    alpha: "AAAAAQABAAIAAQEAAAAAAAAAAAAoLAEBATcaAAAAAAAAAAAAc5xoeYfOaAIAAAAAAAAACuP///7+/s8RAQAAAAAAAYf+////////ymQJAAAAADn8//////////74VwEAAABb8f//////////wCIAAAACtP///////////8cOAAAAAY/9///////////6YwEAAACAuf/////////++60IAABM+Pv/////////////rBoD1/////////////////w9AXj+///////////////ZHwASf73n/v/////+//e0RAUAAAMPKFaWw+Xt7sxiFQEAAAAAAAAABRElMjMdAwAAAA=="
-  },
-  {
-    name: "Awakened Enlighten Support",
-    icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1N1cHBvcnRQbHVzL0VubGlnaHRlbnBsdXMiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/7ec7d0544d/Enlightenplus.png",
-    rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnXIdcWY6VDcNOC0YgWouAAAAAAAAAQEABAMBAQEAAAAAAAAAAAAAAAAAAAAAFxQMb08gcFdBknQje2s7ZlIZHxcJCAYDAAAAAQAAAAAAAAAAAAAAAAAAAAAARTYUX0IeQExflJJvmX48g3tSWGFvTjkmEAcDAAEBAAAAAAAAAAAAAAAAAAAAKRcPVjEXh5iLtbuoVGp2CV60iXlKX2ZyjZCJVDwdAwIBAAAAAAAAAAAAAAAAAAAAODATZVNBe5CYycSlK1SFATJyeJOA6sN2Lll9XD02BgIBAQEBAAAAAAAAAAAAAAAAAQAAkYFgrqBiCCdeG0xyAUaZSlBWuJ9oS4GldVpFFQcBAgEAAAAAAAAAAAAAAAAABAQCpoI7SEIuDTBUG1+bAlS7CzZ0gJKVk6aUYz8dCQMBAAAAAAAAAAAAAAAAAAAAExILpIU0qIQ9hWw/lpJ1hnleNUVPdJSyzsCRYEEZAgIBGhkSAAAAAAAAAAAATUk/g3xTUUUzf3NiNWR9lIdhnHxElZVvr6l7zMSda11CIxUKintXGhcOXFUtHnt6h3VMZk8sVT4jRCYPbFExalJFTj06UlRmalItKxYIPh4Lh249cFcsvaFTLCAPEQYCak8tZ0QlbVksw7R7pHk5PCQNSTUMOykONycRcE4lj1MjaEsnaFQ0VzofAgEAIA4ENBYETBUIWCIQViINXy8VXDsdQzAXNB8Oa0chdEQfV0cscFAuWzscTTcdAwIBAAAAAQIBJgQARRAFTSANWyMOWiEOURoKVSUPVDETflgvbUMjWT0fPysWAwIBAAAAAAAAAQAAAgEABgEAAwEABgEAMQcBRRQIOxQHQicSVDQaSTEcCAQBAwIBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQEABgEAAgEAAgABAwIBAwIBAAAAAAAAAAAAAAAA",
-    alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAAAAIJAAAAAAAAA0CkyrptFQAABAEAAAAAAW39/v///t0yAQAAAAAAADH4////////0RUAAAAAAAC7//////////5pAQAAAAAJ6///////////rwcAAAAADO///////////7MKAAAAAAbh//////////+NBgAAAAAxkP/////////4nJYHAABL+Pv///////////j+rBoD1/////////////////w9AXj+///////////////ZHwASf73n/v/////+//e0RAUAAAMPKFaWw+Xt7sxiFQEAAAAAAAAABRElMjMdAwAAAA=="
   },
   {
     name: "Awakened Fire Penetration Support",
@@ -908,12 +906,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAARYBEO7000cAAAAAAAAABpPyqeT///+YBgQAAAAAAZH+//7//////sfcbwEAAAF///////////////YrAAEv9P//////////////rgFG/v///////////////UEAgv7///////////////4rAJb+///////////////+TgEX2P////////////////t0AbL+///////////////+cRHd///////////////+/TQD1v//////////////v4YCAE3t+f//////////0A8BAAAADFz3/////////n4BAAAAAAABwf7/9+/r/vRkAAAAAAAAAB6Aug0CI3YZAQAAAA=="
   },
   {
-    name: "Bloodsoaked Banner Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0Jsb29kc29ha2VkQmFubmVyU3VwcG9ydCIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/7c60a1b677/BloodsoakedBannerSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUltuW2N7YmyJSFBiKC49HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVlsU1tyn6Shk5ONnoeCoKehj5mnWmV8RE1iLzVFJy04DA4RFhkfOTxITFJmZWd6hYeAk4pep5xtzsd6iX9LiHg1dFImoIhRaneNZ3eSNj1MDg4RGRwkaXeNlpuzpKKuh08hyb5xu69jiXk3p5pPlolFiUZQhjJCuZ9LWGR9MzpJCQoMFhcdaXSKsLnQrX1ndBAIx7l21cl2n5FQoJRPloxPo5FaiCk8mldHhHVgWGZ+IScxHyQuYG6JkpqxojEfpSIgkDEjo5hkcWxYgXtUdkhAt2hfmS05gDI4lXcvNDxOJSk2JSs7eYukh31tmxsanhYInFlHZF5NZVgmij1CzmVz24d9kzg+hi86lHApLCoyIyg2OEFSe4ulZFVFqiYxqiorjHJJbzMhdVYqgyMszGJ4sFZajDI7kC85fFgjMCgoICUuRFFnfJGxZVlMoxYWvjVEfWM6Wx0Wb0EhaxUUmDpHjTQ20m12gykxdVYmKjA+HSEsGB0nZHOMYWZyqEQy85ijizs7dGQ6c1dHWiAXiiYnnDZCwnOCh2YySUI6Nj5RICQwHCErLDNDS1JhmHlapSso4kxcTw8MPBsVgmM5dxUVhigsd0wnemY0QkdgOEBTERIXFBcdJSk0XGFqT1FYY0MlwUNHnF5fkzw6eFgzZS8gg1YliHg9PD5NVWJ+Qk5eERQYDhATKSwyExUZGhwfFRgdXU9Gd0hAb04uSjggZU8sY1U5QT9BLTJEJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcXGBrcn2ROUNSKjQ6JCs4GRwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0h1kTIofm/v7////////98duZITzc/f////////////76wiIu3v///////////////NRLKtn///////////////uuakrs////////////////e0Vj7/v//////////////249gPT3//////////////iSXUzy/P/////////////5zmdh4OPk////////////8LclUsDDxP3/////////4tOhJh1lOXnn7vj7+v300qSBWxMIGhgSLpHAwrOKcmw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Bloodthirst Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0Jsb29kUHJpY2VTdXBwb3J0R2VtIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/4ea8419360/BloodPriceSupportGem.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALSILBQIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAU0YajoZZl41kqIZcST89TklKXUMdWEwlFRIKBgUDAAAAAAAAAAAAAAAAAAAApphpk5JgiHJHfFY8jFY2gHlfioVvi3k7OjkjlIhKZ1svAAAAAAAAAAAAAAAAXVI4knxGdzoeZzcZPxcEYCIaey4hYDokW1I0c2ZLFxYMAAAAAAAAEg4HKyMSDAgEU0srZCAJeDwgUCsfjHRZYiolczMrdWA1dFY1fmJNDAAAAAEEAAAAEAwGRDwke3FUhXZQgGctakctlHdvZkAlgnBRblcmfmMzRhgMdC8pmnxlDgABAAAAAAAArqFNkXQ2ew8Hj2UswJxWkXEwUDsaeWg5iXhCZTQjkQ8HfwwDj29SGAAAAAAAAAAAcFAfeD8dbBkPpn02Mh8ZxaxyfmwxnIRFa1YlTToaigoCoA0DjWdFCAAAAAAAAAAA06E2f0YYgEgonX07eDArTjIbmHYxjHEyg2k0VUMcmFs/kgwCi1k4AgAAAAAAAAAAjXEsXUQcm3E1mX86ciwqaUIgPTQYintNknk5LxYLwYpinmBZfmM/Aw9EAAAAAAAAKSQVKyUVy6lQlncycywydFAmg2g0IA4ElIJTWkEkgBwRqHFZYVk7GgcCAAAAAAAAAgEAGwkDxatfYkoZfCs2lXk4q4k7JxEAXEYuX1ApjxUPgm9PAAAAAAAAAAAAAAAAAAAABwQBIBkLZ0MrdyAgppNQbVIeMBUDUCURfW5CcF9KSDspDgEAAAAAAAAAAAAAAAAAAAAACgQDkIJOfGM3UTcZQisSgEAkeFw/dWg7DgkFFxAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAcl1AmY1eJR0RPTAWQTMiEAwMbWAwBwcEBAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMi4VAAAAAAAAAAAAAAAAAAAA",
@@ -924,12 +916,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0JvbmVDaGlsbFN1cHBvcnQiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/9aa30460fd/BoneChillSupport.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmXInzaxGs5JSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBgQhXhgpHorjnc9pIZMnHwkfF4iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWUoosJ15cWRPalxNjIFmXF1aZnBWuI8+XTkQAAAAAAAAAAAAAAAAAAAAb1w7YlQ2taB3aU8vhnVigXJddGA5bWNHZV5HqpZPhGw7TkMmAAAAAAAAAAAAAAAAeWQ8xKhxhXdaeG1emYRhl3xinX6NiXRMZnd4tpFCpYhtUU8zAwkMAAAAAAAAAAAAMyIJUkY8a2djPT5LbmFIZl5bcmJvemBfd1VnbmlemYZpl4Y3W0YdAAAAAAAAAAAAXD8RpJBciWw+c2NIOztImIBdY1A5sJVkdVqFc2BEQmJShIB1OCwSGhoNAAAAAAAAUj0YaXBkOmSTh35jmI91Y2JZeWVITkR4TD1njX9pgXpZnHlXUT8eLS4ZAAAAAAAAGhQMnoxXcoOdSZfIZnN2Bgw3bmJaJUJpM1FqhoRve2o5rpVsX1k0CQgKAAAAAAAAOjMflo9TbYCDP3+2IT90CQ1ADhxaFhpcLE9psJJ1Y1E2Oyw4h2g5KiUHAAAAAAAAAAAAXVo1iYNFXnNrQ2aNQ1OEGyNXY2Fhk240c1pESURHHxgRXkkp////AAAAAAAAAAAAAAAAY1knoI44hmpAel4tnopNcmk+CgkETUccOTQWAAAAPDAdAAAAAAAAAAAAAAAAAAAAAAAAEAwFFA8JAgICAwMCEQ4IAAADMykQLCUSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAAAAAAAAAAAAAAAg1gdWwTAQAAAAAAAAAAAa/q/v7+6U8BAAAAAAAAAs3////////8bQEAAAAACYD4//////////ceAAAAAACy/v/////////+hgEAAAABsP7//////////+SlFAAAAaz+///////////+yQEAAAGl/v///////////nwBAAAAY/7/////////9lqdAQAAAAF1/v////75npoBTQAAAAAAAYT67MyYLB0kAAAAAAAAAAAFLgUBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
-  },
-  {
-    name: "Bonespire Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0JvbmVzcGlyZVN1cHBvcnQiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/b75b0493ad/BonespireSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUltuWmN8YmyJSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrV191o7C7qKCerqerrrm3hpixXGqFRE1iLzVFJy04DA4RFhkfOTxITFJmZ2h7hZCfoZqIzKl/m0IbhR4TmUI1s4JFoaWNa3mVZ3eSNj1MDg4RGRwkaXeNlpuzpqi5q3NEkz4ifBUFeRUIjyUmnS0rmjRDiT8zrqRnW2mDMzpJCQoMFhcdaXSKsLnPrZaNdSMQlBkOuFdUyX6H2FtppC0pvj1BmEBQnG5HaWVsWGZ+IScxHyQuXmyImJqYe1RHlyMipiIglCkjoTZBt0przF5n32hmfysvdF5PjYFfMTlMJSk2JCo6Z3KChG5DkiEanhQHqiEcdQsHcBAUoT5N02p21IN5lTg9dC4xgWY7ODc5Iyg2OEFRY26Dc1s0jUVEkFVBuTEteBAOZQkUhSUv0Gd6sFRYfScvjDE6dGEyNzg5ICUuRFFnfJGxZF9YjHRNrTJAyTNAaQsSYAYMahUVlzpHjTo7jGxagFZHe2g5JCo6HSEsGB0nZnWOg3VeekMv5pOermdgUgwGSwoAWw4LhzEwnzpFpl5sloNUW1dTNj5RICQwHCErLDNDQ0NNfGJFnGVEoU5JbBgTXBYRcBgMdE43fTk1fVomhnhXSlFoOEBTERIXFBcdJSk0XGFqTVBXVEMsmUE9m1JUkTQycB0QelQ3iHNCcGU/VVhkVWJ+Qk5eERQYDhATKSwyExUZGhwfFBUYWlBDf2BXfGZHcmA3Z1Y5MzE4P0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1pcHuPOENRLjlBJCs4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0h1kTIofm/v7////////88duZITzc/f////////////76wiIu3v//////////////+9RLKtn///////////////Suakrs////////////////iUVj7////////////////Gc9gPT5//////////////aRXUzy/v/////////////4zmdh4Oj3///////////977clUsDDxP7////////74dOhJh1lOXnp8fX39/fix6OBWxMIGhgSLpHBw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Brutality Support",
@@ -960,12 +946,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0Nhc3RPbk1lbGVlS2lsbCIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/cbebb42cbc/CastOnMeleeKill.png",
     rgb: "Ih0YAAAAFRQSPyoeJB4MDAgMKiMgSzYhVUkqHBgaCAoNDAgFBwcFAAAAAAAAAAAAIBcPSlNPAgICIR4ac18po4tBoI1MhHYziXY2k4ZLrZFRZVcrExMSCQcEAAAAAAAAEg4KOi0hDwwQXVAjOS4esJdOj3A+24VqkElEc0cvwqtmf3VEa1opKB0LCwkFAAAADwsEQTIVZFAvlHxDa2IuRy4esY1OpE42hjQrijMySA8Pil0tvKddhWguGxsRBwUCBgUDHxcNiHg8cFYxdSscqAsUgjMqXSoxZkgsrZp9RSoZdzUqml44uKNVRz0eBQMCBAQGXlMldWM3qItMoS8nxxUY30JMyilEdgkRrCQjaQoSbFQ/QwwJtZtdi3s8Ix0UIx0Ugmkwa1syd2E/cDQn0zxEyDtb3Dc6qQoKphQUhigqa1RNXQ8JakkuhGo3fmokKiQIinUtUEUrThwUYS8ixxEZwj9J4yoqygoNeDAvUiwo07h+YhAJTyoSj3w8UEQWGxcFdWMpUjYfNQgHuqN1pSsp1Whqv0NFkAoWiSEoNQQEVSweZhsQRyoWfmszPDEOHxkRg201UDctiQwPaT8wUgICvTQ3px8ieQkTKwENTwQDVSkfp4NNeWk3bloxSjkXAgIDWlIlgWo7qw8dhFg4iBQWcRcVbiofJA0OEAECRQcGXhwWe1kux7JidWQsHhwTAgIBKCAOgHAzYywqZSQkZjAegXNnlHc7OCYcZT4oYQ4MSRIQRjsghXA5UUklAwUCAgIBAgIEbFkifWUxZVM0lR4oaAMISQsIPBsRrp1eeE0sal03fms0WUgmV0AfUDkYAAAAAwQGExAIYVUfVkohdGMtUTcknGc9iWczRz8jiHtCYlAreWgsOTITIBsYQC8fAAAAAAAACQgHCQkJOzMWiHIzfWovX1YkYVcrdWYvk3o2VkgePS8gRkc+AgICIRwWAAAAAAAAAAAAAgICCAcCAwIFIRkSPTIcRDwhLCIVDgwJCwkEFg0ILyMdNScgAAAA",
     alpha: "AAAnTgUcT290VyQIAAAAABoDDqnA7f7///7zqi8DAABHfTzi//////////7oSAMABazz/////////////+gyAQW7////////////////swoz+/////////////////gudf/////////////////+ZJf//////////////////4Wg/v////////////////6Hh//////////////////+a03/////////////////+TAL2////////////////7MKAFL6//////////////WfAQABcfr//////////+hPfz4AAAFQ0v3/////99GoBQsSAAAAAAg+epKOaisLT0cAAA=="
-  },
-  {
-    name: "Cast on Ward Break Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0Nhc3RvbldhcmRCcmVhayIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/a4efa47ce7/CastonWardBreak.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDpJS1RlUVxyWmR/Ym2LSVBjKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVlrUFdlmolqoHBLY2ZPk5RhpJx8WWeARE1hLzVFJy04DA4RFhkfOTxITFJmY2R3jHVjiXJQnYZhdmhGJlMcKnIkZmYnm303cnx7Z3eSNj1MDg4RGRwkaXaNgoabin9qemJHPE8lWWE9LDEaaHFBLnsnP3otYoA8uqROXGF3MzpJCQoMFhcdaXWKk5GQk3pWpo9oR2wsjLyMXYF4kIllMHMyN4wuTHowd3E6iXpYWGd/IScxHyQuX26Jf3t7iIFTXl0wI34gEFIONWlAqphpbXuLnb/ERGY1UlktlXIoMzxNJSk2JSs7eoymeG5gVWMzJY8nNpYsCEUDIVcbU0MldnpwgJ+qNV4sSGEyhV0lLCw1Iyg2OEFSbn6YpZJ1noJdR4BANpQwGVERG0sNVlYvin9gQW5mL1oyQnA2dVEfKiwxICUuRFFneY6ucWRUZWw6c71ZYrtGD0YJDjkJLjgaknlMV3VogbOsTVklblYrKjE/HSEsGB0nZHOMbWhuYJFEqNiYgdxaBD8PATUPEDkYZlEyZHFJeIlpmHkxPD1INT5RICQwHCErLDNDS1Fhk4VbQYgmc9BRI0IpC0gXE1cePUAitad2emMpamJRSlNvOEBTERIXFBcdJSk0XGFqT1FYUD4nbqdIV3tbHG4hLmEjV1Mmblc0Zlo/TVVtVWJ+Qk5eERQYDhATKSwyExUZGhwfFRgdTU5PeXJhiHBReWY+YGBLLCksXEgtKi9BJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWVxob3qOOUNRLzpBIyo3EhQaDQ4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b/////+eW0h1kTIofm/v7////////+8tuZITzc/f/////////////7wiIu3v///////////////NRLKtn///////////////yuakrs////////////////dkVj7////////////////mE9gPT8/////////////+uOXUzy/P/////////////2zmdh4OTi///////////67rclUsDDxf3////////73tOhJh1lOXnn7PT28ubo+aWBWxMIGhgSLpHBw7OGcXc6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Cast when Damage Taken Support",
@@ -1052,28 +1032,10 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAAAAAAAAAAAAHkbAAAAAAAAAAAAAAAAACLtYQAAAAAAAAAAAAAAAACh/nUAAAAAAAEhNzg0EAEH1/99AgAAABSw/f7+/u6jsf7juxAAABXQ/v///////v7/690mAAGi/v/////////////gIwAh+v/////////////8hgsBcv7/////////////+c87ALr//////////////85tDQDA//////////////5SAgABkP7////////////yLAAAADb7////////////zRMAAAADk/3/////////6k0BAAAAAAht5//+//3otkgEAAAAAAAAAh1VcG9KIQkBAAAAAA=="
   },
   {
-    name: "Communion Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L01pbmlvblBhY3RTdXBwb3IiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/d9b5bdb23e/MinionPactSuppor.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMDDxEWFRceHyQsJCk1NDpJSlNjUlxvW2N8YmyJSFBiKC4+HiIqCgsNBwkKBQYHCQkLFBQXOD9PP0ZXSE9gQUhYgY2ci5WqprPMprfLi523W2qFRE1iLzVFJy04DA4RFhkfOTxITFJmX2ByRzoxcVxMa1ZHUUI1TldXrqF+vsq/kabCbHuVY3KNMjhHDg4RGRwkaXeNlpuzlJala1k/yq2B49a9o4hgDRwzLV6Db2ZJop51fIynkpGAgHhbDhAQFhcdaXSKr7jPgISLwJ5o5M+o+vjw38eTLiotJmW1ImWJhItrkY98eGxVUllmIScxICUuVVxlf4mlZltOtI5Y1r+b6+DI7+PCbFU8Sn7AgoqCWVREZ08nXWyCMzpMJSk2JCs6SUpKenZbf2tGrYhT1LySy7CE2MmsjHBKWXqhTFBebXlnkmkoNDhBKC09Iyg2OEFSanmRSEA+bls+nHxPo4ZcyLOMaFM4g3BPamhigXVYW19VeVonMzY7Jiw2ICUuRFFnfJGxUFZtQDEsPDAja08wa1I2UEc0eGdNEi1KfaXXM1Z6bFs9Oj9NKS8+HSEsGB0nZHOMX2V4b2NfT2yMKTlAOi4gQi8jV0w8Wm5zd5iyf204WlllVV56Nj5RICQwHCErLDNDTFJgcnSDgW9TTpG7WmRzDx5XFSdfLiYteWZAaGFUhZGvSlNvOkFUERIXFBcdJSk0XGBpUFNZGSI2WFJOQUFKW09DdlstiX9Qe21RoZl4h4mIgIiJlZiLFRYXDhATKSwyExUZGhwfFRkdVVtjlJildnyRUlhrRU5iREpeLCgtIBkcX00waVMzLCgcAwMEBwgJBwgICAgJDxAQGBkcWV1pb3qOOEJRLzpBJCs4GBsjDA4QDg0QBwYGAwQEAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgkiRFaFo52qy9ebg18cEQsROKbt7/f+////+eW0h1kTIofm/v/////////88duaITzc/f///////////vz92CIu3v/////////////6/dhLKt//////////////+d+takrw//////////////5maEVj7/z////////////+jlg9gPTy/f///////////MeQXUzy/Pv///////////Twzmdh4OTB8f////////vw7rclUsDExfj7/f79+/v88+nVLh1lOXnn6ezt5dja0LzM5SoIGhgSLpHAw7OGcWw6LB4JAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Companionship Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0NvbXBhbmlvbnNoaXAiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/328220de6c/Companionship.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NTtJSVNlUFxvWmN8X2mISFBjKC49HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYTlNibHBtyaBqjVwwUGM1io5PrZZkX2x7RE1iLzVFJy04DA4RFhkfOTxITFJmZ2h5iFw2gXBSHUglEU8VJl8eLXUkV2Ypj2wpfYFsZ3eSNj1MDg4RGRwkaXeNlpu0mmtEHk4VIlMXZGFGIVkfSHw6L3woPXsuZIc+tKBMZWd0MzpJCQoMFhcdaXSKpZqmO3QoKYUiK3smcWRFfb22brefOno+N44uSXgwamc3k3tLWGeAIScxHyQuYG6KbnRXK6g7JYwkJ28dZVo4RnlUPGpYd42fk6ynQ2Y1TVsxmXQjMzdHJSk2JSs7doqke3I6Jp0hNJswTnQqNTcbKGAfR3xmhX5nPzkmNV8uR2c1iWYpOiwrIyg2OEFSdoekYFsrN6gnVqhVKn4if2Q7RUwjJUoycWJJQlFSMFw0Q3U3e18mNCknICUuRFFne5Cxb1o8LKAne9FYUqg7GzcKiW9Jwa6EXEwzU2Vhfa+nRVckdFcoKzE/HSEsGB0nZHOMinppdrNzn9qIbcdNAjMKZE8yoIVaOysXNSYYZnNjl3gzQTw+Nj5RICQwHCErLDNDUlNbiopJO5gtb8RQFjMawKRyeVszQjMbT0IjcFYfdmpLSFFuOEBTERIXFBcdJSk0XWFqWlhWaVksXalEeYRvu6Fvd2A9QTsce2I4ZV05REphVGJ9Qk5eERQYDhATKSwyExUZGhwfFRkdTlFBbmlObV9OaGFSUEk4ODY6PUNYLjNEJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQFxgbW15qcn2RO0VULzpCJCo4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQkKDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/f/////+eW0h1kTIofm/v7////////+89uZITzc/f/////////////7wiIu3v///////////////dRLKtn///////////////60akrs///////////////+iUVj7v7//////////////nA9gPT9//////////////aQXUzy/f/////////////4zmdh4OTz///////////87rclUsDDxP7////////739OhJh1lOXnn8Pj69+zhyKOBWxMIGhgSLpPBw7KGcWw6KxsJAwwNBgctMD03IxscFwYEAQ=="
-  },
-  {
     name: "Concentrated Effect Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0NvbmNlbnRyYXRlZEFPRSIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/4db641d292/ConcentratedAOE.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAQAAXDoYAAAANCQMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzs16CAgGNiQLZ00ngFIYc1guKRsMCwkEEw4HAAAAAAAAAAAAAAAAAAAAAAAAYDMkkVw5nXczyaBPmmE8cElKaEs+mGYxlHUyNCgWBwQCBAIBAAAAAAAAAAAAJB88RiIVoFglr49aYV6iKCueGByFIyaJHSJoeFxgonAeTzETAgIBAAAAAAAAAAAAEhEjkEojgls9IyV3PkGrLz7XJjrggIr8LC/BRjuuel59oXMxEwkDBQMCAAAAiU9BZDspb0MpQj17dmF4cl5zbliISUrUV3H+FiXhJimTMi6LclI8Vz4YAgEAAAAACQUDjGYqFxEveXuRVlOlOUv0VWb1gHGSg5z6ZXHoMznWNDacOio3g2UnDQcCAAAAPkEib1UhMCxbNThVCxKUBRbtHjj+oo+VUmf2uLjUuKz6R0bCSzlhmXk0HA4BAAAAQTEchmREFxZAGyFJEx2hVWTyW3j8eWScnan7jojOpJ30MCy1S0BqdFUgDwcBAAAADgkDh2RCCApLEhVQPzdOhXqhjXGGcF28SVDuTUu7hYjqpqHSVUA6Vz0VAQEBAAAABAMBgVwvFRZ9Cw0zBQk/EBVaHyCSLC+LJiqHO0G7W2X6dHfPZ0whOiAMAQAAAAAALCIQa1MyUT9kBwk3CApJCg1LFRZrDA9dIid5cW66XWDWLSExakgdGAoBAQAAAAAAAAAAFw8GhGVIW0VDBwlPCw5sFRqBGx6DV1mccGabNjA8ZU8gIhIGAQAAAAAAAAAAAAAAAgIBCggFVz8be1YzTjgiNik7LSAvVjc4cFYneGEzJRUGBAIAAAAAAAAAAAAAAAAAAAAAAAAABAIAJBoLQCwSSDcbPigNPSsPHhkKAgIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgsCBwUCBQQCAwIABQQBAQEAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAABDxxeHZPEQEAAAAAAAAAJsz+//7+/ut/EgAAAAAAHN7//////////sQXAAAABsX+////////////kgMAAGH+/////////////+8pAALQ////////////////cgAb/f///////////////5YAPv7///////////////+TAD/+////////////////dgAY9f///////////////UsAAq///////////////+gkAAA27/////////////l5AwAAAkHY/////////uyACQAAAAAAGoLN3ufVqWkqBAAAAAAAAAABChIYDgMAAAAAAA=="
-  },
-  {
-    name: "Congregation Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1VuZGVhZEFybXkiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/7a5f5bd566/UndeadArmy.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkTFVnT1ZqYmyJSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrV190lqOywLd97uinm6Oci523W2qFRE1iLzVFJy04DA4RFBYbOTxISlFkX2Bxh5OimZuVu6mDRzAcalIsrptgrZtohpekZHKNZ3eSNj1MDg4RGRwkaXeNgHtwvrmOpYFTaFlhDhtXCh9KJSwzSkM3cWxOd2lHh3VNVV50MzpJCQoMFhcdaXSKm6K0Y1M+VElBFTV2WW6dUXe0R3Cbn6B2SmJxP3yISzsjXlFIWGd/IScxHyQuYG6Jk5qkgHJPJU2OPF18c36FPmizhHNONSwqQmOVL2WIa2BBSUM8MztNJSk2JSs7eoymqJ13Lz9XEz+QLUhofmo9HDJPZk0rUITGcaHiS2N3ZVEvdF85Ki8+Iyg2OEFSeYqkc2NKfpF+IlifMmitNjc8LjY5U0MqToHCQGKXe3BWNT0/eWdDKS44ICUuRFFnfJGxTkxSWEQtmpl3O3eeLT9NHSEpemU8ITdVZWFKRlRiPz41ZFdEKi8+HSEsGB0nZHOMXWV5YVRNa1g6Tpi7iYpnj4pwYVA4Hz5kI1qlXlY9clkzUVZoNj5RICQwHCErLDNDS1FhY1Y7amlUdXVdRD02IRksFCBQGR5RNU9nYkEeeHh+SlNvOEBTERIXFBcdJSk0XWJqTUlGSDYiV0wyhXRTTj0zQTU0RzkvXkEhTkE5VWB7VWJ+Qk5eERQYDhATKSwyExUZGhwfExYaTk5OZmNlXldUOjc5LS0xNDlIP0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWFxob3qOOEJRLjlBJCo4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0h1kTJofm/v7////////88duZITzc/f/////////////7wiIu3v///////////////NRLKtn//////////////+etakrs///////////////AaEVj7v3/////////////ylg9gPT2/////////////86QXUzy/P7///////////7zzmdh4OPz///////////27rclUsDDx/7////////33dOhJh1lOXno7fP18ubdx6OBWxMIGhgSLpHBw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Controlled Blaze Support",
@@ -1086,12 +1048,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0NvbnRyb2xsZWREZXN0cnVjdGlvbkdlbSIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/0fca4292bb/ControlledDestructionGem.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGBAHIxoVAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlHdDmoA6h3JFnYlXnoRQin9wBQQEPzMkAAAAAAAAAAAAAAAAAAAAAAAAAAAAq41YrI1PpI9awbKDnX06OzEvUWtscGhXfG9VMhcHAAAAAAAAAAAAAAAAAAAAoYNRo4RMOzVQBBFXBRJIP1Ban3ktnoVSamdIXGlXemFCFgcCAAAAAAAAAAAAAAAAa048TEJLCyRxQF+UlI+0bWu8n4qBr6B7JlKCI2R+fG1TMRsHBQEBAAAAAAAAq4Y+lHpAIjp3I0+IHzl9QlZ6bVSgcFQ0lX1MvrCTpY9tSUU6n3xNe0wqAAAAAAAAg2wkd25MIS+LETd7EjeCCSdKUU1GhF0PfF1dXUU2jH9drJBkq4lUKwQAAAAAAAAANCUTTlFEEjN/cGlcdGhWlnc71bZ5lXg/iWKddmKMcFtbl4lrnXpMHQMAAAAAAAAAIhUFbG5fH1yYMlqCZmpufGZBRElOQkxMf2RADSVFxIDKT2dsel44QRUBAAAAAAAArYpKlnhCLlKTV6jWQpDDARc4AhY/CxlBJTNmMWF1fHakjH1xIhYLCwABAAAAAAAAAAAAi24+jox/aZ3KXL7vBxE+AQo/AAU6ChVVKD9rM1NndmQ6AAAPAAAAAAAAAAAAAAAAopmQp5lpSVRiQoq3KkFiaW6DCRBFDhpcODhcg3RNGgYBAQABAAAAAAAAAAAAAAAAAAAAKSEahGc5bF1EWF5XgYCCRkVXYFdHloNUNQsBCQUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWkkukHE/DgsKJB8TERAQBQUFTkYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAAAAAAAAAAAAAAEkTldBCQEAAAAAAAAAACW6/f7//ullAQAAAAAAAC/t/v///////ngBAAAAAAfV///////////5JwAAAAFb/v///////////oUBAAABmP7///////////+yAQAAAbb/////////////uwEAAAGr/v///////////pkBAAABdP7///////////5KAAAAABXs//////////+/AgAAAAAASvb///////7UGAAAAAAAAAA0vPz+/umKDQAAAAAAAAAAAAESLSUDAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
-  },
-  {
-    name: "Cooldown Recovery Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0Nvb2xkb3duUmVjb3ZlcnkiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/21c017b506/CooldownRecovery.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDw8RFxohIyYyGR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1MjhFPUVUfmpBTlNncWxmSFBiKS4+HyMrCgsNBwkKBQYHCQkMFBQXOD9PPkVWTVVnbmVUdXVy1atdgm5LnpFrjJ63ZW96R0tSLzVFJy04DA4RFhkfOTxITFNmXV1ujnlTg2xMil8nmWw5b0cha2dMrKuWkIlvZnSNZ3eSNj1MDg4RGRwkaXaNgoWXjYN5XUkzgFMidnWFJCpREy5WX2pmU1VNfGQ5jpiWXGmDMzpJCQoMFhcdZXCEmJ+qg21SakIhHh1LGTFxRlmKHlWdXllPhodvN3aDqppZVV57WGZ/IScxHiQuV2N6mYldn4FTMkZ/J1iSJU6EkZqzRn7OXWt+jnZKKVp+bHVZg3ddMzpMJSk2Ji09aWhphGM8ZkosGUykHEWJFjVvkpR0jX5iRkRLdo+zG1utSFROj28jKC8/Iyg2OEFSX2p/WUMqaE4zLXCtLma6Lk1yKSkoFidGMnrcVojQGkFwO1Rgf1sfJC04ICUuPklcW1VKW04pbUsvH1mcRY25JFB3TE1CYVtHcHyChHxqj4xyL0tga1InKS8+HSEsGB0naW53bVs7Y0gmVnSegsDdOnehAgw6Bw01GyA9IVSQfnBSmJFvdHJrNT1QICQwGiAqMDM5NjY5gHFNXldOO3WmOnScFhxECBFFExlSJU1/Zlk6SDYoRk5pOEBTERIXFBcdIycuPzclKysWKislaFVEPWqPgIqoHS5rQDhBfG1DdmpDRUxiVWJ9Qk5eERQYDhATJCcsDxEVGRseFRkcUVdfgX6CcWJXa1g2cGpKQEJHPkRaLjNEJCk1FhkgBAUHAwMEBwgJBwgIBwgIDxAQGBkcWV1ob3qOOUNRLzpBJCs4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo6G+zeKbg18cEQsPOKbt7/r/////+eu9h1kTIofm/v//////////8tuZITzc/f////////////36wiIu3///////////////+tRLKtn//////////////+etakrw///////////////TZkVj8P7/////////////6lc9gvz//////////////+SOXUz0///////////////6zmdi5vr////////////977clUsf26/z9///////639OhJh1nQnrn6fL28uffx6OBWxMIGhgTLpHBw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Corrupting Cry Support",
@@ -1110,12 +1066,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0ZyYWdpbGl0eSIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/85392d054c/Fragility.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTwerY95UVIvDhgSGAsZt7aloaJDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTohiX9h08iOwYk6tHAlpoZCnnpI0cVNTWJTPjckAAAAAAAAAAAAAAAAAAAAaDMpeEYuwY5Kwp2FiG1OVRYOjGlDhCc9ij08ooY0rKRPBQAAAAAAAAAAAAAAAAAAJxAajFcedVMndkYvej4nuqh9cCIZqSUtjxpCnDZopo9CLxQBBAECAAAAAAAAaj4ogVAfekcblV8umHBLtpJlh10xpI9qnCoqjEgwgT40dVA5hGkuCycMAAAAAAAAMiEOg0gVmkQmuJo/u5pPoXI2optUp5ZagGc1alIsXh8leC5Fl3coKAoCAwMBAAAAW0YUXSgQrIAvxa5TyJ5FpGUmhi4IlWwoj5YjtnxmhRsibR86nHoyTR4CGhIDNBYFWywLg0okl25Dv59ZrIxLgWc9jGQ1gGQpiXY4blAlcTcedzc3dVMgRyACKxsEDwgDYzkTTBYGakIdlXI1cjwie1dFRg8KbEkkUBYJnoA+nWUwah8pgGEuNyAEAAAAAAAAVzQWXDkUiWpbe0UXmEs1RB4KoXM0gFwrhC8noVRAw5yGgGQ1UjwbBQQDAAAAAAAAPSURd1cubk8vdUgflD5EfF0wYkgqglwlXUcjjF4+cFUujXg6JRAECgUBAAAAAAAAAAAAXSgKYToVRyINWjYfWDYagRwKZxoGWTESWjobkYBIKxgJAgEAAAAAAAAAAAAAAAAANhwNUjUaXTwTdEkjflEdi1Uai2slnIlFe3RGFxIKBQMBAgEAAAAAAAAAAAAAAAAAAAAAAAAANCINBQIDDAgGEAgFAgEABAQCCgkGAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQIEAwEBAAAAAAAAAAAAHojY9/OxYAgAAAAAAAAAQ+7+//////7aNwAAAAAAFe3//////////+sgAAAAAX7+////////////xgMAAAbj//////////////4rAAAi///////////////+TQABVP7//////////////1kAAEX+//////////////81AAAL8f/////////////gDAAAAqL+///////////+fAQAAAARzv7////////+rBMAAAAAAA6M9f7//v3hhxYAAAAAAAAAAhZEYFozEQUAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
-  },
-  {
-    name: "Cull the Weak Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0N1bGxpbmdTdHJpa2UiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/70970dea4c/CullingStrike.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgYIDw8QCAgJEBEZHR8qDREaCwsKBAMEAgICBAQEAQEBAwMEDxEWFRceHiItKy0tPjg4iHQ1h4s9gYQtjo46mnw2bFopFRYZCwsMBwkKBQYHCQkMFBQXOD9PVVdZiXE+jn47QIMqMn8fMHIhLWkgOXAqfXtNkWcdLyUgJiw2DA4RFhkfOTxIS1JmramWpZNXPoIrK3QYRLwmN7sUa/ZITsQ2R6A9fJZNfVopJio0Dg4RGRwkaXaNhIeXyLaAbVsUSIk2NKIXNbsTL74MSN4YP+IUN5IkPYwqfIg9KBwUCQkLFhcdaXSJhoV+e1wbZlMUR3EhMJYWLZgTLrMNP68WXME9YeBNR7gtbok2Vz8cGR4mHyQuYG6JfnlgYkUTblEZYlAWJWAMQashNMALR9UhVaRKe/ZnTtcsZnskSjEVGh8oJSs7eYukfXRXak0Rak0WblIXV1EWVbUkONIMPewRNJQed+xiYdpFZlwULRsOGh0nOEFSeoqlTkw/ZEgRYUYVb1Idf2saR34WIXgOM5MaKWAdfd5vccRbeFsZHw8LHCAoRFFnfJGxVVJKRjUPcFAbgGAilnIjIkMNH1MTHkIVO4ooU6RBRF8fXD0ZGxYWHCArGB0nZHOMWl9uLCUQZ0sUcVUgjo0+OZYcMIoZK2cdRJIxM1MdYlAjHRQTKzJBHyQwHCErLDNDTFFgPjMgZk0ksJ1hcHIzVoE2TnkyR3AqbXs5cmE5NS8wOD9VOD9SERIXFBcdJSk0XWFqVVNOhGMsq6ViJyYoQEA+MywnPTcxTVBYVlhrUVx1VGF9Qk5eERQYDhATKSwyExUZGRseW1E7fmMfXV9qeX6QVVprQ0xgSE9kP0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJCgkKRDgePUFMb3qOOEJRLzpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQkKCgwPDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aITBQaUMWCxsHAgYiRFaOrM/2/v71xnYdEQsPOKbu/P7////////6q1sTIofm/v////////////qkITzc/f//////////////2SUu3v////////////////VVKtn////////////////4dErs////////////////7E5j7/z//////////////9VDgPT4///////////////PX0zy/P/////////////802dh4OTn//////////778rclUsDDx///+/r5+fbu3dOhJh1lOXrx//Lt5tnZxqOBWxMIGhgSN8DQw7OGcWw6KxsJAwwNBgcxNj03IxscFwYEAQ=="
   },
   {
     name: "Culling Strike Support",
@@ -1154,34 +1104,16 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAABAQcKDQcJAQAAAgEAAAAWn9z588VHCAYAAAAEAAAPxf7//////WoEAAAAAAANyv7////////+cgIAAAACo/7///////////QcAAAAH/r////////////+hQEAAWD//////////////8EBAAF8/v/////////////EAQABhP7/////////////0AEAAWf+/////////////6wBAAAe+/////////////1VAgAAAaX+//////////+/BwEAAAASzP////////7fJAIAAAAAAA6e+v///eaTMQYAAQAAAAAAASpvf18gAgAAAQMAAAAAAAAAAQEBAAAAAAAAAA=="
   },
   {
-    name: "Divine Sentinel Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0RpdmluZVNlbnRpbmVsU3VwcG9ydCIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/6228114c49/DivineSentinelSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUlxvW2N8YmyJSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrV191obC/pKWuqa+7orK+iZu2W2qFRE1iLzVFJy04DA4RFhkfOTxITFJmZ2h7hpGgn5yPz6t8n0QaiCMWolQ/uZRWnKmibXuVZ3eSNj1MDg4RGRwkaXeNlpuzpqi5qnVIm0krehQFehcJkycpni4sjzBBkFItpKN9XGqDMzpJCQoMFhcdaXSKr7nPt5iJdxgFkhkNuVxYvW130VZhpi0pky4ynTZSsYBKWF12WGZ/IScxHyQuYG6JkJy5nzoppSAhhR8dhSwosEBQuUpuqEhQk3pQXywqjVExfW1OMzpMJSk2JSs7eYukhoJ8nSQakxIGjnhVSi4ddBQZoz9Ssltkels6VCongTgtj28qJy4/Iyg2OEFSeoulZVlOpykzsS4qc0oubFA5Sy0ibzs/im1geFk2d1k7Yi8wTzsZHCEqICQuRFFnfJGxX1hSohoXzDlIe0A/dVw3jnNDmXxOjXNDZE0wiGxAXlI0r59ujIdiDxAUGB0nZHOMX2V0jzcldlhPmZR3gXdicmpfb2NQX1Y+YlM7WEkyYlAwOy0bOi0fExUbHCErLDNDTFJhRTkouqhlTTsnX0krY0YrZUctZ1I0YEUsPy8eTUQ6RExnNj1OERIXFBcdJSk0XGBpNi4keWA2dGE+QTEfh2Q+c1Mxk24+n31MQDMnSVFoVWJ9Qk5eERQYDhATKSwyExUZERITIRgOXkwrPDQkYE09XUs1ST8xJicxPUNXLjNFJCk1FhkgBAUHAwMEBwgJBwgIBwgJDQ0OERITS1Bbb3qOOUNRLztCIik2GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0h1kTIofm/v7////////88duZITzc/f////////////36wiIu3v//////////////+tRLKtn//////////////+qsakrs///////////////YZkVj7/v/////////////7WY+gPT2///////////////2e0zy/P/////////////++oNh4OTv///////////977glUsDD4//////////73tOhJh1lOYn1//77+vDjyKOBWxQIGhgSMpjDw7OGc2w6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Earthbreaker Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0FuY2VzdG9yU2xhbVRvdGVtIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/1b262b37c1/AncestorSlamTotem.png",
     rgb: "AAAAAAAAAAAAAAAAGRQNl4BNemU5UEIkCAYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAMCyLl5e2QygGU1AwIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGRQM28qJU0MhsJdeVlI6RD8vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAsJup5gSToasIVgc2RBJiAVAAAAOTMbBgcFAAABAAAAAAAAAAAAAAAAAAAAAAAAYlM2r5JZalAnrINna1s5HhkOBgUCWE4tNCgMUUIbAAAAAAAAAAAAAAAAAAAANDAifnVTknxMi2xBs5GAfW9HDQkHUUw5alkwYlImUkcnAQEBAAAAAAAAAAAAAAAAHxsSVFA3hXBGdFotnYBkhHFLV0UpPTUdVEQbVEMYkHpBAAAAAAAAAAAAAAAAAAAANC8ghoJZdWM6aU4pzrGbj3NMCgUFRzgXTDkUPDMYAQEAAAAAAAAAAAAAAAAAAAAAnI1nhHJOdFw1ZT86gFRPnX1LdFw3bVknMygQHBkNIh4PAAAAAAAAAAAABAICBAMCGRUMSz0if1w8akcweksoZCsainRDcVoqNCMTBAMCAAAAAAAAAAAAAAAAAAAAAAAAMSQPPSsTkW49aw0TZwEMZQEKbggMhCMej2w7BAMCAAAAAAAAAAAAAAAAAAAAAAAANygZYkgmgUQpgxUZbQIKYgMJdggLdgUHhFUrNhsPikglAAAAAAAAAAAAAAAAAAAAMyQaYVozcy4eYQMMdhcaeDYxmxgJuyIFllErLxIJPxYLAAAAAAAAAAAAAAAAAAAAFg8OUz8jk15Dck86Ox0YVjc0kDYq1JdyfVguCwQDLRYQAAAAAAAAAAAAAAAAAAAAAAAABwQChmpCb1MsOQoEVS4rfkM6j1s7PikSAgIBAAAAAAAAAAAAAAAAAAAAAAAADwwDMCgUdmI1VjwebEQgbk4rbVIqSTofAQEAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAB0tVYFAAAAAAAAAAAAAAAH3v7yKAAAAAAAAAAAAAAAJf7//2YAAAAAAAAAAAAAACX///+tAwAAAAAAAAAAAAAs////tQMFb4lDAAAAAAABU////7UBRP7+pgIAAAAAAEz///6EAXH//sgGAAAAAAFc///+nQGj/n4NAgAAAAABdv////Cg43ENAAAAAAQDAID///////t3AwAAAAAAAQBw////////7yAAAAAAAAABYP////////9iAAAAAAAAAFP/////////dwAAAAAAAAAr/P///////U4AAAAAAAAAA8b+/////9MUAAAAAAAAADDdsPD47680AQAAAA=="
   },
   {
-    name: "Eclipse Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0VjbGlwc2UiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/01d4f8b241/Eclipse.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceICQsJCk1NTtJS1RkUVtwWWF7YWuKSFBiKC49HiIqCgsNBwkKBQYHCQkMFBQXMzpKP0FIUVlrY2VpnYFrV1pWgIFzoIxtlJSHUl93SEhGLzZFJy04DA4RFhkfOTxIRUtdaWBEfoCAtK+dJy4tKzc5PkpLYm9xYFxXg3hOcmpRZ3eSNj1MDg4RGRwkaXaNe36Qmn9CTTUiNT0+KTIzO0VHSVRVfoqLXWlqdXJkkn1IVGF7MzpJCQoMFhcdaXSJmZmHdWAyJCkqS1NUkJycv8zNfomKkZ2fbXl7VVpXhnVAZ2xrV2V9IScxFxslb3RkkotZQT04bXt8Z3R1MkFDd4WHX25wuMjKkaCjPkxNMjEtkIRHYVxDISUwKikmZFo6gndIbnNlVWhrbX+CFiUnMTo2ZHJwpre6iZeZJjI0r699YVUvGBMRHSErNT5OY3GHUUY0fnJMYnZ7gI6Kb2tDp51hhHA+jo95QUxPjJiZUkMoT0AkHSMvICUvQEtfbW9lgXZEiYlkbX14cn58hXdARzcbTTwealozRVJUucGukIpefW04ODIjGh4pFxslSEhIgWw4VUgqlYtbrKZzeG5DhntIgXdGfnFAaWtQgXFDTEAjWUMiMy8uHyQwGyAqLiooPzEgSD0pUUInjIZcZWNQb2I7PjIeQDwof3dMSjsgPjQqNjEyNCkgFhMSFRUYKyUgVFddVkk6QTIaLiASZFEvMzMtQUJAWkgpRTsjNCcXPjQsUV13NDxHDxASDhATKi0yExUZJR8ZFxYVTlRaZV1XNzY0MColNS8pODxLLjNBKCcuJCk1FhkfBAUHAwMEBwgJBwgICQkJDxAQGBkcVVllYmx+N0FPLDY+JCs4GBsjDQ4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDhIYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbw7/f/////+efIh1kTIofn/v7////////++duZITzc/f/////////////7wiIu3v///////////////NRLLeD////////////////jbmn+///////////////5vUtk8P3/////////////5l89gfn+//////////////7YYU30////////////////22di7vHp///////////9+eUxXNrL2//+///////+79SzLR1lOZLr6vX89u3dza+BWxQIGhgSLpHBxbSIcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Efficacy Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0VmZmljYWN5IiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/90381ee91a/Efficacy.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApZVMcGZOp4pTpZFuPD5OalxMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXFQ6opddf3BKtKBbi3E5fGc7mIlkAwMDBgAAAAAAAAAAAAAAAAAAAAAAAAAA3Lh0fGpCNjIyopFXKCEyGTNgGDVsPUtdh35qJx4YAAABAAAAAAAAAAAAAAAArJddgXBRBhZsYFUzTE1BK1mAOGiPNlOHGjNkJT5binReAwAAAAAAAAAAAAAAwJpgr4pTIDJmFjp2iXY2aWyOf3z2c3biX5bGMFGIFSxccXlsbVQxYkAaAAAAAAAAloM0d2VRKUWLIUeBbmM1hYx5XZrNZ5vNZajXSJHGDxtRV1tUfmU4IAAAAAAAAAAAAAC0UGBxCSFrCyZdNUFFy8KWQnWXRqDiTpPPZIWmDhtQin5SbFo8SwIAAAAAAAAASztMT19gCyVcNDYzWlM7e2w80cmng5iaVYmoTVRil4pgQDcmjnhKEgAAAAAAAAAAKiUeXmt9TkozPjooLURSc2VHf3JFhHxNvbBlqqBahGpsTlprfm5EAQAAAAAAAAAAt6Red2lLiW42SJ/MTaHGFyk4pI1QFRcpIStbLFVuOkhrhIN5Ny4dBgEAAAAAAAAAjG8/kHZDlohYVpDAWrjiBgomgmovGhkoDBlYKj5oNlpydmpJAQAAAAAAAAAAAAAAAAAAvLF+l5JjPFJwUp/GRDksinxBDhhFDhlZP0BgiX9lHAoBAwIBAAAAAAAAAAAAAAAAAAAAc2pSloRMhnFCp5ZYbG52TktbbGZSmY5pMREBBgYDAAAAAAAAAAAAAAAAAAAAAAAAAAAAfGtSHBkRPTUjXUsnNjEpBAQDPDQmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQEBAAAAAAAAAAAAAVCuyMfAcwwAAAAAAAAADLD+//////7WIwAAAAAAAbD+/////////9UJAAAAAVT+///////////+aQEAAAG+/////////////7kBAAAB7P/////////////HAQAAA/n/////////////xwEAAAHs/////////////68BAAABsP////////////5bAQAAAD/9///////////IBQAAAAABfP7///////7aHAAAAAAAAAFX2P79/vCTEAAAAAAAAAAAAAMmMzAJAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
-  },
-  {
-    name: "Eldritch Blasphemy Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0F1cmlmeSIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/35e0f624bb/Aurify.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFhkiJSgzGh0mFBMTJR4SAgIBBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNjUVtwWV1rXFhQW1I/aF1DZ1kxWkQUCQoKBQYHCQkMFBQXOD9PP0ZYUVhrV2B1mZuWbGVTVks8h4BljYdtjY6DcmdNVk8/KC04DA4RFhkfOTxITFJmZ2h7goyadmtXjnlPfnBfsplspIRDjGwwQDAMcF8zSUIzNz1NDg4RGRwkaXeNlpuzo6OzhGtCMC41N0JVwbKQ3MSNyKdkdVoooX87hnVTYVhFMjlKCQoMFhcdaXSKsLnQn5BxUUA1DitUOFt/1qlV0LR4fWdBHy5ZWUQkh2oqWldPVWV+IScxHyQuYG6JlpumfWxLe3djfHZpZXKQlW8qhG02Jkl+D0mFGR4zU0Ikem1MMThLJSk2JSs7eYukppt/HzllaWdzYGBVQ0FcmHMyITpKaXV8GT6WJUSRjnVEbVs3Jis6Iyg2OEFSe4umfnBSUF91DjJwBB9HYUgmhWQpalxQkIdvqJJmiHBKbVIkd2hBICU0ICUuRFFnfZKyi3tWHDZiBSNMBiFeKFV9JUxzJjJKOzMlQFl0OFyoXD4Vln9GKC0+HSEsGB0nZXOMlotuMl6XGig7Axs6B0GMAxAoFkZ5AwkWW4W0aI+1h2MpjH1eNj5RICQwHCErLDNDT1FZdm1RAiFSAiFIBBs+AiBDAhQsGkd4HjdlTE9YwZpTTVNpOEBTERIXFBcdJSk0XmJramBJe2g5EzFoATN3ASpsARM1IjlecmxRvZxSZFxWVWJ+Qk5eERQYDhATKSwyExUZGhwfIyAZgnFFhXVEgXM/loFFp5BJdmE3SURFLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJEBAQGhsfU1ZiYmt6NTxGLzpAIyo5GRskDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4aGRsHAgYiRFaFo52qy9rB0NVSEQsPOKbt7/b+////++vcrFoTIofm/v7//////////e2ZITzc/f////////////79wyIu3v///////////////dRLKtn//////////////+2sakrs///////////////XZUVj7v3/////////////4VY9gPT9/////////////+SOXUzy/v/////////////3zmdh4Ob8///////////+77clUsDDx//////////+4tOhJh1lOXnq9/7///ztzqOCWxMIGhgSLpHBxbeHcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Elemental Army Support",
@@ -1214,12 +1146,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAUJAAAAAAAAAAAAAAAAAAepey2RIQgAAAAAAAAAAABstt3q/vKvEgEAAAAAAAAAFHH6/////s2QFQYBAAAAApP+/////////tK1QAEAAXT+///////////iuLE2BDzw////////////9TsPFwXI//////////////+GGgABwf//////////////7jkAC9///////////////5oJABv+//////////////9YAAAJq//////////////8oFZEAA2p/v/////////5s5uGRwAAC3fw/v////bkoBEDAgAAAAADMW9+oaE/GgoAAAAAAAAAAAAAAQQFAAAAAAAAAA=="
   },
   {
-    name: "Empower Support",
-    icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0VtcG93ZXIiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/c2b1b38b15/Empower.png",
-    rgb: "AAAAAAAAAAAAAwEACgkEAAAABQQCGhYKAAAACwoEAwMBAAAACAYDAAAAAAAAAAAAAAAAAAAAAAAAIhoMNjAXHRIJExAHGRUKazlHFRIIHBgKAQAAMywVLSQQAAAAAAAAAAAAAAAADgwERTcYdGcuLSENgHE0UDQYlE0wb10wT0YgDQoEf28xh2orAAAAAAAAAAAAAQEAMSgQbFwqYVQkiHg4l1w5lzsjsVlPiksvjnw7VEkhf28wGRMFAQEAAAAAAQEAAQEAFRQKiXg1kIRPwFtByTc7uRQywjRDlC8xLQYNq5ZignU6YVEiAQEBAAAAAgEBFhMJhXZHjXw71JZ10Ccp2URXrwUdoxoeeAwRYwILTxQOxruHhnU4b2IzEhAHDAsEYlQdem4+fXVYwFBGwDJP4EpV0xsbmQ0MjBoamCMinB8VvJd7OTIZkIFBLicQCQkCQzUSqppVbmQ9oS0evhkp2E5O3QsNewUIcTEx0TQokgkDk2dFZVosjns+IRkKAwIBEQwEf248f3IyvVc6oSIk3Xh5iQsTkAsaUx4goAwEfgcCgGIyl4Y9S0AlCAcGBQQCi3tCsaBYPTUWlHAxZSIixh4jXRQWfgkXDgUJmAgEex4Kfm4vbF8pwbFqTkAcFBAHcF4haV0rhntDfW8vdF4pkAQEDwUDLQ0OJQgGXh8UrZRAZ1sld25DemknUEAYDAkDXEwbSD4YdmYoMSoPf28seVYoOAICJAICdRkVp5JBQzoVXE8aZVknS0AXXk0aPTMePTQXGxcKU0cdeWkogXQznIk7TwwHOQIEjVgxe2wtmIc3bV4lEA0GJSAMPjUXAAAAR0IhLigSKSMQJiEPGRUKQzkae2UwSS0RgXE0HRgLHRkLKyUREQ8IAAAAX1ktAAAAAAAAAAAAHBgLHxwNAwIBAwMBUEMfCggEUEMfGxcLBgUDGhUKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYU8kFREIdmAsAAAAAAAAAAAAAAAAAAAAAAAA",
-    alpha: "AAAAAAEAAQAAAQAAAQAAAAAAABZBABcpAi8BBFMAAAABAAAwwTq/ucLQdDvLAQABAQABZPb8///////u7REBAQEIDdH///////////56BQMBA4f/////////////8jICBHT9///////////////kKgOq////////////////+EwBIvT//////////////5IJFNX////////////////8gQTV/v///////////////HMG2n/8////////////xZSIBC8Ds/7///////7+/kgBMgAAAVOsuuj76fW2lbYOAAAAAAAAAQYWdCNMAgABAAAAAAAAAAAAAAEAAAAAAAAAAA=="
-  },
-  {
     name: "Endurance Charge on Melee Stun Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0VuZHVyYW5jZUNoYXJnZVN0dW4iLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/e3b4ca1900/EnduranceChargeStun.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAe1sS5rgfe0wQAAAAAAAAAAAAAAAAAAAAAAAAjVYPlHAUeFEHAAAAAAAAAAAASTQQlXEg0aMqo3MXc1caAAAAAAAAAAAAAAAAek0Qf1IOq3MSSCgFGAYBZlIX48GMIw0ElYA64bZTz5wkhWIWFxMFAAAAAAAAAAAAnW4VyJk747Q/WTYJZTojt5E5nFwslEkenFstXUMXblAQgVwVOh0DAAAAAAAAtGsJtHst+NiLv549VRoEnV8kUS0kNwsNSBEUPwYQfDwxiV0eNBgFHA4EAAAAAAAA175S2a9O8c55Yz4Jg1UsYT4ceGRChWxEbTAXrx8kWBAOj0lAf1kqBQYHAAAAAAAA0JMfsnsVwI8hNyESbVM1k3pXZEggalQyb1EfgxgXdQYRWwsRf18pIQ0FAAAAAAAAZj4LMhYBNBABZkskf1YojG5NWjYSd2I+eFswXyccrzAuhRYZfFgtTCkMAAAAAAAAAAAADQUABQEFe1kma04jVEQyZkQpm31Qg2JBPiMjyhwihwEOeUsnOhoJAAAAAAAAAAAAAAAAAAAAe08rZU0lXFFCbFVMdmVGehcaJQEEngUNmg0XZUMXGggDAAAAAAAAAAAAimETRzkSdE4weRsvXDIeWDMqVAULJwsOHwIEcw0SagcOYkQeGggBGQ4EAAAAglYLpnIUwJsoQiwUk15TZxAcYQMLYgMOQwEIcRcfQQYJVz0ZJhIHgWEXXD8PJRYFx4sV1pkY0qUvc1kWKRMEgFA2iUYpejEsWSEUdz4jdmMyMSAMg2kknnYcOyMHLB4EAAAANx0AxqIy1bFBjWwZUDsNRSoRSDkZRCkNOzAUHhUHloArupEldlYWJxABJxECAAAAIA4AOSYEimYZb1IUMRwHJRABAAAAAAAAJBYGLBcFkXYmUDgNKRIBNRoBAAAAAAAAAAAAKhUCIw8BHwwBJhEBMRkBAAAAAAAAAAAALx0HKxMCLhYCMhgCAAAAAAAA",
@@ -1230,18 +1156,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0VuZXJneVNoaWVsZExlZWNoc3VwcG9ydCIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/691b0c6570/EnergyShieldLeechsupport.png",
     rgb: "AAAAAAAAAAAAAAAADAgCmHYyXUQZhmQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuqVwxLF7oo1lWkoqa0wiXkcgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU0YZoo9miHRRUkAhHxYKAgEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAPxsASC0FNSUNY1UipI5gWEw3STUVFA4FAQAAAQAAAQAAAAAAAAAAAAAAAAAAAAAASCoEmX9PblQoRTQTln1JdWVJRjESHhMMOycSFhQODw0IAQAAAQAAAAAAAAAAAAAATjgTjn1Yb1QpSDYagl0semhIdWIpfWc4kntIt6FsalYyCwQCAgEAAQAAAAAAAAAAknc6rJZfeXFbV0AfbEsXeV41FB8qHXOeDE1wGz1Dd2UyWkETDQgDAQAAAQAAAAAAAQEBKyIKl35VbVw6gGg4eVstBEZoDixPC4LIEWmdFTVNc10zNSYMBAMBAQAAAQAAAAAACwcCX0EWsplpVkAZTjknQVt5UXm0MmypUorAH0VpIzhAV0ASOCYNDAcBAAAAAAAAAQAABgMBaVIXfVsoMy0oa1g+QkxoDTF/VovJGTxVZ6LcdmYoeFYtKRsIAQAAAAAAAQAACwwJdV8oPS8bNj1HUz8wYkQebVpCT01iUU06YlAvbE4dIxYHAQAAAAAAAAAABQMBt6hjdWE3XEwpBBhSBjRyBitdEhIZWkQrYUkzJSM9YEoZSDgcEQ4NAAAAAAAAAAAAi3A0pY1SknUwNDc+RlprSldXSTsnOikVGBQZZ1AlmHMxnnxMgVoxAQEBAAAAAAAAAwEBOisLe2MxjG8+SUNAe5irGWGYIU5yaGhvZU0gGQ4CJxYEAwMCAQEBAAAAAAAAAQAAAQAAFA8HsZNmoI5ii3ZFT047aWVVblUhKRsIAwIAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAQAADQoGFRMNPCsWW0QgRTAMHhUGAwIAAQAAAAAAAAAAAAAA",
     alpha: "AAAAAAJeVgEAAAAAAAAAAAAAAAFt/PoQAQAAAAAAAAAAAAABu/vTAgEBAQAAAAAAABkHAcX7ggUEBAMCAQAAABTtsgOX9iIPHwcGBQMBAAAR9PwzZuC29v/iihMGAwEAAYr4mT7+//////7ZMQYCAQEN2+GD/v///////8IGBAIBBCnb+f/////////8WAQCAQQMVf7///////////U4AgIECqf///////////9iBQIBBD7D+v/////////xfQMBAQIPv+f////////728o6AQABAxWD+P7////+7VZgDAAAAQIFBze6/f7+5jwHBAEAAAABAwUGBh1gVxQHBAIAAA=="
-  },
-  {
-    name: "Enhance Support",
-    icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L2VuaGFuY2UiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/9f8df30377/enhance.png",
-    rgb: "AAAAAQAAAQAAAAAAAQAAAAAAAAAAAQEAAAAAAgIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEg0DFxADAAAAAAAAAAAAAAAAFg8GEAwFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALx4EKx0GHRYHk4MqCg4EAAQCBQMBLRsGBwcCAAAAAAAAAAAAAAAAAAAAAAAAIRQCQjINWEUXOyoMbVUYclETeFwaSzcQfmAeHREBAQEAAAAAAAAAAAAAAAAAAAAAFRUTnYAzWUAPhmccMiYRRnczMVYlIkEPVD8Sp5VRMRQBdl8vDQQAAAAAAAAAXUgiblw1qJZmro40JkgRNqckKqgSPsMmc+5vS1YUgWs8zb2Uk3lCHgsEFQkDLh0DRjMNsZxqfGQ0dW9KLpAaLbUXIasKKtULPOYcJ4QQvKRrVTkOWkEWNiEJDQcDDQkCQy0LMx0JfW9jR0ckOrAfIZYQIKQNHI8LT9ksSdEsopmHNyIFeFoZBgUBAAAAAQEAGRAGbVIdZVUxRVEdHV4PFm0LHaYKIaELQrcqYb1cjn1RSTAMelscBwcDAAAAJBYFZVMnl4NLUzsSZXE8JokZNqYbOLANK98NRMA4OZowcV47bFIWiHlRSTkWGBMHEwwDYEYUi3AyaEwSi3Q3GTEMTrQzMbcKKMsTHX8NR1IdeF4qcVYZnnwxKhwIDwoCCwkDUT0TXU8ek3YtXkYVlYA2KW4QKXUUM1IlMjEWinAqi3AsZFEYb1kgIxcGBAIBBgcBMiAJGRAEXEcVX0seaVUga2ErJG0VIUsQjngxYFEmdVseKh4HNCQIHRAFDwYDAgIBBAMBBQQBVj8SjXIyPCsLYk0ZH1YOUWUZPTANRzMTmXgvLiMHCAYCAgEAAQAAAAAAAAAABQMCGxAFFA0DCAQBKR0IIRYHKBsKDAoDCAUBIRMFCgsFAAAAAAAAAAAAAAAAAAAAAAAABAIBAwIBAQEAAwIBAgIAAQEBAwIBAQEAAwIAAAAAAAAAAAAAAAAA",
-    alpha: "AAAAAAEAAQEAAAEAAAAAAAAAAAQFAAAAAAAHAAAAAAAAAAAzeQEAAQEJwQUAAAAAAAABa7Nfi6W+0v0sAgAAAAAABdb//v7+////vgsBAAAAAVL+///////////KcB4AAB7m//////////////24AwLF/v/////////////2QQIEavv/////////////3A8AHbf7//////////////B/BEvy/v/////////////+0RcP4f3//////////////YsDDLGA9v//////////zoRpAQQVDK/++/////f7/V0ICgAAAAFLflel5tpfWKUVAAAAAAAABAUBDickBAIMAQAAAA=="
-  },
-  {
-    name: "Enlighten Support",
-    icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0VubGlnaHRlbiIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/05a949e270/Enlighten.png",
-    rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgQBAQEAAAAAAAAAAAAAAAAAAAAAeFcqh3s+loIoV1c4V2AiPS0PAAAAAAAAAAAABgQBAwIAAAAAAAAAAAAACAkEQCoZblEbf184e1oomH81fmUtV0gbIBYHFg4EAAAAAgEAAAAAAAAAAAAAAAAAGBYLcUgmVFxgU2Nc2MdmuKI4KVBncWtiSTEXIRQIBgUDAAAAAAAAAAAAAAAAQzEWZUYZW3N5MURUx7x1RGB1XmtQmpdbKEWJZXGNa0sjCgkGAQAAAAAAAAAADwgNKRYUYG1s3ufG5OnIKU93AUWVCFqqkY9Rt6lktLOFVU9YKxkFBgMBAAAAAAAAPDAfcVAsJ1OC19q32Nq1TnGQATp9EElxx71y7tZyLmCaLTNXZEUXAgEAAAAAAAAAFQ8HcVosjZSNxrd2EB0sAyldADh5Azh4UEw7wapWgJyWKEWDe1QhAQEBAAAAAAAAAQEBjnBKzsiEV11SBzJzKGqFAT+CBVCqPVNzeYiEzMiHL0ltVjoUAQEAAAAAAAAABgYCoHw8o443ER0xBRU0JGefN11vFlefAxs6ZJHFxb2HoYdKOCINAQAAAAAAAAAAX1Mltp07tp0zsp5An5FAoKZ53MBQq51WjJF2t8OzusOs49yoJhAGAgEAAAAAAAAAXE8ZZVQnmYFeZG9hQ11xVHF22L1Oj4BDdXlofXRNkn9Zg3RKLCsiAgEAAAAAAAAAAAAACggFPjAXimxFZ4FqL0Npd2Q8Ky5EOkNue2E6SDETCQQBAwICAAAAAAAAAAAAAAAAAAAACwoEBwQCRjMSVD0dZ0Icj2kib1QhMiUOAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAMECQUDAwIBAQEABgEABAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    alpha: "AAAAAAAAAAAAAAAAAAACAAAAAAAAAAEBAQEAAAAABgQAAAABAkel1NKxXhIAAAAAAAAABZv7/v///v7WLwEAAAAAAX/+/////////+AeAAAAACX3////////////mQQAAAGv/////////////+0fAAAC2v/////////////+PgAADPn/////////////+z0AAAns/////////////+siAAACyv/////////////UFAAAAGH+///////////8gAUAAAAFbfT////////+pxIAAAAAAAM9ver+///pcxgAAAAAAAAAAAkncKibQgUAAAAAAAAAAAAAAAEEBAEAAAAAAA=="
   },
   {
     name: "Eternal Blessing Support",
@@ -1298,12 +1212,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAAAAAAAACEECQAAAAAAAAAAAAAAAAi3OoUHAgAAAAAAAAEBAQEY8YPdPSMFAAAAAU250NHOsf/u/q+0GgAAAYD9//////7//////EoAAGX+//////////////1hABLo///////////////UGAFe/v//////////////zg4Bpv7//////////////+EdAMH////////////////yLQCr/v////////////y6egsAXf7////////////kIQIAAAzV///////////8hwYAAAAAJ8T////////ykxIAAAAAAAAPabTLyahvMgkAAAAAAAAAAAEGCwwFAQAAAAAAAA=="
   },
   {
-    name: "Fissure Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0Zpc3N1cmVTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/da572ae910/FissureSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsIygzNDpISlNlUFxvWWN9X2mISFBjKC49HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZXV1dYWVxkyLSFtGgyizklo2pRrZljXGl7RE1iLzVFJy04DA4RFhkfOTxITFJmZ2h7fnZio3JKiToyexkKjiEglCoojTQ6mmsteX92Z3eSNj1MDg4RGRwkaXeNlpuzpJiae1Ajh1dCmCwehTQvpzk7oS4qsDtBozpZvJRKWWF5MzpJCQoMFhcdaXSKsLnQqGdVehIMdF49rHlt4IOY52iMqzQ2xjU7kSg6kFE6em5bWGZ/IScxHyQuYG6JkpmsmioYpyIfeCscb0stfhggkEFL2XJ6546CmDE7fjQwkXQxMz1PJSk2JSs7eYukiIB1lSEmph4QiycfjX9UVAoQeUY4xGFvsWtkkjk/gi01g2EjKi89Iyg2OEFSeoulZFtWoyQnuS83sjEtbkw1YjcpYBUYkmtUklNGhjI2hio1clUfJi84ICUuRFFnfJGxXFhZnB8WuEdNwUVIb0QrWjYiZxQXclk7gj49mGFWezovYkwqKTA+HSEsGB0nZHOMXWR4nEc06JGapVZMVSobinVGVQ0HYDYfhSw4dlVCgWUqPj9PNj5RICQwHCErLDNDTFJhjHxmoDElh0Y5ZxoYSDUodkksciYcbDEqUj8mV1JRSlNvOEBTERIXFBcdJSk0XGBqVE9FXEMkbDsphnhdiU85VTQhXTwlbFUuWE0xTVZvVWJ+Qk5eERQYDhATKSwyExUZGRoeIR0YVlFDXlJJSkA1UkcsT0gzLi00PURYLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWl5qcn2ROkRTLzpCIyo4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaGo52qy9ebg18cEQsPOKbt9Pj/////+eW0h1kTIofm/v7////////+8tuZITzc/f/////////////6wiIu3v///////////////NRLKtn///////////////Wtakrs///////////////1aUVj7/v/////////////6Vc9gPT1/////////////96PXUzy/P/////////////1zmdh4OTZ///////////57rclUsDD3P7////////73tOhJh1lOXnr8fj6+e7hx6OBWxMIGhgSLpHAw7KGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Fist of War Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0Zpc3RPZldhckdlbSIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/6ba67a3963/FistOfWarGem.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfnpde3hdsK+4lYeVDhOZf2taIhwZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZz4loJxnalY0X0UwZ0ksbFQzmoRcYlxZAQAAAAAAAAAAAAAAAAAAAAAAAAAA9tB+iG89TiUMUxoBTRkCfR4iiiwXXhIXeF9VIR4YBwUDAAAAAAAAAAAAAAAAw7NyjnY+aCIChxsDkCsdni8wsjw2nTstbR0TTiUYkXNIBQQFAAEAAAAAAAAAfWMyr5RZdSsVhxAMgwsIjz0zm3JHf2A6fGM9pIxQ0a1h2LFlPDAfGw0LAAAAAAAAdWYzjnEwhj8XXCoagxEQc04ymXlO6Mt90a5mwZdM3btinXs/aVhEAwAAAAAAAAAAgGUoa0gZRw0Ca00rWBUJz65vbls5ZEsreFMonmcorYE8RC0Xe11ACQEAAAAAAAAAi2IpaE0hVEEdk31KcEEYsI1Ckn1LuZpghF0rglQikmkwPRkKdGFBAQAJAAAAAAAATTYZQjQVmHs+hXE+UDgYso5JfV8rlH1Ss55nmHQ+aF85mYB2dm1BBwEAAAAAAAAAAAAAYk4kb101jnhCMyYRPS0RNiQPooU8imo0VToYQBwXjmZaTkIvBAIBAAAAAAAAAwEAFQsDhGQzs5xZvZlKd2EvT0EgRjsfSzweRTcaUzUid2pLAAAAAAAAAAAAAAAAAAAADQgDCQcFQzYdHhAHMh4LQSYPRycQNhkHRTcrj39iIBMGAgICAAAAAAAAAAAAAAAAAAAAFBIOYFQ2kHpKY1I9X0AreE4ue3BMmI1lBQQCFBAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa1pBUkUjBwUFBQQDXVRMPzEnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -1340,12 +1248,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAREtKQUBAAAAAAAAAAABMrX8/v7wnR0BAAAAAAABYfj///////7rNgAAAAAAO/n//////////+QRAAAAAbf////////////+gAEAAAn3/////////////9QBAAAv/v/////////////4BAAAM/3/////////////+gUAAB39/////////////+ABAAAB1P////////////6aAQAAAFT+///////////1JQAAAAABlP7////////7XwAAAAAAAAJu6P7///7UQwEAAAAAAAAAAQc+ZGAwAgAAAAAAAAAAAAAAAAEBAAAAAAAAAA=="
   },
   {
-    name: "Foulgrasp Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0ZvdWxncmFzcCIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/0cfcf697d2/Foulgrasp.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCo1MjdGSlJjUlxvW2N8YmyJSFBiKC49HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUFdpZWRajZmlnai/o6/HkJ2pgpOsWWeDRE1hLzVFJy04DA4RFhgfOTtHTFJmZ2h7iJOhfYGGnI1plJmaoKKWindUlZiQkZOHa3FwZnaRNj1MDg4RGRwkaXaNhYiWjI2QpKOUpq20e2tdgHRUR0AyfHJOinxNd2VBaVtEbnV7MzpJCQoMFhcdaXSKgX5/h3RRe21ZnYVVJCEwgW9KNEZfdnFWQnaAbWxSWUYid2ZKU2J6ISYxHyQuYG6JgoynemtQiHBnOjdIVmVtXXueJVidY2ZkLEZnU1NCc2hAXD8sMjpNJSk2JSs7cYKZc36WZl1dIyJJI0d4dWtYC0yrGmC/fnNXIUqAKUJSRFticVMhJy4/Iyg2OEFSaXaNXFpfT0NXHEyWIUqHIys1R1JfHlaqUUxGSoPLQnvBUFVQZ1IoJy45ICUuRFFncIWkgnhghHljiIRyLlWCEi5IECk5GylMO0lWN3O/ZprPjnY4NiYaKS8+HSEsGB0nYnGJdWdSZGJQMTxNenxmWVlPNzM5Fhg6DhhOHEd7XmBXjHg5Pz9SNj5RICQwHCErKjJCenhnZkwwZoKoZabKMWSLGiFIDBlRGSZcLSs8oYxKW11hSlNwOEBTERIXFBcdIygyTkI0eGxOf2tJUV9tQYGrgYSWND1neFwxkIRQWlpkV2N/VWJ+Qk5eERQYDhATKSwyExQYFBYaEBMYVVFNhoB/W1NVX1RBOz9MSFBlP0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1ob3qOOEJQLjpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/j/////+eW0h1kTIojm/v7////////+9duZITzd/f/////////////8wyIu3v///////////////tRLKtn//////////////+6sakrs///////////////WZUVj7/3/////////////4FY9gPX8/P///////////9+OXUzy/v/////////////0zmdh4P36///////////47rclUsHi8f7///////zv3NOhJh1lOX/o6/T2793ZxqOBWxMIGhgSLpHBw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Fresh Meat Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0ZyZXNoTWVhdCIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/aad1cf4139/FreshMeat.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBsSUksxTkMsOy8eTD0pJBkPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw0KHBcOV0koWk4zX1A3X08xSD4tFRccOzguAAAAAAAAAAAAAAAAAAAAAAAAIBgPLSMSTEAmZ2FPmY1pwLKFa186kIltsqyVenduIyIfAAAAAAAAAAAAAAAADwwILyQUQDgobGZVoZFi4dGhqJt2U05DXV5YfHpuk4luAgIFAAAAAAAAAAAAAAAAGhUNSD0sdXFjgHVWvq6Byb2PfWk7cWZCcGhYd3NugX1qMCseFxUPAAAAAAAAKiARNykTYVAyiXhPjH1hDxw6REE7l35FendjVFJORkE2enFUTUMxMyQUAAAAAAAAEg4ISjUYQkJBv7CDLi42BBpGByJYkn5NVk49bV47f29JeWlEU0YvAAAAAAAAAAAAo4BAPi8XUko3XE41DytjAxpHBCNjT1Nam5N3gHpld3FfiXhTQTUgAgIDAAAAAAAAFBAIQDIabFYtVGSFIz57BCNkHGi1IGa2aV9VU1xwUlFKfGpGKSEUAAAAAAAAAAAACAUCHxQIWmV3fKbaLUeKEUKQUZDBHmvISltjYVhBYFI4YUwqCQYDAAAAAAAAAAAAAQEAAQEBPDs0UoTOKVajFz6SCEeyEWDMH3fJU048WEYpJRwOAQEAAAAAAAAAAAAAAAAAAAAAEQ0FX1hKRGKTIVzBEVPFEESeJTtsQ0VJLyQSBQQCAAAAAAAAAAAAAAAAAAAAAAAAAAAACggEUEUoZlg0Y1g6TUEpPzUgCwgFAQEBAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEBDw8KAQEBAwMCAQEBBQUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -1358,82 +1260,16 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEOJBgCAQAAAAAAAAAACn/Z/P7+12kBAAAAAAAAEsf+///////+qAcAAAAAAbD+//////////6FAQAAAD7+////////////9yAAAAGU/v////////////1zAQABp/7////////////8mQEAAav+/////////////LoBAAGK/v////////////6kAAAAQP7////////////9YwEAAAG8///////////+4A4AAAAAHuL/////////81EAAAAAAAAduf3///762EUBAAAAAAAAAAE0a4qCSgkAAAAAAAAAAAAAAAEBAQAAAAAAAA=="
   },
   {
-    name: "Frostmage Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0Zyb3N0bWFnZVN1cHBvcnQiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/2a5608850e/FrostmageSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUlxvW2N8YmyJSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrV191o7LEmqK0pa7BobHCipy3W2qFRE1iLzVFJy04DA4RFBYcOTxITFJlZGV4eXx5iYiBnpVzqo9gRDU8XnRws5lim6qmbXuVZ3eSNj1MDg4RGRwkaXaNi4+jiYeGk4BZemtSinhQQDs3Q0pSN0ljMWByc2ZCpqJ6XGmDMzpJCQoMFhcdaXSKpa7Cg3dghnlbqp58c2pTgH5oh3lVf21EJVCFOH2PopZhW191WGZ/IScxHyQuX26Jh42ZlopqgXNVfGRAbmdUMyglKUFuNlyVV4vQJ1+RZmxTgXJOMzpNJSk2JSs7eYulaWZjPzIlZltHdmRARTw/rqyEgntdX36giLXwFE2VRE9MkG0nJy4/Iyg2OEFSeoumWFxygnFOVlRSi3dLMDhINisgV0o0cnJnPW63H0RpP1xreFUbJC05ICUuRFFnfJGxTlNmTkREN2GEhoJgOEVLByM6FiU5Lj9mNl+US4fTQlZcXkcnKS8+HSEsGB0nZHOMXmV5ZFdXiqbDaHlzJzlYAgo6DRA7HjJZKm3CZ5G8iHQ6QEJVNj5RICQwHCErLDNDTFJgf3dyaWhoQIS0KUloIihUDhtPGRxSK01yinE0a2ZcSlNwOEBTERIXFBcdJSk0XGFqUFNZKyktZl5YRmuMTVyHMTljX1NCj31CYltFUVt1VWJ+Qk5eERQYDhATKSwyExUZGhwfFRkdUVZcgXt6fW9Za15AV1dJO0BRQEdcLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1ob3qOOUJQLjpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0h1kTJofm/v7////////88duZITzc/f////////////36wiIu3v//////////////+tRLKtn//////////////+qsakrs///////////////bZkVj7/r/////////////41Y9gPTz/////////////9uPXUzy/Pz////////////0zmdh4OTM/v/////////57rclUsDDxfr+///////33dOhJh1lOXnn6fL18OPcxqOBWxMIGhgSLpHBw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Generosity Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0dlbmVyb3NpdHlTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/a32a095b6b/GenerositySupport.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAp5gvnYkx+slD/udtnl0WiWIdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAt6lXiHkklH5JqoNDrns7xI8+mmYhMhUAPBwEAAAAAAAAAAAAAAAAAAAAAAAAiXVByL12gmdMVhYTPQYFUQ4NYxkWuoM0onQsSSsMOSENSzobGRIGAAAAAAAAV0wzrp5e5tykWRUTejQx0IiC0VxRczge2blqu4w1jWUnb0kXfl0mOiYHAAAAAAAAtatr1cJo0bZ5ZiUjSQoIRgoHih8aoUkksYs8nmgoonkwWjwTZD0MNSADAAAAAAAAX0wky7hjl2lQpoVdPAYFMAMCcBQQwDQrpVhAdzEjmXIqZUseaU0gPCoLAAAAAAAAe2k0sIxNxIxZnVE3kHVYPBgXOwcFuSwkhTgvlGIymHEreV8siGkrTkssAAAAAAAAjGolnII/wnVbx4loSR8UgWo+mXZAmFcul1cuvppGa08gf2ImSjkZJiUcAAAAAAAAfXBAdlwnu41rzzs3r4tblX1Ne1swbzwdpnQwpoM5X0IZSzIRKRoIAAAAAAAAAAAAAAAAYU0lakohuXZKiFc+clVHdVIpr4Y3tY05WjsTZEUXPCcMRSwNAAAAAAAAAAAAAAAAAAAAXUYiVz0ZYksfgGAqm3Q0pHcuQisPQCoOJhYEOCIGAAAAAAAAAAAAAAAAAAAAAAAAAAAAUz4eXkggNC4WUzkWdFMhSTQULh4IIxQDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZU0jXUchd1kleWM1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATzoXVDgRAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBAQAAAAAAAAAAAAAunszUu2UOAQAAAAAAAABg9/7////+8IEHAQIAAAAd8//////////+45CYAAABhP7//////////86+LQAAAbT///////////6xOAEAAAG4////////////qYQBAAABiP7//////////8RKAAAAACT1//////////+xAQAAAAAAWvn////////zngEAAAAAAAA7wO79/9RbTQEAAAAAAAAAAAELUuRWAQAAAAAAAAAAAAAAAAEmegAAAAAAAAAAAAAAAAAAAAEAAAAAAA=="
   },
   {
-    name: "Gluttony Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0dsdXR0b255U3VwcG9ydCIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/50841b2e02/GluttonySupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNjUltuW2N8YmyJRk5iJy09HiIqCgsNBwkKBQYHCQkLFBQXOD9PP0ZYT1dqV19yraOTro+BoaSiq7ayipOdZGtzQ01hLzVFJy04DA4RFhgeNjlEX11SdnVsamlkpKCLcFROIilGGj5nZ25hmnxJho2LbHqUZ3eSNj1MDg4RGRwkaXaMkpauj3hoUEA6U05GJzFSCS5nHD1fLGKbL19oq5RMfoWNWmiCMzpJCQoMFhcdaXSKrbfMZktPFzh2HT5sfHhhW2JkX2JoPW+sEEuHZFtAaFAiYmRnWGZ/IScxHyQuYG6JkIWJJFOpIE6VH0iGGC1IeHRWMFaVboeiYWVmdW1KfWg3dmdKNDtNJSk2JSs7eoyme2ZULGqqHlWlIE6JCCdDHTdedHRceKvuIFioRT8xWkYnp5lmZGRRICQxOEFSe4ulZUg4J2inV2pzM1N4DTBKDC5GLUBgXGNnM2yuVVJBpY9UNzAmRj4wISMmRFFnfJGxa1FBKFeWXqLFWW5oTFFGBhowLTFfQElGdIeRgnJIaVg6Oj5LKS8+HSEsGB0nZHOMbWptbneJdqrKTJS/FhcxZl5BMjNHHTlej3hGi3lLV1BOVV57Nj5RICQwHCErLDNDREZOgWIzP1dxQIatRUdcDw8pgmw6qplffWo3aFc1dXV4SlNvOEBTERIXFBcdJSk0SktPjnVCYEonY1Y3cVkqk3g7lH9CcGQ7eHFNW1xubGdXUV56Qk5eERQYDhATKSwyExUYFRYcEhYbTFJbiYmPcXJ7R0tZQEhdQkhbPkVYLDFDIyk0FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1pb3qOOEJRLzpBJCs4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsQOKXt7/b+////++a0h1kTI4ny/v7////////88duZITzc/f////////////36wiIu3v//////////////+9RLKtn///////////////Ktakrs///////////////2skdj7/z/////////////uZlGgPT5/////////////seQXUzy/P////////////fwzmdh4PL+///////////27rclUsDL7f7//////v3u9NShJh1lOXnn6e7w6dnax6SBWxMIGhgSLpHAw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Greater Ancestral Call Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L01pcmFnZVN0cmlrZSIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/4cf1f9ebc3/MirageStrike.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NTtJTVVmUlxxW2R+ZW+MSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUFhrZmpmhHNjdVpFlG5WgYN5gYiSU2B8Q01hLzVFJy04DA4RFhkfOTxITFJmaWl5e2pNYC8XTBgCTh0GZycebCEVeFwugnldW2V7Z3eSNj1MDg4RGRwkaXeNlZqzj3dZaR8Dej0hUiEbcyoqbjkmjncxYygZayMai3tsVmN9MzpJCQoMFhcdaXSKpaKifCIPeSISpnx3o4ZuinlR0sl4ulZQijwuYB0Sik1EYl9nWGZ+IScxHyQuX26LiXddjy0YejcojnpTclMtn246tHFM3WNo1kFJjAsCcgwFloVuNT1QJSk2JSs7doejd100hXEspI9Il0I/c2As4T1C5EBH1EpLsGJimwoCkAsDinZQKTJBIyg2OEFSd4agdWArx8FthioZo0lDb2E0YRER3UBC30NIeTcqo1M8jAoChWhEKjE7ICUuRFFnd4uskFYwnDIsmjMvpT4+fWspSAIDhyIjjT45SQUC5bSGhUM9bl9BKzE/HSEsGB0nZHONmn9mp1lV1kZXu0dYno9DMhACPBYFdTcZrhgPjDIiqHxfQ0VRNj5RICQwHCErLDNDamxoroqBwFVWvVFTqZ1vdGcnOhkBWSYKjC4SmSYedG5aSFJuOEBTERIXFBcdJSk0XWJrfn5qgzomnEs5hG45vKtRRiIMXCcMc0g2iXpjTFRsVWJ+Qk5eERQYDhATKSwyExUZGRoePjwreVc5gmosglk7ikgoeGVFcGxcPUFULjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJERERFBYaR0lSZWpxODxFJjE6JSw5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/f/////+eW0h1kTIofm/v7////////98tuZITzc/f////////////76wiIu3v//////////////+9RLKtn//////////////+2sakrs///////////////XZUVj7///////////////3VY9gPT//////////////+COXUzy/v/////////////1zmdh4On+///////////87rclUsDDy//////////73tOhJh1lOXnr+v////voyKOBWxMIGhgSLpHEx7mIcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Greater Chain Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L2NoYWluIiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/059cecc6f7/chain.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GRwnCQkJCAYFBAQCCwkHAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUlxvW2N8YWuINjpBJyEVSjkXXUgcYE4jBQcFCQkMFBQXOD9PP0ZYUVhrV191pLLEnajAnai9Ozo0JUcONZ4KPaQPZq07XmMmIR8RFhkfOTxITFJmZ2h7iJOimaa5usfWucPRVlFBJloJOpYcLL4BONsDkNaGg7hdKyMRGRwkaXeNlpuzqau8vr7BwMzgoarDdG51cYE/JYIGR7gZNdcETOQaNJAZfXpQNS0WFhcdaXSKr7nPydLl2d3tzdDfeHFkmH82JEESHWIENZAagsN0PIsXiIVMQTkoExYdHyQuYG6Jkp28dIOpgZC4gm9WQDoyYlYuXV4fIEEIQGkTio9X38mIcWU/JCk1JCk1JSs7eYukeoWcWl9ialcnYE4pkZysn6W6hnJPn4UxrY42n4g6OzgtICUsKC08Iyg2OEFRanWFYU4ZZWgMhHMQY0wccWtaa2FbiXEseHJne314TFFgW19tMzc/Jiw2ICUuRE9hcFsjSooRbuoyp+aIk3w7fmo0d2Q7lpCAytHe09rrmqa8YWmEOT1LKS8+HSEsalUVJUgIMJsTftVVcNkxYU8bUVpkfo6sh5Gn4ODprbDGiZaxeH+VVV57Nj5RICQwfWIWMUwsHFMEMmsRW6oOfmUaTV1xcoOcX2x/h5Cdp6iypKq9g4+uSlNvOEBTERIXbFgVWWEYH2oEGlIGgI4nZVouWGFtY2+CS1FeWWNzfIKObG+GV2J+VWJ+Qk5eERQYFBMNZlUnWksXi3QkalolSU1RlpmjeX+RVltsRE1hSE9kP0ZbLjNFJCk1FhkgBAUHAwMEBgcGAgICAwICCgoLGBkcWV1pb3qOOEJRLzpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwMFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9eprLiSWBAPOKbt7/b+///////+/v57Iofm/v7+////////////xTzc/f///////////////58u3v////////////////JfKtn//////////////vC6a0rs/////////////+hwaUVj8P/////////////uilg9gfz////////////++MeQXYH+////////////+vHwzme8///////+/v3+/vXw7rclpv7////99/Xz8/Lr3NOhJizJ+vn37ezt5dnZxqOBWxMII0E/OpLAw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Greater Devour Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0Rldm91ciIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/deea84290f/Devour.png",
-    rgb: "AwMFAgIDBgcKAgMECQsOCAkKCgwOCQoKEBQbJSgwFxoiBgcHBAQEAgICBAQEAAABAwMEDxEWFRceHyMsHiEqYk86eWA5l4RLiHJVbmNPISIrJyw7HCAoCQsNBwkKBQYHBwcKFBQXOD9PPEJTa1lHc1o4ZlIzcFcylXZKrYxRxrSQf4GBQktfLzVFJy04DA4RFhgfOTxISlBkZVhCU0c5lJujW2qAT2OEQUZVkntSjIBdcmxZc3RxZ3eSNj1MDg4RGBwkaneNaFxPXmRpVGR/U2iPXm2MUmODQEdaQEpZJDxpHzxyYV9YW2Z8MzpJCQoMFhcdV2Bze25SeIurIjpoLERyWGqPU2iPNU19T2GDOEpuFSpTLDNBc3NzWGZ/IScxHiIsUE5SVmBvIkB9Ij5zBRpCDyZXK0Z7PV2ba32hSlZ0BBEqCx9KgHZiNj5RJSk2Iyo5WFZYNU6EQViEFzBhBBhBBB1OIUKKQl2TWWqXLTpbAxQ1EzqKcWNELDFBIyg2N0BQSklNNkJbMkx/DipgAhU6BCNhBiVsTYPNGjF1UF6ABRM0Cxo5WEkuKS85ICUuQ1BmU19xQT4/W2V7KUF4Ax1UFE2UF2zFJGC/CD2hcYSrRE9qKC0/MysfKjA/HSEsGB0nW2l/QS4gfXFqMkmEBCduRX2tPoC6Eli2I4foSG26N0+GRDUeNTpNNT1QICQwHCErLTREJSUvjWU8dmhbFipaCitffG9dGmW3KXrLSIS9SkI4Ly0wSFBsOD9SERIXFBcdJSk0U1dfQS8hnHJHjmVAl3xVbEktmI9qQVxqWU8xIRsWRlBnU2F8Qk5eERQYDhATKSwyExUYGRocHhcRWEQogV08XjsjYkYjJB8UFBYeLjNCLDFCJCk1FhkfBAUHAwMEBwgJBwgICAgJEBARDw8RGRofLTE3ICQpIisxIyo3GBskDA4QDg8RBgYHAwMDAQEBAwQFAgMEAgICAwMDCQoLCw0QDREWGBshCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8ZIS9PaUMdDBsHAwciRFaIzOb7+u+qh2McEQsTOabt+v///////+i1h1kTIofm/v//////////9duZITzd/f/////////////7wiIu3////////////////NRLKtr//////////////+2sakru///////////////VZUVj8v//////////////4lc9gPb//////////////+COXUzy///////////////1zmdh4Pf////////////777clUsDH4v/////////839OhJh1lOXrv//////rqzqWBXBQIGhgSLpjS1sWOcmw6LB0JAwwNBgcsMT03IxscFwYEAQ=="
-  },
-  {
-    name: "Greater Fork Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0ZvcmsiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/27f7503962/Fork.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUlxvW2N8YmyJSFBiKC4+HiIqCgsMBwkKBQYHCQkMFBQXOD9PP0ZYUVhrV191pLLEnajAp7TMprfKi523W2qFQkxhKS49IDgjBxQIFhkfOTxITFJmZ2h7iJOimaa5u8fWusTSt8LRxNHfu8vYg5auUVA2XJ5bNJkqCB4HGRwkaXeNlpuzqau8vr7BwMzgm56hhHlfcW5kQkledXyLkpJ/WapPL9o2HMAhBBMGFhcdaXSKr7nPydLl2d3tyMrMZoQoOrhNTNBZeINDMTAvfnAzGokSPZ82TapYCAgMHyQuYG6Jkp28dYOqhpfCqaWJGaIzEME3Gu5HXcpwvaZTvo0wNGcYOpQ6OjgzFhkgJSs7eYuleIObQ0xlVlx7r6aPNahPD3csRuNned+VemdHLxcGTCYORyoTDw8UHSEsOEJSeomlTkdNbFkrfG1Eg3xegGsuI2Q3CMw4HelbPMiENjQfQEROJCkxIygyICUuPmpNVaNaWrtiULhWf21AdkgYQCwSEnAsDYAtC3EnQ91tTTw1XGR+OT1LKS8+HSEsEh8cI4IYEq0MHYcSVWghPFYhM0ZCY0wiOHoxEHErVJpGS0RAdX2RVV57Nj5RICQwHCIrJjU1O4dHIbk0VHYjRmsyR1hoYG6DPjo7TDgcWUw5hoycg4+uSlNvOEBTERIXFBcdJSk0REFGdntPWjcOJy8uW2RxY2+CSlFdU11seX6KbG6GV2J+VWJ+Qk5eERQYDhATKSwyERMWJR0WERIUUlhfl5mjeX+RVltsRE1hSE9kP0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1pb3qOOEJRLzpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0jY8jIofm/v7+///////8+vv+cjzc/f////////36/P///24u3v//////////8vz///96Ktn////////////////7fkrs//////////////zjsEtj7/z////////////1nl89iPz/////////////+MeQXVP7/////////////PHwzmdh5v7////+/v7//vbw7rclUsDU+v/79/Xz8/Lr3NOhJh1lOpPq6uzt5dnZxqOBWxMIGhgSLpHAw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Greater Kinetic Instability Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0tpbmV0aWNJbnN0YWJpbGl0eVN1cHBvcnRHZW0iLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/34b4746895/KineticInstabilitySupportGem.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GBwmBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NTtJSFJmTltxV2F9YGqJSFBiKC4+HyMqCQoMBwkKBQYHCQkMFBQXOD9PP0ZXUFhrgYBuyY5OkVs0fXRVlpRnoaOEWGaAY1VDMjIyKC04DA4RFhkfOTxITFJlb2pyqHtGlJ2pdWRDDyY8HDZNhnlSl3E/gmYySUY9iXtSOD9ODg4RGRwkaXeNkparj1YnFylVDyNVdWg/EkBaJFNjQSEMSTolfnBIfWMksp1bKCw4CQoMFhcdaXSKlXlwLj9VZVdIXltRmYZXg3mHk5CNnX48c1w1fnJFYkMialAtWWR0KigpHyQuX22HR0lZQ2W1H1B8GidAT0YtdnFHcFo2fmg3iG0+qptbeFsvg2IwbmpLNC0rJCo5bmplUW13Ek6XLnWeIj9abEkkRTkimHU9dlAnRCUQMBoLTSwTbVUmoJFSFxkoOEFRZWBhQm+AKm6fS3arHFJ8Cys4EBkcFgsJIxUaMB0hJSAZMzApdkIfgHVIFhwoRFBne4SMNkZhK3OeQ6nCHFl9By9GCC8/NztmJzBMmXWwbGRho3FBgWxFUks+HiItGB0nYnGIU1JPobTOXcbcQoeZW0ckd2tAh3dOenxThnVHoIlVcWZLaldEMThKICQwHCErLDREhG1NR2qLTqDBMn+SHRseVkArUEIoeGc7j35SeWZKblRFQENXOEBTERIXFBcdJSk0XWBmlm84RnSMSoaShouTGShBV0IsXkUsRDUhQS0dNS4yVWJ+Qk5eERQYDhATKSwyExUZGxsdWjoaW1hDW00+Z1Q5e1ogbV0zRzYpQDg2LC89JCk1FhkgBAUHAwMEBwgJBwgICAgJDw8QExQVQUA9V1paMzQ3HygwJCw6GBsjDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLCw0RDhIXGBwhCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz8VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/f/////+eXPmFkTIofm/v//////////++yZITzc/f//////////////xCIu3v///////////////95WKtn////////////////ne0rs/////////////////Epj8P///////////////+8+gPX////////////////SXUzy///////////////9z2dh4Pf/////////////8bclUsDG2v//////////6NOhJh1lOXnu/v////7y1qaBWxMIGhgSLpXJzL+NcWw6KxsJAwwNBgcsMT03IxscFwYEAQ=="
-  },
-  {
     name: "Greater Multiple Projectiles Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0dyZWF0ZXJNdWx0aXBsZVByb2plY3RpbGVzIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/c157c4f1e9/GreaterMultipleProjectiles.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAc21LAAAAAAAAAAAAAAAAr6yk//SmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4detd3BXCwgGAAAAAAAAm5d9oqCQX081AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqqqruaOEXTkkBAIBTkc4p6GKvpp0LRwRDgkFYUEqBAMCAAAAAAAA5N/C///4eXBY29vbqZd8imE8SzIgCgkGim9KjmM+QSsbTjQia0owjYRpLCskjX1WloxpqqKFkohuODAkWEIru6lid3Y5bWoljpZObVUpKR0NYEEqlnJPY19PFRQQAAAALx4TgFw9m3hUVkMpd3U5QH4qKnQdJ2gbIWESUHAyhGo0lXZDdFk8OjImAAAAopVvJRkPWDsmW0QtjpBQMHMhKYEVOrMeLqsTZedZN58nWapUkYI9SzMZAwIBAAAAfGRERiwcb0owTUEjUKYzOpkmL6ETK7UNL9wJO+wVKroPL4QiVZ4/e2AmAwEBAAAAoZqHtI1nhmE9a3JATppAPY8uLLQOKbALI60FRM4YRtUuN6ghKHcUiIFeIg8DCgUCFBMRlIlvjXRIeplSN38oK3kcGGAJIJEIJsAERrcnZ6xhcu5xOccekYExNxkDCAQAAAAADw0KWkMiepZcH2QQJ4YZKI8QVqIqJ80ERtsqOqQua+hgQM0hbVcUGwgBBAEAAAAAIhEIXEAZd48+R5M2FDoNKWgXL8cMIp8KH4wNOYwsc9lrX7JFc00TFAcCBQIBAAAAAAAADAQCfnBIRpcyH1kSF0wNJIMQGkUQFzkQOY0oXbdNVW0iVjMTDAYBAgEBAAAAAAAAFw4JYUozd31TN4ElJoURKowUJnsTLm4hOZAnLFIbYk4hFQgCAQAAAAAAAAAAAAAAAAAABgUCQTERb2EyXIYxQIEsMG8gNHgnXG8zblgsGg0DAAAAAAAAAAAAAAAAAAAAAAAAAAAACAUCDgsJNSQOOzUbMSkTOC4UKR8NAQIBAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAALQoAAAFHMAAAAAAAAAAAAcy/GwFy/JACAQUAAAAAAAHM/sEq3/6FG6iZBAAselAXqvz++/3+lsf+mwMAJ/f+zfj////////0+WEAAQN84////////////8oWAFyug6n////////////9PgB8/v78/////////////5gDC6ry///////////////JCwANhP//////////////wQoAAFT+/////////////54DAAAW8v////////////9zAQAAAZH+///////////TIwAAAAAMivn+//////3hPwEAAAAAAAVHp8LOvIxQIwMAAA=="
-  },
-  {
-    name: "Greater Multistrike Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L211bHRpcGxlYXR0YWNrcyIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/c4f26d9bf5/multipleattacks.png",
-    rgb: "BAMDAwMCBQUHAwMECAoOBgcICwwPDQ4RFhkhJyo0GR4oBgkLBQQFBAMDBAQEAQEBAwMDDxEWFRceHyQtJCk1NTpJRU1cR0ZOZVpUh3lmk3pVcFY4TDQmaV1OCw0NBQYHCQkMFBQXOD9PP0ZYUVhrSEtYppJpqIpQh2U9blA6WEo/OzhENjZDKjA+Jy04DA4RFhkfOTxITFJmZ2d7f3N0nXVLXx4YaBkeeBEoom0x38ZrqI1TWF1nZnaRNj1MDg4RGRwkaXeNlpqzjoCJoUs+VAwWkBotwVBnsl5Q4s+Kd1stajInl3E1UVtuMzpJCQoMFhcdaXSKqrTKpGBLhBguhAwarA4jsFBFzrVxnIZWViEgfyItklM5Z1ZAU2B3ISYxHyQuYG6JjIuOlUU0jk1QvBMamD4g6tGTsZlkdEQ8pQcmlBcrXSkjk3VEJCk0JSk2JSs7eYylnJBkfkBDbBgjfyQZlHo+gF8ycT8rgSs51WlxxGVul3dYtpRiHxsdIyg2OEFSeomkkXRJdDw+VwsVbk0wUjAddhQRbAoPcT06l2JWpoZowauAeVoyFBQWICUvRFFnfJGwkHpRgCMwThshOw0JXRQMUR0XWjkojHRPjmhMfFFHWyQZWT0UGh4oHSEsGB0nZHOMeHFlnkxVVAwWSgMNUQEPVgEPOAwTLgUJjTI/lzNEhEgfNx4QKzNCHyMvHCErLDNDSE5blm9ceio2UwIOWgMSXgESRQILeBoraAweSyISXj4WHx0lMzpNERIXFBcdJSk0XGFpQ0FCgWtPoVVTchYhbQshSAkRkFg3eUgdilYWjVoSuJlYhWUuDhIXDhATKSwyExUZGhsfERQYUEY2gGtDdWI8iXI8qpBHoolKj3E4hXFEYlE1EhIUBQUGAwMEBwgJBwgICAgJDxAQGBgbTE9ZVV5tKS0zICIiHiEmExYcCgwQEBARBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDhIXGBshCQoNBgcJBwgKBwgKBAQEAwMDCQcE",
-    alpha: "Dw0WHCEcIypIYzwTCRsHAgcjRVaFo52qzuPd1tBeEQsPOKbt7/b///////XRklkTIofm/v7////////+89uZITzc/f/////////////7wiIu3v///////////////tVLKtn////////////////Dakrs////////////////rEVj7v3//////////////5s9gPT8//////////////6uXkzy/f/////////////+0mhh4OX3////////////+bklUsDDyf7///////////3oJx1lOXnp9Pz//////e+9ZhMIGhgSLpLDyMKchHc+KxsLAwwNBgcsMD03IxscFwYFFg=="
-  },
-  {
-    name: "Greater Spell Cascade Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1NwZWxsQ2FzY2FkZSIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/1df66db80e/SpellCascade.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDpJTFVmUVxxW2R+ZW+MSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrVFVSe3FjZFdReWxjhn92goaQU2B7Q01hLzVFJy04DA4RFhkfOTxITFJmaGh5bmFMhYR8BBBLBxJMGjVlGDRrPkpcgnpwWmR7Z3eSNj1MDg4RGRwkaXeNlZqzgHFlLSVGUE9hLDQ9QGRzMF6COFSJGjNkJT1bgG9VVmN8MzpJCQoMFhcdaXSJp6ChHzBkUkAwl31Ig3ZxjYKUl4qFfYycLk+GFC1eg3tISEdUWGZ+IScxHyQuX26LfW9rRjtQOUFOSUZCm5ycU4q1YZrQjYt3cYFsaWNVc2NRkoBrNT1QJSk2JSs7dYikU19yQi8gCCRdRXGlRz09oYEzjJFoa31ryKhHbVtAEBdGjXJPKTJBIyg2OEFSd4aiVVpRNSgoG0SCR3CjBSpMDS1KQmqKS3KIUEo0QTxZDxhJgmhDKjE7ICUuRFFndYuuY2BjWGhVLV+VPXSnAyNGBS5PJFaDO1uFMi0ruoOqSldpbV1BKzA/HSEsGB0nZHONhn92YlE+S6XWTaHHES5OAhA6BxM6KjVoSU1DSU1khIF5Q0RRNj5RICQwHCErLDNDa2lmaF9NaYN/WrjhAQozAQg+AQc6FyFURjwpN1x0dGtZSFJuOEBTERIXFBcdJSk0XWJrfntra1c0dpWAMjA4XVpWS0IyYkwsQj9QhHhnTFRsVWJ+Qk5eERQYDhATKSwyExUZGRoePzkrb1U0bVc0Y00vcFg7bWRPcWlcPUBULjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJERERFBYbSEpSZWlxNjxGJjE6JSw5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/f/////+eW0h1kTIofm/v7////////98tuZITzc/f////////////76wiIu3v//////////////+9RLKtn//////////////+2sakrs///////////////XZUVj7///////////////3VY9gPT//////////////+COXUzy/v/////////////1zmdh4On+///////////87rclUsDDy//////////73tOhJh1lOXnr+v////voyKOBWxMIGhgSLpHEx7mIcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Greater Spell Echo Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0VjaG8iLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/d8b62c81bc/Echo.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAAABAwMEDxEWFRceHyQsJCk1NTtJTFRkUltvWGF7YmyJR09iKC49HiIqCgsNBwcIBAUFCQkMFBQXOD9PP0ZXUFhqV1VRh3pecF9BdWVGgXVUb3R0U193Q0xhLzVFJy04DA4RFhkfOTxITFJmZGV4cl9IV19dEzdnUFpYXF9FEkFocWxgT0AqVV5yZnaRNj1MDg4RGRwkaXeNlpuzgXdhmIVdaV5FUWhuSF9jd3xdPU5eK0iIXU1Mc1oyUVx0MzpJCQoMFhcdaXSKmZ+zbG5b38RaRFhnlJBpaW1iC1akn4MrS0tJYFZFWkxNOzc1VmN7IScxHyQuYW+LfWtVUmdfh3Qyeod4y6tOe1glJFh3enFAMU55goBwXj46aE4dKTBAJCk2JSs7doiifG09XGZ0dW09EyQ4R0E9J0NiATeCgIBfdH2JcX2DYEQ7flweGBwnIyg2OEFSbXyYlHpKLUlyjXQzQElPKGqEAT6DFU+TnIlUd4GCVWh7WDsgWUARGBwjICUuRFFncoeojGxMIGirU0c4k39CjINabG5ZqJJYO0FBYIy/jXY8akkcOSYNJSs5HSEsGB0nZHOMkHpcRoelDC9eAyxeV0kuUVFCFio6DSdHeGxIZ0oheFchLyAeNj9SICQwHCErLDNDTUxQm5B5PVh3LDdINkFObmBBimwsbl48SVFVWD0YQykNNjpMOEBSERIXFBcdJSk0Wl5nRkE2iG1CeXNJV1VeKkJmHSxROUJrfmg2RzQQHBwiU2B7Qk5eERQYDhATKSwyExUZGhseEBIVRjkeW0gkaUYYknIdclwhPzsxHB8oJio5JCk1FhkgBAUHAwMEBwgJBwgICAgJDw8QFxgaQENMMDY/ERATFxkeJCs4GBsjDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4RDhIXFxogCQoNBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsJAgYiRFaFo52qy9ebg18cFg8POKbt7/f/////+eW0h1kTIofm/v7////////+89uZITzc/f/////////////7wiIu3v///////////////dRLKtn///////////////y5akrs////////////////kEVj7////////////////ng+gPX///////////////aXXUzy/v/////////////7zmdh4Oz+////////////8rclUsDEzv//////////7tOhJh1lOXrr+P3///zm16mBWxMIGhgSLpPH1t6jcWw6KxsJAwwNBgcsMD46JBscFwYEAQ=="
-  },
-  {
-    name: "Greater Unleash Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1VubGVhc2hTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/61e418c87d/UnleashSupport.png",
-    rgb: "BAQFIBwTDw4OAgMFCQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBsKF7o4NWpIVQHiIrJCk1NDtJSlNkUlxvW2N8YmyJSFBiKC4+HiIqCgsNBwkKBQYHxKtumYJhiGpGUExPUllsVl91orLEn6vDp7TMprfKi523W2qFRE1iLzVFJy04DA4RT0Y0cVw7fGA9ZGFslot+jHlfkntgdF1MopyUv8nTu8vYkafCbHuVZ3eSNj1MDg4RGh0lXWqAjXxgcVg3Kig6BRZREDVnDidWMlFekIFjjYqIlaa8fY2mXGmDMzpJCQoMFhcdaG16l39fPjZRDix8NkuCK1mPGTx1UYG6I2Jsfm1OZmlzc4KZU2CAWGZ/IScxIigyjYN4IDhqiIJsFUSLaYq5NWmzSXqnKHS/HlqFTV9ZYVpPdHqFYXCGMjpMJSk2GiM5hXlhGEqifnNfBy99CTRcC0F7S4XFM37GH1aLLVBggnFdQ0hUMzpEKC09Iyg2MjtNX1lHEVKbUVqDRU1jES5JCDNZM3S6Tn64K1SBIkhliXdgY2h3MDQ+ICYzISUvPkxjX082EVenSoOmwqNymHlCEylOLGKqFThpS3+6JExojnZgaG1/lW1CxaluQj84GiEsiHdQX4q4Z5ivalg4fGM5gnROf25GhXdOg3JKlG40mnxBpYlbkHJQhWtOfWZIHSIrQzwzf3ZoMGulR1ZgGhYmCxxbDBNjIUNzXGlgj3JRiY2afYmmT0QxSzQdIBYOFBcdIygyeWRCi2xRe4GCeHmNHSZdRkFXfWdUV0MzZmdwbW+GV2J+VWN+Qk5dERQYDhATKSwyFBERMSIVfVs3l35OeFM4ioF2Qz5BQktfSE9kP0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICgkKCQsNEhIST1JdcXuQOEJQLzpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQNFx8aISlIYz4VCxsHAg+lnleFo52qy9ebg18cEQtl9P7x7/b+////+eW0h1kTTvn//v7////////88duZITzf///////////9+Pz6wiIu3///////////+9zz+tRLKt/////////////049+takr4////////////+tZiaEVk/f/////////////tiVg9gP7////////////++fblZ0z5//////////////7//pFh6v////////////bw++42UsH1/////////fPr3NOhJh1lTqH7/fz47tnZxqOBWxMIGhgSMZfDw7OGcWw6KxsJAwwNBgcsMT03IxscFwYEAQ=="
   },
   {
     name: "Greater Volley Support",
@@ -1454,18 +1290,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBTIURAQAAAAAAAAAAAVe8z/v+kgEAAwAAAAABHrj+//////+wDgQAAAAAB8b+/////////rEBAAAAAWf+///////////+SQAAAAPU/////////////qwBAAAw/v/////////////YAQAAKv7/////////////2gEAABP5/////////////pcBAAABvf////////////5DAAAAAVr+//////////63AgAAAAAb9f///////v7JGAAAAAAAAX70//Pg1qlWBAAAAAAAAAABGzkSAAEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
   },
   {
-    name: "Hexpass Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0hleHBhc3MiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/a7f6eabbb7/Hexpass.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDpJSlNkUlxvW2N8YmyJSFBiKC49HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYTlVoXF9klJ+snqrCp7XOprjNjJ+4V2F1R0dPLjVFJy04DA4RFhkfOTxITFJlZ2h7eHJeeWxRhWc5lopwkWtVdIWFj3VTbl9LWkMuWmh/Nj1MDg4RGRwkaHWMh4qZgnt3YEkwlYNrbVEul3VBJjNGGzhdOWBxUTwrlH1VUl95MzpJCQoMGBkdc25cZFVCdVs5gVwvdVs6WkAmXkMnIlWcamJVR09cNXuMVEs6UlhtWGZ/IScxJCkyXks4aVU+hXBOeVcuX1M/iW5Ke2dMUklCYVA5Pz08OFZuTWBaintXMztNJSk2JSw7cWVbSTgpXUcwVUAtbk4nOCgeW0UsQ1dvWVVXQjw6ZV1PRFJTlGwhJi8+Iyg2OEFSaneOhHFXfmVDalg5K1mcIE2GDCc+VEo8UUY9bVY5cFo+S11geVUhKC83ICUuRFFnfJGxbWFYWUMsJztWSZK7KF6MCS5INTMsdVcyd1gxbmdZJ0praE4nKTA/HSEsGB0nZHOMXGFyZFxYVGN3lMffRoy1AQc5DQ0oRTs3HFWXZpnQVUYxRD5FNT5RICQwHCErLDNDTFJgWFRVd2dLLl6MRYeuJilGChNIGCBXHTpnSUE1XkcuUUY+OUBUERIXFBcdJSk0XmJrbFlJUD8rXkYxQWiFcniRKzhoUkdCVkcybF1HbF5JTUdJQ05eERQYDhATKSwyExUZGBodHBwcUFdgioiOd2tiaFtDUU5DOj5OQEddLzRGJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1ob3qOOUJQLjpBJCs4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/f+////+ei8h1kTIofm/v7//////////t2ZITzc/f/////////////7wiIu4v//////////////+9RLKub//////////////+usakrv///////////////oZ0Vj7/3/////////////9lk9gPT5/P///////////+qOXUzy/Pn////////////2zmdh4OTS////////////+bclUsDD1f7+///////68+WhJh1lOXrp6e/07+PcxqOBWxMIGhgSLpHAw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Hextoad Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0hleFpvbmVTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/a1eef88b37/HexZoneSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GBwnBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUltvW2N8UVhuOzo2KC49HiIqCQsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrWGB1n67AgYufdHyMX2hxY2NcW2mEP0NMJioxJy04DA4RFhkfOTxITFJmZ2h7fIWRiIR4W0w2OzMrP0RBWl9QbmM6UVlkWlJCTVdpNj1MDg4RGRwkaXeNlpqzmZmlmodQISxJAhliBxtYX1Y7e2xAJ0Zbh3o/Mi0jWGV/NDtKCQoMFhcdaXSKrbfNinpiDxQ5EC52RV2Tf3+SdWM2Hy5dOmqfPFdUf2s2PzYtOjo+IigyHyQuYG6JiI2bOkRWRFyuKVuPKkh5P0JJYUs+cV1tZYC7aGVQLjEmWEw2JCo5JCk2JSs7eoyll49xI0iEDzqQLFyXBydcEjVbdFo5jm4stI8zgV4eUlREbF42Jis6Iyg2OEFSe4umfnBOOXKUJlCaPWmkS1FWQTUmPzEnUjtRUDstOTdSIi0zSkEqJSo0ICUuRFFnfJGxdGVPHD9yLXWpUHJ/HCoxBCI2Byg/WkR0Oy8qrnW5HlVwODQiKjA/HSEsGB0nZHOMXV9jPEthe4uOTVtOJEttAQoyCg82KjddNElNyq/kZWhZNztINj5RICQwHCErLDNDR01bSDUUICEjUKHKIUVnAQY/Bgw+DBJPKE5oZYZ3UkxASFFtOEBTERIXFBcdJSk0XWJrMjQ4IBULRkAuUGJqcHaUIDJjQD1KNjg+MConTVhyVWJ9Qk5eERQYDhATKSwyExUZGhwfFRgdMTU5NjIyLSchLSYVLSokKC08P0VaLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWl5qcXyQOkRSLzpCJCo4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy92vhF8cEQsPOKbt7/b+////+uXJmFkTIofm/v7////////8++CZITzc/f/////////////7wiIu3v///////////////uFLKtn//////////////++zakrs///////////////oZ0Vj7v3/////////////71k9gPT6/////////////+qPXUzy/f/////////////2zmdh4OX7///////////87rclUsDDxv7////////43dOhJh1lOXnn7vj8+ezfx6OBWxMIGhgSLpHAw7KGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Hextouch Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0N1cnNlT25IaXQiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/da0ae156c5/CurseOnHit.png",
     rgb: "AAAAAAAAcGRRZVc/Dw0HDQkNLyckVDslYlEvHxsdCAsPDQkFCAgGAAAAAAAAAAAAAAAADQ0MMSkfS0I2XUwht5VFsJdUlH84mn46opBTvZxablwwFRYVCgYFAAAAAAAAAAAAAQIFCggJcVo7ZVIss51YfFo1wLiUw7aMu5dM4Mh1jIBLd2AsLBsLDAoFAAAAAAAAAwYJd1goalQxhGE3UltnEjxvFjpwByRLE0NpenFkimYn0LZolW0xHx4SBwQCCQYEMiETj3Y5hGQ1aWpVIEVwC1CdATZ1RI/eRHi9KUWHZnGRuZBWzLJdT0EhBQMCBAUHalglu5dLbHBkbWheCEeKA0ycAEWVA164DGjIEUOAJkuMZmJo5sN2m4VAKSEWKB4VlW8xhmM9Ik13hHBUJmmiPmGGG0Z2GFR+RniYHma7J2CsLDFZup9Wl3M6iHImMSYInXwuZlEwVWqJKjlKoIx3p4xwmYp3fXt2got+q8b1N4HLLUiHYV8vooc/VUUWIBgFg2gpjG9OLk13Ai5oCy1kSlxuSVpscm9hPlp8aaTmLHLFNUxwV00gim40QjENIhoRlHQ2cVNGH2msFypEBRg0IFZ5WGlxmYhxOEFKa53Qha/Takcwknw+el0xUzgXAgIEYlYmqIZDTI6oAypeAi5fBipXBhoxb2ZXNzg5bo2pQFl/soVKvqFWgGosIx4UAwIBLCAOjXY1fW5ZPFt7AjN2AUeSATJqPkNKamRdsp2EqIx0p4VJmHs6RDobAwQBAgIBAgIEel4ihmcxd2dFa4RwMkd0HER4Ey1eODpef2FBW0wyq49inX0xFBIKBwUDAAAAAwMGFRAIb1sgXk0ijnEwf18yvYM/0ptCcl8zhGkwWkogrJFSRDcVDQsDAAAAAAAAAAAACQgHCQkJQzYWnns0jG8va1kkalcqg2wvuZI+dmApW049GBMLAAAAAAAAAAAAAAAAAAAAAgICCQcCBAIFIhkSQjIcTD4jLyIWDgsKEAwGBgYHAAAAAAAAAAAA",
@@ -1476,12 +1300,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0FsdFJlbW90ZU1pbmVTdXBwb3J0R2VtIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/22c3e66b67/AltRemoteMineSupportGem.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWUAhZlMxEw0Fook2qn8wgW0umXgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdVMyfWErnX0/m2cpX0YgTz4gkXQ5pIA01bdXAAAAAAAAAAAAAAAAAAAAAAAACAQEnXA4d3FbWml6UnCVHEZ4VFtkgG1IvpdAzbJks5pTAAAAAAAAAAAAAAAAb0Inj1MmQ0JFapS5gZadYHmHmbLDUovIprCw59GR3cBrsaV0CwMAAAAAAAAAYUwidFkoPjEoTmZ9XVM2d25gSToeU0IggWw6xKBKzKNIx5o/vaRbrp1lAAAAAAAASzYVX0ggRl2CZVY4u6x6vKd0gGQsQzUZOS8ebVYnros6qIQ2jXM2S0AlAAAAAAAAvZI2cV5APGOWQDQigW08cF8yRjgdOCoXUGmDN1d7XUche14nb1ossJZSAAAAAAAAAQAAcF5FDTRnRDoqPC8aT0EjKiMaQTEZXoy9L3fEQkE6Tj0dVkQiTT8iAAAAAAAAAAAAbVgwKGWtJiw1cWBFZ1g9U0YwPWuSFkd9P2+dQDs0TzwcRDQaAQEAAAAAAAAAm349eFsoHk6GBStdEj5uFDxpHEuJL3C2fZ7BOGOOims0bFIkFA4HAAAAAAAAAAAAVjoTRzUbe3FULT9dCUKMJXG4JnPGXY/EdpCug3RQdFUjHBMJAgIBAAAAAAAAAAAAAAAACwUAZFhAf3JXW1ZONDc9Qk5cbG9kk3xBY0keFQ4GAgEAAAAAAAAAAAAAAAAAAAAAAAAADwgBCwQCTDobXUggXUUdSDIUKRwNCwYDBwYCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAUBDQcDJQ8EAAAADQkFDAcDCAQCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQovCAEAAAAAAAAAAAFJjans/uhbAQAAAAAAAAOK/v7+/////WEAAAAAAAF7/v/////////xGAAAAAAx+P///////////oUBAAABsv////////////+8AQAAAdH/////////////ygEAAA33/////////////8gCAAAQ9f////////////6ZAQAAALj////////////+UQAAAABA+//////////+twwAAAAAAWn8///////9rBYAAAAAAAABPazf9Ou0RwMAAAAAAAAAAAABAAMBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
-  },
-  {
-    name: "Hiveborn Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0hpdmVib3JuIiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/3689197302/Hiveborn.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFhkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceICQtJCk1NDlFRE1dSFBfWF1tY22JSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOT9PTU1MYV9WVlVUgntjopRokIdqj5GIlqCeWmiERE1iLzVFJy04DA4RFhkfMzY/UFNYZWFhinpWj46BeWpRMCgwEyA8G0Bmbm5ar49Ub3uAZ3eSNj1MDg4RGRwla2tlnItfendunIxiKSQ6DSRoDiJbDDFiHDldLGSYNmt0q5lMZGp3MzpJCQoMFhcdY22AamRfpZFgHyM9Fzt4NFWIsbzXN3vXjIh2PGieHV+SUXh9nYFQWGeAIScxHCEqampel49zW1FIZHqQY1xPFzpxNk9wR2qgooFTaGx6MnC/Pmt6kW0iNTI+JSk2IygyeW1Pi3RKWGdqXFxgg2RFGS5QCSZCPlNtl3dSd46uJ0iKKlRniXA1PCQiIyg2OEFSYGVtXFA+Z3h1LV+Pe29aYWFaECtCDi1If3RYSGGLspNeLkdWdm5FMh4dICUuRFFndHp/emtLZWNaMGylSJjCVFtWcmlLDSI2hHRUPT09lnhUJ1B8cVksKio2HSEsGB0oZHONXGFuYldFjKPBY6G9lYZaGBIjjoBaIx0vIE1/hYRvbmpVXlI4Nz9SICQwHCErLDNDTFJgdWxpaGlpS2Z1XE03em1QRTw5IihQcmlVWEQikn5DQUhjOEBTERIXFBcdJSk0XGFqUFNZMC0sYVFDeWxPWU9GXltaWUo+cmI6jHtFP0NSVWJ+Qk5eERQYDhATKSwyExUZGhwfFRgdUVRYcGxtc2dVYlQ9b2I7X1NAOkFVLjNEJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1ocXuPOENRODcxHyc1GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCgoNBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFpJ2qy9ebg18cEQsPOKbw8fj/////+eW0h1kTIorq/v/////////98tuZITzl///////////////7wiIu3////////////////dRLK+L///////////////+5alD5////////////////oEVj8f3//////////////oQ+gPf+//////////////6aXUzy/f3////////////7zmdh4OTO/v/////////+8LclUsDDxfv+///////94dOhJh1lOXnn6vT49/bvyKOBWxMIGhgSLpHBw7Oac2w6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Hypothermia Support",
@@ -1568,18 +1386,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAADAAAAAAAAAAAAAAAAAAADaQAAAAAAAAAAAAAAAAAARmgBAAAAAAAAAAAAAAAAAaBvHwQBAAEAAAAAAAAAAABMatv51OzANgAAAAAAAAAAAZj+//////JONgEAAAAAADT9/////////sGTGAAAAAF+/v////////4wCBEAAAABu///////////VwEAAAAAAdf//////////2MBAAAAAAHH//////////kmAAAAAAAasf////////6IAQAAAAABFKLs/v///v2iBwAAAAAARoIrEH7BxJM3AQAAAAAAAAoBAAABAQEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
   },
   {
-    name: "Invention Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0ludmVudGlvblN1cHBvcnQiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/85200fa6a4/InventionSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyMsJCk1NDtJSlNkUltuVl52Vl92RExfKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrV2B1o6mnnIRzpKKJgXlrmJh4VWN9Q01iLzVFJy04DA4RFhkfOTxITFJmZ2h7hIuXppFvmaB9iXZJSkwlLGMiVU8oh39bV2J3Y3ONNj1MDg4RGRwkaXeNlpuzlpaStat6lpl/Smo4lHdGL1AdK3MlP3grUlwsbVEwRk5fMzpKCQoMFhcdaXSKoarAjHtMIkETLEEVamA7hHBBk6ZvMWktPI8yT34xZGA6YEovT1twISYxHyQuX26JipCdO18gNKRDL5IoZoM7LSQRNDcpiYVvlq+GP2Ezb2U7WEQvMjtNJSk2JSs7eYylbGZgVXUzGpQfQKAzcYlXFx4JPnVQQ1daYVA2nZpnj3lMV0QsJy09Iyg2OEFSeoqlV09HQFwiQqM0Rp5Dc4hKFxwHH00eZomUM0EweGY+WEAlV0ojKC43ICUuRFFncoelWkcwZVcwUZhDdtNRfItFNSkSEDMQV19Hd181kntTemc/XE80Ki8+HSEsGB0nZHOMYV5fgWA7gGM7gIVNenNMgGlBb1s8hWc3eFcvVEctm4BDT1ZvNj5RICQwHCErLDNDT1JbRUBBeF87clo0blIuXUIdfmtELjsgK0kck3g1f4aWSlNvOEBTERIXFBcdJSk0XGFqT1JYHyItU1AxQk4nSm4qV2ghg3Uzj4BGWVZSV2J+VWJ+Qk5eERQYDhATKSwyExUZGhwfFRkcU1pijImQcW9zTk9QNz1MRk1jP0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1pb3qOOEJRLjpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+uW0h1kTIofm/v7////////88tuZITzc/f/////////////7wiIu3v///////////////9VLKtn///////////////iuakrs///////////////dZ0Vj7vz/////////////0lc9gPT+/////////////9CPXUzy/f////////////zxzmdh4OTW///////////z7rclUsDDxfz9//////3z3NOhJh1lOXnn6e7x7N3ZxqOBWxMIGhgSLpHAw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Invert the Rules Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0ludmVydHRoZVJ1bGVzIiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/0f08d4a859/InverttheRules.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJSg0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUltuWWF6YWh7SFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUFhqWmFxo661opiXn5mYi4ZsgIuYW2qFRE1iLzVFJy04DA4RFhkfOTxITFJmYGJyZWNbkoZkpZJmUTw0KTRJdmhLmolbm6WYbHuVZ3eSNj1MDg4RGRwkaXeNi5CnenZskoJcmY9tYFlJYl5PXWBTd2lQoI5gaWhEoJ16YWt7MztKCQoMFhcdaXSKlZmjfm5ScW5UW0gwfHZsbGxqV2R1Gy1Ue21QXYWGpJFcgntqWmRxISYxHyQuYG6JkZ26Z1hSg3BKWVpSd3Rqfn92Y3iWfHhsbXR4NExhWlE1fWpDQ0RJJSo2JSs7eYulhIGBZE4wMjpTLFJ8Ghoox7qFWE09TYLMX5PaHUpzVFpLVDoaKS49Iyg2OEFSd4ejWlddNUBUd3Zmb3Nvl451QDMoGTdkQoHRXW2DT1FEVlhFWEIlJyw2ICUuRFFnb32RZV9Ual9OeXJeRHKIaFhABRs1VFBDZ2VYVnSgT4rQamVDOCwqKS8+HSEsGB0nZHOLW2N3Y1hGjox1f497My04JSM1mINUNkNMMnnSW2lxhnVFUll1Nj5RICQwHCErKjJAWldLhXlXs6BveGdGTEdMPz1LGiRKHyRWQEpQlX03dn6VSVNvOEBTERIXFBcdJSk0Wl1kSEVAKCUnVUpBY11XREZeXlJKhnRAin1KUlBYV2N+VWJ+Qk5eERQYDhATKSwyExUZGhsfFRgcUFZfgHdoeHVzVFNTOD9PSFBlP0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcUlVgbHeLOEJRLzpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxIYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/f+////+eW0h1kTIofm/v7////////88duZITzc/f////////////77wiIu3v///////////////tlLKtn///////////////u2a0rs///////////////EaEVj7/v/////////////xVg9gPb5/////////////8qQXUzy/P7///////////vxzmdh4fT3///////////y7rclUsDHyfz9//////zw3NOhJh1lOXnn6fbx69zZxqOBWxMIGhgSLpHCw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Iron Grip Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0lyb25HcmlwIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/e4644c9b8b/IronGrip.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATkMgRDkbMy4X2ty9bV8mAAAAAAAAAAAAAAAAAAAAAAAAlIIqbUYW+NVf/uGFkG48e2gvkHc4kXozf1shUDgEAAAAAAAAAAAAAAAAQxoVFAgEnHovrYI0m04dqmQri2g0bFYpRTQOXyoAKxQABgQAAAAAAAAAAAAALB0jSRwbrGIuqjo1jxQsoU85gVEscy8lj0wxjGQjKRQBBQIAAAAAAAAAAAAAAAAADgcnkEMho0o9pXtOqotXll0ysGQ9WSEYTgcWgz4kdlcmBQMCAAAAAAAAAAAAbUY6bUQswZVcmmNJtGlPwDE8kSglunhjsIJGWhYPRQkKkWsvJBIGCQQCAAAAAAAACgMCqIhFij03tnpMyD5b1x8+oQMZmgserH9ImU0nZAELelEiVDkUBAIAAAAAAAAAU0YpoItGcAwUoHdSvzlS2CA4swMhcyEsfVArhT4hdgAQiEouWz0VAgEAAAAAAAAAEgsFfWAybAMPhF470HxtuzBHiQQlhBwumWlBcyEUdAAQbT4dOyMMAgEAAAAAAAAADwoBblYzWQIMaTksp3ZQv2ZQnDk2gVpKdk0nfgUIlwMVelEcIg0FBQIAAAAAAAAAJRkPY0sqaAsScgEQXSMSb0ojUC0VVTcaTwsLhwwXbBUSZ0UdGQsBBwMBAAAAAAAAGxEMGhMMckYtawYQaAEOUQEJKQEDWQsSXwUMSg4PY0gdIQ4EAAAAAAAAAAAAAAAAAAAAAwIBGBIHgVcunEAlciIWShQPYB8WeEYhfWU0KxsJAgIAAAAAAAAAAAAAAAAAAAAAAAAACggEBgUGVDcWW0YbTzgXVDkRQTkbAQIBAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFw8FDwsECQYCDAgCBgUBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -1622,12 +1428,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAAADHaHUBoBAAAAAAAAAAABAlP9uIzIFwAAAAAAAAADUnqu/+/d/m4IAAAAAjdAS/j////////eSQQAAA7c/fj//////////+EgAQA8Kp/////////////+jQYArJjm/////////////9wTAX3+/v/////////////iLAIZwv///////////////qoLAzz//////////////9fxNwAe8/////////////hbi0QAAYX////////////+7qIMAAAQuv////////7BUIRZBAAAARXf+vLx//DiWwIAAAAAAAABlN8wmvlBDQMAAAAAAAAAABKQNKeeDAAAAAAAAA=="
   },
   {
-    name: "Lethal Dose Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0xldGhhbERvc2VTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/69cdd0dc96/LethalDoseSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUltuW2N8V2B8Rk5hKC49HiIqCgsNBwkKBQYHCAgKExQXOD9PP0ZYUVhrV190maa2iYV/kY59dW9TgIF4SVVrRE1iLzVFJy04DA4RFBccOTtHTFJmZ2h7hZCfdHZ5nZV6i3taQ0UoHlcZOVIqgX1nXmNkZHSPNj1MDg4RGRwkaXeNkpivo6S0lY5/hH1aFEgVIkQcQlEkKFsdO4oxTVYoWVUwZmdcMjlICQoMFhcdaXSKr7nPpKqygHVOVmgyInwgk7KXamhCT5BnQZg2NV4jZ3RDZ1AvQ0A+HyQuGh4nT1pri5CUlIxpTnVBj5daI4EgeIRdVF9HRnZtg6ivaZJlf4FMdmY7KRwVIiYxHSEnhnxbdmlYQzohe5pLmY9VHnQcnIBNLloxS3xwkq3Qh5eIb2lAfXVJV0U1JCg2Nj5PTlpxY1hCUz8fW3YyXU4tJ3UhvqNlPFgmRG1hZoiQUmFTamI2S1IrPSUSISUvRFFna3+eem9MUjgnI5MfZ7BJSocygWY9goJOLFw+IEsecpmcQU8ycWcqLB4fHSEsGB0nS1dpl4heYlJLaahio9yLZqxEMB4RMC8VEUUgPGYreKV5b2tQemcxMTZHICQwHCErLS4yoYtRVVZeh4RJPpcuabtMFzMcDUUXE1UfHU8oXms5mH00ODlGOD9SERIXFBgdLygiXkYmMi0qHCIwaFctWqFBepJ9IXMpLFEeZGkwl4NEOjgyUl96Qk5eERQYDhATGx0hFQwIFRYZFRkcTVNbdXhvVk89Y0ona1ovUFBAKy8+LjNEJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1pcHuOOkNRMDtCJCs4GBskDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ecg18cEQsROabt7/b+////+ua0h1kTJYjm/v7////////+9duZITzc/f/////////////8wyIu3v///////////////+ZNLd3////////////////kbVr+////////////////0UVk8f7//////////////8Q9gPX9+P////////////+/XUzy//r////////////+0Wdh6P/V+P//////////9LclUtf/7/n9////////69OhJh1zlorn6vP59/HnzqSBWxMIGhgSLpHAw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Life Gain on Hit Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0xpZmVvbkhpdCIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/7f577bed88/LifeonHit.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAA375i///z//93/v+00sA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfUAdSzUNrYc3vXY1s10fs3hBcUcYHhQHIBcIAAAAAAAAAAAAAAAAAAAAAAAANBgbhjwap3I4aiUZXQ4YSQkUk08jilIsm3EwQC0QGBIJAAAAAAAAAAAAAAAAWDMzXy4imDAmVQ0YfwsiaAUWmEcmb0Qgaxsjk0g9fVkiKiAQDgoDAAAAAAAAAAAABgIOkkUvhRgvbAkbkAchw0szqn45iiEkeAcZgSEtjlE2Y0cbBwcCAAAAAAAASCUQalQmkUE0jVFTiQYfrEwvo3k2mHY5lCpDrwUolBcrWhoWfmAjCAUCAAAAAAAAx7BUjHUrfUBCahkkSg4P1aVQj3czeU8ljz9T2Wtzxkpbfw4em3gzGQwCAAAAAAAAW0YnjGQudD0+WAUShD0stJ1MeV8nniEdiTVCxkFSuypEhxMlcVEdDAcBAAAAAAAAXk4jhmgzgCMwTxshPxIMYTUUYhwSrAIgVwAOsjZKwWNsfSMeVToUAQEBAAAAAAAAzI4yblkrmERNVAwWSgMNUQIQVgIQPA0VLwQJjzNAlzJDfEIeNBoJAQEAAAAAAAAAAAAAHyAXl2xVeCcxUwINWgMSXgESRQILeBwsag4eRyATVzgWDwYBAQEAAAAAAAAAAAAADAQCKR0TglwulkZBcRUhbg0jRgYQZRgbcFAqZEgfDwYAAAAAAQAAAAAAAAAAAAAAAAAACAcFBQQCVjsXeFUdZksjY0EYblkmPjEWAQIBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQ8HCwcCBgUCAgICCwkEBQMBAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -1662,12 +1462,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0xvY3VzTWluZSIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/81e9dcb0a5/LocusMine.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAACQYBPDIjLCgWDQoGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcWE+OjQqcmZElYtaiX1QhnpTNikUJSQXAAAAAAAAAAAAAAAAAAAAAAAAAAAAOTMekYFReXJVhHxcgn1YhnVSemRDYFAzhX1SEA0DBgYDAAAAAAAAAAAAAAAAMSkWrJhSgnhNYmVQQ19GdHdZh3lWqpt9m4VbXk81Wk8vBwQAAAAAAAAAAAAAZVYxfms+bWA1OT9PF2RfZZyLa5aJd4dydnBRjIRhknlTMy4aMCQOCgUBAAAAAAAAIh8SXEkhMDQ+HlZ6SnpyYmdZTkg+eXdilYdrin1hiIZsNC8cPDAYAAAAAAAAAQEBPjIVSDsfKUiCKG5zX1pBvK+Pg2k+Wk43cWxcx8TUSmpsTVFGVEQtHhYNAAAAFg8HXEgqODQmKmeSSnJud2lPhXRQZVg2Pi8ha3J4h4uhUXiBSV5IT0EqJyAVAAAAJBoQTj0kNC8lYnJekodpQTUlX1E1MSkeRDclbIqINkZXlMDTSEw7QDgcCQYCAAAACQcDNycTKx4Sn45igXRZc2xLWUg8W1E9KmE5NodgVW1fzs/hRkEsQTQdAAAAAAAAAQEABwQBJBoPj3tVmY1vho5fXctCIts/Ca47HMlVPH9lUmVPMCQTMycTFBAIAAAAAAAADggCLyUUUUAqqpZwhnpVa4hSJ4pEGatMI7RROIVCLiIRNSgVAQEAAAAAAAAAAAAAAgEAAwEBPzEZPDAcfWlGpJ5vlIxqOFY2QkkoNioXRjcdCQYDAQABAAAAAAAAAAAAAAAAAQMCBAIBSDwfUkUkTkIfSjscLyUTOjEYNSwWAwEBBQMBAAAAAAAAAAAAAAAAAAAAAAAAAQEBAwIDDAgCHRYGGxUGDgoEAgIBAwMBAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAEBAQAAAAAAAAAAAAAAASlPYF4tAQAAAAAAAAABPsX4/P3++q8YAAAAAAABXu/6///////70RAAAAAAOu39/////////+mYAQAAAcD5///////////q2xUAADH1/////////////tZOAQFc9v/////////////tYwEBaOj/////////////91gBAWDj////////////+vcsAAAty/v///////////XFAgAAALfF/v////////T3SAAAAAAw3OL+/////PT3hgAAAAAAAD3f9vX29ffkYAIAAAAAAAAADGaco5dlEQEAAAAAAAAAAAABAAEAAQAAAAAAAA=="
-  },
-  {
-    name: "Machinations Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L01hY2hpbmF0aW9ucyIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/ee72605f4e/Machinations.png",
-    rgb: "AwMFAgIDBgYJAgMECAoOBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NTtJQkpbUFlsW2N8YmyJSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVlrY2hskolohoFbf4BzqKeJj52hW2qFQ01iLzVFJy04DA4RFhkfOTxITFJmZmd7jn1wZ1YuIzkeGRkGdoJNOHIolHgvoZltaneSZ3eSNj1MDg4RGRwkaXeNlpuyooqBYUcgnJptblosblEfSEsiS2QoVF8qZ1wqqZ5mW2mDMzpJCQoMFhcdaXSKrbbLZXY9aItIYV4xXGpQc3NPmIROpJFbtKZupY9Em4RBWVxxWGZ/IScxHyQuYG6JjoOBKJ4wJ3kling9hXA9ST0jLRsHwrFrNzIVKjEYkoFJWUtBMzpMJSk2JSs7eoulfmZRR681N6A7K4EkDTEGRj4aVjkUsJtWg2AmZFo0hHlVTTIUKC4+Iyg2OEFSe4qlaUw5MaMlVapJL4wnKEIT1cBtOyYNvqhWQisRrZRVkIFLPyUQJyw3ICUuRFFnfJGxa1JHNZgvjNdvYLdEZWcwqZJXHj0na1kov6RSeF0so45GMiUmKS8+HSEsGB0nZHOMamhweJ1XgcdtbMJNR0wftaFaGiENSDcWSDITpZFOVUQlU1l0Nj5RICQwHCErLDNDTFJhinphUYcwYbBGUVxPZlYleWEuRzcXnIZOZFAmWlpsSVJuOEBTERIXFBcdJSk0XWFqUFJaPTEpT3w3T204SHAkXl8ia1ssXEUdSERNVmJ+VWJ+Qk5eERQYDhATKSwyExUZGhwfFRkdTFFYioOAdnJsVFJONzc6RzUgOj1LLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1pb3qOOEJRLzpBJCs4GRwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQUPGSEaISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/f/////+eW0h1kTIofm/v7////////88duZITzc/f////////////76wiIu3v//////////////+tRLKtn//////////////+etakrs///////////////KZ0Vj7/z/////////////0Vc9gPT5/////////////8uQXUzy/P////////////7xzmdh4OTZ///////////17rclUsDDxfz////////y3NOhJh1lOXnn6vDy7ePvzqOBWxMIGhgSLpHBw7OGcmw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Maim Support",
@@ -1802,24 +1596,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAATeVoZuEGgEAAAAAAAAADbf9/v7+/vJqTQAAAAAAA6P+/////////sgBAQAAD7X+///////////7r5wKCMb+//////////////1FBRf7////////////////9zkAsP//////////////5FUHAF/2/////////////oEBAAGp5P////////////rmEAAAJqz6//////////6CEwAAAAABvff+/////v6lBwAAAAAAABQjlMjQx5A6AQAAAAAAAAAAAAEBAQEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
   },
   {
-    name: "Overheat Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L092ZXJoZWF0U3VwcG9ydCIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/b74bfe9994/OverheatSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJS1NkUlxvWmN8YmyJSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrV19zlJiWmpiWraOkqrOwh5ivXGqFRE1iLzVFJy04DA4RFBccOTxITFJmZ2h7e4WQkYt+mYdYgEwnhSARlDYsrHM+p6F8aniSZnaRNj1MDg4RGRwkaXeNlJmwlJShhnRRhjwZXx4PnJJkiHJeizstqTlGhzc8sZ5YWWaBMzpJCQoMFhcdaXSKr7jPsayyb1k6iVFAojY0alc6hU1EdlAyxz9DlyxEo2RJdm5oWGZ+IScxHyQuYG6Jkp28hE5IoScjajIggDUifmM/gUBDbUc302tlnC86gTU1k3g4Mz1PJSk2JSs7eYule4aeizgdoBQLohoUYDMfk3xIfz48jkRNwHdsez01bycukGwoKi46Iyg2OEFSeoumW2B4kDUktCYrvj02hBcWSRIPd2FEs1ppn0hPdV02cU8nZUgcJysyICUuRFFnfJGxUFZsfzAexzc+3D9SfxUaXwcLVA0PYjwtdlEvjmo3cFQjSTAUJy49HSEsGB0nZHOMX2V4f1REtnt3mlFEbjIpZUQnclY8eWY9iGYvcVc0ZEQbUEM7Nj5RICQwHCErLDNDTFJgbGlvW0AgWDwhWkAkVjYWdVgxZ0gheV83YEIcZlZESFFsOEBTERIXFBcdJSk0XGFqT1JZNSgcVTofVz4khmgzSTQcaUofYEUkQS4gRkxiVGJ9Qk5eERQYDhATKSwyExUZGhwfFRgcQzszcl5CU0AtQjQmPTYwNTlIQEZcLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcW19rcHuPOkRSLzpBJCs4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0h1kTJofm/v7////////88duZITzc/f////////////76wiIu3v//////////////+9RLKtn///////////////Ksakrs///////////////7bkVj7/r/////////////+l09gPTy/v////////////WQXUzy/Pz////////////4zmdh4OTJ///////////87rclUsDDxf3////////639OhJh1lOXnn8fr79+jdxqOBWxMIGhgSLpHBw7KGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Overloaded Intensity Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1NwZWxsRm9jdXNTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/18f8e2e2c6/SpellFocusSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBQYHCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsISczUUpFS1RkUlxvW2N8YmyJSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZXWFheW1pgpLLEnajAp7TMprfKi523W2qFRE1iLzVFJy04DA4RFhkfOTxITFJmZ2l8j4V0gX9+rbjEt8HPtcHRws/fusrZkafBbHuVZ3eSNj1MDg4RGRwkaXeNlpuzqaq8n5qXkpOTc2ZHhHVQUkpEUFBOmZJ9kp+sfY2mXGmDMzpJCQoMFhcdaXSKr7nPydLl2Nztq6WGHCFUPTlBMzhZGT55K017bGE5aWx1XGJ1V2Z+IScxHyQuYG6Jkp28dYOqjJmwPD5YFDWNN2eRcGldTmmOKGm6JVBhkH1NYVZBU01CIiQtJSs7eYulfIehZnqlhIeGETiuY4XDPzc3lo9vNWGlboqrNFRsdGE+KSkwICU2HSEsOEFSeoumW2F6QUZiV1JGCiBrGzdxMTdaNjxKbHZ4b4iienZebF04MiwpJis1ICUuRFFnfJGxUFZrQkpjSUZBNlFre2JBlXtLPD5MaFg5XlpVOUVWZFhAKSYqKS8+HSEsGB0nZHOMXmV4cnuSfnFcb2JGJll/AxVdKDh6Iig+dmdGeJCeYlEsRk5nNj5RICQwHCErLDNDTFJgZGd4XlA/a1Y4pX1JX0w0DxNCHyxoKTxSgHJKSktVSlNvOEBTERIXFBcdJSk0XGFqWlteWVA/ZFM0TlBJgoGFPUJlWU9MZk8nNjE2VWB7VWJ+Qk5eERQYDhATKSwyKyUaSDwmExUZUVZcjYR0cWNJWEkxODMxNTlJQEdcLjNFJCk1FhkgBAUHAwMEBgcJCgkHCgoKDw8QGBkcWV1pcn2RO0VTLzpBJCs4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8bISlIYz4VCxsHAgYiRFaFxZ2qy9ebg18cEQsPOKbt8/z/////+eW0h1kTIofm/v7+///////88duZITzc/f///////////fz6wiIu3v////////////73+9RLKtn///////////////Pfckrs//////////////56a0pj7/r6/v//////////pVk9gPTz5////////////8qQXUzy/PX7///////////yzmdh4OTF7f/////////47rclUsDExPv+///////23dOhJh1kdKzn6vT69+rdxqOBWxMIGh4SLpHBw7KGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Pacifism Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0NoYW5jZXRvRmxlZSIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/3c2295ece7/ChancetoFlee.png",
-    rgb: "AwMFAgIDBgcKAgMECAsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKAwMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUlxvW2N8YmyJSFBiKC49Gh0kCAkMCAkJBQYHCQkMFBQXOD9PP0ZYUVhrV190pLLDnanAp7TMprfKiZu1emhPi2YyZkgfNSsXDA0PFhgeOTxITFJmZ2h7gIuaiIeDqZqHvrOYrKWcpq21oqSfdVstUkcwSDknaEsTBgcHGBwkaXeNlpqymJCYkoVKXXktOG4fM2UeU30thXExbVYnZ0YZln1OSDkpb1AfAgMEFhcdaXSKnaCxfHA8Lm4gOJcdLn0bRJsxSqA6RH89eXlAcEwZYksmeV4rPjUrGyAoHiQuWWaAcXRTSaIsLnsaQrQfPdkMVfIaXPIvL48ZUKdChoY8PCUPLywvKjBAJSk2JCo6VFdjbJJLV55MMJgRM7YMMLIKPtANT9sZQ8McN40kQG9Eb1IvHCAmKC08Iyg2OEJSZmJERH85UZBJLIgQKIgNMrUKLoQQa7FEYeVAZdtMOXwhl3EsHRwcJiw2ICUuQ1FofHNDTYRLKngXHmgQQJAkOL4HPeQHV5lJfOprY+JBP5saelEYIB8hKi8+HSEsHSMtdmQ7RYk1KmIeGlYPTLMhN8cHQvYPJ4wOatdQf95vTX0SVTcNOD5RNj5RICQwHSIrYVA1Z5xIKV8eGFMOInMMF1ILMngbDC8IYLdOa8ZVbmogOSAPOkBXOEBTERIXFBcdKywuhXpcOXwuHFsPGlMOIGQREEIKPYkqO4smLFIcaEgcHBYWTVpzQk5eERQYDhATJyowQTYmemo5V5EwN5IZLoQVGVQNNIAlP10ma1IkGQ4JHiEtJCk1FhkgBAUHAwMEBwgJBwcHDQYDSTgUTVYpR1MsQEkhUFotVEUlDgkJDQ4RDA0QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwIBAwQEAwQGAwQICQwQCQkKBgYIBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebhGYkEgsPOKbt7/b+////+fX88JMVI4jm/v7//////////Pn0Oz3c/f/////////////++0ku3v///////////////+pTKtr//////////////uqza0rt//////////////59aEVj9P//////////////q1g9gPv//////////////9KQXUz5///////////////0zmdi7f/////////////+8bclUsj/////////////8tWhJh1mkPr/////////9rGBWxMIGhtV0vn///fcvoo7KxsJAwwNBhVPXWZSLx0dFwYEAQ=="
-  },
-  {
     name: "Physical to Lightning Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1BoeXNpY2FsVG9MaWdodG5pbmciLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/5f0b03c090/PhysicalToLightning.png",
     rgb: "AAAAAAAAAAAAb1MhekUTSTIWTCQJOBoGFgkDMBkIBAIBCQcCBQAAAAAAAAAAAAAAAAAAimsykI1Ny5tEUCQKkEYWiGQgooAgh2Uhb0kqgVshlWQXUUEYBgUCAwMBAAAAAAAAy5NToF8nilITrVgWay8NfUcbAhR6NmnTGESxAh6BKCEdgVMWk2URBAICAgEAAAAAunguVh4GxIM4ZEAQ55ErdDoNZTEqJzyNkrTzYpr9N06DP16UpnMgUi0MGg0BhVEqxo9GKQ0DVDIghk4cZjsRy3sozXohOidFQliHeqPGQVB7HzyIPjdCpHIeBQIAkVgrzYg8jV8zjWU4dDwQilgifk8hjmMlTDRHNEFmu9PjS22yNV69GSFRvpAmLgwB26xhj0oXhUQZkk4eUCYQwH0ui1YlYEcuWkNKFyxloqq3hIXGakKOWRVCp3sjJQgAAAAArG0n1YYtp1Idyql4tGwyyZNRxY1PUjk1MzBbe2CMq5ulrxUyeQQTi2AWCwEAAAAAs2IchV0k0o0zf0wjgUEYnFAj57pyNh4YZCE3GAUJunKAzwoeZREKfFIZBgIBOhYHb0EVwXwmZUIY6aNKqHI5xIA7gE0eCAMCHwsPOhQYjyUvvAEQWUIUQiEMAQEACwIBeEIVqXEddkQMwoAzt2wulU8YUyoMgVAma0UlsxUagQEHPyEKTDgXDAQBAwEAAwEAEQcCIQcBDAYCmm9AfF0sxJA1bC0Hcz4UpXMwd04lYkEWcVUnb0ggKBcKEAYDAAAAIxIDm24dilIaTjUTBQUCa00RoX9ERSkKPR4FVTsQFQ4Ejl0lKBYIZj0dEAQBhEQLnloUgUwSpGIiAgIBjFEPm2IxVjogEgoBFgoBIRMEAAAALSQQAAEBFg0FAgEAJg4DQxsDGgwCNxwFAwEAUygFBwUBBgIBAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAABwEABwMABgIABQIAAAAADQYBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -1868,12 +1644,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAAAAAEBAQAAAAAAAAAAAAAAABJphWcNAAAAAAAAAAAAARrc/v7+3h8AAAAAAAAAAEHK/v////7DFgAAAAAAABHj/////////qkBAAAAAAGP/v/////////+SwAAAAABzf///////////qcCAAAAGvz///////////6pAQAAAEf+////////////ywEAAAFq/v///////////8sDAAAASP7///////////6XAgAAAAns///////////7RAAAAAAAXv3////////+kwgAAAAAAAFR2/7//v7nhA8AAAAAAAAAAAc9XmI8FAMAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
   },
   {
-    name: "Pyre Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1B5cmVTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/c086473b60/PyreSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJSlNkUlxvW2N8YmyJSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrV190orDAqqemsKmsrbe2iJivXGqFQ01iLzVFJy04DA4RFhkfOTxITFJmZ2h7h5OimZSJ08CYpFIniCQTkzYsrHI+qqN8aXeRZ3eSNj1MDg4RGRwkaXeNlpuzqaq8totmkUQggBcKfhkIdisbgSoiqjpGhjQ8tJ5QWGV/MzpJCQoMFhcdaXSKr7jPv7OzeSAHkxgNrj86xY+TlGVHhiQh0khLlytDmFZGhXhjWGd/IScxHyQuYG6Jkp29g0U8g1tDnh4blCIbnoV3bUxCvlJk32tmkyg1Z0MylncvNDxOJSk2JSs7eYukfIOQfiwXh2I5ox0XhSkcsJtaezg6wlltuINqdzg3elU7lG4kMSkvIyg2OEFSeoulZmJfkUhAgGU9nTUreBYSfWc9kGdGwldxj05Le1A5mX9ObU0dKSUqICUuRFFnfJGxTlJiZ1M8mIFUvjRBkVhJe2pASxQNhFBBelE0gE1FZUQrYUghKjA+HSEsGB0nZHOMXmZ5eWhFdkhEjFVDq45fOiESdF9AaEQvdko1saBtbl0vTkU6Nj9RICQwHCErLDNDTFJhSz4zfysif1k6YUMpeF02VjUeg1A0YR0aRzMbcGI7Q0pkOEBTERIXFBcdJSk0XWFqSkxRPzQnXD0fjXhFuZpXhGM3X0Ulj2cxSzoiQUZaVGJ9Qk5eERQYDhATKSwyExUZGhwfFRkdR0pPVktESjstOCsdUEs5Q0REOUBVLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWl5pcHuPN0JQLjpAIyo4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0h1kTIofm/v7////////88duZITzc/f////////////76wiIu3v///////////////NRLKtn///////////////uvakrs////////////////gEVj7/v//////////////mg9gPTz//////////////aQXUzy/P7////////////5zmdh4OTl///////////977clUsDDxfz////////94NOhJh1lOXnn6/f7++rgyKOBWxMIGhgSLpHBw7OIcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Rage Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1JhZ2VTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/ed66060764/RageSupport.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApo5l4N64/Prb29WlroNuyplwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAztK1zZdseVM2Zz4nfUYunXZcl2RJrJJxjkNAbjIzAAAAAAAAAAAAAAAAAAAAsYtmupp7j3NOfWM5YiwgbUUtjX5jvZlmkU44hz8zij5Ap0ZAAAAAAAAAAAAAAAAA4WVMj0c0eD4phjgfzKVpxJpwOQoGOQ8Nd103jHJIhl5GlTkwbiUeAAAAAAAAAAAAZkQ9hjInh0EmfUcTdzIYYjAjgFNBmmxSjD49RBodjWc/VzYktH5WvKOFAAAAAAAAbw0WsndQZDIUnkY2hi8ue0U5k1ZGeW9KomVZiCoxUiEnnHlKYkIvalNKAAAAAAAANjothjotfTAWnS0eiikmc0YvkTozWEQ3r9qZp5aNVi4xpYdUYTojY1Y+AAAAAAAAxkQ2aS0cnEZHojQqqkNCUSYcdiMedlQ+gXxOjXdIhnVSek4pSysWuKZfVEAvAAAAOzgpaUkjhSoVsDNDsj5MUQ4ULA4OZTErcjMmbWI7d1wuaEofQBsLzLdowrJoAAAAAAAATjAWez0c2qKo8GeKTiAdLw8CMRULJAwLQiobMiISalIoZ0kokYRHAAAAAAAAAAAAilonoHtFjkAz1VhxSSUmRxsKWSITVC0gbT49k3czMSISqItSCQcEAgEBAAAAAAAAAAAACgYCi18bpVVKe1hcbyIZZisWdlIrlIJDPjMaKyceDQwHAAAAAAAAAAAAAAAAAAAAAAAAaUIcc1IZcVUebFQadlwkYVwxCAYDCAYDKCsdAQEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAg1sfiWgjkXAgPS8QRUEfAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -1914,12 +1684,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1NhZGlzbSIsInciOjEsImgiOjEsInNjYWxlIjoxfV0/13cc734252/Sadism.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAANggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkn9VtpxwEw8UHhYFKxoJLSsZCwwIMi0lPUM2AAAAAAAAAAAAAAAAAAAADQoGLCMUe2ZGj3ZOZ11MYmQ7Vng+ZnlAam1Rc2VEOT0wSldFTTomaE8uAAAAHB0VHhgTTjwmu6yBlXtYqJBaV1ItO1UfTJYyQ4grQ3UiVlUrKSYad2BFRjolAwUCFg4EeWNDlIFTs5Zlq5Bjd1tHdmNFZG4/VoZSTZNGNX4gP2wpPjcYlIhqIBoTEQwIGRUMCQgFjYJJR3QobY1PoqmNdW1TYK6TPHtXX5mXmcTDWnlfYmlFoIluMCYcAgIBAAAACAgETWAnRZgtP4YmL3gmWmI5lYxoM2VDS5BxdrCpcoNxkXlehmxQfm9PKiMUAwAAOTUUapZdU7JeKYgcMIUdDTYDe3NLl5BnfIxhvLqTo4t1l3tThGxPWUguAAAAEQcBPjYXSnopK5odRJI0Q5EqGk4Nfmk2U0ggTXowOVM4fGFJcmE/XFIyLSIUTTgfAAAACw4GV14tWLA5SoAyT3M7RE4iMVMTIXYIEXQNInstVWkvTmMpPT4eAQEAAAAAAAAADwsDRTAcNIcYV2UoemxIZFo0RJIpI8crBaAIHXEVEIMSLXYhMCESDgsGAAAAAAAAAgEADAcDLTkSY4U0k3tPY2w7i9xMGLcRBXMGEb4SIpwjSUgfBQYCAQAAAAAAAAAAAAAABgMAIxkMcl9Cg2dKVVIvefdKXJo9jcqXIIYUS0AeDg4HBAcCAAAAAAAAAAAAAAAAAAAADAkEXE83cWRKh3BTXGAuW1srPDgWGxMJBgIBAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAgIBTUIuWUQvAgIBBAMBAQEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAQAAAAAAAAAAAAAAAAABAyYzJw0BAAAAAAAAAAEslNv+/v/5t0MBAQAAABZb1f7////////8anIgAAGr+v////////////HmfwEALtb//////////////ksAACH8//////////////+hAQA7/v//////////////wwAAO/7//////////////oQBABn8//////////////0yAAACwP/////////////YAwAAATj4///////////6YQAAAAABaPv////////7jwMAAAAAAAFs6v/9/vzfZQUAAAAAAAAAAA3I6ltQFAEAAAAAAAAAAAAAF18TAQAAAAAAAA=="
-  },
-  {
-    name: "Scornful Herald Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1Njb3JuZnVsSGVyYWxkIiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/8a4ba206e6/ScornfulHerald.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NTtJSVNlUVxvWmR8YGqIR09jKC49HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVlsZ2pszK13o2EyVUZKanxwrpJbZ3N5RE1iLzVFJy04DA4RFhkfOTxITFJmZWd6lWxKkYB2JCtcDB5SHj5eIEJvNV1rh2c3iYZdZ3eTNj1MDg4RGRwkaXeNlpuzoHtiMCA3CSNsOEuEJ0R0KGOnJEh9Hl6qOH6KnZdjdHBxMzpJCQoMFhcdaHOJmp2eSUVlIk+OLlyKdIqrbZblRo/uF0WMIl6vIFmMTGpsnoBBWGd/IScxHiMtV11oblk9IlSnGUWRJVKNByRPKFGITF5zi39Tf3NRd35zMlJdmXIhNjI8JSk2JCs6Y3OKkoRVY3yCHlGiK2KfBSVKFDZUS0U8Qll5doeNMCcquLeFeGIwLCYuIyg2OEFSeYmkVTwtTlBPZnJyKluXETFUTU9AFh4ohHpYrqJvNkFNZlEzZ1IoIyUxICUuRFFnfJGxblBAIlKSZ2tliYpqR1BMMioia2FJJzFKLzFDWn2sdmFBUUIlKjA/HSEsGB0nZHOMcmxqYGuDi5eXbmlNaV5BHBgikHtIlJNnnp57e25EYEwnR0pZNj5RICQwHCErLDNDS1FgmYJfS0pLbl07TUUxVVROf2g7IxkqOikeb14yent2SlNvOEBTERIXFBcdJSk0XGFqT1FZTTonXnyPKjROSToubFc3WEw8k4JGTUMyTlhvVWJ+Qk5eERQYDhATKSwyExUZGhwfFRgdT09QdGphZFM0Oi0hV1ZFOT1LQEdcLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWVxoa3aKOEJQLzpBJCs4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b/////+eW0h1kTIofm/v7/////////9NuZITzc/f/////////////7wiIu3v///////////////tRLKtr///////////////+6akrs///////////////9fEVj7v3/////////////+F49gPT6/////////////+uPXUzy/P////////////70zmdh4OTi///////////27rclUsDDxf3////////53tOhJh1lOXnn6/T89+bdxqOBWxMIGhgSLpHBw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Second Wind Support",
@@ -2030,12 +1794,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAASwAAQEBAQEAAQEAAAAAAEtdA1a3yMfHorNYAQAAAAbeWrX+//////7iVAAAAAAu+Oj///////////MMAAAAL/7/////////////nwEAAET+/////////////+o5AAFj///////////////pDgABUP7/////////////4A4AAD/9/////////////7kBAAFZ/v////////////6eAQAADdL+///////////VgwEAAAAXwP7///////7dIQEAAAAAAAFo5v79/fWbFAAAAAAAAAAAAQQsMzIPAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
   },
   {
-    name: "Unholy Trinity Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1VuaG9seVRyaW5pdHlTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjEsImdlIjp0cnVlfV0/a299956dde/UnholyTrinitySupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NTtJR1BiUltuWGB7XWiFSVJkKC49HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVdoTUxFZFlFf25Sm4pmjYRvg358T1pyRE1hLzVFJy04DA4RFhkfOTxITFJlcG54YlhCgXpwo5B1sZdfhmM8cWhNlIRmkH1qYGNxZ3eSNj1MDg4RGRwkaXeNlJiwdWJGln5mKTskjXVaiF83WlA4eJZSFWo0j3xjg2JGVWJ7MzpJCQoMFhcdaXSJmYmAk35aJG4ii5ZlWFA4fmVKfm5Le2FCIolBLDYglHlRa19eWGZ/IScxHyQuXm6Mbl46nH9LVI1TbFUvf29RGJc7aXU6bGpZiH1PC1UvlWs4fGJLNT5QJSk2JSs7d4mjfWAvdGY3q4tcYXRMMCwYCbAWM5Y4jZBjjnJHF0Uli2EyYEEjKDFAIyg2OEFSeIeiglspsJRiVVEpfGJIBzQRA0IOFqJDg2Y9QTojXFUwd1kuRzQgKjA6ICUuRFFnd46vcUQkf2A2cGtLamk7cF1ObVlKcFpLbFE7alpGaU4vTzUcOCsiKjA+HSEsGB0nZXSNa1pNdVs2e2FKgndbgG5ThXRWdXRbZ3lUW3dNbmBCNSEUPkNXNj5RICQwHCErLDNDUFFZQCUYcnRQQpgsDR8VDzEhEjkkJS0gYE43KxkNRT9BSlNwOEBTERIXFBcdJSk0XWJqUUpFRCoYc19KcHVda25adG9YaVJCKxgNQzIvU155VWJ+Qk5eERQYDhATKSwyExUZGhwfHRwdVT8qVTckQyESSCgVRTMkPDY6P0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGhsdVVpna3eMND9PLztCJCo4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/j/////+eW0h1kTIofm/v/////////+89uZITzc/f/////////////6wiIu3v///////////////NRLKtn//////////////+2sakrs///////////////XZUVj7///////////////3VU9gPT//////////////9yPXUzy/v/////////////0zmdh4Ob6///////////67rclUsDDxv7////////43dOhJh1lOXnp9f3//vPhx6OBWxMIGhgSLpHBw7OFcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
     name: "Unleash Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1VubGVhc2hTdXBwb3J0IiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/9c92c88f3e/UnleashSupport.png",
     rgb: "AAAAp49gu6NhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3sybqolZuJVZKRQVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAy7FxmYNih2lFk2s9eGRLxqJ+5cKmXTMdeFw9AAAAAAAAAAAAAAAAAAAAAAAAAAAAbl4+c148gGI9ZEkwt515kHdUjXBNZ0QniGlHmXlNcUojAAAAAAAAAAAAAAAAAAAAAQEABgUDl39Sc1g0KSg6BRZREDVnDidWMVFekIBgsIdVvKBWAAAAAAAAAAAAAAAAQSQJh2ZFmH9bPjZRDix8NkuCK1mPGTx1UYG6I2JsgW5NRy4VAAAAAAAAAAAAAAAAi3Vir5yDIDhqiIJsFUSLaYq5NWmzSXqnKHS/HlqFTV9YoIhgb1IvAAAAAAAAAAAA/+eAi3xgGEqifnNfBy99CTRcC0F7S4XFM37GH1aLLVBgsZRrh29RAAAAAAAAAAAABgQCXlhEEVKbUVqDRU1jES5JCDNZM3S6Tn64K1SBIkhln4ZjNiMPi3Q9fGpD36xhAAAAXUsvEVenSoOmwqNymHlCEylOLGKqFThpS3+6JExok3NRl3hArXpB07Rzu6BnNyQQmINUX4q4Z5ivalg4fGM5gnROf25GhXdOg3JKlG40m30+p4pYkXNPhWtOpoZYEgkCWEQmf3ZoMGulR1ZgGhYmCxxbDBNjIUNzXGlgjnFPHxMIAQEBUD4fUDYcMB8LAAAACQcDgWY6i2xSe4GCeHmNHSVdRkFXfGdUVz8pHxYPAQEBCAQCBwUCAgEAGRcJAAAAAgAAGQ0GQykRg185noNRc0cljXphNyUWAQMECwoIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBCQUDGBEJDwwGAAAAHRIJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -2046,18 +1804,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1VyZ2VudE9yZGVyc1N1cHBvcnQiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/dfa6ae426c/UrgentOrdersSupport.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWE0zGhIJNyQQDAgCAAAAAQEAAwMCXUcrSzIWX0EcAAAAAAAAAAAAAAAALBsIDQgDg25DeGA5YUsrU0AzWD8rblc8cV5DiXRRdlwzaFArDAcEQCgOAAAAhFsmSDAUjHZVb1k1a1IlcV86eFYwhFUtfz8XjjEOdSgUZjkcdl44kn5ZUTUZPC4dXDsUbU0hW0swclYraFQySBgKdCoekTMuvTogpTUakDoWjmE7Y1E8WUEgnH4/KQ8DUzYUgmczTjYWqpVcbEksmSYYt0ky9seQ/dKe7JaLqDsubBoOiHBOaFY9ak0kKBQEWD0chGU3jnA5TSUWph8ayGZNqGpJwaeAvHtm61tO81dEeScUa0wtlINnYUkkVTwaSDIWaU4nVkAgjy0RdyEYn1I5PiMWj246WEgx5y8f3FVDey8VbV47kX1aRC4UhGM2gl8sYUMdWT8jVycVh0ormWc3wp5SxJ9P39GfvkAtuEErrWBJThMMwqtsPioSclk1UTgYX0AbaEEkUggLWj4dSC8UfFkmr4dBoX05nGEwnkwoejcfbQwPtpFRTDYXcFMkXkMef2Y6ZkspZwkRWhoUWAoDl3E3vJlJOBMIXkYfWD0eTA4OdBAQm3U3bVcrNiIMQCgPlH5Ngm1CShwYbAsKg08qdFQobk8jYxALXgwOkQ4OcQkPZkgqX0EbgmMvEAcAPiYKW0oljXhAhHBCQiEOe1wrUzUad1Qpc04vXxMYQRURZkkxg2k5gmU6PSsSMxsCQCcNOiQKak8kVT8bW0MhaUoiZjgdcVA1elwrb1Qtdl46VD4cjm41SC4RQSgOAAAAAAAAAAAAVTUQVTsXUjgVNiEKRi8SQi4VSDATRCwQUjgXUzoYNyEKOCAIAAAAAAAAAAAAAAAAAAAARi0QWz0USS0OPScMFg0EUzQQQyoOLxsHSCwORSsNAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAFAQIgJg4BAAEAAAAAAAJElXzP/v7zrjdICQAAACmNtLL+///////9rL8/BQHcy5v+//////////uq9iUv1JX+////////////w+sqsMbO//////////////XBh2ud/v/////////////8rrbJn/7//////////////KpsnKX+//////////////zDd3ig+//////////////h5juZ5sn/////////////0usNB8Do/v//////////6u1tAQARpuzx/v7//v/99e9AAQAAAAFFl4KTuLrJz68pAQAAAAAAAAEBAQFBYhwBAAAAAA=="
-  },
-  {
-    name: "Vaal Sacrifice Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1ZhYWxTYWNyaWZpY2UiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwiZ2UiOnRydWV9XQ/a21e0dcd1c/VaalSacrifice.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDtJS1NjUlxyWmV/Ym6MSVFiKC49HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVhrVl5yuKGAy1w7ikRId3NrqYpYW2d5RE1hLzVFJy04DA4RFhkfOTxITFJmZ2h7iYCIuVE3ammEGho+R0ZCTUhMY1pOplMefXdnZ3eSNj1MDg4RGRwkaXeNlpuzpqOzmyYmFBdYkG07o2k0jkYykToW4HYZrF4gyX4lXltvMzpJCQoMFhcdaXSKr7jOun6LIkeOTT1XgDo2mKClnXNIpVgtjS8ZvkwLnysQlVciU1hqISYxHyQuYG6JkZu5Zz5hG06mP0FvYDQyykwQODFki0Iup0QdKT5sNE9Zny8GQCcyJCk2JSs7eYulfn2SeGBwG0yZJWOuy0UNZRgZUktIvS8MUm2rIkl3MlxtpzIJLSs3Iyg2OEFSeoumXF1zYTZRKmukPl2NhyEZCyhAqjkVM1mgHkR+MGmqKFd4kToUKC02ICUuRFFnfJGxTlZtbjZKWoayT6nSP0JfPBQnHRQxLTpeL2GcksL6V0xbdjcXKTA+HSEsGB0nZHOMX2V4gUtNcIapYKbNKlSAEhU9DRE5DxhOH1ujXGiJt0wbSU1lNj5RICQwHCErLDNDTFJgcXGCok87TXOdPmSFvYclbSotHilbNCdBu0wUdWhtSlNvOEBTERIXFBcdJSk0XGFqUFNZGSI2ci83YT9KuFwPoh4IjkcVnWsoWVFQV2J9VWJ+Qk5eERQYDhATKSwyExUZGhwfFRkdVVpikGRpeQQCaAcEPDtOSVJmP0ZbLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcVltmWl1sMTVALzpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDhIYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/b+////+eW0h1kTIofm/v7////////+89uZITzc/f/////////////7wiIu3v///////////////tZLKtn///////////////+8a0rs///////////////6cUVj7/r/////////////8Vk9gPTy/P///////////+COXUzy/Pr///////////3yzmdh4OTA7//////////27rclUsDDxfj7//////vx3NOhJh1lOXnn6fP//t3ZxqOBWxMIGhgSLpHByLiGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Vaal Temptation Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1ZhYWxUZW1wdGF0aW9uU3VwcG9ydCIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/ba2264d0f0/VaalTemptationSupport.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NDpJS1NjU1tvW2N8Y2yJSFBiKC49HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYSE9gTztHuXVZt0hHo2xeu5hkjJmbW2mFOj1QKjJBJy04DA4RFhkfOTxISFBjYDk/iCQfniIVZyoZehoRiCAdlys4s0sYlW9J56RVlUQwNDxKDg4RGRwkaXeMeWt9gRQO02o78sKapjMXXw0Jky0xuTo6gTM4t2owyXUsuS4dKzZECQoMFhcdaXSKqKG0fBMM6Xkx+eHL8LmRyFQnhSUcojAtu2szhh8VkjIPXT1NWGZ+IScxHyQuYG6Jn1pijBwS2kAY7Zlb649S3HhYmhsRk1Msjzw8lTVBoEEcjEdAMzpMJSk2JSs7dYulpysulx0T0ykT53Uy4XI7wEwtoFwlrVsyolNZkS00lzokizkIKC4+Iyg2OEFScYKahycliiMf1jEW4FYmrTUdnRoSYxUOcCYmrU9UgiEpljkvgiwJJyw3ICUuRFFndoejjFM1mU0shyEedA8KgRQKhRYMWxIOciUnzmlwvFlokDQSTiYhKi89HSEsGB0nZHOMlVpa0XiA6ltsozA8QgsCPgcAZRIKkSoyqkRSkkJKm0UITVJsNj5RICQwHCErLDNDUVFcrFIfqSQpxD5KbCkjWAoDfCERhSEjgCAkvjMGYE9VSlNwOEBTERIXFBcdJSk0XWFqWVBUhhkWrzE6pmNgdxwRdBYJnkkRrGEJVUQ3VmF8VWJ+Qk5eERQYDhATKSwyExUZGhwfFBgdVzk7jlVOlkxAhEkqWE8yPkFVP0dcLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcWV1ocHqOOUNRLjpBJCs5GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/j/////+eW5iVkTIofm/v/////////+/+2aITzc/f/////////////+wyIu3v//////////////+9RLKtn//////////////+etakrs///////////////LZ0Vj7/7/////////////01c9gPX+/////////////8yQXUzy/f////////////7xzmdh4OTw///////////47rclUsDDxP7////////13dOhJh1lOXnn7vX38uTbxqOBWxMIGhgSLpHBw7OGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Vicious Projectiles Support",
@@ -2076,18 +1822,6 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1ZvaWRNYW5pcHVsYXRpb24iLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/d43a79f597/VoidManipulation.png",
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2cJ+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQArqGR///W/e6w69+dy76BuKRoz7JqAAAAAAAAAAAAAAAAAAAAAAAAAAAAhVwqeWIwu6pztKNrs6Bkfmk2loVPq5towLuUAAAAAAAAAAAAAAAAAAAAAAAArY9fnndJSGMkKz8UZFg1alo2gWk/iHRGpopOvbKOqqCAAAAAAAAAAAAAAAAAj2c7nHxPJVYVEG8HMHgnKmEcVokzMm8bQFoldmQ+xLB4n45XAAAAAAAABgYGGREJk3VKVnUtNIEPMnsTp8qYccqka8yQPIIsYa0rKz0Ok39Szb+PwrWSAAAAAAAAmoNXm3xBWnc4L4IOLIMQTmcql51kWnlKeLS4jtG8S3knTkMi0Lt0x7B6AAAAAAAAcVwpbVAiO2kaJ4ILU4EhmXdAtJ1qSmpFca+olqqZcXg6OUMYyrJr///9AAAAAAAAdVAheVkmWW0wU6o6cW0wjnVOoZh2hWo+qJRrV2Y7Ymk2MEgTq5ZlwLqrAAAAAAAAXTwTaUkYeGM8gcM9bEsam4ZcNkMpK1EVjnM7emxAqpdiPUQXvqx3xL2LAAAAAAAAVDUPUDIPaVU6d3M1Z0YYhHJVCyQKCUUOSGEcrZhoknlIg21Fs6Jta1c6AAAAAAAAAAAARSIHgF0tXE0wZ08mXUMfWVVHClQFVFYig2g3lXpJYEovTDYcAAAAAAAAAAAAAAAAPyMKOiMKdVYsm3xDnYdUc1ozVF0obWI/gmU4MhsIVzceAAAAAAAAAAAAAAAAAAAAAAAAMyENCwYFPB4GVjodQCoTX0cnQywTOB8KDwgCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALxYELBcGAQAAAAAARCkSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQEJSAAAAAAAAAAAATPu19HV9foOAAAAAAAAAX/7///////+bQAAAAAAAX/+/////////+gKAAACAS37///////////+YwEAAAGH/v///////////rMBAAABvf/////////////gAAAAAcX/////////////0gEAAAGp/v///////////osBAAABWf7///////////orAAAAAAXF/v////////6AAQAAAAAAGMT+/v///vuAAQAAAAAAAAAEVqC/uIIoAQAAAAAAAAAAAAEBAQEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
-  },
-  {
-    name: "Void Shockwave Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1Nob2Nrd2F2ZSIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/d342aa7321/Shockwave.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBwcICwwODAsNFxoiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1OTpDZkYykmQ6XFRLb3WERk9jKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUFhsXGNujYiIk3RWkVoeRSkaelhBXWlxRE1hLzVFJy04DA4RFhkfOTxITFJmbGttf3Rej2xKfVQ6a042Zk46fXBYd1c4r4hhbWlkZ3eSNj1MDg4RGRwkaXeNjIiMiFoohGhImY992cyYnGQujVArp3VVt6dqamhbiGQ3aW50MzpJCQoMFhcdaHSJmYp1bkkqsZaDl1wtZyccURUMYCAnhS8xfDRLpYdFZlpPiW1JWGeAIScxHyQuYXCLhHRiT1FfdjQWgCQboWBYrp+Btoxxjy40fCs5hEhfjHVGj39ZLTRHJSk2JSs7coGUV0k3amJaw2pOmSgrdComm25ZfXBIrbWNolFVf0dihmghcGFCLzI5Iyg2OEFRaWVrXUs7bEpEpSgkpDY3YRINYBkegGxLq8+Rh3RnbDJFiWcsRC8hKS0yICUuRFBmcG5pTz0yZTkktio1rE9PbRkcSwwXVTQncHZVgIxYcSYzelguNCcjKS8+HSEsGB0mXGFtX1JAY0w0uV1g62KDbykxOAwHTi4bYycyxK6Yf1daelwqR01iNj5RICQwHCErLDNDb15IdGRWm2RW0FpvaSgwSxgFTRwNUCcdj0xhjG4yQzs3Rk9rOEBTERIXFBcdJSk0V1phaFU6X0spnE8/jl5re0VDbSgaXDYhk3k6T0MsRU5jVWJ+Qk5eERQYDhATKSwyExUYJCAdFRgcWVJFfWNCaVEoa1UkcGpALi0uMzhKLjNFJCk1FhkgBAUHAwMEBwgJBwgICAgJDxAQGBkcW19qb3qNOEFOLjlAJCs4GBskDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aIChIYz4VCxsHAgYiRFaFqL3BzNebg18cEQsPOKbt7/b+////+eW0h1kTIofm/v/////////+89uZITzc/f///////////P/7wiIu3v////////////34/dRLKtn//////////////Pmyakrs//////////////60e0Vj8f7/////////////tmY9gPf6+////////////8yQXUzz/v3////////////zzmdh4Pbb///////////77rclUsDG4P3////////739OhJh1lOXrn7fj8+/LnzKOBWxMIGhgSLpHBw7SHcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
-  },
-  {
-    name: "Voidstorm Support",
-    icon: "https://web.poecdn.com/gen/image/WzMwLDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L1ZvaWRzdG9ybSIsInciOjEsImgiOjEsInNjYWxlIjoxLCJnZSI6dHJ1ZX1d/81b02defec/Voidstorm.png",
-    rgb: "AwMFAgIDBgcKAgMECQsPBgcJCw0QDQ4RFxkiJik0GR0nBwkKBAMEAgICBAQEAQEBAwMEDxEWFRceHyQsJCk1NTtJS1RmUlxyW2R+Y22KSFBiKC4+HiIqCgsNBwkKBQYHCQkMFBQXOD9PP0ZYUVlsdXVpwotXi2RNcINfsKB3jp6jW2qFRE1iLzVFJy04DA4RFhkfOTxITFJlamh1pH1OiqeCIFAqFlEWH2AaSncwlnQslY5jVklBV19yNj1MDg4RGRwkaHWLdXR7gVQoGVUUFm8hGVsgI14ZKl4gPpA0TXcwalsjdlQiYk40LzZFCQoMFxgdZl1RZUctH2wdJ4AiK38ppcC3YJd/YHxVhpJQnYZNj3dCVUIfZkYeSVRoISYxICUuZWFYiHM8gYNFgHg1mH4/q4lMpoZLinlNe3dyXnpjRVQuhWg2WEAjMCwuJSk1JCs7bnV8TVkoNmcgQ2kmKlMYEzoNNmpET4B4jqnNUVtKtpleYU4tZUkfMCckIyg2OEFRXWd4X2YvOZ4tUKdRI3gcFEMKHEMTYW9aqqB2no9iM0IdcGM3VzwbISQqICUuRFFndIeieVwyhnU4gn06g3o+kHU/k3k/c3REJzsTdId6kHxOb1YlOCcYUTshHSEsGB0nYnGLXl04cIVkZJVLPmgoDioLNkYgcW1BnYpTd3ZBTUg1dl4qWT8gOjMxICQwHCErLzVAY0wwimkzfnEzinM3hnQ/YGEvLT0XN0Ihj4VRjXBBcV5GQUFPOD9SERIXFRgdOjIrf2Azf2M3aGszcXE3j3hKkng9nXs/l3tCgm84PDQzVGB6VWJ+Qk5eERQYDhATJikvIRYNMiQVMCYZOzQnYE4zZE8rcWE1amhMOTtJQEdcLjNFJCk1FhkgBAUHAwMEBwgJBwgICAkJEBAQGRodXWFscn6SPEZULzpBJCs4GBwkDA4QDg8RBgYIAwMDAQEBAwQFAgMEAgICAwMDCQoLDA4SDxMYGBwiCQoOBgcJBwgKBwgKBAQEAgMDAgIC",
-    alpha: "BQQOFx8aISlIYz4VCxsHAgYiRFaFo52qy9ebg18cEQsPOKbt7/f/////+eW0h1kTIofm/v7////////89t2ZITzc/f/////////////+wyIu4////////////////9ZLKt/////////////////Pa0rs////////////////qUVj8P//////////////+G4+gPX///////////////reXUzy///////////////+4Wdh4/r9///////////887clUtD7+f/////////23dOhJh1lY6fs9Pn79+jdxqOBWxMIGhgSLpHAwrKGcWw6KxsJAwwNBgcsMD03IxscFwYEAQ=="
   },
   {
     name: "Volatility Support",
@@ -2113,366 +1847,478 @@ const pg = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", Sg = [
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJjQVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADD4DG0kMM00cOz8jYocyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH2EKDUgDDk8IKGAVSXEqYYMykalhsrBxtoxRAAAAAAAAAAAAAAAAAAAAAAAAEScDDWEDE2gJFFsIOGodQXgmW4E0oKJmqYNOcjYZ6ow/AAAAAAAAAAAAAAAAN0EZGWAFJ3YQWpVBnsGlbL97SYg/nJNYRDYWc35aj1g1TggAAAAAAAAAAAAAHVMKLoEVNI0lPYQcLHUVPmojZpp5hXJTTXdfTnMrZGY0CAIBAAAAAAAAAAAAAAAAeLI2T5UfJ34LOocZJWgMRF5Kv4lXhlkogFssloE8UG40h6FSAAAAAAAAAAAAAAAAfq1TZq0xUJIlTZcxb5FcdlhDHS8OUIt1RHhZLkQkZEwkLEIkAAAAAAAAAAAA2d3azLarXG4xaqxDo69pUTojEjcFIEwRQm45SnZIgMKqcVYrFgwGAAAAAAAAAAAACwAAnId0n4NfinVXSVgfIVgRBDwBBkEFI2EXU3cydpVhcEAbSxwAAAAAAAAAAAAAAAAADQMAAQEAJ1kTaqg5RXsxQGo9E1UNHmQiMmIeXnE5LikWAAAAAAAAAAAAAAAAAAAAAAAAAAAAPGUeVYYxSHkxU4VEGlwRE1EOE0UIMEwcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANVYeFzILH2ARFkwMCDcDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASUQAQAAAAAAAAAAAAABM57z8WABAQEAAAAAAAAFjv7+///+ppuWAAAAAAAFuv7///////6opQEAAAAAaf7/////////1g8AAAAAAZD+/////////9IBAAAAAAGC///////////zDAAAAABHvP7/////////xAMAAAAAgLf+///////+whYAAAAAAAIbZPn///7+2hIAAAAAAAAAAAFO8c2RUxMAAAAAAAAAAAAAABEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
   }
-], RA = {
-  source: pg,
-  gems: Sg
-}, Dg = 16;
-function Jg(A, g, E, Q, I, B = Dg) {
-  const c = new Uint8Array(B * B * 3), e = new Uint8Array(B * B), w = Math.max(0, Math.floor(g)), l = Math.max(0, Math.floor(E)), U = Math.min(A.width, Math.ceil(g + Q)), n = Math.min(A.height, Math.ceil(E + I)), i = new Float64Array(B * B), k = new Float64Array(B * B), s = new Float64Array(B * B), t = new Float64Array(B * B), Y = new Float64Array(B * B);
-  for (let F = l; F < n; F++) {
-    const h = Math.floor((F + 0.5 - E) / I * B);
-    if (!(h < 0 || h >= B))
-      for (let S = w; S < U; S++) {
-        const j = Math.floor((S + 0.5 - g) / Q * B);
-        if (j < 0 || j >= B) continue;
-        const m = (F * A.width + S) * 4, J = A.pixels[m + 3], M = h * B + j;
-        i[M] += A.pixels[m] * J, k[M] += A.pixels[m + 1] * J, s[M] += A.pixels[m + 2] * J, t[M] += J, Y[M]++;
+], mA = {
+  source: rE,
+  gems: jE
+}, TE = 16;
+function JE(A, E, g, Q, B, o = TE) {
+  const I = new Uint8Array(o * o * 3), i = new Uint8Array(o * o), l = Math.max(0, Math.floor(E)), w = Math.max(0, Math.floor(g)), k = Math.min(A.width, Math.ceil(E + Q)), e = Math.min(A.height, Math.ceil(g + B)), n = new Float64Array(o * o), U = new Float64Array(o * o), a = new Float64Array(o * o), t = new Float64Array(o * o), p = new Float64Array(o * o);
+  for (let d = w; d < e; d++) {
+    const S = Math.floor((d + 0.5 - g) / B * o);
+    if (!(S < 0 || S >= o))
+      for (let b = l; b < k; b++) {
+        const D = Math.floor((b + 0.5 - E) / Q * o);
+        if (D < 0 || D >= o) continue;
+        const V = (d * A.width + b) * 4, C = A.pixels[V + 3], M = S * o + D;
+        n[M] += A.pixels[V] * C, U[M] += A.pixels[V + 1] * C, a[M] += A.pixels[V + 2] * C, t[M] += C, p[M]++;
       }
   }
-  for (let F = 0; F < B * B; F++)
-    t[F] > 0 && (c[F * 3] = Math.round(i[F] / t[F]), c[F * 3 + 1] = Math.round(k[F] / t[F]), c[F * 3 + 2] = Math.round(s[F] / t[F])), e[F] = Y[F] > 0 ? Math.round(t[F] / Y[F]) : 0;
-  return { rgb: c, alpha: e };
+  for (let d = 0; d < o * o; d++)
+    t[d] > 0 && (I[d * 3] = Math.round(n[d] / t[d]), I[d * 3 + 1] = Math.round(U[d] / t[d]), I[d * 3 + 2] = Math.round(a[d] / t[d])), i[d] = p[d] > 0 ? Math.round(t[d] / p[d]) : 0;
+  return { rgb: I, alpha: i };
 }
-function v(A, g) {
-  return 0.299 * A[g * 3] + 0.587 * A[g * 3 + 1] + 0.114 * A[g * 3 + 2];
+function $(A, E) {
+  return 0.299 * A[E * 3] + 0.587 * A[E * 3 + 1] + 0.114 * A[E * 3 + 2];
 }
-const Xg = 16, nA = 0.3;
-function IA(A, g) {
-  const E = g.alpha.length, Q = [0, 0, 0];
-  let I = 0;
-  for (let n = 0; n < E; n++)
-    if (!(g.alpha[n] >= Xg)) {
-      for (let i = 0; i < 3; i++) Q[i] += A.rgb[n * 3 + i];
-      I++;
+const ZE = 16, aA = 0.3;
+function eA(A, E) {
+  const g = E.alpha.length, Q = [0, 0, 0];
+  let B = 0;
+  for (let e = 0; e < g; e++)
+    if (!(E.alpha[e] >= ZE)) {
+      for (let n = 0; n < 3; n++) Q[n] += A.rgb[e * 3 + n];
+      B++;
     }
-  for (let n = 0; n < 3; n++) Q[n] = I ? Q[n] / I : 0;
-  const B = 0.299 * Q[0] + 0.587 * Q[1] + 0.114 * Q[2];
-  let c = 0, e = 0, w = 0;
-  for (let n = 0; n < E; n++) {
-    const i = g.alpha[n] / 255;
-    i !== 0 && (e += i * (v(A.rgb, n) - B), w += i * i * v(g.rgb, n));
+  for (let e = 0; e < 3; e++) Q[e] = B ? Q[e] / B : 0;
+  const o = 0.299 * Q[0] + 0.587 * Q[1] + 0.114 * Q[2];
+  let I = 0, i = 0, l = 0;
+  for (let e = 0; e < g; e++) {
+    const n = E.alpha[e] / 255;
+    n !== 0 && (i += n * ($(A.rgb, e) - o), l += n * n * $(E.rgb, e));
   }
-  const l = e > 0 ? Math.min(1.5, Math.max(0.67, w / e)) : 1;
-  let U = 0;
-  for (let n = 0; n < E; n++) {
-    const i = g.alpha[n] / 255, k = nA + (1 - nA) * i;
-    c += k;
-    for (let s = 0; s < 3; s++) {
-      const t = Q[s] + (A.rgb[n * 3 + s] - Q[s]) * l, Y = g.rgb[n * 3 + s] * i + Q[s] * (1 - i);
-      U += k * Math.abs(t - Y);
+  const w = i > 0 ? Math.min(1.5, Math.max(0.67, l / i)) : 1;
+  let k = 0;
+  for (let e = 0; e < g; e++) {
+    const n = E.alpha[e] / 255, U = aA + (1 - aA) * n;
+    I += U;
+    for (let a = 0; a < 3; a++) {
+      const t = Q[a] + (A.rgb[e * 3 + a] - Q[a]) * w, p = E.rgb[e * 3 + a] * n + Q[a] * (1 - n);
+      k += U * Math.abs(t - p);
     }
   }
-  return U / (c * 3);
+  return k / (I * 3);
 }
-function dA(A) {
-  const g = A.alpha.length;
-  let E = 0, Q = 0;
-  for (let B = 0; B < g; B++) {
-    const c = v(A.rgb, B);
-    E += c, Q += c * c;
+function SA(A) {
+  const E = A.alpha.length;
+  let g = 0, Q = 0;
+  for (let o = 0; o < E; o++) {
+    const I = $(A.rgb, o);
+    g += I, Q += I * I;
   }
-  const I = E / g;
-  return Math.sqrt(Math.max(0, Q / g - I * I));
+  const B = g / E;
+  return Math.sqrt(Math.max(0, Q / E - B * B));
 }
-function lA(A) {
-  const g = atob(A), E = new Uint8Array(g.length);
-  for (let Q = 0; Q < g.length; Q++) E[Q] = g.charCodeAt(Q);
-  return E;
+function tA(A) {
+  const E = atob(A), g = new Uint8Array(E.length);
+  for (let Q = 0; Q < E.length; Q++) g[Q] = E.charCodeAt(Q);
+  return g;
 }
-const mg = RA.source, pA = RA.gems.map((A) => ({
+const GE = mA.source, bA = mA.gems.map((A) => ({
   name: A.name,
   icon: A.icon,
-  fp: { rgb: lA(A.rgb), alpha: lA(A.alpha) }
-})), SA = 20, Wg = 40, bg = 3, jg = 0.08, Z = 4, sA = 12, Tg = 8;
-function Zg(A, g) {
-  let E = 1 / 0;
-  for (const Q of g) E = Math.min(E, IA(A, Q.fp));
-  return E;
+  fp: { rgb: tA(A.rgb), alpha: tA(A.alpha) }
+})), DA = 20, HE = 40, fE = 3, LE = 0.08, G = 4, UA = 12, xE = 8;
+function NE(A, E) {
+  let g = 1 / 0;
+  for (const Q of E) g = Math.min(g, eA(A, Q.fp));
+  return g;
 }
-function Gg(A, g) {
-  return pA.map((E) => ({ ref: E, d: IA(A, E.fp) })).sort((E, Q) => E.d - Q.d).slice(0, g).map((E) => E.ref);
+function yE(A, E) {
+  return bA.map((g) => ({ ref: g, d: eA(A, g.fp) })).sort((g, Q) => g.d - Q.d).slice(0, E).map((g) => g.ref);
 }
-function Hg(A) {
-  if (dA(A) < SA) return { status: "empty", candidates: [] };
-  const g = pA.map((Q) => ({ name: Q.name, icon: Q.icon, distance: IA(A, Q.fp) })).sort(
-    (Q, I) => Q.distance - I.distance
-  ), E = g[0].distance;
-  return E > Wg ? { status: "unknown", candidates: [], distance: E } : { status: "matched", candidates: g.filter((Q) => Q.distance <= E + bg), distance: E };
+function uE(A) {
+  if (SA(A) < DA) return { status: "empty", candidates: [] };
+  const E = bA.map((Q) => ({ name: Q.name, icon: Q.icon, distance: eA(A, Q.fp) })).sort(
+    (Q, B) => Q.distance - B.distance
+  ), g = E[0].distance;
+  return g > HE ? { status: "unknown", candidates: [], distance: g } : { status: "matched", candidates: E.filter((Q) => Q.distance <= g + fE), distance: g };
 }
-function q(A, g, E, Q, I, B) {
-  return Jg(A, g.x + E * g.cell + I, g.y + Q * g.cell + B, g.cell, g.cell);
+function AA(A, E, g, Q, B, o) {
+  return JE(A, E.x + g * E.cell + B, E.y + Q * E.cell + o, E.cell, E.cell);
 }
-function rg(A, g) {
-  const E = [];
-  for (let c = 0; c < y && E.length < sA; c++)
-    for (let e = 0; e < N && E.length < sA; e++) {
-      const w = q(A, g, e, c, 0, 0);
-      dA(w) >= SA && E.push({ col: e, row: c, refs: Gg(w, Tg) });
+function PE(A, E) {
+  const g = [];
+  for (let I = 0; I < u && g.length < UA; I++)
+    for (let i = 0; i < y && g.length < UA; i++) {
+      const l = AA(A, E, i, I, 0, 0);
+      SA(l) >= DA && g.push({ col: i, row: I, refs: yE(l, xE) });
     }
-  if (!E.length) return { dx: 0, dy: 0 };
-  const Q = g.cell * jg / Z;
-  let I = 1 / 0, B = { dx: 0, dy: 0 };
-  for (let c = -Z; c <= Z; c++)
-    for (let e = -Z; e <= Z; e++) {
-      const w = e * Q, l = c * Q;
-      let U = 0;
-      for (const n of E) U += Zg(q(A, g, n.col, n.row, w, l), n.refs);
-      U < I && (I = U, B = { dx: w, dy: l });
+  if (!g.length) return { dx: 0, dy: 0 };
+  const Q = E.cell * LE / G;
+  let B = 1 / 0, o = { dx: 0, dy: 0 };
+  for (let I = -G; I <= G; I++)
+    for (let i = -G; i <= G; i++) {
+      const l = i * Q, w = I * Q;
+      let k = 0;
+      for (const e of g) k += NE(AA(A, E, e.col, e.row, l, w), e.refs);
+      k < B && (B = k, o = { dx: l, dy: w });
     }
-  return B;
+  return o;
 }
-function xg(A, g) {
-  const E = rg(A, g), Q = [];
-  for (let I = 0; I < y; I++)
-    for (let B = 0; B < N; B++)
-      Q.push({ col: B, row: I, ...Hg(q(A, g, B, I, E.dx, E.dy)) });
-  return { cells: Q, offset: E };
+function zE(A, E) {
+  const g = PE(A, E), Q = [];
+  for (let B = 0; B < u; B++)
+    for (let o = 0; o < y; o++)
+      Q.push({ col: o, row: B, ...uE(AA(A, E, o, B, g.dx, g.dy)) });
+  return { cells: Q, offset: g };
 }
-function DA(A, g) {
-  const E = $A(A.gameSize, g), Q = {
-    x: (E.x - A.origin.x) * A.scale,
-    y: (E.y - A.origin.y) * A.scale,
-    cell: E.cell * A.scale
+function WA(A, E) {
+  const g = BE(A.gameSize, E), Q = {
+    x: (g.x - A.origin.x) * A.scale,
+    y: (g.y - A.origin.y) * A.scale,
+    cell: g.cell * A.scale
   };
-  return { ...xg({ pixels: A.pixels, width: A.width, height: A.height }, Q), grid: Q, capture: A, at: Date.now() };
+  return { ...zE({ pixels: A.pixels, width: A.width, height: A.height }, Q), grid: Q, capture: A, at: Date.now() };
 }
-async function Lg(A, g) {
-  const E = await A.captureGameWindow();
-  return E ? DA(E, g) : null;
+async function vE(A, E) {
+  const g = await A.captureGameWindow();
+  return g ? WA(g, E) : null;
 }
-const JA = "calibration", XA = "order", _ = "threshold", mA = "hideUnpriced", WA = "chaosOnly", $ = "beastPrice", bA = "logging";
-async function jA(A) {
-  if (!p().scanning) {
-    R({ scanning: !0, error: null });
+const rA = "calibration", jA = "order", EA = "threshold", TA = "hideUnpriced", JA = "chaosOnly", gA = "beastPrice", ZA = "logging", GA = "exceptional", HA = "exceptionalMax", QA = "yellowBeast";
+async function fA(A) {
+  if (!X().scanning) {
+    F({ scanning: !0, error: null });
     try {
-      const g = await Lg(A, p().calibration);
-      if (!g) {
-        R({ error: "Path of Exile must be the focused window. Use the hotkey in-game with your inventory open." });
+      const E = await vE(A, X().calibration);
+      if (!E) {
+        F({ error: "Path of Exile must be the focused window. Use the hotkey in-game with your inventory open." });
         return;
       }
-      await VA(A).catch(() => {
+      await XA(A).catch(() => {
       });
-      const E = p().book, Q = p().log, I = kg(Q, g.cells, {
-        at: g.at,
+      const g = X().book, Q = X().log, B = YE(Q, E.cells, {
+        at: E.at,
         league: A.getLeague(),
         plugin: A.pluginVersion,
-        refs: mg,
-        value: (e) => E ? YA(e, E) : null
-      }), { log: B, outcome: c } = p().logging ? I : Ug(Q, I);
-      R({ scan: g, log: B, logStatus: c }), c.kind !== "skipped" && await A.storage.set(EA, B);
-    } catch (g) {
-      A.log("scan failed", g), R({ error: `Scan failed: ${g instanceof Error ? g.message : String(g)}` });
+        refs: GE,
+        value: (i) => g ? VA(i, g) : null
+      }), { log: o, outcome: I } = X().logging ? B : dE(Q, B);
+      F({ scan: E, log: o, logStatus: I }), I.kind !== "skipped" && await A.storage.set(cA, o);
+    } catch (E) {
+      A.log("scan failed", E), F({ error: `Scan failed: ${E instanceof Error ? E.message : String(E)}` });
     } finally {
-      R({ scanning: !1 });
+      F({ scanning: !1 });
     }
   }
 }
-async function aA(A) {
-  const { scan: g, book: E, threshold: Q, hideUnpriced: I, chaosOnly: B } = p();
-  if (!g || !E) return;
-  const c = {
+async function kA(A) {
+  const { scan: E, book: g, threshold: Q, hideUnpriced: B, chaosOnly: o } = X();
+  if (!E || !g) return;
+  const I = {
     stamp: Date.now(),
-    marks: Ig(g, E, Q, I, B),
-    grid: Qg(g),
-    status: fg(p().logStatus)
+    marks: iE(E, g, Q, B, o),
+    grid: eE(E),
+    status: OE(X().logStatus)
   };
-  await A.storage.set(tA, c);
+  await A.storage.set(FA, I);
 }
-function fg(A) {
+function OE(A) {
   return A ? A.kind === "recorded" ? `+${A.count} ${A.count === 1 ? "gem" : "gems"} logged${A.newRun ? " (new run)" : ""}` : A.kind === "none-new" ? "No new gems to log" : A.kind === "disabled" ? "Logging off" : `Not logged: ${A.reason}` : "";
 }
-function b(A, g, E = "c") {
-  return A === null || g === null ? "-" : A === g ? `${r(A)}${E}` : `${r(A)}${E} - ${r(g)}${E}`;
+function J(A, E, g = "c") {
+  return A === null || E === null ? "-" : A === E ? `${H(A)}${g}` : `${H(A)}${g} - ${H(E)}${g}`;
 }
-const C = { color: "var(--text-muted, rgba(255,255,255,0.55))" }, V = { padding: "4px 6px" };
-function Ng({ row: A }) {
-  const g = A.candidates.length > 1;
-  return /* @__PURE__ */ a("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
-    /* @__PURE__ */ o("td", { style: V, children: A.candidates.length > 0 && /* @__PURE__ */ o("img", { src: A.candidates[0].icon, alt: "", width: 28, height: 28, style: { display: "block" } }) }),
-    /* @__PURE__ */ a("td", { style: V, children: [
-      A.candidates.length === 0 && /* @__PURE__ */ o("span", { style: C, children: "Unreadable" }),
-      A.candidates.map((E, Q) => /* @__PURE__ */ a("div", { style: Q > 0 ? C : void 0, children: [
+const h = { color: "var(--text-muted, rgba(255,255,255,0.55))" }, Y = { padding: "4px 6px" };
+function KE({ row: A }) {
+  const E = A.candidates.length > 1;
+  return /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
+    /* @__PURE__ */ c("td", { style: Y, children: A.candidates.length > 0 && /* @__PURE__ */ c("img", { src: A.candidates[0].icon, alt: "", width: 28, height: 28, style: { display: "block" } }) }),
+    /* @__PURE__ */ s("td", { style: Y, children: [
+      A.candidates.length === 0 && /* @__PURE__ */ c("span", { style: h, children: "Unreadable" }),
+      A.candidates.map((g, Q) => /* @__PURE__ */ s("div", { style: Q > 0 ? h : void 0, children: [
         Q > 0 ? "or " : "",
-        E.name,
-        g && /* @__PURE__ */ a("span", { style: C, children: [
+        g.name,
+        E && /* @__PURE__ */ s("span", { style: h, children: [
           " (",
-          b(...Og(A, Q)),
+          J(..._E(A, Q)),
           ")"
         ] })
-      ] }, E.name)),
-      g && /* @__PURE__ */ o("div", { style: { ...C, fontSize: 11 }, children: "Look-alike art: hover it in game to confirm" })
+      ] }, g.name)),
+      E && /* @__PURE__ */ c("div", { style: { ...h, fontSize: 11 }, children: "Look-alike art: hover it in game to confirm" })
     ] }),
-    /* @__PURE__ */ o("td", { style: { ...V, textAlign: "right" }, children: A.slot ? /* @__PURE__ */ o("span", { style: C, children: yg(A.slot) }) : A.count }),
-    /* @__PURE__ */ o("td", { style: { ...V, textAlign: "right" }, children: b(A.unitMin, A.unitMax) }),
-    /* @__PURE__ */ o("td", { style: { ...V, textAlign: "right" }, children: b(A.unitMin === null ? null : A.unitMin * A.count, A.unitMax === null ? null : A.unitMax * A.count) })
+    /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: A.slot ? /* @__PURE__ */ c("span", { style: h, children: qE(A.slot) }) : A.count }),
+    /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: J(A.unitMin, A.unitMax) }),
+    /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: J(A.unitMin === null ? null : A.unitMin * A.count, A.unitMax === null ? null : A.unitMax * A.count) })
   ] });
 }
-function yg(A) {
+function qE(A) {
   return `${A.col + 1}-${A.row + 1}`;
 }
-function Og(A, g) {
-  const E = A.prices[g];
-  return E.kind === "exact" ? [E.chaos, E.chaos] : E.kind === "range" ? [E.min, E.max] : [null, null];
+function _E(A, E) {
+  const g = A.prices[E];
+  return g.kind === "exact" ? [g.chaos, g.chaos] : g.kind === "range" ? [g.min, g.max] : [null, null];
 }
-function zg({ scan: A }) {
-  const g = UA(null);
-  return AA(() => {
-    const E = g.current;
-    if (!E) return;
-    const { capture: Q, grid: I, offset: B, cells: c } = A, e = I.cell * 0.5, w = Math.max(0, Math.floor(I.x + B.dx - e)), l = Math.max(0, Math.floor(I.y + B.dy - e)), U = Math.min(Q.width - w, Math.ceil(I.cell * N + e * 2)), n = Math.min(Q.height - l, Math.ceil(I.cell * y + e * 2));
-    if (U <= 0 || n <= 0) return;
-    E.width = U, E.height = n;
-    const i = E.getContext("2d");
-    if (!i) return;
-    const k = new ImageData(U, n);
-    for (let s = 0; s < n; s++) {
-      const t = ((l + s) * Q.width + w) * 4;
-      k.data.set(Q.pixels.subarray(t, t + U * 4), s * U * 4);
+function $E({ scan: A }) {
+  const E = YA(null);
+  return BA(() => {
+    const g = E.current;
+    if (!g) return;
+    const { capture: Q, grid: B, offset: o, cells: I } = A, i = B.cell * 0.5, l = Math.max(0, Math.floor(B.x + o.dx - i)), w = Math.max(0, Math.floor(B.y + o.dy - i)), k = Math.min(Q.width - l, Math.ceil(B.cell * y + i * 2)), e = Math.min(Q.height - w, Math.ceil(B.cell * u + i * 2));
+    if (k <= 0 || e <= 0) return;
+    g.width = k, g.height = e;
+    const n = g.getContext("2d");
+    if (!n) return;
+    const U = new ImageData(k, e);
+    for (let a = 0; a < e; a++) {
+      const t = ((w + a) * Q.width + l) * 4;
+      U.data.set(Q.pixels.subarray(t, t + k * 4), a * k * 4);
     }
-    i.putImageData(k, 0, 0), i.lineWidth = Math.max(1, I.cell / 30);
-    for (const s of c) {
-      const t = I.x + B.dx + s.col * I.cell - w, Y = I.y + B.dy + s.row * I.cell - l;
-      i.strokeStyle = s.status === "empty" ? "rgba(255,255,255,0.25)" : s.status === "unknown" ? "#e5484d" : s.candidates.length > 1 ? "#f5a623" : "#46a758", i.strokeRect(t, Y, I.cell, I.cell);
+    n.putImageData(U, 0, 0), n.lineWidth = Math.max(1, B.cell / 30);
+    for (const a of I) {
+      const t = B.x + o.dx + a.col * B.cell - l, p = B.y + o.dy + a.row * B.cell - w;
+      n.strokeStyle = a.status === "empty" ? "rgba(255,255,255,0.25)" : a.status === "unknown" ? "#e5484d" : a.candidates.length > 1 ? "#f5a623" : "#46a758", n.strokeRect(t, p, B.cell, B.cell);
     }
-  }, [A]), /* @__PURE__ */ o("canvas", { ref: g, style: { width: "100%", imageRendering: "auto", borderRadius: 4 } });
+  }, [A]), /* @__PURE__ */ c("canvas", { ref: E, style: { width: "100%", imageRendering: "auto", borderRadius: 4 } });
 }
-const Pg = 90;
-function Kg({ ctx: A }) {
-  const { log: g, book: E, beastChaos: Q, beastOverride: I, logging: B } = BA(), [c, e] = z(!1), [w, l] = z(null), U = async () => {
+const v = 3, Ag = 90;
+function Eg({ ctx: A }) {
+  const { log: E, book: g, beastChaos: Q, beastOverride: B, logging: o, yellowBeast: I, exceptional: i } = P(), [l, w] = L(!1), [k, e] = L(null), n = async () => {
     try {
-      await navigator.clipboard.writeText(Vg(g)), l(`Copied ${g.batches.reduce((h, S) => h + S.gems.length, 0)} rows`);
+      await navigator.clipboard.writeText(mE(E)), e(`Copied ${E.batches.reduce((C, M) => C + M.gems.length, 0)} rows`);
     } catch {
-      l("Couldn't reach the clipboard");
+      e("Couldn't reach the clipboard");
     }
-  }, n = I ?? Q, i = L(() => E ? Cg(g, E, n) : null, [g, E, n]), k = g.batches[g.batches.length - 1], s = (h) => {
-    R({ log: h, logStatus: null }), A.storage.set(EA, h);
-  }, t = () => {
-    R({ logging: !B }), A.storage.set(bA, !B);
-  }, Y = (h) => {
-    const S = h !== null && h > 0 ? h : null;
-    R({ beastOverride: S }), S === null ? A.storage.delete($) : A.storage.set($, S);
-  }, F = (h) => `${r(h)}c`;
-  return /* @__PURE__ */ a("details", { open: !0, style: { marginTop: 16 }, children: [
-    /* @__PURE__ */ a("summary", { style: { cursor: "pointer" }, children: [
+  }, U = B ?? Q, a = U === null ? null : U + v * (I ?? 0) + ((i == null ? void 0 : i.chaos) ?? 0), t = f(() => g ? VE(E, g, a) : null, [E, g, a]), p = (C) => {
+    const M = C !== null && C > 0 ? C : null;
+    F({ yellowBeast: M }), M === null ? A.storage.delete(QA) : A.storage.set(QA, M);
+  }, d = E.batches[E.batches.length - 1], S = (C) => {
+    F({ log: C, logStatus: null }), A.storage.set(cA, C);
+  }, b = () => {
+    F({ logging: !o }), A.storage.set(ZA, !o);
+  }, D = (C) => {
+    const M = C !== null && C > 0 ? C : null;
+    F({ beastOverride: M }), M === null ? A.storage.delete(gA) : A.storage.set(gA, M);
+  }, V = (C) => `${H(C)}c`;
+  return /* @__PURE__ */ s("details", { open: !0, style: { marginTop: 16 }, children: [
+    /* @__PURE__ */ s("summary", { style: { cursor: "pointer" }, children: [
       "Craft log",
-      i && i.gems > 0 ? ` - ${i.gems} gems from ${g.batches.length} scans` : "",
-      !B && /* @__PURE__ */ o("span", { style: { color: "#f5a623" }, children: " (logging off)" })
+      t && t.gems > 0 ? ` - ${t.gems} gems from ${E.batches.length} scans` : "",
+      !o && /* @__PURE__ */ c("span", { style: { color: "#f5a623" }, children: " (logging off)" })
     ] }),
-    /* @__PURE__ */ a("div", { style: { display: "flex", gap: 8, alignItems: "center", marginTop: 6 }, children: [
-      /* @__PURE__ */ o(D, { size: "sm", variant: B ? "primary" : "ghost", onClick: t, children: B ? "Logging on" : "Logging off" }),
-      /* @__PURE__ */ o("span", { style: { ...C, fontSize: 12 }, children: B ? "Turn off while testing. Scans keep track of the inventory but log nothing." : "Scans aren't logged. Gems scanned now won't be logged later either; only ones that change after it's back on." })
+    /* @__PURE__ */ s("div", { style: { display: "flex", gap: 8, alignItems: "center", marginTop: 6 }, children: [
+      /* @__PURE__ */ c(m, { size: "sm", variant: o ? "primary" : "ghost", onClick: b, children: o ? "Logging on" : "Logging off" }),
+      /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12 }, children: o ? "Turn off while testing. Scans keep track of the inventory but log nothing." : "Scans aren't logged. Gems scanned now won't be logged later either; only ones that change after it's back on." })
     ] }),
-    /* @__PURE__ */ a("p", { style: { ...C, fontSize: 12 }, children: [
+    /* @__PURE__ */ s("p", { style: { ...h, fontSize: 12 }, children: [
       "Each scan logs the gems in slots that changed since the last logged scan, so rescans and partly sold inventories don't count twice. Every ",
-      f,
+      x,
       " gems is one ",
-      H,
+      N,
       "."
     ] }),
-    /* @__PURE__ */ a("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }, children: [
-      /* @__PURE__ */ a(x, { children: [
-        H,
+    /* @__PURE__ */ s("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }, children: [
+      /* @__PURE__ */ s(T, { children: [
+        N,
         " price"
       ] }),
-      /* @__PURE__ */ o("div", { style: { width: 90 }, children: /* @__PURE__ */ o(G, { value: n, onChange: Y, min: 0, step: 1, suffix: "c" }) }),
-      /* @__PURE__ */ o("span", { style: { ...C, fontSize: 12 }, children: I !== null ? `your price (poe.ninja: ${Q === null ? "none" : F(Q)}; clear to use it)` : Q === null ? "no poe.ninja price yet, enter one" : "from poe.ninja" }),
-      /* @__PURE__ */ o(D, { size: "sm", variant: "ghost", onClick: () => void A.prices.refresh(), children: "Refresh prices" })
+      /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(r, { value: U, onChange: D, min: 0, step: 1, suffix: "c" }) }),
+      /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12 }, children: B !== null ? `your price (poe.ninja: ${Q === null ? "none" : V(Q)}; clear to use it)` : Q === null ? "no poe.ninja price yet, enter one" : "from poe.ninja" }),
+      /* @__PURE__ */ c(m, { size: "sm", variant: "ghost", onClick: () => void A.prices.refresh(), children: "Refresh prices" })
     ] }),
-    i && i.gems > 0 && /* @__PURE__ */ a("div", { style: { marginTop: 10, lineHeight: 1.6 }, children: [
-      /* @__PURE__ */ a("div", { children: [
-        "EV per ",
-        H,
-        ": ",
-        /* @__PURE__ */ o("strong", { children: F(i.evPerBeast) }),
-        /* @__PURE__ */ a("span", { style: C, children: [
+    /* @__PURE__ */ s("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", marginTop: 6 }, children: [
+      /* @__PURE__ */ c(T, { children: "Yellow beast price" }),
+      /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(r, { value: I, onChange: p, min: 0, step: 1, suffix: "c" }) }),
+      /* @__PURE__ */ s("span", { style: { ...h, fontSize: 12 }, children: [
+        "each, x",
+        v,
+        ". Exceptional gem:",
+        " ",
+        i ? `${i.name} at ${V(i.chaos)}` : "none chosen (pick one in the finder below)"
+      ] })
+    ] }),
+    a !== null && /* @__PURE__ */ s("div", { style: { ...h, fontSize: 12, marginTop: 4 }, children: [
+      "Cost per craft ",
+      V(a),
+      " = ",
+      V(U ?? 0),
+      " + ",
+      v,
+      " x ",
+      V(I ?? 0),
+      " +",
+      " ",
+      V((i == null ? void 0 : i.chaos) ?? 0),
+      (I === null || !i) && " (unset ingredients counted as free)"
+    ] }),
+    t && t.gems > 0 && /* @__PURE__ */ s("div", { style: { marginTop: 10, lineHeight: 1.6 }, children: [
+      /* @__PURE__ */ s("div", { children: [
+        "EV per craft: ",
+        /* @__PURE__ */ c("strong", { children: V(t.evPerBeast) }),
+        /* @__PURE__ */ s("span", { style: h, children: [
           " ± ",
-          F(i.ci95),
+          V(t.ci95),
           " (95%)"
         ] })
       ] }),
-      i.profitPerBeast !== null && i.roi !== null && /* @__PURE__ */ a("div", { children: [
-        "Profit per beast: ",
-        /* @__PURE__ */ o("strong", { children: F(i.profitPerBeast) }),
-        /* @__PURE__ */ a("span", { style: C, children: [
+      t.profitPerBeast !== null && t.roi !== null && /* @__PURE__ */ s("div", { children: [
+        "Profit per craft: ",
+        /* @__PURE__ */ c("strong", { children: V(t.profitPerBeast) }),
+        /* @__PURE__ */ s("span", { style: h, children: [
           " ",
           "(",
-          i.roi >= 0 ? "+" : "",
-          Math.round(i.roi * 100),
+          t.roi >= 0 ? "+" : "",
+          Math.round(t.roi * 100),
           "% on ",
-          F(i.beastChaos ?? 0),
+          V(t.craftCost ?? 0),
           ")"
         ] })
       ] }),
-      /* @__PURE__ */ a("div", { style: { ...C, fontSize: 12 }, children: [
+      /* @__PURE__ */ s("div", { style: { ...h, fontSize: 12 }, children: [
         "Mean gem ",
-        F(i.meanGem),
+        V(t.meanGem),
         " over ",
-        i.gems,
+        t.gems,
         " gems (~",
-        Math.floor(i.gems / f),
+        Math.floor(t.gems / x),
         " beasts)",
-        i.unpriced > 0 && `; ${i.unpriced} without a 20/20 price counted as 0`,
-        i.gems < Pg && ". Small sample: a few lucky gems swing this a lot",
+        t.unpriced > 0 && `; ${t.unpriced} without a 20/20 price counted as 0`,
+        t.gems < Ag && ". Small sample: a few lucky gems swing this a lot",
         ". Uses current prices."
       ] }),
-      /* @__PURE__ */ a("table", { style: { width: "100%", marginTop: 6, borderCollapse: "collapse", fontSize: 12 }, children: [
-        /* @__PURE__ */ o("thead", { children: /* @__PURE__ */ a("tr", { style: { ...C, textAlign: "left", fontSize: 11 }, children: [
-          /* @__PURE__ */ o("th", { style: V, children: "Most value from" }),
-          /* @__PURE__ */ o("th", { style: { ...V, textAlign: "right" }, children: "Seen" }),
-          /* @__PURE__ */ o("th", { style: { ...V, textAlign: "right" }, children: "Each" }),
-          /* @__PURE__ */ o("th", { style: { ...V, textAlign: "right" }, children: "Share" })
+      /* @__PURE__ */ s("table", { style: { width: "100%", marginTop: 6, borderCollapse: "collapse", fontSize: 12 }, children: [
+        /* @__PURE__ */ c("thead", { children: /* @__PURE__ */ s("tr", { style: { ...h, textAlign: "left", fontSize: 11 }, children: [
+          /* @__PURE__ */ c("th", { style: Y, children: "Most value from" }),
+          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Seen" }),
+          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Each" }),
+          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Share" })
         ] }) }),
-        /* @__PURE__ */ o("tbody", { children: i.rows.slice(0, 10).map((h) => /* @__PURE__ */ a("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
-          /* @__PURE__ */ o("td", { style: V, children: h.key }),
-          /* @__PURE__ */ o("td", { style: { ...V, textAlign: "right" }, children: h.count }),
-          /* @__PURE__ */ o("td", { style: { ...V, textAlign: "right" }, children: h.unit === null ? "-" : F(h.unit) }),
-          /* @__PURE__ */ a("td", { style: { ...V, textAlign: "right" }, children: [
-            Math.round(h.share * 100),
+        /* @__PURE__ */ c("tbody", { children: t.rows.slice(0, 10).map((C) => /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
+          /* @__PURE__ */ c("td", { style: Y, children: C.key }),
+          /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: C.count }),
+          /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: C.unit === null ? "-" : V(C.unit) }),
+          /* @__PURE__ */ s("td", { style: { ...Y, textAlign: "right" }, children: [
+            Math.round(C.share * 100),
             "%"
           ] })
-        ] }, h.key)) })
+        ] }, C.key)) })
       ] })
     ] }),
-    /* @__PURE__ */ a("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10, alignItems: "center" }, children: [
-      /* @__PURE__ */ o(D, { size: "sm", variant: "ghost", disabled: !g.batches.length, onClick: () => void U(), children: "Copy CSV" }),
-      /* @__PURE__ */ o(D, { size: "sm", variant: "ghost", disabled: !k, onClick: () => s(Fg(g)), children: k ? `Undo last scan (${k.gems.length} gems)` : "Undo last scan" }),
-      /* @__PURE__ */ o(
-        D,
+    /* @__PURE__ */ s("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10, alignItems: "center" }, children: [
+      /* @__PURE__ */ c(m, { size: "sm", variant: "ghost", disabled: !E.batches.length, onClick: () => void n(), children: "Copy CSV" }),
+      /* @__PURE__ */ c(m, { size: "sm", variant: "ghost", disabled: !d, onClick: () => S(CE(E)), children: d ? `Undo last scan (${d.gems.length} gems)` : "Undo last scan" }),
+      /* @__PURE__ */ c(
+        m,
         {
           size: "sm",
-          variant: c ? "danger" : "ghost",
-          disabled: !g.batches.length && !c,
+          variant: l ? "danger" : "ghost",
+          disabled: !E.batches.length && !l,
           onClick: () => {
-            if (!c) return e(!0);
-            s(QA), e(!1);
+            if (!l) return w(!0);
+            S(IA), w(!1);
           },
-          onBlur: () => e(!1),
-          children: c ? "Click again to clear the log" : "Clear log"
+          onBlur: () => w(!1),
+          children: l ? "Click again to clear the log" : "Clear log"
         }
       ),
-      w && /* @__PURE__ */ o("span", { style: { ...C, fontSize: 12 }, children: w })
+      k && /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12 }, children: k })
     ] })
   ] });
 }
-function ug({ ctx: A }) {
-  const { calibration: g, scan: E } = BA(), Q = (I) => {
-    const B = { ...g, ...I };
-    R({ calibration: B, scan: E ? DA(E.capture, B) : null }), A.storage.set(JA, B);
+function gg({ ctx: A }) {
+  const { listings: E, exceptionalMax: g, exceptional: Q } = P(), [B, o] = L(!1), I = typeof A.prices.getGemListings == "function", i = async () => {
+    if (!(!A.prices.getGemListings || B)) {
+      o(!0);
+      try {
+        const e = await A.prices.getGemListings();
+        F({ listings: e });
+        const n = Q && wA(e.lines, null).find((U) => U.name === Q.name);
+        n && n.chaos !== Q.chaos && l(n.name, n.chaos);
+      } finally {
+        o(!1);
+      }
+    }
+  }, l = (e, n) => {
+    F({ exceptional: { name: e, chaos: n } }), A.storage.set(GA, { name: e, chaos: n });
+  }, w = (e) => {
+    const n = e !== null && e > 0 ? e : 10;
+    F({ exceptionalMax: n }), A.storage.set(HA, n);
+  }, k = f(() => E ? wA(E.lines, g) : [], [E, g]);
+  return /* @__PURE__ */ s(
+    "details",
+    {
+      style: { marginTop: 16 },
+      onToggle: (e) => {
+        e.currentTarget.open && !E && i();
+      },
+      children: [
+        /* @__PURE__ */ c("summary", { style: { cursor: "pointer" }, children: "Exceptional gem finder" }),
+        I ? /* @__PURE__ */ s(hA, { children: [
+          /* @__PURE__ */ c("p", { style: { ...h, fontSize: 12 }, children: "Cheapest uncorrupted listing of each exceptional support at or under the cap, most listed first: more listings means better odds of a seller with several. Choose one to count its price in each craft's cost." }),
+          /* @__PURE__ */ s("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }, children: [
+            /* @__PURE__ */ c(T, { children: "Max price" }),
+            /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(r, { value: g, onChange: w, min: 1, step: 1, suffix: "c" }) }),
+            /* @__PURE__ */ c(m, { size: "sm", variant: "ghost", onClick: () => void i(), disabled: B, children: B ? "Loading..." : "Reload listings" }),
+            (E == null ? void 0 : E.updatedAt) && /* @__PURE__ */ s("span", { style: { ...h, fontSize: 12 }, children: [
+              "poe.ninja, ",
+              E.league,
+              ", ",
+              new Date(E.updatedAt).toLocaleTimeString()
+            ] })
+          ] }),
+          (E == null ? void 0 : E.error) && /* @__PURE__ */ c("div", { style: { marginTop: 8 }, children: /* @__PURE__ */ c(O, { message: E.error, tone: "warn" }) }),
+          E && /* @__PURE__ */ s("table", { style: { width: "100%", marginTop: 8, borderCollapse: "collapse", fontSize: 12 }, children: [
+            /* @__PURE__ */ c("thead", { children: /* @__PURE__ */ s("tr", { style: { ...h, textAlign: "left", fontSize: 11 }, children: [
+              /* @__PURE__ */ c("th", { style: Y, children: "Gem" }),
+              /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Price" }),
+              /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Listings" }),
+              /* @__PURE__ */ c("th", {})
+            ] }) }),
+            /* @__PURE__ */ s("tbody", { children: [
+              k.slice(0, 15).map((e) => /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
+                /* @__PURE__ */ s("td", { style: Y, children: [
+                  e.name,
+                  e.variant && e.variant !== "1" && /* @__PURE__ */ s("span", { style: h, children: [
+                    " (",
+                    e.variant,
+                    ")"
+                  ] })
+                ] }),
+                /* @__PURE__ */ s("td", { style: { ...Y, textAlign: "right" }, children: [
+                  H(e.chaos),
+                  "c"
+                ] }),
+                /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: e.listings }),
+                /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: /* @__PURE__ */ c(
+                  m,
+                  {
+                    size: "sm",
+                    variant: (Q == null ? void 0 : Q.name) === e.name ? "primary" : "ghost",
+                    onClick: () => l(e.name, e.chaos),
+                    children: (Q == null ? void 0 : Q.name) === e.name ? "Chosen" : "Choose"
+                  }
+                ) })
+              ] }, e.name)),
+              !k.length && /* @__PURE__ */ c("tr", { children: /* @__PURE__ */ s("td", { colSpan: 4, style: { ...Y, ...h }, children: [
+                "No exceptional supports at or under ",
+                g,
+                "c."
+              ] }) })
+            ] })
+          ] })
+        ] }) : /* @__PURE__ */ c("p", { style: { ...h, fontSize: 12 }, children: "Needs the patched Scalpel build (1.0.5-gems.12 or later) for listing counts." })
+      ]
+    }
+  );
+}
+function Qg({ ctx: A }) {
+  const { calibration: E, scan: g } = P(), Q = (B) => {
+    const o = { ...E, ...B };
+    F({ calibration: o, scan: g ? WA(g.capture, o) : null }), A.storage.set(rA, o);
   };
-  return /* @__PURE__ */ a("details", { style: { marginTop: 16 }, children: [
-    /* @__PURE__ */ o("summary", { style: { cursor: "pointer" }, children: "Calibration" }),
-    /* @__PURE__ */ o("p", { style: { ...C, fontSize: 12 }, children: "Green = matched, amber = look-alike, red = unreadable, grey = empty. If the boxes don't sit on the inventory cells, nudge them below; scans also auto-correct small offsets." }),
-    /* @__PURE__ */ a("div", { style: { display: "grid", gridTemplateColumns: "auto 1fr", gap: 8, alignItems: "center" }, children: [
-      /* @__PURE__ */ o(x, { children: "Offset X" }),
-      /* @__PURE__ */ o(G, { value: g.offsetX, onChange: (I) => Q({ offsetX: I ?? 0 }), step: 1, suffix: "px" }),
-      /* @__PURE__ */ o(x, { children: "Offset Y" }),
-      /* @__PURE__ */ o(G, { value: g.offsetY, onChange: (I) => Q({ offsetY: I ?? 0 }), step: 1, suffix: "px" }),
-      /* @__PURE__ */ o(x, { children: "Cell size" }),
-      /* @__PURE__ */ o(
-        G,
+  return /* @__PURE__ */ s("details", { style: { marginTop: 16 }, children: [
+    /* @__PURE__ */ c("summary", { style: { cursor: "pointer" }, children: "Calibration" }),
+    /* @__PURE__ */ c("p", { style: { ...h, fontSize: 12 }, children: "Green = matched, amber = look-alike, red = unreadable, grey = empty. If the boxes don't sit on the inventory cells, nudge them below; scans also auto-correct small offsets." }),
+    /* @__PURE__ */ s("div", { style: { display: "grid", gridTemplateColumns: "auto 1fr", gap: 8, alignItems: "center" }, children: [
+      /* @__PURE__ */ c(T, { children: "Offset X" }),
+      /* @__PURE__ */ c(r, { value: E.offsetX, onChange: (B) => Q({ offsetX: B ?? 0 }), step: 1, suffix: "px" }),
+      /* @__PURE__ */ c(T, { children: "Offset Y" }),
+      /* @__PURE__ */ c(r, { value: E.offsetY, onChange: (B) => Q({ offsetY: B ?? 0 }), step: 1, suffix: "px" }),
+      /* @__PURE__ */ c(T, { children: "Cell size" }),
+      /* @__PURE__ */ c(
+        r,
         {
-          value: g.cellScale,
-          onChange: (I) => Q({ cellScale: I ?? 1 }),
+          value: E.cellScale,
+          onChange: (B) => Q({ cellScale: B ?? 1 }),
           min: 0.5,
           max: 2,
           step: 5e-3,
@@ -2481,175 +2327,182 @@ function ug({ ctx: A }) {
         }
       )
     ] }),
-    E ? /* @__PURE__ */ a("div", { style: { marginTop: 8 }, children: [
-      /* @__PURE__ */ o(zg, { scan: E }),
-      /* @__PURE__ */ a("div", { style: { ...C, fontSize: 11 }, children: [
+    g ? /* @__PURE__ */ s("div", { style: { marginTop: 8 }, children: [
+      /* @__PURE__ */ c($E, { scan: g }),
+      /* @__PURE__ */ s("div", { style: { ...h, fontSize: 11 }, children: [
         "Auto-align: ",
-        (E.offset.dx / E.capture.scale).toFixed(1),
+        (g.offset.dx / g.capture.scale).toFixed(1),
         ", ",
-        (E.offset.dy / E.capture.scale).toFixed(1),
+        (g.offset.dy / g.capture.scale).toFixed(1),
         " ",
         "px"
       ] })
-    ] }) : /* @__PURE__ */ o("p", { style: C, children: "Scan once to see the grid preview." })
+    ] }) : /* @__PURE__ */ c("p", { style: h, children: "Scan once to see the grid preview." })
   ] });
 }
-function vg({ ctx: A }) {
-  const { scan: g, scanning: E, error: Q, order: I, book: B, threshold: c, hideUnpriced: e, chaosOnly: w } = BA();
-  AA(() => {
-    VA(A);
+function Bg({ ctx: A }) {
+  const { scan: E, scanning: g, error: Q, order: B, book: o, threshold: I, hideUnpriced: i, chaosOnly: l } = P();
+  BA(() => {
+    XA(A);
   }, [A]);
-  const l = L(() => g && B ? Eg(g.cells, B) : null, [g, B]), U = L(
-    () => g && B && l ? I === "inventory" ? gg(g.cells, B) : l.rows : [],
-    [g, B, l, I]
-  ), n = (M) => c !== null && M.unitMax !== null && M.unitMax < c, i = (M) => M.candidates.length > 0 && M.unitMax === null, k = U.filter((M) => !n(M) && !(e && i(M))), s = e ? U.filter(i).reduce((M, d) => M + d.count, 0) : 0, t = U.filter(n), Y = t.reduce((M, d) => M + d.count, 0), F = t.reduce((M, d) => M + (d.unitMin ?? 0) * d.count, 0), h = t.reduce((M, d) => M + (d.unitMax ?? 0) * d.count, 0), S = () => {
-    R({ chaosOnly: !w }), A.storage.set(WA, !w);
-  }, j = () => {
-    R({ hideUnpriced: !e }), A.storage.set(mA, !e);
-  }, m = (M) => {
-    const d = M !== null && M > 0 ? M : null;
-    R({ threshold: d }), d === null ? A.storage.delete(_) : A.storage.set(_, d);
-  }, J = (M) => {
-    R({ order: M }), A.storage.set(XA, M);
+  const w = f(() => E && o ? IE(E.cells, o) : null, [E, o]), k = f(
+    () => E && o && w ? B === "inventory" ? cE(E.cells, o) : w.rows : [],
+    [E, o, w, B]
+  ), e = (M) => I !== null && M.unitMax !== null && M.unitMax < I, n = (M) => M.candidates.length > 0 && M.unitMax === null, U = k.filter((M) => !e(M) && !(i && n(M))), a = i ? k.filter(n).reduce((M, R) => M + R.count, 0) : 0, t = k.filter(e), p = t.reduce((M, R) => M + R.count, 0), d = t.reduce((M, R) => M + (R.unitMin ?? 0) * R.count, 0), S = t.reduce((M, R) => M + (R.unitMax ?? 0) * R.count, 0), b = () => {
+    F({ chaosOnly: !l }), A.storage.set(JA, !l);
+  }, D = () => {
+    F({ hideUnpriced: !i }), A.storage.set(TA, !i);
+  }, V = (M) => {
+    const R = M !== null && M > 0 ? M : null;
+    F({ threshold: R }), R === null ? A.storage.delete(EA) : A.storage.set(EA, R);
+  }, C = (M) => {
+    F({ order: M }), A.storage.set(jA, M);
   };
-  return /* @__PURE__ */ a("div", { style: { padding: 12, color: "var(--text)", fontSize: 13 }, children: [
-    /* @__PURE__ */ a("div", { style: { display: "flex", gap: 8, alignItems: "center" }, children: [
-      /* @__PURE__ */ o(D, { variant: "primary", onClick: () => void jA(A), disabled: E, children: E ? "Scanning..." : "Scan inventory" }),
-      /* @__PURE__ */ o("span", { style: { ...C, fontSize: 12 }, children: `Tip: bind "Scan inventory gems" in Settings > Macros and press it in game with your inventory open. Prices appear over your inventory; close them with the overlay's ✕ or your toggle hotkey.` })
+  return /* @__PURE__ */ s("div", { style: { padding: 12, color: "var(--text)", fontSize: 13 }, children: [
+    /* @__PURE__ */ s("div", { style: { display: "flex", gap: 8, alignItems: "center" }, children: [
+      /* @__PURE__ */ c(m, { variant: "primary", onClick: () => void fA(A), disabled: g, children: g ? "Scanning..." : "Scan inventory" }),
+      /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12 }, children: `Tip: bind "Scan inventory gems" in Settings > Macros and press it in game with your inventory open. Prices appear over your inventory; close them with the overlay's ✕ or your toggle hotkey.` })
     ] }),
-    Q && /* @__PURE__ */ o("div", { style: { marginTop: 12 }, children: /* @__PURE__ */ o(oA, { message: Q, tone: "warn" }) }),
-    B && !B.hasVariants && /* @__PURE__ */ o("div", { style: { marginTop: 12 }, children: /* @__PURE__ */ o(
-      oA,
+    Q && /* @__PURE__ */ c("div", { style: { marginTop: 12 }, children: /* @__PURE__ */ c(O, { message: Q, tone: "warn" }) }),
+    o && !o.hasVariants && /* @__PURE__ */ c("div", { style: { marginTop: 12 }, children: /* @__PURE__ */ c(
+      O,
       {
         tone: "warn",
-        message: `This Scalpel version doesn't pass gem level/quality to plugins, so each gem shows the range across all its poe.ninja listings instead of the exact ${P} price.`
+        message: `This Scalpel version doesn't pass gem level/quality to plugins, so each gem shows the range across all its poe.ninja listings instead of the exact ${K} price.`
       }
     ) }),
-    l && /* @__PURE__ */ a(TA, { children: [
-      /* @__PURE__ */ a("div", { style: { marginTop: 12, display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }, children: [
-        /* @__PURE__ */ o("span", { style: { ...C, fontSize: 12 }, children: "List:" }),
-        /* @__PURE__ */ o(D, { size: "sm", variant: I === "value" ? "primary" : "ghost", onClick: () => J("value"), children: "By value" }),
-        /* @__PURE__ */ o(D, { size: "sm", variant: I === "inventory" ? "primary" : "ghost", onClick: () => J("inventory"), children: "Inventory order" }),
-        /* @__PURE__ */ o("span", { style: { ...C, fontSize: 12, marginLeft: 12 }, children: "Min price:" }),
-        /* @__PURE__ */ o("div", { style: { width: 90 }, children: /* @__PURE__ */ o(G, { value: c, onChange: m, min: 0, step: 5, suffix: "c" }) }),
-        c !== null && (B == null ? void 0 : B.divineChaos) && /* @__PURE__ */ a("span", { style: { ...C, fontSize: 12 }, children: [
+    w && /* @__PURE__ */ s(hA, { children: [
+      /* @__PURE__ */ s("div", { style: { marginTop: 12, display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }, children: [
+        /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12 }, children: "List:" }),
+        /* @__PURE__ */ c(m, { size: "sm", variant: B === "value" ? "primary" : "ghost", onClick: () => C("value"), children: "By value" }),
+        /* @__PURE__ */ c(m, { size: "sm", variant: B === "inventory" ? "primary" : "ghost", onClick: () => C("inventory"), children: "Inventory order" }),
+        /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12, marginLeft: 12 }, children: "Min price:" }),
+        /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(r, { value: I, onChange: V, min: 0, step: 5, suffix: "c" }) }),
+        I !== null && (o == null ? void 0 : o.divineChaos) && /* @__PURE__ */ s("span", { style: { ...h, fontSize: 12 }, children: [
           "(",
-          (c / B.divineChaos).toFixed(2),
+          (I / o.divineChaos).toFixed(2),
           " div)"
         ] }),
-        /* @__PURE__ */ o(D, { size: "sm", variant: e ? "primary" : "ghost", onClick: j, children: "Hide no-price" }),
-        /* @__PURE__ */ o(D, { size: "sm", variant: w ? "primary" : "ghost", onClick: S, children: "Chaos only" })
+        /* @__PURE__ */ c(m, { size: "sm", variant: i ? "primary" : "ghost", onClick: D, children: "Hide no-price" }),
+        /* @__PURE__ */ c(m, { size: "sm", variant: l ? "primary" : "ghost", onClick: b, children: "Chaos only" })
       ] }),
-      /* @__PURE__ */ a("div", { style: { marginTop: 12 }, children: [
-        /* @__PURE__ */ o("strong", { children: l.gems }),
+      /* @__PURE__ */ s("div", { style: { marginTop: 12 }, children: [
+        /* @__PURE__ */ c("strong", { children: w.gems }),
         " gems",
-        l.unknown > 0 && /* @__PURE__ */ a("span", { style: C, children: [
+        w.unknown > 0 && /* @__PURE__ */ s("span", { style: h, children: [
           " - ",
-          l.unknown,
+          w.unknown,
           " cells unreadable"
         ] }),
         " - total ",
-        /* @__PURE__ */ o("strong", { children: b(l.totalMin, l.totalMax) }),
-        (B == null ? void 0 : B.divineChaos) && /* @__PURE__ */ a("span", { style: C, children: [
+        /* @__PURE__ */ c("strong", { children: J(w.totalMin, w.totalMax) }),
+        (o == null ? void 0 : o.divineChaos) && /* @__PURE__ */ s("span", { style: h, children: [
           " ",
           "(",
-          b(l.totalMin / B.divineChaos, l.totalMax / B.divineChaos, " div"),
+          J(w.totalMin / o.divineChaos, w.totalMax / o.divineChaos, " div"),
           ")"
         ] })
       ] }),
-      /* @__PURE__ */ a("table", { style: { width: "100%", marginTop: 8, borderCollapse: "collapse" }, children: [
-        /* @__PURE__ */ o("thead", { children: /* @__PURE__ */ a("tr", { style: { ...C, textAlign: "left", fontSize: 11 }, children: [
-          /* @__PURE__ */ o("th", {}),
-          /* @__PURE__ */ a("th", { style: V, children: [
+      /* @__PURE__ */ s("table", { style: { width: "100%", marginTop: 8, borderCollapse: "collapse" }, children: [
+        /* @__PURE__ */ c("thead", { children: /* @__PURE__ */ s("tr", { style: { ...h, textAlign: "left", fontSize: 11 }, children: [
+          /* @__PURE__ */ c("th", {}),
+          /* @__PURE__ */ s("th", { style: Y, children: [
             "Gem (",
-            P,
+            K,
             ")"
           ] }),
-          /* @__PURE__ */ o("th", { style: { ...V, textAlign: "right" }, children: I === "inventory" ? /* @__PURE__ */ o("span", { title: "Column-row, counted down each column", children: "Slot" }) : "Qty" }),
-          /* @__PURE__ */ o("th", { style: { ...V, textAlign: "right" }, children: "Each" }),
-          /* @__PURE__ */ o("th", { style: { ...V, textAlign: "right" }, children: "Total" })
+          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: B === "inventory" ? /* @__PURE__ */ c("span", { title: "Column-row, counted down each column", children: "Slot" }) : "Qty" }),
+          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Each" }),
+          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Total" })
         ] }) }),
-        /* @__PURE__ */ a("tbody", { children: [
-          k.map((M) => /* @__PURE__ */ o(Ng, { row: M }, M.key)),
-          Y > 0 && /* @__PURE__ */ a("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...C }, children: [
-            /* @__PURE__ */ o("td", {}),
-            /* @__PURE__ */ a("td", { style: V, children: [
-              Y,
+        /* @__PURE__ */ s("tbody", { children: [
+          U.map((M) => /* @__PURE__ */ c(KE, { row: M }, M.key)),
+          p > 0 && /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...h }, children: [
+            /* @__PURE__ */ c("td", {}),
+            /* @__PURE__ */ s("td", { style: Y, children: [
+              p,
               " ",
-              Y === 1 ? "gem" : "gems",
+              p === 1 ? "gem" : "gems",
               " under ",
-              c,
+              I,
               "c"
             ] }),
-            /* @__PURE__ */ o("td", { style: { ...V, textAlign: "right" }, children: I === "value" ? Y : "" }),
-            /* @__PURE__ */ o("td", {}),
-            /* @__PURE__ */ o("td", { style: { ...V, textAlign: "right" }, children: b(F, h) })
+            /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: B === "value" ? p : "" }),
+            /* @__PURE__ */ c("td", {}),
+            /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: J(d, S) })
           ] }),
-          s > 0 && /* @__PURE__ */ a("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...C }, children: [
-            /* @__PURE__ */ o("td", {}),
-            /* @__PURE__ */ a("td", { style: V, children: [
-              s,
+          a > 0 && /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...h }, children: [
+            /* @__PURE__ */ c("td", {}),
+            /* @__PURE__ */ s("td", { style: Y, children: [
+              a,
               " ",
-              s === 1 ? "gem" : "gems",
+              a === 1 ? "gem" : "gems",
               " with no price hidden"
             ] }),
-            /* @__PURE__ */ o("td", { style: { ...V, textAlign: "right" }, children: I === "value" ? s : "" }),
-            /* @__PURE__ */ o("td", {}),
-            /* @__PURE__ */ o("td", {})
+            /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: B === "value" ? a : "" }),
+            /* @__PURE__ */ c("td", {}),
+            /* @__PURE__ */ c("td", {})
           ] })
         ] })
       ] }),
-      (B == null ? void 0 : B.updatedAt) && /* @__PURE__ */ a("div", { style: { ...C, fontSize: 11, marginTop: 8 }, children: [
+      (o == null ? void 0 : o.updatedAt) && /* @__PURE__ */ s("div", { style: { ...h, fontSize: 11, marginTop: 8 }, children: [
         "poe.ninja prices from ",
-        new Date(B.updatedAt).toLocaleTimeString()
+        new Date(o.updatedAt).toLocaleTimeString()
       ] })
     ] }),
-    /* @__PURE__ */ o(Kg, { ctx: A }),
-    /* @__PURE__ */ o(ug, { ctx: A })
+    /* @__PURE__ */ c(Eg, { ctx: A }),
+    /* @__PURE__ */ c(gg, { ctx: A }),
+    /* @__PURE__ */ c(Qg, { ctx: A })
   ] });
 }
-const qg = 150, kA = "Vivid Watcher Helper";
-let W = null;
-async function QE(A) {
-  const g = await A.storage.get(JA);
-  g && R({ calibration: { ...MA, ...g } });
-  const E = await A.storage.get(XA);
-  (E === "value" || E === "inventory") && R({ order: E });
-  const Q = await A.storage.get(_);
-  typeof Q == "number" && R({ threshold: Q }), await A.storage.get(mA) === !0 && R({ hideUnpriced: !0 }), await A.storage.get(WA) === !0 && R({ chaosOnly: !0 });
-  const I = await A.storage.get(EA);
-  I != null && I.batches && I.snapshot && R({ log: { ...QA, ...I } });
-  const B = await A.storage.get($);
-  typeof B == "number" && R({ beastOverride: B }), await A.storage.get(bA) === !1 && R({ logging: !1 });
-  let c = p();
-  hA(() => {
-    const w = p();
-    (w.scan !== c.scan || w.book !== c.book || w.threshold !== c.threshold || w.hideUnpriced !== c.hideUnpriced || w.chaosOnly !== c.chaosOnly) && aA(A), c = w;
+const og = 150, MA = "Vivid Watcher Helper";
+let j = null;
+async function lg(A) {
+  const E = await A.storage.get(rA);
+  E && F({ calibration: { ...CA, ...E } });
+  const g = await A.storage.get(jA);
+  (g === "value" || g === "inventory") && F({ order: g });
+  const Q = await A.storage.get(EA);
+  typeof Q == "number" && F({ threshold: Q }), await A.storage.get(TA) === !0 && F({ hideUnpriced: !0 }), await A.storage.get(JA) === !0 && F({ chaosOnly: !0 });
+  const B = await A.storage.get(cA);
+  B != null && B.batches && B.snapshot && F({ log: { ...IA, ...B } });
+  const o = await A.storage.get(gA);
+  typeof o == "number" && F({ beastOverride: o }), await A.storage.get(ZA) === !1 && F({ logging: !1 });
+  const I = await A.storage.get(GA);
+  I && typeof I.name == "string" && typeof I.chaos == "number" && F({ exceptional: I });
+  const i = await A.storage.get(HA);
+  typeof i == "number" && F({ exceptionalMax: i });
+  const l = await A.storage.get(QA);
+  typeof l == "number" && F({ yellowBeast: l });
+  let w = X();
+  RA(() => {
+    const e = X();
+    (e.scan !== w.scan || e.book !== w.book || e.threshold !== w.threshold || e.hideUnpriced !== w.hideUnpriced || e.chaosOnly !== w.chaosOnly) && kA(A), w = e;
   });
-  const e = ZA(/* @__PURE__ */ o(uA, { theme: "two-tone", fill: ["currentColor", "rgba(255,255,255,0.2)"] }));
+  const k = LA(/* @__PURE__ */ c(AE, { theme: "two-tone", fill: ["currentColor", "rgba(255,255,255,0.2)"] }));
   A.registerHotkey({ label: "Scan inventory gems" }, async () => {
-    if (await A.isOverlayVisible() && (A.closeOverlay(), await new Promise((w) => setTimeout(w, qg))), await jA(A), p().error || !p().scan || !p().book) {
+    if (await A.isOverlayVisible() && (A.closeOverlay(), await new Promise((e) => setTimeout(e, og))), await fA(A), X().error || !X().scan || !X().book) {
       A.openTab();
       return;
     }
-    await aA(A), A.openOverlay();
+    await kA(A), A.openOverlay();
   }), A.registerTab({
-    label: kA,
-    icon: e,
-    render: (w) => (W = cA(w), W.render(/* @__PURE__ */ o(vg, { ctx: A })), () => {
-      W == null || W.unmount(), W = null;
+    label: MA,
+    icon: k,
+    render: (e) => (j = nA(e), j.render(/* @__PURE__ */ c(Bg, { ctx: A })), () => {
+      j == null || j.unmount(), j = null;
     })
   }), A.registerOverlay(
     // No dismissOnEscape: Esc is a habit key in PoE, so the overlay closes from
     // its own button or the toggle hotkey.
-    { title: kA, icon: e, mode: "annotation", hotkeyLabel: "Toggle gem overlay" },
-    (w) => {
-      const l = cA(w);
-      return l.render(/* @__PURE__ */ o(eg, { ctx: A })), () => l.unmount();
+    { title: MA, icon: k, mode: "annotation", hotkeyLabel: "Toggle gem overlay" },
+    (e) => {
+      const n = nA(e);
+      return n.render(/* @__PURE__ */ c(tE, { ctx: A })), () => n.unmount();
     }
   );
 }
 export {
-  QE as default
+  lg as default
 };
 //# sourceMappingURL=plugin.js.map
