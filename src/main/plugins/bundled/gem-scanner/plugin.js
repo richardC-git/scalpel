@@ -516,7 +516,8 @@ const vE = "https://www.pathofexile.com/trade/search";
 function PE(A, E) {
   const g = {
     query: {
-      status: { option: "online" },
+      // 'securable' is the trade site's Instant Buyout status
+      status: { option: "securable" },
       type: A,
       filters: { misc_filters: { filters: { corrupted: { option: "false" } } } }
     },
