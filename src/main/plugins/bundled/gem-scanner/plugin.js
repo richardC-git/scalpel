@@ -1,9 +1,9 @@
 import { jsxs as s, jsx as c, Fragment as hA } from "react/jsx-runtime";
 import { createRoot as nA } from "react-dom/client";
 import { renderToStaticMarkup as LA } from "react-dom/server";
-import W, { useContext as xA, useMemo as f, createContext as NA, useState as L, useEffect as BA, useRef as YA, useLayoutEffect as yA, useSyncExternalStore as uA } from "react";
-import { Button as m, ErrorBanner as O, ScrubInput as r, formatPrice as H, Label as T } from "@scalpelpoe/plugin-sdk";
-var PA = ["size", "strokeWidth", "strokeLinecap", "strokeLinejoin", "theme", "fill", "className", "spin"];
+import r, { useContext as xA, useMemo as f, createContext as NA, useState as L, useEffect as BA, useRef as dA, useLayoutEffect as yA, useSyncExternalStore as uA } from "react";
+import { Button as X, ErrorBanner as O, ScrubInput as W, formatPrice as H, Label as T } from "@scalpelpoe/plugin-sdk";
+var zA = ["size", "strokeWidth", "strokeLinecap", "strokeLinejoin", "theme", "fill", "className", "spin"];
 function iA(A, E) {
   var g = Object.keys(A);
   if (Object.getOwnPropertySymbols) {
@@ -18,14 +18,14 @@ function lA(A) {
   for (var E = 1; E < arguments.length; E++) {
     var g = arguments[E] != null ? arguments[E] : {};
     E % 2 ? iA(Object(g), !0).forEach(function(Q) {
-      zA(A, Q, g[Q]);
+      PA(A, Q, g[Q]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(A, Object.getOwnPropertyDescriptors(g)) : iA(Object(g)).forEach(function(Q) {
       Object.defineProperty(A, Q, Object.getOwnPropertyDescriptor(g, Q));
     });
   }
   return A;
 }
-function zA(A, E, g) {
+function PA(A, E, g) {
   return E in A ? Object.defineProperty(A, E, { value: g, enumerable: !0, configurable: !0, writable: !0 }) : A[E] = g, A;
 }
 function vA(A, E) {
@@ -102,11 +102,11 @@ function _A(A, E, g) {
     id: A
   };
 }
-var dA = /* @__PURE__ */ NA(KA);
-dA.Provider;
+var YA = /* @__PURE__ */ NA(KA);
+YA.Provider;
 function $A(A, E, g) {
   return function(Q) {
-    var B = Q.size, o = Q.strokeWidth, I = Q.strokeLinecap, i = Q.strokeLinejoin, l = Q.theme, w = Q.fill, k = Q.className, e = Q.spin, n = vA(Q, PA), U = xA(dA), a = f(qA, []), t = _A(a, {
+    var B = Q.size, o = Q.strokeWidth, I = Q.strokeLinecap, i = Q.strokeLinejoin, l = Q.theme, w = Q.fill, k = Q.className, e = Q.spin, n = vA(Q, zA), U = xA(YA), a = f(qA, []), t = _A(a, {
       size: B,
       strokeWidth: o,
       strokeLinecap: I,
@@ -114,43 +114,43 @@ function $A(A, E, g) {
       theme: l,
       fill: w
     }, U), p = [U.prefix + "-icon"];
-    return p.push(U.prefix + "-icon-" + A), e && p.push(U.prefix + "-icon-spin"), k && p.push(k), /* @__PURE__ */ W.createElement("span", lA(lA({}, n), {}, {
+    return p.push(U.prefix + "-icon-" + A), e && p.push(U.prefix + "-icon-spin"), k && p.push(k), /* @__PURE__ */ r.createElement("span", lA(lA({}, n), {}, {
       className: p.join(" ")
     }), g(t));
   };
 }
 const AE = $A("diamonds", !1, function(A) {
-  return /* @__PURE__ */ W.createElement("svg", {
+  return /* @__PURE__ */ r.createElement("svg", {
     width: A.size,
     height: A.size,
     viewBox: "0 0 48 48",
     fill: "none"
-  }, /* @__PURE__ */ W.createElement("path", {
+  }, /* @__PURE__ */ r.createElement("path", {
     d: "M12 8H36L44 18L24 42L4 18L12 8Z",
     fill: A.colors[1],
     stroke: A.colors[0],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ W.createElement("path", {
+  }), /* @__PURE__ */ r.createElement("path", {
     d: "M4 18L44 18",
     stroke: A.colors[2],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ W.createElement("path", {
+  }), /* @__PURE__ */ r.createElement("path", {
     d: "M24 42L16 18",
     stroke: A.colors[2],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ W.createElement("path", {
+  }), /* @__PURE__ */ r.createElement("path", {
     d: "M24 42L32 18",
     stroke: A.colors[2],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ W.createElement("path", {
+  }), /* @__PURE__ */ r.createElement("path", {
     d: "M8 13L4 18L24 42L44 18L40 13",
     stroke: A.colors[0],
     strokeWidth: A.strokeWidth,
@@ -215,9 +215,9 @@ function eE(A) {
   };
 }
 function nE(A, E) {
-  return E && A >= E ? `${z(A / E)}d` : A >= 1e3 ? `${z(A / 1e3)}kc` : `${z(A)}c`;
+  return E && A >= E ? `${P(A / E)}d` : A >= 1e3 ? `${P(A / 1e3)}kc` : `${P(A)}c`;
 }
-function z(A) {
+function P(A) {
   return A < 10 ? String(Math.round(A * 10) / 10) : String(Math.round(A));
 }
 function iE(A, E, g, Q = !1, B = !1) {
@@ -234,8 +234,8 @@ function iE(A, E, g, Q = !1, B = !1) {
       e.push({ ...U, kind: Q ? "below" : "unpriced", label: "no price" });
       continue;
     }
-    const t = n.candidates.length > 1, p = nE(a, B ? null : E.divineChaos) + (t ? "?" : ""), d = g !== null && a < g ? "below" : t ? "lookalike" : "above";
-    e.push({ ...U, kind: d, label: p });
+    const t = n.candidates.length > 1, p = nE(a, B ? null : E.divineChaos) + (t ? "?" : ""), Y = g !== null && a < g ? "below" : t ? "lookalike" : "above";
+    e.push({ ...U, kind: Y, label: p });
   }
   return e;
 }
@@ -287,7 +287,7 @@ function wE({ mark: A }) {
 }
 const sA = 26;
 function aE({ ctx: A, payload: E }) {
-  const g = YA(null), { grid: Q, status: B } = E;
+  const g = dA(null), { grid: Q, status: B } = E;
   return yA(() => {
     const o = g.current;
     if (!o) return;
@@ -368,7 +368,7 @@ function UE(A) {
   return A.map((E) => E.name).sort().join(" | ");
 }
 const kE = 2, ME = 0.2, hE = 0.25;
-function YE(A, E, g) {
+function dE(A, E, g) {
   const Q = E.filter((n) => n.status !== "empty"), B = Q.filter((n) => n.status === "unknown").length;
   if (B > kE && B > Q.length * ME)
     return { log: A, outcome: { kind: "skipped", reason: `${B} unreadable cells` } };
@@ -402,7 +402,7 @@ function YE(A, E, g) {
     outcome: { kind: "recorded", count: w.length, newRun: l }
   };
 }
-function dE(A, E) {
+function YE(A, E) {
   return E.outcome.kind === "skipped" ? E : { log: { ...E.log, batches: A.batches }, outcome: { kind: "disabled" } };
 }
 function CE(A) {
@@ -495,8 +495,20 @@ function wA(A, E) {
   }
   return [...Q.values()].filter((B) => E === null || B.chaosValue <= E).map((B) => ({ name: B.name, variant: B.variant, chaos: B.chaosValue, listings: B.listingCount })).sort((B, o) => o.listings - B.listings || B.chaos - o.chaos);
 }
-const K = "20/20", DE = "skill-gem";
-function WE(A, E, g) {
+const DE = "https://www.pathofexile.com/trade/search";
+function rE(A, E) {
+  const g = {
+    query: {
+      status: { option: "online" },
+      type: A,
+      filters: { misc_filters: { filters: { corrupted: { option: "false" } } } }
+    },
+    sort: { price: "asc" }
+  };
+  return `${DE}/${encodeURIComponent(E)}?q=${encodeURIComponent(JSON.stringify(g))}`;
+}
+const K = "20/20", WE = "skill-gem";
+function jE(A, E, g) {
   const Q = A, B = Q.some((i) => typeof i.variant == "string"), o = /* @__PURE__ */ new Map();
   for (const i of Q) {
     const l = i.name.toLowerCase(), w = o.get(l);
@@ -540,7 +552,7 @@ let q = {
   yellowBeast: null
 };
 const _ = /* @__PURE__ */ new Set();
-function X() {
+function m() {
   return q;
 }
 function F(A) {
@@ -552,8 +564,8 @@ function RA(A) {
     _.delete(A);
   };
 }
-function P() {
-  return uA(RA, X);
+function z() {
+  return uA(RA, m);
 }
 const N = "Vivid Watcher";
 let Z = null;
@@ -561,12 +573,12 @@ function XA(A) {
   if (Z) return Z;
   const E = async () => {
     const [g, Q, B] = await Promise.all([
-      A.prices.getPrices({ category: DE }),
+      A.prices.getPrices({ category: WE }),
       A.prices.getPrices({ category: "currency" }),
       A.prices.getPrices({ category: "beast" })
     ]), o = B.prices.find((I) => I.name === N) ?? (await A.prices.getPrices()).prices.find((I) => I.name === N);
     F({
-      book: WE(g.prices, Q.prices, g.updatedAt),
+      book: jE(g.prices, Q.prices, g.updatedAt),
       beastChaos: (o == null ? void 0 : o.chaosValue) ?? null
     });
   };
@@ -574,7 +586,7 @@ function XA(A) {
     throw Z = null, g;
   }), Z;
 }
-const rE = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", jE = [
+const TE = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", JE = [
   {
     name: "Added Chaos Damage Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0FkZGVkQ2hhb3NEYW1hZ2UiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/a89e2281e4/AddedChaosDamage.png",
@@ -1848,34 +1860,34 @@ const rE = "ae42ad6446ac7a00cf2e2564f1bc8e939ec399e0", jE = [
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASUQAQAAAAAAAAAAAAABM57z8WABAQEAAAAAAAAFjv7+///+ppuWAAAAAAAFuv7///////6opQEAAAAAaf7/////////1g8AAAAAAZD+/////////9IBAAAAAAGC///////////zDAAAAABHvP7/////////xAMAAAAAgLf+///////+whYAAAAAAAIbZPn///7+2hIAAAAAAAAAAAFO8c2RUxMAAAAAAAAAAAAAABEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
   }
 ], mA = {
-  source: rE,
-  gems: jE
-}, TE = 16;
-function JE(A, E, g, Q, B, o = TE) {
+  source: TE,
+  gems: JE
+}, ZE = 16;
+function GE(A, E, g, Q, B, o = ZE) {
   const I = new Uint8Array(o * o * 3), i = new Uint8Array(o * o), l = Math.max(0, Math.floor(E)), w = Math.max(0, Math.floor(g)), k = Math.min(A.width, Math.ceil(E + Q)), e = Math.min(A.height, Math.ceil(g + B)), n = new Float64Array(o * o), U = new Float64Array(o * o), a = new Float64Array(o * o), t = new Float64Array(o * o), p = new Float64Array(o * o);
-  for (let d = w; d < e; d++) {
-    const S = Math.floor((d + 0.5 - g) / B * o);
+  for (let Y = w; Y < e; Y++) {
+    const S = Math.floor((Y + 0.5 - g) / B * o);
     if (!(S < 0 || S >= o))
       for (let b = l; b < k; b++) {
         const D = Math.floor((b + 0.5 - E) / Q * o);
         if (D < 0 || D >= o) continue;
-        const V = (d * A.width + b) * 4, C = A.pixels[V + 3], M = S * o + D;
+        const V = (Y * A.width + b) * 4, C = A.pixels[V + 3], M = S * o + D;
         n[M] += A.pixels[V] * C, U[M] += A.pixels[V + 1] * C, a[M] += A.pixels[V + 2] * C, t[M] += C, p[M]++;
       }
   }
-  for (let d = 0; d < o * o; d++)
-    t[d] > 0 && (I[d * 3] = Math.round(n[d] / t[d]), I[d * 3 + 1] = Math.round(U[d] / t[d]), I[d * 3 + 2] = Math.round(a[d] / t[d])), i[d] = p[d] > 0 ? Math.round(t[d] / p[d]) : 0;
+  for (let Y = 0; Y < o * o; Y++)
+    t[Y] > 0 && (I[Y * 3] = Math.round(n[Y] / t[Y]), I[Y * 3 + 1] = Math.round(U[Y] / t[Y]), I[Y * 3 + 2] = Math.round(a[Y] / t[Y])), i[Y] = p[Y] > 0 ? Math.round(t[Y] / p[Y]) : 0;
   return { rgb: I, alpha: i };
 }
 function $(A, E) {
   return 0.299 * A[E * 3] + 0.587 * A[E * 3 + 1] + 0.114 * A[E * 3 + 2];
 }
-const ZE = 16, aA = 0.3;
+const HE = 16, aA = 0.3;
 function eA(A, E) {
   const g = E.alpha.length, Q = [0, 0, 0];
   let B = 0;
   for (let e = 0; e < g; e++)
-    if (!(E.alpha[e] >= ZE)) {
+    if (!(E.alpha[e] >= HE)) {
       for (let n = 0; n < 3; n++) Q[n] += A.rgb[e * 3 + n];
       B++;
     }
@@ -1913,86 +1925,86 @@ function tA(A) {
   for (let Q = 0; Q < E.length; Q++) g[Q] = E.charCodeAt(Q);
   return g;
 }
-const GE = mA.source, bA = mA.gems.map((A) => ({
+const fE = mA.source, bA = mA.gems.map((A) => ({
   name: A.name,
   icon: A.icon,
   fp: { rgb: tA(A.rgb), alpha: tA(A.alpha) }
-})), DA = 20, HE = 40, fE = 3, LE = 0.08, G = 4, UA = 12, xE = 8;
-function NE(A, E) {
+})), DA = 20, LE = 40, xE = 3, NE = 0.08, G = 4, UA = 12, yE = 8;
+function uE(A, E) {
   let g = 1 / 0;
   for (const Q of E) g = Math.min(g, eA(A, Q.fp));
   return g;
 }
-function yE(A, E) {
+function zE(A, E) {
   return bA.map((g) => ({ ref: g, d: eA(A, g.fp) })).sort((g, Q) => g.d - Q.d).slice(0, E).map((g) => g.ref);
 }
-function uE(A) {
+function PE(A) {
   if (SA(A) < DA) return { status: "empty", candidates: [] };
   const E = bA.map((Q) => ({ name: Q.name, icon: Q.icon, distance: eA(A, Q.fp) })).sort(
     (Q, B) => Q.distance - B.distance
   ), g = E[0].distance;
-  return g > HE ? { status: "unknown", candidates: [], distance: g } : { status: "matched", candidates: E.filter((Q) => Q.distance <= g + fE), distance: g };
+  return g > LE ? { status: "unknown", candidates: [], distance: g } : { status: "matched", candidates: E.filter((Q) => Q.distance <= g + xE), distance: g };
 }
 function AA(A, E, g, Q, B, o) {
-  return JE(A, E.x + g * E.cell + B, E.y + Q * E.cell + o, E.cell, E.cell);
+  return GE(A, E.x + g * E.cell + B, E.y + Q * E.cell + o, E.cell, E.cell);
 }
-function PE(A, E) {
+function vE(A, E) {
   const g = [];
   for (let I = 0; I < u && g.length < UA; I++)
     for (let i = 0; i < y && g.length < UA; i++) {
       const l = AA(A, E, i, I, 0, 0);
-      SA(l) >= DA && g.push({ col: i, row: I, refs: yE(l, xE) });
+      SA(l) >= DA && g.push({ col: i, row: I, refs: zE(l, yE) });
     }
   if (!g.length) return { dx: 0, dy: 0 };
-  const Q = E.cell * LE / G;
+  const Q = E.cell * NE / G;
   let B = 1 / 0, o = { dx: 0, dy: 0 };
   for (let I = -G; I <= G; I++)
     for (let i = -G; i <= G; i++) {
       const l = i * Q, w = I * Q;
       let k = 0;
-      for (const e of g) k += NE(AA(A, E, e.col, e.row, l, w), e.refs);
+      for (const e of g) k += uE(AA(A, E, e.col, e.row, l, w), e.refs);
       k < B && (B = k, o = { dx: l, dy: w });
     }
   return o;
 }
-function zE(A, E) {
-  const g = PE(A, E), Q = [];
+function OE(A, E) {
+  const g = vE(A, E), Q = [];
   for (let B = 0; B < u; B++)
     for (let o = 0; o < y; o++)
-      Q.push({ col: o, row: B, ...uE(AA(A, E, o, B, g.dx, g.dy)) });
+      Q.push({ col: o, row: B, ...PE(AA(A, E, o, B, g.dx, g.dy)) });
   return { cells: Q, offset: g };
 }
-function WA(A, E) {
+function rA(A, E) {
   const g = BE(A.gameSize, E), Q = {
     x: (g.x - A.origin.x) * A.scale,
     y: (g.y - A.origin.y) * A.scale,
     cell: g.cell * A.scale
   };
-  return { ...zE({ pixels: A.pixels, width: A.width, height: A.height }, Q), grid: Q, capture: A, at: Date.now() };
+  return { ...OE({ pixels: A.pixels, width: A.width, height: A.height }, Q), grid: Q, capture: A, at: Date.now() };
 }
-async function vE(A, E) {
+async function KE(A, E) {
   const g = await A.captureGameWindow();
-  return g ? WA(g, E) : null;
+  return g ? rA(g, E) : null;
 }
-const rA = "calibration", jA = "order", EA = "threshold", TA = "hideUnpriced", JA = "chaosOnly", gA = "beastPrice", ZA = "logging", GA = "exceptional", HA = "exceptionalMax", QA = "yellowBeast";
+const WA = "calibration", jA = "order", EA = "threshold", TA = "hideUnpriced", JA = "chaosOnly", gA = "beastPrice", ZA = "logging", GA = "exceptional", HA = "exceptionalMax", QA = "yellowBeast";
 async function fA(A) {
-  if (!X().scanning) {
+  if (!m().scanning) {
     F({ scanning: !0, error: null });
     try {
-      const E = await vE(A, X().calibration);
+      const E = await KE(A, m().calibration);
       if (!E) {
         F({ error: "Path of Exile must be the focused window. Use the hotkey in-game with your inventory open." });
         return;
       }
       await XA(A).catch(() => {
       });
-      const g = X().book, Q = X().log, B = YE(Q, E.cells, {
+      const g = m().book, Q = m().log, B = dE(Q, E.cells, {
         at: E.at,
         league: A.getLeague(),
         plugin: A.pluginVersion,
-        refs: GE,
+        refs: fE,
         value: (i) => g ? VA(i, g) : null
-      }), { log: o, outcome: I } = X().logging ? B : dE(Q, B);
+      }), { log: o, outcome: I } = m().logging ? B : YE(Q, B);
       F({ scan: E, log: o, logStatus: I }), I.kind !== "skipped" && await A.storage.set(cA, o);
     } catch (E) {
       A.log("scan failed", E), F({ error: `Scan failed: ${E instanceof Error ? E.message : String(E)}` });
@@ -2002,54 +2014,54 @@ async function fA(A) {
   }
 }
 async function kA(A) {
-  const { scan: E, book: g, threshold: Q, hideUnpriced: B, chaosOnly: o } = X();
+  const { scan: E, book: g, threshold: Q, hideUnpriced: B, chaosOnly: o } = m();
   if (!E || !g) return;
   const I = {
     stamp: Date.now(),
     marks: iE(E, g, Q, B, o),
     grid: eE(E),
-    status: OE(X().logStatus)
+    status: qE(m().logStatus)
   };
   await A.storage.set(FA, I);
 }
-function OE(A) {
+function qE(A) {
   return A ? A.kind === "recorded" ? `+${A.count} ${A.count === 1 ? "gem" : "gems"} logged${A.newRun ? " (new run)" : ""}` : A.kind === "none-new" ? "No new gems to log" : A.kind === "disabled" ? "Logging off" : `Not logged: ${A.reason}` : "";
 }
 function J(A, E, g = "c") {
   return A === null || E === null ? "-" : A === E ? `${H(A)}${g}` : `${H(A)}${g} - ${H(E)}${g}`;
 }
-const h = { color: "var(--text-muted, rgba(255,255,255,0.55))" }, Y = { padding: "4px 6px" };
-function KE({ row: A }) {
+const h = { color: "var(--text-muted, rgba(255,255,255,0.55))" }, d = { padding: "4px 6px" };
+function _E({ row: A }) {
   const E = A.candidates.length > 1;
   return /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
-    /* @__PURE__ */ c("td", { style: Y, children: A.candidates.length > 0 && /* @__PURE__ */ c("img", { src: A.candidates[0].icon, alt: "", width: 28, height: 28, style: { display: "block" } }) }),
-    /* @__PURE__ */ s("td", { style: Y, children: [
+    /* @__PURE__ */ c("td", { style: d, children: A.candidates.length > 0 && /* @__PURE__ */ c("img", { src: A.candidates[0].icon, alt: "", width: 28, height: 28, style: { display: "block" } }) }),
+    /* @__PURE__ */ s("td", { style: d, children: [
       A.candidates.length === 0 && /* @__PURE__ */ c("span", { style: h, children: "Unreadable" }),
       A.candidates.map((g, Q) => /* @__PURE__ */ s("div", { style: Q > 0 ? h : void 0, children: [
         Q > 0 ? "or " : "",
         g.name,
         E && /* @__PURE__ */ s("span", { style: h, children: [
           " (",
-          J(..._E(A, Q)),
+          J(...Ag(A, Q)),
           ")"
         ] })
       ] }, g.name)),
       E && /* @__PURE__ */ c("div", { style: { ...h, fontSize: 11 }, children: "Look-alike art: hover it in game to confirm" })
     ] }),
-    /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: A.slot ? /* @__PURE__ */ c("span", { style: h, children: qE(A.slot) }) : A.count }),
-    /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: J(A.unitMin, A.unitMax) }),
-    /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: J(A.unitMin === null ? null : A.unitMin * A.count, A.unitMax === null ? null : A.unitMax * A.count) })
+    /* @__PURE__ */ c("td", { style: { ...d, textAlign: "right" }, children: A.slot ? /* @__PURE__ */ c("span", { style: h, children: $E(A.slot) }) : A.count }),
+    /* @__PURE__ */ c("td", { style: { ...d, textAlign: "right" }, children: J(A.unitMin, A.unitMax) }),
+    /* @__PURE__ */ c("td", { style: { ...d, textAlign: "right" }, children: J(A.unitMin === null ? null : A.unitMin * A.count, A.unitMax === null ? null : A.unitMax * A.count) })
   ] });
 }
-function qE(A) {
+function $E(A) {
   return `${A.col + 1}-${A.row + 1}`;
 }
-function _E(A, E) {
+function Ag(A, E) {
   const g = A.prices[E];
   return g.kind === "exact" ? [g.chaos, g.chaos] : g.kind === "range" ? [g.min, g.max] : [null, null];
 }
-function $E({ scan: A }) {
-  const E = YA(null);
+function Eg({ scan: A }) {
+  const E = dA(null);
   return BA(() => {
     const g = E.current;
     if (!g) return;
@@ -2070,9 +2082,9 @@ function $E({ scan: A }) {
     }
   }, [A]), /* @__PURE__ */ c("canvas", { ref: E, style: { width: "100%", imageRendering: "auto", borderRadius: 4 } });
 }
-const v = 3, Ag = 90;
-function Eg({ ctx: A }) {
-  const { log: E, book: g, beastChaos: Q, beastOverride: B, logging: o, yellowBeast: I, exceptional: i } = P(), [l, w] = L(!1), [k, e] = L(null), n = async () => {
+const v = 3, gg = 90;
+function Qg({ ctx: A }) {
+  const { log: E, book: g, beastChaos: Q, beastOverride: B, logging: o, yellowBeast: I, exceptional: i } = z(), [l, w] = L(!1), [k, e] = L(null), n = async () => {
     try {
       await navigator.clipboard.writeText(mE(E)), e(`Copied ${E.batches.reduce((C, M) => C + M.gems.length, 0)} rows`);
     } catch {
@@ -2081,7 +2093,7 @@ function Eg({ ctx: A }) {
   }, U = B ?? Q, a = U === null ? null : U + v * (I ?? 0) + ((i == null ? void 0 : i.chaos) ?? 0), t = f(() => g ? VE(E, g, a) : null, [E, g, a]), p = (C) => {
     const M = C !== null && C > 0 ? C : null;
     F({ yellowBeast: M }), M === null ? A.storage.delete(QA) : A.storage.set(QA, M);
-  }, d = E.batches[E.batches.length - 1], S = (C) => {
+  }, Y = E.batches[E.batches.length - 1], S = (C) => {
     F({ log: C, logStatus: null }), A.storage.set(cA, C);
   }, b = () => {
     F({ logging: !o }), A.storage.set(ZA, !o);
@@ -2096,7 +2108,7 @@ function Eg({ ctx: A }) {
       !o && /* @__PURE__ */ c("span", { style: { color: "#f5a623" }, children: " (logging off)" })
     ] }),
     /* @__PURE__ */ s("div", { style: { display: "flex", gap: 8, alignItems: "center", marginTop: 6 }, children: [
-      /* @__PURE__ */ c(m, { size: "sm", variant: o ? "primary" : "ghost", onClick: b, children: o ? "Logging on" : "Logging off" }),
+      /* @__PURE__ */ c(X, { size: "sm", variant: o ? "primary" : "ghost", onClick: b, children: o ? "Logging on" : "Logging off" }),
       /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12 }, children: o ? "Turn off while testing. Scans keep track of the inventory but log nothing." : "Scans aren't logged. Gems scanned now won't be logged later either; only ones that change after it's back on." })
     ] }),
     /* @__PURE__ */ s("p", { style: { ...h, fontSize: 12 }, children: [
@@ -2111,13 +2123,13 @@ function Eg({ ctx: A }) {
         N,
         " price"
       ] }),
-      /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(r, { value: U, onChange: D, min: 0, step: 1, suffix: "c" }) }),
+      /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(W, { value: U, onChange: D, min: 0, step: 1, suffix: "c" }) }),
       /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12 }, children: B !== null ? `your price (poe.ninja: ${Q === null ? "none" : V(Q)}; clear to use it)` : Q === null ? "no poe.ninja price yet, enter one" : "from poe.ninja" }),
-      /* @__PURE__ */ c(m, { size: "sm", variant: "ghost", onClick: () => void A.prices.refresh(), children: "Refresh prices" })
+      /* @__PURE__ */ c(X, { size: "sm", variant: "ghost", onClick: () => void A.prices.refresh(), children: "Refresh prices" })
     ] }),
     /* @__PURE__ */ s("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", marginTop: 6 }, children: [
       /* @__PURE__ */ c(T, { children: "Yellow beast price" }),
-      /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(r, { value: I, onChange: p, min: 0, step: 1, suffix: "c" }) }),
+      /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(W, { value: I, onChange: p, min: 0, step: 1, suffix: "c" }) }),
       /* @__PURE__ */ s("span", { style: { ...h, fontSize: 12 }, children: [
         "each, x",
         v,
@@ -2172,21 +2184,21 @@ function Eg({ ctx: A }) {
         Math.floor(t.gems / x),
         " beasts)",
         t.unpriced > 0 && `; ${t.unpriced} without a 20/20 price counted as 0`,
-        t.gems < Ag && ". Small sample: a few lucky gems swing this a lot",
+        t.gems < gg && ". Small sample: a few lucky gems swing this a lot",
         ". Uses current prices."
       ] }),
       /* @__PURE__ */ s("table", { style: { width: "100%", marginTop: 6, borderCollapse: "collapse", fontSize: 12 }, children: [
         /* @__PURE__ */ c("thead", { children: /* @__PURE__ */ s("tr", { style: { ...h, textAlign: "left", fontSize: 11 }, children: [
-          /* @__PURE__ */ c("th", { style: Y, children: "Most value from" }),
-          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Seen" }),
-          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Each" }),
-          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Share" })
+          /* @__PURE__ */ c("th", { style: d, children: "Most value from" }),
+          /* @__PURE__ */ c("th", { style: { ...d, textAlign: "right" }, children: "Seen" }),
+          /* @__PURE__ */ c("th", { style: { ...d, textAlign: "right" }, children: "Each" }),
+          /* @__PURE__ */ c("th", { style: { ...d, textAlign: "right" }, children: "Share" })
         ] }) }),
         /* @__PURE__ */ c("tbody", { children: t.rows.slice(0, 10).map((C) => /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
-          /* @__PURE__ */ c("td", { style: Y, children: C.key }),
-          /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: C.count }),
-          /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: C.unit === null ? "-" : V(C.unit) }),
-          /* @__PURE__ */ s("td", { style: { ...Y, textAlign: "right" }, children: [
+          /* @__PURE__ */ c("td", { style: d, children: C.key }),
+          /* @__PURE__ */ c("td", { style: { ...d, textAlign: "right" }, children: C.count }),
+          /* @__PURE__ */ c("td", { style: { ...d, textAlign: "right" }, children: C.unit === null ? "-" : V(C.unit) }),
+          /* @__PURE__ */ s("td", { style: { ...d, textAlign: "right" }, children: [
             Math.round(C.share * 100),
             "%"
           ] })
@@ -2194,10 +2206,10 @@ function Eg({ ctx: A }) {
       ] })
     ] }),
     /* @__PURE__ */ s("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10, alignItems: "center" }, children: [
-      /* @__PURE__ */ c(m, { size: "sm", variant: "ghost", disabled: !E.batches.length, onClick: () => void n(), children: "Copy CSV" }),
-      /* @__PURE__ */ c(m, { size: "sm", variant: "ghost", disabled: !d, onClick: () => S(CE(E)), children: d ? `Undo last scan (${d.gems.length} gems)` : "Undo last scan" }),
+      /* @__PURE__ */ c(X, { size: "sm", variant: "ghost", disabled: !E.batches.length, onClick: () => void n(), children: "Copy CSV" }),
+      /* @__PURE__ */ c(X, { size: "sm", variant: "ghost", disabled: !Y, onClick: () => S(CE(E)), children: Y ? `Undo last scan (${Y.gems.length} gems)` : "Undo last scan" }),
       /* @__PURE__ */ c(
-        m,
+        X,
         {
           size: "sm",
           variant: l ? "danger" : "ghost",
@@ -2214,8 +2226,8 @@ function Eg({ ctx: A }) {
     ] })
   ] });
 }
-function gg({ ctx: A }) {
-  const { listings: E, exceptionalMax: g, exceptional: Q } = P(), [B, o] = L(!1), I = typeof A.prices.getGemListings == "function", i = async () => {
+function Bg({ ctx: A }) {
+  const { listings: E, exceptionalMax: g, exceptional: Q } = z(), [B, o] = L(!1), I = typeof A.prices.getGemListings == "function", i = async () => {
     if (!(!A.prices.getGemListings || B)) {
       o(!0);
       try {
@@ -2246,8 +2258,8 @@ function gg({ ctx: A }) {
           /* @__PURE__ */ c("p", { style: { ...h, fontSize: 12 }, children: "Cheapest uncorrupted listing of each exceptional support at or under the cap, most listed first: more listings means better odds of a seller with several. Choose one to count its price in each craft's cost." }),
           /* @__PURE__ */ s("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }, children: [
             /* @__PURE__ */ c(T, { children: "Max price" }),
-            /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(r, { value: g, onChange: w, min: 1, step: 1, suffix: "c" }) }),
-            /* @__PURE__ */ c(m, { size: "sm", variant: "ghost", onClick: () => void i(), disabled: B, children: B ? "Loading..." : "Reload listings" }),
+            /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(W, { value: g, onChange: w, min: 1, step: 1, suffix: "c" }) }),
+            /* @__PURE__ */ c(X, { size: "sm", variant: "ghost", onClick: () => void i(), disabled: B, children: B ? "Loading..." : "Reload listings" }),
             (E == null ? void 0 : E.updatedAt) && /* @__PURE__ */ s("span", { style: { ...h, fontSize: 12 }, children: [
               "poe.ninja, ",
               E.league,
@@ -2258,14 +2270,14 @@ function gg({ ctx: A }) {
           (E == null ? void 0 : E.error) && /* @__PURE__ */ c("div", { style: { marginTop: 8 }, children: /* @__PURE__ */ c(O, { message: E.error, tone: "warn" }) }),
           E && /* @__PURE__ */ s("table", { style: { width: "100%", marginTop: 8, borderCollapse: "collapse", fontSize: 12 }, children: [
             /* @__PURE__ */ c("thead", { children: /* @__PURE__ */ s("tr", { style: { ...h, textAlign: "left", fontSize: 11 }, children: [
-              /* @__PURE__ */ c("th", { style: Y, children: "Gem" }),
-              /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Price" }),
-              /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Listings" }),
+              /* @__PURE__ */ c("th", { style: d, children: "Gem" }),
+              /* @__PURE__ */ c("th", { style: { ...d, textAlign: "right" }, children: "Price" }),
+              /* @__PURE__ */ c("th", { style: { ...d, textAlign: "right" }, children: "Listings" }),
               /* @__PURE__ */ c("th", {})
             ] }) }),
             /* @__PURE__ */ s("tbody", { children: [
               k.slice(0, 15).map((e) => /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
-                /* @__PURE__ */ s("td", { style: Y, children: [
+                /* @__PURE__ */ s("td", { style: d, children: [
                   e.name,
                   e.variant && e.variant !== "1" && /* @__PURE__ */ s("span", { style: h, children: [
                     " (",
@@ -2273,22 +2285,35 @@ function gg({ ctx: A }) {
                     ")"
                   ] })
                 ] }),
-                /* @__PURE__ */ s("td", { style: { ...Y, textAlign: "right" }, children: [
+                /* @__PURE__ */ s("td", { style: { ...d, textAlign: "right" }, children: [
                   H(e.chaos),
                   "c"
                 ] }),
-                /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: e.listings }),
-                /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: /* @__PURE__ */ c(
-                  m,
-                  {
-                    size: "sm",
-                    variant: (Q == null ? void 0 : Q.name) === e.name ? "primary" : "ghost",
-                    onClick: () => l(e.name, e.chaos),
-                    children: (Q == null ? void 0 : Q.name) === e.name ? "Chosen" : "Choose"
-                  }
-                ) })
+                /* @__PURE__ */ c("td", { style: { ...d, textAlign: "right" }, children: e.listings }),
+                /* @__PURE__ */ s("td", { style: { ...d, textAlign: "right", whiteSpace: "nowrap" }, children: [
+                  /* @__PURE__ */ c(
+                    X,
+                    {
+                      size: "sm",
+                      variant: "ghost",
+                      title: `Search ${e.name} on the trade site (${A.getLeague()}) in your browser`,
+                      onClick: () => A.openExternal(rE(e.name, A.getLeague())),
+                      children: "Trade"
+                    }
+                  ),
+                  " ",
+                  /* @__PURE__ */ c(
+                    X,
+                    {
+                      size: "sm",
+                      variant: (Q == null ? void 0 : Q.name) === e.name ? "primary" : "ghost",
+                      onClick: () => l(e.name, e.chaos),
+                      children: (Q == null ? void 0 : Q.name) === e.name ? "Chosen" : "Choose"
+                    }
+                  )
+                ] })
               ] }, e.name)),
-              !k.length && /* @__PURE__ */ c("tr", { children: /* @__PURE__ */ s("td", { colSpan: 4, style: { ...Y, ...h }, children: [
+              !k.length && /* @__PURE__ */ c("tr", { children: /* @__PURE__ */ s("td", { colSpan: 4, style: { ...d, ...h }, children: [
                 "No exceptional supports at or under ",
                 g,
                 "c."
@@ -2300,22 +2325,22 @@ function gg({ ctx: A }) {
     }
   );
 }
-function Qg({ ctx: A }) {
-  const { calibration: E, scan: g } = P(), Q = (B) => {
+function og({ ctx: A }) {
+  const { calibration: E, scan: g } = z(), Q = (B) => {
     const o = { ...E, ...B };
-    F({ calibration: o, scan: g ? WA(g.capture, o) : null }), A.storage.set(rA, o);
+    F({ calibration: o, scan: g ? rA(g.capture, o) : null }), A.storage.set(WA, o);
   };
   return /* @__PURE__ */ s("details", { style: { marginTop: 16 }, children: [
     /* @__PURE__ */ c("summary", { style: { cursor: "pointer" }, children: "Calibration" }),
     /* @__PURE__ */ c("p", { style: { ...h, fontSize: 12 }, children: "Green = matched, amber = look-alike, red = unreadable, grey = empty. If the boxes don't sit on the inventory cells, nudge them below; scans also auto-correct small offsets." }),
     /* @__PURE__ */ s("div", { style: { display: "grid", gridTemplateColumns: "auto 1fr", gap: 8, alignItems: "center" }, children: [
       /* @__PURE__ */ c(T, { children: "Offset X" }),
-      /* @__PURE__ */ c(r, { value: E.offsetX, onChange: (B) => Q({ offsetX: B ?? 0 }), step: 1, suffix: "px" }),
+      /* @__PURE__ */ c(W, { value: E.offsetX, onChange: (B) => Q({ offsetX: B ?? 0 }), step: 1, suffix: "px" }),
       /* @__PURE__ */ c(T, { children: "Offset Y" }),
-      /* @__PURE__ */ c(r, { value: E.offsetY, onChange: (B) => Q({ offsetY: B ?? 0 }), step: 1, suffix: "px" }),
+      /* @__PURE__ */ c(W, { value: E.offsetY, onChange: (B) => Q({ offsetY: B ?? 0 }), step: 1, suffix: "px" }),
       /* @__PURE__ */ c(T, { children: "Cell size" }),
       /* @__PURE__ */ c(
-        r,
+        W,
         {
           value: E.cellScale,
           onChange: (B) => Q({ cellScale: B ?? 1 }),
@@ -2328,7 +2353,7 @@ function Qg({ ctx: A }) {
       )
     ] }),
     g ? /* @__PURE__ */ s("div", { style: { marginTop: 8 }, children: [
-      /* @__PURE__ */ c($E, { scan: g }),
+      /* @__PURE__ */ c(Eg, { scan: g }),
       /* @__PURE__ */ s("div", { style: { ...h, fontSize: 11 }, children: [
         "Auto-align: ",
         (g.offset.dx / g.capture.scale).toFixed(1),
@@ -2340,15 +2365,15 @@ function Qg({ ctx: A }) {
     ] }) : /* @__PURE__ */ c("p", { style: h, children: "Scan once to see the grid preview." })
   ] });
 }
-function Bg({ ctx: A }) {
-  const { scan: E, scanning: g, error: Q, order: B, book: o, threshold: I, hideUnpriced: i, chaosOnly: l } = P();
+function cg({ ctx: A }) {
+  const { scan: E, scanning: g, error: Q, order: B, book: o, threshold: I, hideUnpriced: i, chaosOnly: l } = z();
   BA(() => {
     XA(A);
   }, [A]);
   const w = f(() => E && o ? IE(E.cells, o) : null, [E, o]), k = f(
     () => E && o && w ? B === "inventory" ? cE(E.cells, o) : w.rows : [],
     [E, o, w, B]
-  ), e = (M) => I !== null && M.unitMax !== null && M.unitMax < I, n = (M) => M.candidates.length > 0 && M.unitMax === null, U = k.filter((M) => !e(M) && !(i && n(M))), a = i ? k.filter(n).reduce((M, R) => M + R.count, 0) : 0, t = k.filter(e), p = t.reduce((M, R) => M + R.count, 0), d = t.reduce((M, R) => M + (R.unitMin ?? 0) * R.count, 0), S = t.reduce((M, R) => M + (R.unitMax ?? 0) * R.count, 0), b = () => {
+  ), e = (M) => I !== null && M.unitMax !== null && M.unitMax < I, n = (M) => M.candidates.length > 0 && M.unitMax === null, U = k.filter((M) => !e(M) && !(i && n(M))), a = i ? k.filter(n).reduce((M, R) => M + R.count, 0) : 0, t = k.filter(e), p = t.reduce((M, R) => M + R.count, 0), Y = t.reduce((M, R) => M + (R.unitMin ?? 0) * R.count, 0), S = t.reduce((M, R) => M + (R.unitMax ?? 0) * R.count, 0), b = () => {
     F({ chaosOnly: !l }), A.storage.set(JA, !l);
   }, D = () => {
     F({ hideUnpriced: !i }), A.storage.set(TA, !i);
@@ -2360,7 +2385,7 @@ function Bg({ ctx: A }) {
   };
   return /* @__PURE__ */ s("div", { style: { padding: 12, color: "var(--text)", fontSize: 13 }, children: [
     /* @__PURE__ */ s("div", { style: { display: "flex", gap: 8, alignItems: "center" }, children: [
-      /* @__PURE__ */ c(m, { variant: "primary", onClick: () => void fA(A), disabled: g, children: g ? "Scanning..." : "Scan inventory" }),
+      /* @__PURE__ */ c(X, { variant: "primary", onClick: () => void fA(A), disabled: g, children: g ? "Scanning..." : "Scan inventory" }),
       /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12 }, children: `Tip: bind "Scan inventory gems" in Settings > Macros and press it in game with your inventory open. Prices appear over your inventory; close them with the overlay's ✕ or your toggle hotkey.` })
     ] }),
     Q && /* @__PURE__ */ c("div", { style: { marginTop: 12 }, children: /* @__PURE__ */ c(O, { message: Q, tone: "warn" }) }),
@@ -2374,17 +2399,17 @@ function Bg({ ctx: A }) {
     w && /* @__PURE__ */ s(hA, { children: [
       /* @__PURE__ */ s("div", { style: { marginTop: 12, display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }, children: [
         /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12 }, children: "List:" }),
-        /* @__PURE__ */ c(m, { size: "sm", variant: B === "value" ? "primary" : "ghost", onClick: () => C("value"), children: "By value" }),
-        /* @__PURE__ */ c(m, { size: "sm", variant: B === "inventory" ? "primary" : "ghost", onClick: () => C("inventory"), children: "Inventory order" }),
+        /* @__PURE__ */ c(X, { size: "sm", variant: B === "value" ? "primary" : "ghost", onClick: () => C("value"), children: "By value" }),
+        /* @__PURE__ */ c(X, { size: "sm", variant: B === "inventory" ? "primary" : "ghost", onClick: () => C("inventory"), children: "Inventory order" }),
         /* @__PURE__ */ c("span", { style: { ...h, fontSize: 12, marginLeft: 12 }, children: "Min price:" }),
-        /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(r, { value: I, onChange: V, min: 0, step: 5, suffix: "c" }) }),
+        /* @__PURE__ */ c("div", { style: { width: 90 }, children: /* @__PURE__ */ c(W, { value: I, onChange: V, min: 0, step: 5, suffix: "c" }) }),
         I !== null && (o == null ? void 0 : o.divineChaos) && /* @__PURE__ */ s("span", { style: { ...h, fontSize: 12 }, children: [
           "(",
           (I / o.divineChaos).toFixed(2),
           " div)"
         ] }),
-        /* @__PURE__ */ c(m, { size: "sm", variant: i ? "primary" : "ghost", onClick: D, children: "Hide no-price" }),
-        /* @__PURE__ */ c(m, { size: "sm", variant: l ? "primary" : "ghost", onClick: b, children: "Chaos only" })
+        /* @__PURE__ */ c(X, { size: "sm", variant: i ? "primary" : "ghost", onClick: D, children: "Hide no-price" }),
+        /* @__PURE__ */ c(X, { size: "sm", variant: l ? "primary" : "ghost", onClick: b, children: "Chaos only" })
       ] }),
       /* @__PURE__ */ s("div", { style: { marginTop: 12 }, children: [
         /* @__PURE__ */ c("strong", { children: w.gems }),
@@ -2406,20 +2431,20 @@ function Bg({ ctx: A }) {
       /* @__PURE__ */ s("table", { style: { width: "100%", marginTop: 8, borderCollapse: "collapse" }, children: [
         /* @__PURE__ */ c("thead", { children: /* @__PURE__ */ s("tr", { style: { ...h, textAlign: "left", fontSize: 11 }, children: [
           /* @__PURE__ */ c("th", {}),
-          /* @__PURE__ */ s("th", { style: Y, children: [
+          /* @__PURE__ */ s("th", { style: d, children: [
             "Gem (",
             K,
             ")"
           ] }),
-          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: B === "inventory" ? /* @__PURE__ */ c("span", { title: "Column-row, counted down each column", children: "Slot" }) : "Qty" }),
-          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Each" }),
-          /* @__PURE__ */ c("th", { style: { ...Y, textAlign: "right" }, children: "Total" })
+          /* @__PURE__ */ c("th", { style: { ...d, textAlign: "right" }, children: B === "inventory" ? /* @__PURE__ */ c("span", { title: "Column-row, counted down each column", children: "Slot" }) : "Qty" }),
+          /* @__PURE__ */ c("th", { style: { ...d, textAlign: "right" }, children: "Each" }),
+          /* @__PURE__ */ c("th", { style: { ...d, textAlign: "right" }, children: "Total" })
         ] }) }),
         /* @__PURE__ */ s("tbody", { children: [
-          U.map((M) => /* @__PURE__ */ c(KE, { row: M }, M.key)),
+          U.map((M) => /* @__PURE__ */ c(_E, { row: M }, M.key)),
           p > 0 && /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...h }, children: [
             /* @__PURE__ */ c("td", {}),
-            /* @__PURE__ */ s("td", { style: Y, children: [
+            /* @__PURE__ */ s("td", { style: d, children: [
               p,
               " ",
               p === 1 ? "gem" : "gems",
@@ -2427,19 +2452,19 @@ function Bg({ ctx: A }) {
               I,
               "c"
             ] }),
-            /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: B === "value" ? p : "" }),
+            /* @__PURE__ */ c("td", { style: { ...d, textAlign: "right" }, children: B === "value" ? p : "" }),
             /* @__PURE__ */ c("td", {}),
-            /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: J(d, S) })
+            /* @__PURE__ */ c("td", { style: { ...d, textAlign: "right" }, children: J(Y, S) })
           ] }),
           a > 0 && /* @__PURE__ */ s("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...h }, children: [
             /* @__PURE__ */ c("td", {}),
-            /* @__PURE__ */ s("td", { style: Y, children: [
+            /* @__PURE__ */ s("td", { style: d, children: [
               a,
               " ",
               a === 1 ? "gem" : "gems",
               " with no price hidden"
             ] }),
-            /* @__PURE__ */ c("td", { style: { ...Y, textAlign: "right" }, children: B === "value" ? a : "" }),
+            /* @__PURE__ */ c("td", { style: { ...d, textAlign: "right" }, children: B === "value" ? a : "" }),
             /* @__PURE__ */ c("td", {}),
             /* @__PURE__ */ c("td", {})
           ] })
@@ -2450,15 +2475,15 @@ function Bg({ ctx: A }) {
         new Date(o.updatedAt).toLocaleTimeString()
       ] })
     ] }),
-    /* @__PURE__ */ c(Eg, { ctx: A }),
-    /* @__PURE__ */ c(gg, { ctx: A }),
-    /* @__PURE__ */ c(Qg, { ctx: A })
+    /* @__PURE__ */ c(Qg, { ctx: A }),
+    /* @__PURE__ */ c(Bg, { ctx: A }),
+    /* @__PURE__ */ c(og, { ctx: A })
   ] });
 }
-const og = 150, MA = "Vivid Watcher Helper";
+const Ig = 150, MA = "Vivid Watcher Helper";
 let j = null;
-async function lg(A) {
-  const E = await A.storage.get(rA);
+async function wg(A) {
+  const E = await A.storage.get(WA);
   E && F({ calibration: { ...CA, ...E } });
   const g = await A.storage.get(jA);
   (g === "value" || g === "inventory") && F({ order: g });
@@ -2474,14 +2499,14 @@ async function lg(A) {
   typeof i == "number" && F({ exceptionalMax: i });
   const l = await A.storage.get(QA);
   typeof l == "number" && F({ yellowBeast: l });
-  let w = X();
+  let w = m();
   RA(() => {
-    const e = X();
+    const e = m();
     (e.scan !== w.scan || e.book !== w.book || e.threshold !== w.threshold || e.hideUnpriced !== w.hideUnpriced || e.chaosOnly !== w.chaosOnly) && kA(A), w = e;
   });
   const k = LA(/* @__PURE__ */ c(AE, { theme: "two-tone", fill: ["currentColor", "rgba(255,255,255,0.2)"] }));
   A.registerHotkey({ label: "Scan inventory gems" }, async () => {
-    if (await A.isOverlayVisible() && (A.closeOverlay(), await new Promise((e) => setTimeout(e, og))), await fA(A), X().error || !X().scan || !X().book) {
+    if (await A.isOverlayVisible() && (A.closeOverlay(), await new Promise((e) => setTimeout(e, Ig))), await fA(A), m().error || !m().scan || !m().book) {
       A.openTab();
       return;
     }
@@ -2489,7 +2514,7 @@ async function lg(A) {
   }), A.registerTab({
     label: MA,
     icon: k,
-    render: (e) => (j = nA(e), j.render(/* @__PURE__ */ c(Bg, { ctx: A })), () => {
+    render: (e) => (j = nA(e), j.render(/* @__PURE__ */ c(cg, { ctx: A })), () => {
       j == null || j.unmount(), j = null;
     })
   }), A.registerOverlay(
@@ -2503,6 +2528,6 @@ async function lg(A) {
   );
 }
 export {
-  lg as default
+  wg as default
 };
 //# sourceMappingURL=plugin.js.map
