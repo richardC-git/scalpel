@@ -1,10 +1,10 @@
-import { jsx as o, jsxs as M, Fragment as RA } from "react/jsx-runtime";
-import { createRoot as $ } from "react-dom/client";
-import { renderToStaticMarkup as tA } from "react-dom/server";
-import S, { useContext as dA, useMemo as r, createContext as pA, useState as SA, useEffect as P, useSyncExternalStore as DA, useRef as JA } from "react";
-import { Button as j, ErrorBanner as AA, ScrubInput as G, formatPrice as H, Label as x } from "@scalpelpoe/plugin-sdk";
-var XA = ["size", "strokeWidth", "strokeLinecap", "strokeLinejoin", "theme", "fill", "className", "spin"];
-function EA(A, g) {
+import { jsxs as k, jsx as w, Fragment as mA } from "react/jsx-runtime";
+import { createRoot as IA } from "react-dom/client";
+import { renderToStaticMarkup as WA } from "react-dom/server";
+import D, { useContext as bA, useMemo as L, createContext as jA, useState as kA, useEffect as $, useRef as UA, useLayoutEffect as TA, useSyncExternalStore as ZA } from "react";
+import { Button as p, ErrorBanner as cA, ScrubInput as G, formatPrice as r, Label as x } from "@scalpelpoe/plugin-sdk";
+var GA = ["size", "strokeWidth", "strokeLinecap", "strokeLinejoin", "theme", "fill", "className", "spin"];
+function oA(A, g) {
   var E = Object.keys(A);
   if (Object.getOwnPropertySymbols) {
     var Q = Object.getOwnPropertySymbols(A);
@@ -14,23 +14,23 @@ function EA(A, g) {
   }
   return E;
 }
-function gA(A) {
+function wA(A) {
   for (var g = 1; g < arguments.length; g++) {
     var E = arguments[g] != null ? arguments[g] : {};
-    g % 2 ? EA(Object(E), !0).forEach(function(Q) {
-      WA(A, Q, E[Q]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(A, Object.getOwnPropertyDescriptors(E)) : EA(Object(E)).forEach(function(Q) {
+    g % 2 ? oA(Object(E), !0).forEach(function(Q) {
+      HA(A, Q, E[Q]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(A, Object.getOwnPropertyDescriptors(E)) : oA(Object(E)).forEach(function(Q) {
       Object.defineProperty(A, Q, Object.getOwnPropertyDescriptor(E, Q));
     });
   }
   return A;
 }
-function WA(A, g, E) {
+function HA(A, g, E) {
   return g in A ? Object.defineProperty(A, g, { value: E, enumerable: !0, configurable: !0, writable: !0 }) : A[g] = E, A;
 }
-function mA(A, g) {
+function rA(A, g) {
   if (A == null) return {};
-  var E = bA(A, g), Q, I;
+  var E = xA(A, g), Q, I;
   if (Object.getOwnPropertySymbols) {
     var B = Object.getOwnPropertySymbols(A);
     for (I = 0; I < B.length; I++)
@@ -38,14 +38,14 @@ function mA(A, g) {
   }
   return E;
 }
-function bA(A, g) {
+function xA(A, g) {
   if (A == null) return {};
   var E = {}, Q = Object.keys(A), I, B;
   for (B = 0; B < Q.length; B++)
     I = Q[B], !(g.indexOf(I) >= 0) && (E[I] = A[I]);
   return E;
 }
-var jA = {
+var LA = {
   size: "1em",
   strokeWidth: 4,
   strokeLinecap: "round",
@@ -74,10 +74,10 @@ var jA = {
   },
   prefix: "i"
 };
-function ZA() {
+function fA() {
   return "icon-" + ((1 + Math.random()) * 4294967296 | 0).toString(16).substring(1);
 }
-function TA(A, g, E) {
+function NA(A, g, E) {
   var Q = typeof g.fill == "string" ? [g.fill] : g.fill || [], I = [], B = g.theme || E.theme;
   switch (B) {
     case "outline":
@@ -102,75 +102,75 @@ function TA(A, g, E) {
     id: A
   };
 }
-var wA = /* @__PURE__ */ pA(jA);
-wA.Provider;
-function GA(A, g, E) {
+var FA = /* @__PURE__ */ jA(LA);
+FA.Provider;
+function yA(A, g, E) {
   return function(Q) {
-    var I = Q.size, B = Q.strokeWidth, c = Q.strokeLinecap, w = Q.strokeLinejoin, n = Q.theme, e = Q.fill, k = Q.className, i = Q.spin, l = mA(Q, XA), C = dA(wA), s = r(ZA, []), a = TA(s, {
+    var I = Q.size, B = Q.strokeWidth, c = Q.strokeLinecap, i = Q.strokeLinejoin, o = Q.theme, e = Q.fill, U = Q.className, n = Q.spin, l = rA(Q, GA), s = bA(FA), a = L(fA, []), M = NA(a, {
       size: I,
       strokeWidth: B,
       strokeLinecap: c,
-      strokeLinejoin: w,
-      theme: n,
+      strokeLinejoin: i,
+      theme: o,
       fill: e
-    }, C), Y = [C.prefix + "-icon"];
-    return Y.push(C.prefix + "-icon-" + A), i && Y.push(C.prefix + "-icon-spin"), k && Y.push(k), /* @__PURE__ */ S.createElement("span", gA(gA({}, l), {}, {
+    }, s), Y = [s.prefix + "-icon"];
+    return Y.push(s.prefix + "-icon-" + A), n && Y.push(s.prefix + "-icon-spin"), U && Y.push(U), /* @__PURE__ */ D.createElement("span", wA(wA({}, l), {}, {
       className: Y.join(" ")
-    }), E(a));
+    }), E(M));
   };
 }
-const HA = GA("diamonds", !1, function(A) {
-  return /* @__PURE__ */ S.createElement("svg", {
+const OA = yA("diamonds", !1, function(A) {
+  return /* @__PURE__ */ D.createElement("svg", {
     width: A.size,
     height: A.size,
     viewBox: "0 0 48 48",
     fill: "none"
-  }, /* @__PURE__ */ S.createElement("path", {
+  }, /* @__PURE__ */ D.createElement("path", {
     d: "M12 8H36L44 18L24 42L4 18L12 8Z",
     fill: A.colors[1],
     stroke: A.colors[0],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ S.createElement("path", {
+  }), /* @__PURE__ */ D.createElement("path", {
     d: "M4 18L44 18",
     stroke: A.colors[2],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ S.createElement("path", {
+  }), /* @__PURE__ */ D.createElement("path", {
     d: "M24 42L16 18",
     stroke: A.colors[2],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ S.createElement("path", {
+  }), /* @__PURE__ */ D.createElement("path", {
     d: "M24 42L32 18",
     stroke: A.colors[2],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
-  }), /* @__PURE__ */ S.createElement("path", {
+  }), /* @__PURE__ */ D.createElement("path", {
     d: "M8 13L4 18L24 42L44 18L40 13",
     stroke: A.colors[0],
     strokeWidth: A.strokeWidth,
     strokeLinecap: A.strokeLinecap,
     strokeLinejoin: A.strokeLinejoin
   }));
-}), v = 12, u = 5, xA = 649 / 1080, LA = 588 / 1080, rA = 52.6 / 1080, iA = { offsetX: 0, offsetY: 0, cellScale: 1 };
-function NA(A, g) {
+}), N = 12, y = 5, zA = 649 / 1080, PA = 588 / 1080, KA = 52.6 / 1080, MA = { offsetX: 0, offsetY: 0, cellScale: 1 };
+function uA(A, g) {
   const E = A.height;
   return {
-    x: A.width - E * xA + g.offsetX,
-    y: E * LA + g.offsetY,
-    cell: E * rA * g.cellScale
+    x: A.width - E * zA + g.offsetX,
+    y: E * PA + g.offsetY,
+    cell: E * KA * g.cellScale
   };
 }
-function fA(A) {
+function vA(A) {
   return A.kind === "exact" ? [A.chaos, A.chaos] : A.kind === "range" ? [A.min, A.max] : null;
 }
-function q(A, g, E) {
-  const Q = [...g], I = Q.map((c) => E.lookup(c.name)), B = I.map(fA).filter((c) => c !== null);
+function AA(A, g, E) {
+  const Q = [...g], I = Q.map((c) => E.lookup(c.name)), B = I.map(vA).filter((c) => c !== null);
   return {
     key: A,
     candidates: Q,
@@ -180,20 +180,20 @@ function q(A, g, E) {
     unitMax: B.length ? Math.max(...B.map((c) => c[1])) : null
   };
 }
-function yA(A, g) {
-  return A.filter((E) => E.status !== "empty").sort((E, Q) => E.col - Q.col || E.row - Q.row).map((E) => ({ ...q(`${E.col},${E.row}`, E.status === "matched" ? E.candidates : [], g), slot: { col: E.col, row: E.row } }));
+function qA(A, g) {
+  return A.filter((E) => E.status !== "empty").sort((E, Q) => E.col - Q.col || E.row - Q.row).map((E) => ({ ...AA(`${E.col},${E.row}`, E.status === "matched" ? E.candidates : [], g), slot: { col: E.col, row: E.row } }));
 }
-function OA(A, g) {
+function _A(A, g) {
   const E = /* @__PURE__ */ new Map();
   let Q = 0;
   for (const B of A) {
     if (B.status === "unknown" && Q++, B.status !== "matched") continue;
-    const w = B.candidates.map((e) => e.name).sort().join(" | "), n = E.get(w);
-    if (n) {
-      n.count++;
+    const i = B.candidates.map((e) => e.name).sort().join(" | "), o = E.get(i);
+    if (o) {
+      o.count++;
       continue;
     }
-    E.set(w, q(w, B.candidates, g));
+    E.set(i, AA(i, B.candidates, g));
   }
   const I = [...E.values()].sort((B, c) => (c.unitMax ?? -1) * c.count - (B.unitMax ?? -1) * B.count);
   return {
@@ -204,42 +204,51 @@ function OA(A, g) {
     totalMax: I.reduce((B, c) => B + (c.unitMax ?? 0) * c.count, 0)
   };
 }
-const nA = "overlay";
-function zA(A, g) {
-  return g && A >= g ? `${L(A / g)}d` : A >= 1e3 ? `${L(A / 1e3)}kc` : `${L(A)}c`;
+const CA = "overlay";
+function $A(A) {
+  const { capture: g, grid: E, offset: Q } = A, I = E.cell / g.scale;
+  return {
+    x: g.origin.x + (E.x + Q.dx) / g.scale,
+    y: g.origin.y + (E.y + Q.dy) / g.scale,
+    width: I * N,
+    height: I * y
+  };
 }
-function L(A) {
+function AE(A, g) {
+  return g && A >= g ? `${O(A / g)}d` : A >= 1e3 ? `${O(A / 1e3)}kc` : `${O(A)}c`;
+}
+function O(A) {
   return A < 10 ? String(Math.round(A * 10) / 10) : String(Math.round(A));
 }
-function KA(A, g, E, Q = !1, I = !1) {
-  const { capture: B, grid: c, offset: w } = A, n = c.cell / B.scale, e = B.origin.x + (c.x + w.dx) / B.scale, k = B.origin.y + (c.y + w.dy) / B.scale, i = [];
+function EE(A, g, E, Q = !1, I = !1) {
+  const { capture: B, grid: c, offset: i } = A, o = c.cell / B.scale, e = B.origin.x + (c.x + i.dx) / B.scale, U = B.origin.y + (c.y + i.dy) / B.scale, n = [];
   for (const l of A.cells) {
     if (l.status === "empty") continue;
-    const C = { x: e + l.col * n, y: k + l.row * n, size: n };
+    const s = { x: e + l.col * o, y: U + l.row * o, size: o };
     if (l.status === "unknown") {
-      i.push({ ...C, kind: "unknown", label: "?" });
+      n.push({ ...s, kind: "unknown", label: "?" });
       continue;
     }
-    const s = q("", l.candidates, g).unitMax;
-    if (s === null) {
-      Q || i.push({ ...C, kind: "unpriced", label: "no price" });
+    const a = AA("", l.candidates, g).unitMax;
+    if (a === null) {
+      Q || n.push({ ...s, kind: "unpriced", label: "no price" });
       continue;
     }
-    const a = l.candidates.length > 1, Y = zA(s, I ? null : g.divineChaos) + (a ? "?" : ""), U = E !== null && s < E ? "below" : a ? "lookalike" : "above";
-    i.push({ ...C, kind: U, label: Y });
+    const M = l.candidates.length > 1, Y = AE(a, I ? null : g.divineChaos) + (M ? "?" : ""), C = E !== null && a < E ? "below" : M ? "lookalike" : "above";
+    n.push({ ...s, kind: C, label: Y });
   }
-  return i;
+  return n;
 }
-const PA = 500, vA = {
+const gE = 500, QE = {
   above: "2px solid #46a758",
   below: "1px solid rgba(255,255,255,0.08)",
   lookalike: "2px solid #f5a623",
   unpriced: "2px dashed rgba(255,255,255,0.45)",
   unknown: "2px solid #e5484d"
 };
-function uA({ mark: A }) {
+function BE({ mark: A }) {
   const g = A.kind === "below", E = Math.max(10, Math.round(A.size * 0.24));
-  return /* @__PURE__ */ o(
+  return /* @__PURE__ */ w(
     "div",
     {
       style: {
@@ -249,10 +258,10 @@ function uA({ mark: A }) {
         width: A.size,
         height: A.size,
         boxSizing: "border-box",
-        border: vA[A.kind],
+        border: QE[A.kind],
         background: g ? "rgba(0,0,0,0.62)" : void 0
       },
-      children: /* @__PURE__ */ o(
+      children: /* @__PURE__ */ w(
         "span",
         {
           style: {
@@ -276,89 +285,226 @@ function uA({ mark: A }) {
     }
   );
 }
-function qA({ ctx: A }) {
-  const [g, E] = SA([]);
-  return P(() => {
+const iA = 26;
+function IE({ ctx: A, payload: g }) {
+  const E = UA(null), { grid: Q, status: I } = g;
+  return TA(() => {
+    const B = E.current;
+    if (!B) return;
+    const c = B.getBoundingClientRect();
+    return A.setInteractiveRegion({ x: c.left, y: c.top, width: c.width, height: c.height }), () => A.setInteractiveRegion(null);
+  }, [A, Q.x, Q.y, Q.width, I]), /* @__PURE__ */ k(
+    "div",
+    {
+      ref: E,
+      style: {
+        position: "absolute",
+        left: Q.x + Q.width,
+        top: Math.max(0, Q.y - iA - 4),
+        transform: "translateX(-100%)",
+        height: iA,
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        padding: "0 4px 0 10px",
+        borderRadius: 4,
+        background: "rgba(10,10,14,0.85)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        color: "#fff",
+        fontSize: 13,
+        pointerEvents: "auto"
+      },
+      children: [
+        I && /* @__PURE__ */ w("span", { children: I }),
+        /* @__PURE__ */ w(
+          "button",
+          {
+            type: "button",
+            onClick: () => A.closeOverlay(),
+            title: "Close overlay",
+            style: {
+              width: 20,
+              height: 20,
+              border: "none",
+              borderRadius: 3,
+              background: "rgba(255,255,255,0.12)",
+              color: "#fff",
+              fontSize: 14,
+              lineHeight: "20px",
+              cursor: "pointer",
+              padding: 0
+            },
+            children: "✕"
+          }
+        )
+      ]
+    }
+  );
+}
+function cE({ ctx: A }) {
+  const [g, E] = kA(null);
+  return $(() => {
     let Q = !0, I = -1;
     const B = async () => {
-      const n = await A.storage.get(nA);
-      !Q || !n || n.stamp === I || (I = n.stamp, E(n.marks));
+      const o = await A.storage.get(CA);
+      !Q || !o || o.stamp === I || (I = o.stamp, E(o));
     };
     B();
-    const c = setInterval(() => void B(), PA), w = A.onOverlayVisibility((n) => {
-      n && B();
+    const c = setInterval(() => void B(), gE), i = A.onOverlayVisibility((o) => {
+      o && B();
     });
     return () => {
-      Q = !1, clearInterval(c), w();
+      Q = !1, clearInterval(c), i();
     };
-  }, [A]), /* @__PURE__ */ o("div", { style: { position: "absolute", inset: 0, pointerEvents: "none" }, children: g.map((Q) => /* @__PURE__ */ o(uA, { mark: Q }, `${Q.x},${Q.y}`)) });
+  }, [A]), /* @__PURE__ */ k("div", { style: { position: "absolute", inset: 0, pointerEvents: "none" }, children: [
+    g == null ? void 0 : g.marks.map((Q) => /* @__PURE__ */ w(BE, { mark: Q }, `${Q.x},${Q.y}`)),
+    (g == null ? void 0 : g.grid) && /* @__PURE__ */ w(IE, { ctx: A, payload: g })
+  ] });
 }
-const N = "20/20", _A = "skill-gem";
-function $A(A, g, E) {
-  const Q = A, I = Q.some((w) => typeof w.variant == "string"), B = /* @__PURE__ */ new Map();
-  for (const w of Q) {
-    const n = w.name.toLowerCase(), e = B.get(n);
-    e ? e.push(w) : B.set(n, [w]);
+const EA = "craftLog", f = 3, gA = { batches: [], snapshot: {} };
+function oE(A) {
+  return A.map((g) => g.name).sort().join(" | ");
+}
+const wE = 2, iE = 0.2;
+function eE(A, g, E) {
+  const Q = g.filter((i) => i.status !== "empty"), I = Q.filter((i) => i.status === "unknown").length;
+  if (I > wE && I > Q.length * iE)
+    return { log: A, outcome: { kind: "skipped", reason: `${I} unreadable cells` } };
+  const B = {}, c = [];
+  for (const i of Q) {
+    const o = `${i.col},${i.row}`;
+    if (i.status !== "matched") {
+      A.snapshot[o] && (B[o] = A.snapshot[o]);
+      continue;
+    }
+    const e = oE(i.candidates);
+    B[o] = e, A.snapshot[o] !== e && c.push({ slot: o, key: e });
   }
-  const c = g.find((w) => w.name === "Divine Orb");
+  return c.length ? {
+    log: { batches: [...A.batches, { at: E, gems: c }], snapshot: B },
+    outcome: { kind: "recorded", count: c.length }
+  } : { log: { ...A, snapshot: B }, outcome: { kind: "none-new" } };
+}
+function nE(A) {
+  const g = A.batches[A.batches.length - 1];
+  if (!g) return A;
+  const E = { ...A.snapshot };
+  for (const Q of g.gems) E[Q.slot] === Q.key && delete E[Q.slot];
+  return { batches: A.batches.slice(0, -1), snapshot: E };
+}
+function lE(A) {
+  const g = /* @__PURE__ */ new Map();
+  for (const E of A.batches) for (const Q of E.gems) g.set(Q.key, (g.get(Q.key) ?? 0) + 1);
+  return g;
+}
+function sE(A) {
+  return A.kind === "exact" ? A.chaos : A.kind === "range" ? (A.min + A.max) / 2 : null;
+}
+function aE(A, g) {
+  const E = A.split(" | ").map((Q) => sE(g.lookup(Q))).filter((Q) => Q !== null);
+  return E.length ? E.reduce((Q, I) => Q + I, 0) / E.length : null;
+}
+function kE(A, g, E) {
+  const Q = lE(A);
+  let I = 0, B = 0, c = 0, i = 0;
+  const o = [];
+  for (const [s, a] of Q) {
+    const M = aE(s, g);
+    M === null && (i += a);
+    const Y = M ?? 0;
+    I += a, B += Y * a, c += Y * Y * a, o.push({ key: s, count: a, unit: M, share: 0 });
+  }
+  const e = I ? B / I : 0, U = I > 1 ? Math.max(0, (c - I * e * e) / (I - 1)) : 0;
+  for (const s of o) s.share = B ? (s.unit ?? 0) * s.count / B : 0;
+  o.sort((s, a) => a.share - s.share || a.count - s.count);
+  const n = f * e, l = E === null ? null : n - E;
+  return {
+    gems: I,
+    unpriced: i,
+    meanGem: e,
+    evPerBeast: n,
+    ci95: I > 1 ? f * 1.96 * Math.sqrt(U / I) : 0,
+    beastChaos: E,
+    profitPerBeast: l,
+    roi: l === null || !E ? null : l / E,
+    rows: o
+  };
+}
+const z = "20/20", UE = "skill-gem";
+function FE(A, g, E) {
+  const Q = A, I = Q.some((i) => typeof i.variant == "string"), B = /* @__PURE__ */ new Map();
+  for (const i of Q) {
+    const o = i.name.toLowerCase(), e = B.get(o);
+    e ? e.push(i) : B.set(o, [i]);
+  }
+  const c = g.find((i) => i.name === "Divine Orb");
   return {
     hasVariants: I,
     divineChaos: (c == null ? void 0 : c.chaosValue) ?? null,
     updatedAt: E,
-    lookup(w) {
-      const n = B.get(w.toLowerCase());
-      if (!(n != null && n.length)) return { kind: "none" };
+    lookup(i) {
+      const o = B.get(i.toLowerCase());
+      if (!(o != null && o.length)) return { kind: "none" };
       if (I) {
-        const k = n.find((i) => i.variant === N);
-        return k ? { kind: "exact", chaos: k.chaosValue } : { kind: "none" };
+        const U = o.find((n) => n.variant === z);
+        return U ? { kind: "exact", chaos: U.chaosValue } : { kind: "none" };
       }
-      const e = n.map((k) => k.chaosValue);
+      const e = o.map((U) => U.chaosValue);
       return { kind: "range", min: Math.min(...e), max: Math.max(...e) };
     }
   };
 }
-let f = {
+let P = {
   scan: null,
   scanning: !1,
   error: null,
-  calibration: iA,
+  calibration: MA,
   order: "value",
   book: null,
   threshold: null,
   hideUnpriced: !1,
-  chaosOnly: !1
+  chaosOnly: !1,
+  log: gA,
+  logStatus: null,
+  beastChaos: null,
+  beastOverride: null
 };
-const y = /* @__PURE__ */ new Set();
+const K = /* @__PURE__ */ new Set();
 function d() {
-  return f;
+  return P;
 }
-function h(A) {
-  f = { ...f, ...A };
-  for (const g of y) g();
+function V(A) {
+  P = { ...P, ...A };
+  for (const g of K) g();
 }
-function eA(A) {
-  return y.add(A), () => {
-    y.delete(A);
+function tA(A) {
+  return K.add(A), () => {
+    K.delete(A);
   };
 }
-function lA() {
-  return DA(eA, d);
+function QA() {
+  return ZA(tA, d);
 }
-let Z = null;
-function sA(A) {
-  if (Z) return Z;
+const H = "Vivid Watcher";
+let T = null;
+function YA(A) {
+  if (T) return T;
   const g = async () => {
-    const [E, Q] = await Promise.all([
-      A.prices.getPrices({ category: _A }),
-      A.prices.getPrices({ category: "currency" })
-    ]);
-    h({ book: $A(E.prices, Q.prices, E.updatedAt) });
+    const [E, Q, I] = await Promise.all([
+      A.prices.getPrices({ category: UE }),
+      A.prices.getPrices({ category: "currency" }),
+      A.prices.getPrices({ category: "beast" })
+    ]), B = I.prices.find((c) => c.name === H) ?? (await A.prices.getPrices()).prices.find((c) => c.name === H);
+    V({
+      book: FE(E.prices, Q.prices, E.updatedAt),
+      beastChaos: (B == null ? void 0 : B.chaosValue) ?? null
+    });
   };
-  return A.prices.onChange(() => void g()), Z = g().catch((E) => {
-    throw Z = null, E;
-  }), Z;
+  return A.prices.onChange(() => void g()), T = g().catch((E) => {
+    throw T = null, E;
+  }), T;
 }
-const AE = [
+const ME = [
   {
     name: "Added Chaos Damage Support",
     icon: "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvR2Vtcy9TdXBwb3J0L0FkZGVkQ2hhb3NEYW1hZ2UiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/a89e2281e4/AddedChaosDamage.png",
@@ -1919,222 +2065,338 @@ const AE = [
     rgb: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJjQVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADD4DG0kMM00cOz8jYocyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH2EKDUgDDk8IKGAVSXEqYYMykalhsrBxtoxRAAAAAAAAAAAAAAAAAAAAAAAAEScDDWEDE2gJFFsIOGodQXgmW4E0oKJmqYNOcjYZ6ow/AAAAAAAAAAAAAAAAN0EZGWAFJ3YQWpVBnsGlbL97SYg/nJNYRDYWc35aj1g1TggAAAAAAAAAAAAAHVMKLoEVNI0lPYQcLHUVPmojZpp5hXJTTXdfTnMrZGY0CAIBAAAAAAAAAAAAAAAAeLI2T5UfJ34LOocZJWgMRF5Kv4lXhlkogFssloE8UG40h6FSAAAAAAAAAAAAAAAAfq1TZq0xUJIlTZcxb5FcdlhDHS8OUIt1RHhZLkQkZEwkLEIkAAAAAAAAAAAA2d3azLarXG4xaqxDo69pUTojEjcFIEwRQm45SnZIgMKqcVYrFgwGAAAAAAAAAAAACwAAnId0n4NfinVXSVgfIVgRBDwBBkEFI2EXU3cydpVhcEAbSxwAAAAAAAAAAAAAAAAADQMAAQEAJ1kTaqg5RXsxQGo9E1UNHmQiMmIeXnE5LikWAAAAAAAAAAAAAAAAAAAAAAAAAAAAPGUeVYYxSHkxU4VEGlwRE1EOE0UIMEwcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANVYeFzILH2ARFkwMCDcDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     alpha: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASUQAQAAAAAAAAAAAAABM57z8WABAQEAAAAAAAAFjv7+///+ppuWAAAAAAAFuv7///////6opQEAAAAAaf7/////////1g8AAAAAAZD+/////////9IBAAAAAAGC///////////zDAAAAABHvP7/////////xAMAAAAAgLf+///////+whYAAAAAAAIbZPn///7+2hIAAAAAAAAAAAFO8c2RUxMAAAAAAAAAAAAAABEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
   }
-], EE = {
-  gems: AE
-}, gE = 16;
-function QE(A, g, E, Q, I, B = gE) {
-  const c = new Uint8Array(B * B * 3), w = new Uint8Array(B * B), n = Math.max(0, Math.floor(g)), e = Math.max(0, Math.floor(E)), k = Math.min(A.width, Math.ceil(g + Q)), i = Math.min(A.height, Math.ceil(E + I)), l = new Float64Array(B * B), C = new Float64Array(B * B), s = new Float64Array(B * B), a = new Float64Array(B * B), Y = new Float64Array(B * B);
-  for (let U = e; U < i; U++) {
-    const m = Math.floor((U + 0.5 - E) / I * B);
-    if (!(m < 0 || m >= B))
-      for (let D = n; D < k; D++) {
-        const b = Math.floor((D + 0.5 - g) / Q * B);
-        if (b < 0 || b >= B) continue;
-        const J = (U * A.width + D) * 4, p = A.pixels[J + 3], F = m * B + b;
-        l[F] += A.pixels[J] * p, C[F] += A.pixels[J + 1] * p, s[F] += A.pixels[J + 2] * p, a[F] += p, Y[F]++;
+], CE = {
+  gems: ME
+}, tE = 16;
+function YE(A, g, E, Q, I, B = tE) {
+  const c = new Uint8Array(B * B * 3), i = new Uint8Array(B * B), o = Math.max(0, Math.floor(g)), e = Math.max(0, Math.floor(E)), U = Math.min(A.width, Math.ceil(g + Q)), n = Math.min(A.height, Math.ceil(E + I)), l = new Float64Array(B * B), s = new Float64Array(B * B), a = new Float64Array(B * B), M = new Float64Array(B * B), Y = new Float64Array(B * B);
+  for (let C = e; C < n; C++) {
+    const b = Math.floor((C + 0.5 - E) / I * B);
+    if (!(b < 0 || b >= B))
+      for (let J = o; J < U; J++) {
+        const j = Math.floor((J + 0.5 - g) / Q * B);
+        if (j < 0 || j >= B) continue;
+        const X = (C * A.width + J) * 4, S = A.pixels[X + 3], F = b * B + j;
+        l[F] += A.pixels[X] * S, s[F] += A.pixels[X + 1] * S, a[F] += A.pixels[X + 2] * S, M[F] += S, Y[F]++;
       }
   }
-  for (let U = 0; U < B * B; U++)
-    a[U] > 0 && (c[U * 3] = Math.round(l[U] / a[U]), c[U * 3 + 1] = Math.round(C[U] / a[U]), c[U * 3 + 2] = Math.round(s[U] / a[U])), w[U] = Y[U] > 0 ? Math.round(a[U] / Y[U]) : 0;
-  return { rgb: c, alpha: w };
+  for (let C = 0; C < B * B; C++)
+    M[C] > 0 && (c[C * 3] = Math.round(l[C] / M[C]), c[C * 3 + 1] = Math.round(s[C] / M[C]), c[C * 3 + 2] = Math.round(a[C] / M[C])), i[C] = Y[C] > 0 ? Math.round(M[C] / Y[C]) : 0;
+  return { rgb: c, alpha: i };
 }
-function O(A, g) {
+function u(A, g) {
   return 0.299 * A[g * 3] + 0.587 * A[g * 3 + 1] + 0.114 * A[g * 3 + 2];
 }
-const BE = 16, QA = 0.3;
-function _(A, g) {
+const hE = 16, eA = 0.3;
+function BA(A, g) {
   const E = g.alpha.length, Q = [0, 0, 0];
   let I = 0;
-  for (let i = 0; i < E; i++)
-    if (!(g.alpha[i] >= BE)) {
-      for (let l = 0; l < 3; l++) Q[l] += A.rgb[i * 3 + l];
+  for (let n = 0; n < E; n++)
+    if (!(g.alpha[n] >= hE)) {
+      for (let l = 0; l < 3; l++) Q[l] += A.rgb[n * 3 + l];
       I++;
     }
-  for (let i = 0; i < 3; i++) Q[i] = I ? Q[i] / I : 0;
+  for (let n = 0; n < 3; n++) Q[n] = I ? Q[n] / I : 0;
   const B = 0.299 * Q[0] + 0.587 * Q[1] + 0.114 * Q[2];
-  let c = 0, w = 0, n = 0;
-  for (let i = 0; i < E; i++) {
-    const l = g.alpha[i] / 255;
-    l !== 0 && (w += l * (O(A.rgb, i) - B), n += l * l * O(g.rgb, i));
+  let c = 0, i = 0, o = 0;
+  for (let n = 0; n < E; n++) {
+    const l = g.alpha[n] / 255;
+    l !== 0 && (i += l * (u(A.rgb, n) - B), o += l * l * u(g.rgb, n));
   }
-  const e = w > 0 ? Math.min(1.5, Math.max(0.67, n / w)) : 1;
-  let k = 0;
-  for (let i = 0; i < E; i++) {
-    const l = g.alpha[i] / 255, C = QA + (1 - QA) * l;
-    c += C;
-    for (let s = 0; s < 3; s++) {
-      const a = Q[s] + (A.rgb[i * 3 + s] - Q[s]) * e, Y = g.rgb[i * 3 + s] * l + Q[s] * (1 - l);
-      k += C * Math.abs(a - Y);
+  const e = i > 0 ? Math.min(1.5, Math.max(0.67, o / i)) : 1;
+  let U = 0;
+  for (let n = 0; n < E; n++) {
+    const l = g.alpha[n] / 255, s = eA + (1 - eA) * l;
+    c += s;
+    for (let a = 0; a < 3; a++) {
+      const M = Q[a] + (A.rgb[n * 3 + a] - Q[a]) * e, Y = g.rgb[n * 3 + a] * l + Q[a] * (1 - l);
+      U += s * Math.abs(M - Y);
     }
   }
-  return k / (c * 3);
+  return U / (c * 3);
 }
-function FA(A) {
+function hA(A) {
   const g = A.alpha.length;
   let E = 0, Q = 0;
   for (let B = 0; B < g; B++) {
-    const c = O(A.rgb, B);
+    const c = u(A.rgb, B);
     E += c, Q += c * c;
   }
   const I = E / g;
   return Math.sqrt(Math.max(0, Q / g - I * I));
 }
-function BA(A) {
+function nA(A) {
   const g = atob(A), E = new Uint8Array(g.length);
   for (let Q = 0; Q < g.length; Q++) E[Q] = g.charCodeAt(Q);
   return E;
 }
-const kA = EE.gems.map((A) => ({
+const VA = CE.gems.map((A) => ({
   name: A.name,
   icon: A.icon,
-  fp: { rgb: BA(A.rgb), alpha: BA(A.alpha) }
-})), UA = 20, IE = 40, cE = 3, oE = 0.08, T = 4, IA = 12, wE = 8;
-function iE(A, g) {
+  fp: { rgb: nA(A.rgb), alpha: nA(A.alpha) }
+})), RA = 20, VE = 40, RE = 3, dE = 0.08, Z = 4, lA = 12, pE = 8;
+function SE(A, g) {
   let E = 1 / 0;
-  for (const Q of g) E = Math.min(E, _(A, Q.fp));
+  for (const Q of g) E = Math.min(E, BA(A, Q.fp));
   return E;
 }
-function nE(A, g) {
-  return kA.map((E) => ({ ref: E, d: _(A, E.fp) })).sort((E, Q) => E.d - Q.d).slice(0, g).map((E) => E.ref);
+function DE(A, g) {
+  return VA.map((E) => ({ ref: E, d: BA(A, E.fp) })).sort((E, Q) => E.d - Q.d).slice(0, g).map((E) => E.ref);
 }
-function eE(A) {
-  if (FA(A) < UA) return { status: "empty", candidates: [] };
-  const g = kA.map((Q) => ({ name: Q.name, icon: Q.icon, distance: _(A, Q.fp) })).sort(
+function JE(A) {
+  if (hA(A) < RA) return { status: "empty", candidates: [] };
+  const g = VA.map((Q) => ({ name: Q.name, icon: Q.icon, distance: BA(A, Q.fp) })).sort(
     (Q, I) => Q.distance - I.distance
   ), E = g[0].distance;
-  return E > IE ? { status: "unknown", candidates: [], distance: E } : { status: "matched", candidates: g.filter((Q) => Q.distance <= E + cE), distance: E };
+  return E > VE ? { status: "unknown", candidates: [], distance: E } : { status: "matched", candidates: g.filter((Q) => Q.distance <= E + RE), distance: E };
 }
-function z(A, g, E, Q, I, B) {
-  return QE(A, g.x + E * g.cell + I, g.y + Q * g.cell + B, g.cell, g.cell);
+function v(A, g, E, Q, I, B) {
+  return YE(A, g.x + E * g.cell + I, g.y + Q * g.cell + B, g.cell, g.cell);
 }
-function lE(A, g) {
+function XE(A, g) {
   const E = [];
-  for (let c = 0; c < u && E.length < IA; c++)
-    for (let w = 0; w < v && E.length < IA; w++) {
-      const n = z(A, g, w, c, 0, 0);
-      FA(n) >= UA && E.push({ col: w, row: c, refs: nE(n, wE) });
+  for (let c = 0; c < y && E.length < lA; c++)
+    for (let i = 0; i < N && E.length < lA; i++) {
+      const o = v(A, g, i, c, 0, 0);
+      hA(o) >= RA && E.push({ col: i, row: c, refs: DE(o, pE) });
     }
   if (!E.length) return { dx: 0, dy: 0 };
-  const Q = g.cell * oE / T;
+  const Q = g.cell * dE / Z;
   let I = 1 / 0, B = { dx: 0, dy: 0 };
-  for (let c = -T; c <= T; c++)
-    for (let w = -T; w <= T; w++) {
-      const n = w * Q, e = c * Q;
-      let k = 0;
-      for (const i of E) k += iE(z(A, g, i.col, i.row, n, e), i.refs);
-      k < I && (I = k, B = { dx: n, dy: e });
+  for (let c = -Z; c <= Z; c++)
+    for (let i = -Z; i <= Z; i++) {
+      const o = i * Q, e = c * Q;
+      let U = 0;
+      for (const n of E) U += SE(v(A, g, n.col, n.row, o, e), n.refs);
+      U < I && (I = U, B = { dx: o, dy: e });
     }
   return B;
 }
-function sE(A, g) {
-  const E = lE(A, g), Q = [];
-  for (let I = 0; I < u; I++)
-    for (let B = 0; B < v; B++)
-      Q.push({ col: B, row: I, ...eE(z(A, g, B, I, E.dx, E.dy)) });
+function mE(A, g) {
+  const E = XE(A, g), Q = [];
+  for (let I = 0; I < y; I++)
+    for (let B = 0; B < N; B++)
+      Q.push({ col: B, row: I, ...JE(v(A, g, B, I, E.dx, E.dy)) });
   return { cells: Q, offset: E };
 }
-function MA(A, g) {
-  const E = NA(A.gameSize, g), Q = {
+function dA(A, g) {
+  const E = uA(A.gameSize, g), Q = {
     x: (E.x - A.origin.x) * A.scale,
     y: (E.y - A.origin.y) * A.scale,
     cell: E.cell * A.scale
   };
-  return { ...sE({ pixels: A.pixels, width: A.width, height: A.height }, Q), grid: Q, capture: A, at: Date.now() };
+  return { ...mE({ pixels: A.pixels, width: A.width, height: A.height }, Q), grid: Q, capture: A, at: Date.now() };
 }
-async function FE(A, g) {
+async function WE(A, g) {
   const E = await A.captureGameWindow();
-  return E ? MA(E, g) : null;
+  return E ? dA(E, g) : null;
 }
-const aA = "calibration", CA = "order", K = "threshold", YA = "hideUnpriced", VA = "chaosOnly";
-async function hA(A) {
+const pA = "calibration", SA = "order", q = "threshold", DA = "hideUnpriced", JA = "chaosOnly", _ = "beastPrice";
+async function XA(A) {
   if (!d().scanning) {
-    h({ scanning: !0, error: null });
+    V({ scanning: !0, error: null });
     try {
-      const g = await FE(A, d().calibration);
-      h(g ? { scan: g } : { error: "Path of Exile must be the focused window. Use the hotkey in-game with your inventory open." });
+      const g = await WE(A, d().calibration);
+      if (!g) {
+        V({ error: "Path of Exile must be the focused window. Use the hotkey in-game with your inventory open." });
+        return;
+      }
+      const { log: E, outcome: Q } = eE(d().log, g.cells, g.at);
+      V({ scan: g, log: E, logStatus: Q }), Q.kind !== "skipped" && await A.storage.set(EA, E);
     } catch (g) {
-      A.log("scan failed", g), h({ error: `Scan failed: ${g instanceof Error ? g.message : String(g)}` });
+      A.log("scan failed", g), V({ error: `Scan failed: ${g instanceof Error ? g.message : String(g)}` });
     } finally {
-      h({ scanning: !1 });
+      V({ scanning: !1 });
     }
   }
 }
-async function cA(A) {
+async function sA(A) {
   const { scan: g, book: E, threshold: Q, hideUnpriced: I, chaosOnly: B } = d();
   if (!g || !E) return;
-  const c = { stamp: Date.now(), marks: KA(g, E, Q, I, B) };
-  await A.storage.set(nA, c);
+  const c = {
+    stamp: Date.now(),
+    marks: EE(g, E, Q, I, B),
+    grid: $A(g),
+    status: bE(d().logStatus)
+  };
+  await A.storage.set(CA, c);
+}
+function bE(A) {
+  return A ? A.kind === "recorded" ? `+${A.count} ${A.count === 1 ? "gem" : "gems"} logged` : A.kind === "none-new" ? "No new gems to log" : `Not logged: ${A.reason}` : "";
 }
 function W(A, g, E = "c") {
-  return A === null || g === null ? "-" : A === g ? `${H(A)}${E}` : `${H(A)}${E} - ${H(g)}${E}`;
+  return A === null || g === null ? "-" : A === g ? `${r(A)}${E}` : `${r(A)}${E} - ${r(g)}${E}`;
 }
-const V = { color: "var(--text-muted, rgba(255,255,255,0.55))" }, R = { padding: "4px 6px" };
-function kE({ row: A }) {
+const t = { color: "var(--text-muted, rgba(255,255,255,0.55))" }, h = { padding: "4px 6px" };
+function jE({ row: A }) {
   const g = A.candidates.length > 1;
-  return /* @__PURE__ */ M("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
-    /* @__PURE__ */ o("td", { style: R, children: A.candidates.length > 0 && /* @__PURE__ */ o("img", { src: A.candidates[0].icon, alt: "", width: 28, height: 28, style: { display: "block" } }) }),
-    /* @__PURE__ */ M("td", { style: R, children: [
-      A.candidates.length === 0 && /* @__PURE__ */ o("span", { style: V, children: "Unreadable" }),
-      A.candidates.map((E, Q) => /* @__PURE__ */ M("div", { style: Q > 0 ? V : void 0, children: [
+  return /* @__PURE__ */ k("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
+    /* @__PURE__ */ w("td", { style: h, children: A.candidates.length > 0 && /* @__PURE__ */ w("img", { src: A.candidates[0].icon, alt: "", width: 28, height: 28, style: { display: "block" } }) }),
+    /* @__PURE__ */ k("td", { style: h, children: [
+      A.candidates.length === 0 && /* @__PURE__ */ w("span", { style: t, children: "Unreadable" }),
+      A.candidates.map((E, Q) => /* @__PURE__ */ k("div", { style: Q > 0 ? t : void 0, children: [
         Q > 0 ? "or " : "",
         E.name,
-        g && /* @__PURE__ */ M("span", { style: V, children: [
+        g && /* @__PURE__ */ k("span", { style: t, children: [
           " (",
-          W(...ME(A, Q)),
+          W(...ZE(A, Q)),
           ")"
         ] })
       ] }, E.name)),
-      g && /* @__PURE__ */ o("div", { style: { ...V, fontSize: 11 }, children: "Look-alike art: hover it in game to confirm" })
+      g && /* @__PURE__ */ w("div", { style: { ...t, fontSize: 11 }, children: "Look-alike art: hover it in game to confirm" })
     ] }),
-    /* @__PURE__ */ o("td", { style: { ...R, textAlign: "right" }, children: A.slot ? /* @__PURE__ */ o("span", { style: V, children: UE(A.slot) }) : A.count }),
-    /* @__PURE__ */ o("td", { style: { ...R, textAlign: "right" }, children: W(A.unitMin, A.unitMax) }),
-    /* @__PURE__ */ o("td", { style: { ...R, textAlign: "right" }, children: W(A.unitMin === null ? null : A.unitMin * A.count, A.unitMax === null ? null : A.unitMax * A.count) })
+    /* @__PURE__ */ w("td", { style: { ...h, textAlign: "right" }, children: A.slot ? /* @__PURE__ */ w("span", { style: t, children: TE(A.slot) }) : A.count }),
+    /* @__PURE__ */ w("td", { style: { ...h, textAlign: "right" }, children: W(A.unitMin, A.unitMax) }),
+    /* @__PURE__ */ w("td", { style: { ...h, textAlign: "right" }, children: W(A.unitMin === null ? null : A.unitMin * A.count, A.unitMax === null ? null : A.unitMax * A.count) })
   ] });
 }
-function UE(A) {
+function TE(A) {
   return `${A.col + 1}-${A.row + 1}`;
 }
-function ME(A, g) {
+function ZE(A, g) {
   const E = A.prices[g];
   return E.kind === "exact" ? [E.chaos, E.chaos] : E.kind === "range" ? [E.min, E.max] : [null, null];
 }
-function aE({ scan: A }) {
-  const g = JA(null);
-  return P(() => {
+function GE({ scan: A }) {
+  const g = UA(null);
+  return $(() => {
     const E = g.current;
     if (!E) return;
-    const { capture: Q, grid: I, offset: B, cells: c } = A, w = I.cell * 0.5, n = Math.max(0, Math.floor(I.x + B.dx - w)), e = Math.max(0, Math.floor(I.y + B.dy - w)), k = Math.min(Q.width - n, Math.ceil(I.cell * v + w * 2)), i = Math.min(Q.height - e, Math.ceil(I.cell * u + w * 2));
-    if (k <= 0 || i <= 0) return;
-    E.width = k, E.height = i;
+    const { capture: Q, grid: I, offset: B, cells: c } = A, i = I.cell * 0.5, o = Math.max(0, Math.floor(I.x + B.dx - i)), e = Math.max(0, Math.floor(I.y + B.dy - i)), U = Math.min(Q.width - o, Math.ceil(I.cell * N + i * 2)), n = Math.min(Q.height - e, Math.ceil(I.cell * y + i * 2));
+    if (U <= 0 || n <= 0) return;
+    E.width = U, E.height = n;
     const l = E.getContext("2d");
     if (!l) return;
-    const C = new ImageData(k, i);
-    for (let s = 0; s < i; s++) {
-      const a = ((e + s) * Q.width + n) * 4;
-      C.data.set(Q.pixels.subarray(a, a + k * 4), s * k * 4);
+    const s = new ImageData(U, n);
+    for (let a = 0; a < n; a++) {
+      const M = ((e + a) * Q.width + o) * 4;
+      s.data.set(Q.pixels.subarray(M, M + U * 4), a * U * 4);
     }
-    l.putImageData(C, 0, 0), l.lineWidth = Math.max(1, I.cell / 30);
-    for (const s of c) {
-      const a = I.x + B.dx + s.col * I.cell - n, Y = I.y + B.dy + s.row * I.cell - e;
-      l.strokeStyle = s.status === "empty" ? "rgba(255,255,255,0.25)" : s.status === "unknown" ? "#e5484d" : s.candidates.length > 1 ? "#f5a623" : "#46a758", l.strokeRect(a, Y, I.cell, I.cell);
+    l.putImageData(s, 0, 0), l.lineWidth = Math.max(1, I.cell / 30);
+    for (const a of c) {
+      const M = I.x + B.dx + a.col * I.cell - o, Y = I.y + B.dy + a.row * I.cell - e;
+      l.strokeStyle = a.status === "empty" ? "rgba(255,255,255,0.25)" : a.status === "unknown" ? "#e5484d" : a.candidates.length > 1 ? "#f5a623" : "#46a758", l.strokeRect(M, Y, I.cell, I.cell);
     }
-  }, [A]), /* @__PURE__ */ o("canvas", { ref: g, style: { width: "100%", imageRendering: "auto", borderRadius: 4 } });
+  }, [A]), /* @__PURE__ */ w("canvas", { ref: g, style: { width: "100%", imageRendering: "auto", borderRadius: 4 } });
 }
-function CE({ ctx: A }) {
-  const { calibration: g, scan: E } = lA(), Q = (I) => {
+const HE = 90;
+function rE({ ctx: A }) {
+  const { log: g, book: E, beastChaos: Q, beastOverride: I } = QA(), [B, c] = kA(!1), i = I ?? Q, o = L(() => E ? kE(g, E, i) : null, [g, E, i]), e = g.batches[g.batches.length - 1], U = (s) => {
+    V({ log: s, logStatus: null }), A.storage.set(EA, s);
+  }, n = (s) => {
+    const a = s !== null && s > 0 ? s : null;
+    V({ beastOverride: a }), a === null ? A.storage.delete(_) : A.storage.set(_, a);
+  }, l = (s) => `${r(s)}c`;
+  return /* @__PURE__ */ k("details", { open: !0, style: { marginTop: 16 }, children: [
+    /* @__PURE__ */ k("summary", { style: { cursor: "pointer" }, children: [
+      "Craft log",
+      o && o.gems > 0 ? ` - ${o.gems} gems from ${g.batches.length} scans` : ""
+    ] }),
+    /* @__PURE__ */ k("p", { style: { ...t, fontSize: 12 }, children: [
+      "Each scan logs the gems in slots that changed since the last logged scan, so rescans and partly sold inventories don't count twice. Every ",
+      f,
+      " gems is one ",
+      H,
+      "."
+    ] }),
+    /* @__PURE__ */ k("div", { style: { display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }, children: [
+      /* @__PURE__ */ k(x, { children: [
+        H,
+        " price"
+      ] }),
+      /* @__PURE__ */ w("div", { style: { width: 90 }, children: /* @__PURE__ */ w(G, { value: i, onChange: n, min: 0, step: 1, suffix: "c" }) }),
+      /* @__PURE__ */ w("span", { style: { ...t, fontSize: 12 }, children: I !== null ? `your price (poe.ninja: ${Q === null ? "none" : l(Q)}; clear to use it)` : Q === null ? "no poe.ninja price yet, enter one" : "from poe.ninja" }),
+      /* @__PURE__ */ w(p, { size: "sm", variant: "ghost", onClick: () => void A.prices.refresh(), children: "Refresh prices" })
+    ] }),
+    o && o.gems > 0 && /* @__PURE__ */ k("div", { style: { marginTop: 10, lineHeight: 1.6 }, children: [
+      /* @__PURE__ */ k("div", { children: [
+        "EV per ",
+        H,
+        ": ",
+        /* @__PURE__ */ w("strong", { children: l(o.evPerBeast) }),
+        /* @__PURE__ */ k("span", { style: t, children: [
+          " ± ",
+          l(o.ci95),
+          " (95%)"
+        ] })
+      ] }),
+      o.profitPerBeast !== null && o.roi !== null && /* @__PURE__ */ k("div", { children: [
+        "Profit per beast: ",
+        /* @__PURE__ */ w("strong", { children: l(o.profitPerBeast) }),
+        /* @__PURE__ */ k("span", { style: t, children: [
+          " ",
+          "(",
+          o.roi >= 0 ? "+" : "",
+          Math.round(o.roi * 100),
+          "% on ",
+          l(o.beastChaos ?? 0),
+          ")"
+        ] })
+      ] }),
+      /* @__PURE__ */ k("div", { style: { ...t, fontSize: 12 }, children: [
+        "Mean gem ",
+        l(o.meanGem),
+        " over ",
+        o.gems,
+        " gems (~",
+        Math.floor(o.gems / f),
+        " beasts)",
+        o.unpriced > 0 && `; ${o.unpriced} without a 20/20 price counted as 0`,
+        o.gems < HE && ". Small sample: a few lucky gems swing this a lot",
+        ". Uses current prices."
+      ] }),
+      /* @__PURE__ */ k("table", { style: { width: "100%", marginTop: 6, borderCollapse: "collapse", fontSize: 12 }, children: [
+        /* @__PURE__ */ w("thead", { children: /* @__PURE__ */ k("tr", { style: { ...t, textAlign: "left", fontSize: 11 }, children: [
+          /* @__PURE__ */ w("th", { style: h, children: "Most value from" }),
+          /* @__PURE__ */ w("th", { style: { ...h, textAlign: "right" }, children: "Seen" }),
+          /* @__PURE__ */ w("th", { style: { ...h, textAlign: "right" }, children: "Each" }),
+          /* @__PURE__ */ w("th", { style: { ...h, textAlign: "right" }, children: "Share" })
+        ] }) }),
+        /* @__PURE__ */ w("tbody", { children: o.rows.slice(0, 10).map((s) => /* @__PURE__ */ k("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)" }, children: [
+          /* @__PURE__ */ w("td", { style: h, children: s.key }),
+          /* @__PURE__ */ w("td", { style: { ...h, textAlign: "right" }, children: s.count }),
+          /* @__PURE__ */ w("td", { style: { ...h, textAlign: "right" }, children: s.unit === null ? "-" : l(s.unit) }),
+          /* @__PURE__ */ k("td", { style: { ...h, textAlign: "right" }, children: [
+            Math.round(s.share * 100),
+            "%"
+          ] })
+        ] }, s.key)) })
+      ] })
+    ] }),
+    /* @__PURE__ */ k("div", { style: { display: "flex", gap: 8, marginTop: 10 }, children: [
+      /* @__PURE__ */ w(p, { size: "sm", variant: "ghost", disabled: !e, onClick: () => U(nE(g)), children: e ? `Undo last scan (${e.gems.length} gems)` : "Undo last scan" }),
+      /* @__PURE__ */ w(
+        p,
+        {
+          size: "sm",
+          variant: B ? "danger" : "ghost",
+          disabled: !g.batches.length && !B,
+          onClick: () => {
+            if (!B) return c(!0);
+            U(gA), c(!1);
+          },
+          onBlur: () => c(!1),
+          children: B ? "Click again to clear the log" : "Clear log"
+        }
+      )
+    ] })
+  ] });
+}
+function xE({ ctx: A }) {
+  const { calibration: g, scan: E } = QA(), Q = (I) => {
     const B = { ...g, ...I };
-    h({ calibration: B, scan: E ? MA(E.capture, B) : null }), A.storage.set(aA, B);
+    V({ calibration: B, scan: E ? dA(E.capture, B) : null }), A.storage.set(pA, B);
   };
-  return /* @__PURE__ */ M("details", { style: { marginTop: 16 }, children: [
-    /* @__PURE__ */ o("summary", { style: { cursor: "pointer" }, children: "Calibration" }),
-    /* @__PURE__ */ o("p", { style: { ...V, fontSize: 12 }, children: "Green = matched, amber = look-alike, red = unreadable, grey = empty. If the boxes don't sit on the inventory cells, nudge them below; scans also auto-correct small offsets." }),
-    /* @__PURE__ */ M("div", { style: { display: "grid", gridTemplateColumns: "auto 1fr", gap: 8, alignItems: "center" }, children: [
-      /* @__PURE__ */ o(x, { children: "Offset X" }),
-      /* @__PURE__ */ o(G, { value: g.offsetX, onChange: (I) => Q({ offsetX: I ?? 0 }), step: 1, suffix: "px" }),
-      /* @__PURE__ */ o(x, { children: "Offset Y" }),
-      /* @__PURE__ */ o(G, { value: g.offsetY, onChange: (I) => Q({ offsetY: I ?? 0 }), step: 1, suffix: "px" }),
-      /* @__PURE__ */ o(x, { children: "Cell size" }),
-      /* @__PURE__ */ o(
+  return /* @__PURE__ */ k("details", { style: { marginTop: 16 }, children: [
+    /* @__PURE__ */ w("summary", { style: { cursor: "pointer" }, children: "Calibration" }),
+    /* @__PURE__ */ w("p", { style: { ...t, fontSize: 12 }, children: "Green = matched, amber = look-alike, red = unreadable, grey = empty. If the boxes don't sit on the inventory cells, nudge them below; scans also auto-correct small offsets." }),
+    /* @__PURE__ */ k("div", { style: { display: "grid", gridTemplateColumns: "auto 1fr", gap: 8, alignItems: "center" }, children: [
+      /* @__PURE__ */ w(x, { children: "Offset X" }),
+      /* @__PURE__ */ w(G, { value: g.offsetX, onChange: (I) => Q({ offsetX: I ?? 0 }), step: 1, suffix: "px" }),
+      /* @__PURE__ */ w(x, { children: "Offset Y" }),
+      /* @__PURE__ */ w(G, { value: g.offsetY, onChange: (I) => Q({ offsetY: I ?? 0 }), step: 1, suffix: "px" }),
+      /* @__PURE__ */ w(x, { children: "Cell size" }),
+      /* @__PURE__ */ w(
         G,
         {
           value: g.cellScale,
@@ -2147,9 +2409,9 @@ function CE({ ctx: A }) {
         }
       )
     ] }),
-    E ? /* @__PURE__ */ M("div", { style: { marginTop: 8 }, children: [
-      /* @__PURE__ */ o(aE, { scan: E }),
-      /* @__PURE__ */ M("div", { style: { ...V, fontSize: 11 }, children: [
+    E ? /* @__PURE__ */ k("div", { style: { marginTop: 8 }, children: [
+      /* @__PURE__ */ w(GE, { scan: E }),
+      /* @__PURE__ */ k("div", { style: { ...t, fontSize: 11 }, children: [
         "Auto-align: ",
         (E.offset.dx / E.capture.scale).toFixed(1),
         ", ",
@@ -2157,89 +2419,89 @@ function CE({ ctx: A }) {
         " ",
         "px"
       ] })
-    ] }) : /* @__PURE__ */ o("p", { style: V, children: "Scan once to see the grid preview." })
+    ] }) : /* @__PURE__ */ w("p", { style: t, children: "Scan once to see the grid preview." })
   ] });
 }
-function YE({ ctx: A }) {
-  const { scan: g, scanning: E, error: Q, order: I, book: B, threshold: c, hideUnpriced: w, chaosOnly: n } = lA();
-  P(() => {
-    sA(A);
+function LE({ ctx: A }) {
+  const { scan: g, scanning: E, error: Q, order: I, book: B, threshold: c, hideUnpriced: i, chaosOnly: o } = QA();
+  $(() => {
+    YA(A);
   }, [A]);
-  const e = r(() => g && B ? OA(g.cells, B) : null, [g, B]), k = r(
-    () => g && B && e ? I === "inventory" ? yA(g.cells, B) : e.rows : [],
+  const e = L(() => g && B ? _A(g.cells, B) : null, [g, B]), U = L(
+    () => g && B && e ? I === "inventory" ? qA(g.cells, B) : e.rows : [],
     [g, B, e, I]
-  ), i = (F) => c !== null && F.unitMax !== null && F.unitMax < c, l = (F) => F.candidates.length > 0 && F.unitMax === null, C = k.filter((F) => !i(F) && !(w && l(F))), s = w ? k.filter(l).reduce((F, t) => F + t.count, 0) : 0, a = k.filter(i), Y = a.reduce((F, t) => F + t.count, 0), U = a.reduce((F, t) => F + (t.unitMin ?? 0) * t.count, 0), m = a.reduce((F, t) => F + (t.unitMax ?? 0) * t.count, 0), D = () => {
-    h({ chaosOnly: !n }), A.storage.set(VA, !n);
-  }, b = () => {
-    h({ hideUnpriced: !w }), A.storage.set(YA, !w);
-  }, J = (F) => {
-    const t = F !== null && F > 0 ? F : null;
-    h({ threshold: t }), t === null ? A.storage.delete(K) : A.storage.set(K, t);
-  }, p = (F) => {
-    h({ order: F }), A.storage.set(CA, F);
+  ), n = (F) => c !== null && F.unitMax !== null && F.unitMax < c, l = (F) => F.candidates.length > 0 && F.unitMax === null, s = U.filter((F) => !n(F) && !(i && l(F))), a = i ? U.filter(l).reduce((F, R) => F + R.count, 0) : 0, M = U.filter(n), Y = M.reduce((F, R) => F + R.count, 0), C = M.reduce((F, R) => F + (R.unitMin ?? 0) * R.count, 0), b = M.reduce((F, R) => F + (R.unitMax ?? 0) * R.count, 0), J = () => {
+    V({ chaosOnly: !o }), A.storage.set(JA, !o);
+  }, j = () => {
+    V({ hideUnpriced: !i }), A.storage.set(DA, !i);
+  }, X = (F) => {
+    const R = F !== null && F > 0 ? F : null;
+    V({ threshold: R }), R === null ? A.storage.delete(q) : A.storage.set(q, R);
+  }, S = (F) => {
+    V({ order: F }), A.storage.set(SA, F);
   };
-  return /* @__PURE__ */ M("div", { style: { padding: 12, color: "var(--text)", fontSize: 13 }, children: [
-    /* @__PURE__ */ M("div", { style: { display: "flex", gap: 8, alignItems: "center" }, children: [
-      /* @__PURE__ */ o(j, { variant: "primary", onClick: () => void hA(A), disabled: E, children: E ? "Scanning..." : "Scan inventory" }),
-      /* @__PURE__ */ o("span", { style: { ...V, fontSize: 12 }, children: 'Tip: bind "Scan inventory gems" in Settings > Macros and press it in game with your inventory open. Prices appear over your inventory; Esc hides them.' })
+  return /* @__PURE__ */ k("div", { style: { padding: 12, color: "var(--text)", fontSize: 13 }, children: [
+    /* @__PURE__ */ k("div", { style: { display: "flex", gap: 8, alignItems: "center" }, children: [
+      /* @__PURE__ */ w(p, { variant: "primary", onClick: () => void XA(A), disabled: E, children: E ? "Scanning..." : "Scan inventory" }),
+      /* @__PURE__ */ w("span", { style: { ...t, fontSize: 12 }, children: `Tip: bind "Scan inventory gems" in Settings > Macros and press it in game with your inventory open. Prices appear over your inventory; close them with the overlay's ✕ or your toggle hotkey.` })
     ] }),
-    Q && /* @__PURE__ */ o("div", { style: { marginTop: 12 }, children: /* @__PURE__ */ o(AA, { message: Q, tone: "warn" }) }),
-    B && !B.hasVariants && /* @__PURE__ */ o("div", { style: { marginTop: 12 }, children: /* @__PURE__ */ o(
-      AA,
+    Q && /* @__PURE__ */ w("div", { style: { marginTop: 12 }, children: /* @__PURE__ */ w(cA, { message: Q, tone: "warn" }) }),
+    B && !B.hasVariants && /* @__PURE__ */ w("div", { style: { marginTop: 12 }, children: /* @__PURE__ */ w(
+      cA,
       {
         tone: "warn",
-        message: `This Scalpel version doesn't pass gem level/quality to plugins, so each gem shows the range across all its poe.ninja listings instead of the exact ${N} price.`
+        message: `This Scalpel version doesn't pass gem level/quality to plugins, so each gem shows the range across all its poe.ninja listings instead of the exact ${z} price.`
       }
     ) }),
-    e && /* @__PURE__ */ M(RA, { children: [
-      /* @__PURE__ */ M("div", { style: { marginTop: 12, display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }, children: [
-        /* @__PURE__ */ o("span", { style: { ...V, fontSize: 12 }, children: "List:" }),
-        /* @__PURE__ */ o(j, { size: "sm", variant: I === "value" ? "primary" : "ghost", onClick: () => p("value"), children: "By value" }),
-        /* @__PURE__ */ o(j, { size: "sm", variant: I === "inventory" ? "primary" : "ghost", onClick: () => p("inventory"), children: "Inventory order" }),
-        /* @__PURE__ */ o("span", { style: { ...V, fontSize: 12, marginLeft: 12 }, children: "Min price:" }),
-        /* @__PURE__ */ o("div", { style: { width: 90 }, children: /* @__PURE__ */ o(G, { value: c, onChange: J, min: 0, step: 5, suffix: "c" }) }),
-        c !== null && (B == null ? void 0 : B.divineChaos) && /* @__PURE__ */ M("span", { style: { ...V, fontSize: 12 }, children: [
+    e && /* @__PURE__ */ k(mA, { children: [
+      /* @__PURE__ */ k("div", { style: { marginTop: 12, display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }, children: [
+        /* @__PURE__ */ w("span", { style: { ...t, fontSize: 12 }, children: "List:" }),
+        /* @__PURE__ */ w(p, { size: "sm", variant: I === "value" ? "primary" : "ghost", onClick: () => S("value"), children: "By value" }),
+        /* @__PURE__ */ w(p, { size: "sm", variant: I === "inventory" ? "primary" : "ghost", onClick: () => S("inventory"), children: "Inventory order" }),
+        /* @__PURE__ */ w("span", { style: { ...t, fontSize: 12, marginLeft: 12 }, children: "Min price:" }),
+        /* @__PURE__ */ w("div", { style: { width: 90 }, children: /* @__PURE__ */ w(G, { value: c, onChange: X, min: 0, step: 5, suffix: "c" }) }),
+        c !== null && (B == null ? void 0 : B.divineChaos) && /* @__PURE__ */ k("span", { style: { ...t, fontSize: 12 }, children: [
           "(",
           (c / B.divineChaos).toFixed(2),
           " div)"
         ] }),
-        /* @__PURE__ */ o(j, { size: "sm", variant: w ? "primary" : "ghost", onClick: b, children: "Hide no-price" }),
-        /* @__PURE__ */ o(j, { size: "sm", variant: n ? "primary" : "ghost", onClick: D, children: "Chaos only" })
+        /* @__PURE__ */ w(p, { size: "sm", variant: i ? "primary" : "ghost", onClick: j, children: "Hide no-price" }),
+        /* @__PURE__ */ w(p, { size: "sm", variant: o ? "primary" : "ghost", onClick: J, children: "Chaos only" })
       ] }),
-      /* @__PURE__ */ M("div", { style: { marginTop: 12 }, children: [
-        /* @__PURE__ */ o("strong", { children: e.gems }),
+      /* @__PURE__ */ k("div", { style: { marginTop: 12 }, children: [
+        /* @__PURE__ */ w("strong", { children: e.gems }),
         " gems",
-        e.unknown > 0 && /* @__PURE__ */ M("span", { style: V, children: [
+        e.unknown > 0 && /* @__PURE__ */ k("span", { style: t, children: [
           " - ",
           e.unknown,
           " cells unreadable"
         ] }),
         " - total ",
-        /* @__PURE__ */ o("strong", { children: W(e.totalMin, e.totalMax) }),
-        (B == null ? void 0 : B.divineChaos) && /* @__PURE__ */ M("span", { style: V, children: [
+        /* @__PURE__ */ w("strong", { children: W(e.totalMin, e.totalMax) }),
+        (B == null ? void 0 : B.divineChaos) && /* @__PURE__ */ k("span", { style: t, children: [
           " ",
           "(",
           W(e.totalMin / B.divineChaos, e.totalMax / B.divineChaos, " div"),
           ")"
         ] })
       ] }),
-      /* @__PURE__ */ M("table", { style: { width: "100%", marginTop: 8, borderCollapse: "collapse" }, children: [
-        /* @__PURE__ */ o("thead", { children: /* @__PURE__ */ M("tr", { style: { ...V, textAlign: "left", fontSize: 11 }, children: [
-          /* @__PURE__ */ o("th", {}),
-          /* @__PURE__ */ M("th", { style: R, children: [
+      /* @__PURE__ */ k("table", { style: { width: "100%", marginTop: 8, borderCollapse: "collapse" }, children: [
+        /* @__PURE__ */ w("thead", { children: /* @__PURE__ */ k("tr", { style: { ...t, textAlign: "left", fontSize: 11 }, children: [
+          /* @__PURE__ */ w("th", {}),
+          /* @__PURE__ */ k("th", { style: h, children: [
             "Gem (",
-            N,
+            z,
             ")"
           ] }),
-          /* @__PURE__ */ o("th", { style: { ...R, textAlign: "right" }, children: I === "inventory" ? /* @__PURE__ */ o("span", { title: "Column-row, counted down each column", children: "Slot" }) : "Qty" }),
-          /* @__PURE__ */ o("th", { style: { ...R, textAlign: "right" }, children: "Each" }),
-          /* @__PURE__ */ o("th", { style: { ...R, textAlign: "right" }, children: "Total" })
+          /* @__PURE__ */ w("th", { style: { ...h, textAlign: "right" }, children: I === "inventory" ? /* @__PURE__ */ w("span", { title: "Column-row, counted down each column", children: "Slot" }) : "Qty" }),
+          /* @__PURE__ */ w("th", { style: { ...h, textAlign: "right" }, children: "Each" }),
+          /* @__PURE__ */ w("th", { style: { ...h, textAlign: "right" }, children: "Total" })
         ] }) }),
-        /* @__PURE__ */ M("tbody", { children: [
-          C.map((F) => /* @__PURE__ */ o(kE, { row: F }, F.key)),
-          Y > 0 && /* @__PURE__ */ M("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...V }, children: [
-            /* @__PURE__ */ o("td", {}),
-            /* @__PURE__ */ M("td", { style: R, children: [
+        /* @__PURE__ */ k("tbody", { children: [
+          s.map((F) => /* @__PURE__ */ w(jE, { row: F }, F.key)),
+          Y > 0 && /* @__PURE__ */ k("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...t }, children: [
+            /* @__PURE__ */ w("td", {}),
+            /* @__PURE__ */ k("td", { style: h, children: [
               Y,
               " ",
               Y === 1 ? "gem" : "gems",
@@ -2247,69 +2509,76 @@ function YE({ ctx: A }) {
               c,
               "c"
             ] }),
-            /* @__PURE__ */ o("td", { style: { ...R, textAlign: "right" }, children: I === "value" ? Y : "" }),
-            /* @__PURE__ */ o("td", {}),
-            /* @__PURE__ */ o("td", { style: { ...R, textAlign: "right" }, children: W(U, m) })
+            /* @__PURE__ */ w("td", { style: { ...h, textAlign: "right" }, children: I === "value" ? Y : "" }),
+            /* @__PURE__ */ w("td", {}),
+            /* @__PURE__ */ w("td", { style: { ...h, textAlign: "right" }, children: W(C, b) })
           ] }),
-          s > 0 && /* @__PURE__ */ M("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...V }, children: [
-            /* @__PURE__ */ o("td", {}),
-            /* @__PURE__ */ M("td", { style: R, children: [
-              s,
+          a > 0 && /* @__PURE__ */ k("tr", { style: { borderTop: "1px solid rgba(255,255,255,0.06)", ...t }, children: [
+            /* @__PURE__ */ w("td", {}),
+            /* @__PURE__ */ k("td", { style: h, children: [
+              a,
               " ",
-              s === 1 ? "gem" : "gems",
+              a === 1 ? "gem" : "gems",
               " with no price hidden"
             ] }),
-            /* @__PURE__ */ o("td", { style: { ...R, textAlign: "right" }, children: I === "value" ? s : "" }),
-            /* @__PURE__ */ o("td", {}),
-            /* @__PURE__ */ o("td", {})
+            /* @__PURE__ */ w("td", { style: { ...h, textAlign: "right" }, children: I === "value" ? a : "" }),
+            /* @__PURE__ */ w("td", {}),
+            /* @__PURE__ */ w("td", {})
           ] })
         ] })
       ] }),
-      (B == null ? void 0 : B.updatedAt) && /* @__PURE__ */ M("div", { style: { ...V, fontSize: 11, marginTop: 8 }, children: [
+      (B == null ? void 0 : B.updatedAt) && /* @__PURE__ */ k("div", { style: { ...t, fontSize: 11, marginTop: 8 }, children: [
         "poe.ninja prices from ",
         new Date(B.updatedAt).toLocaleTimeString()
       ] })
     ] }),
-    /* @__PURE__ */ o(CE, { ctx: A })
+    /* @__PURE__ */ w(rE, { ctx: A }),
+    /* @__PURE__ */ w(xE, { ctx: A })
   ] });
 }
-const VE = 150, oA = "Vivid Watcher Helper";
-let X = null;
-async function SE(A) {
-  const g = await A.storage.get(aA);
-  g && h({ calibration: { ...iA, ...g } });
-  const E = await A.storage.get(CA);
-  (E === "value" || E === "inventory") && h({ order: E });
-  const Q = await A.storage.get(K);
-  typeof Q == "number" && h({ threshold: Q }), await A.storage.get(YA) === !0 && h({ hideUnpriced: !0 }), await A.storage.get(VA) === !0 && h({ chaosOnly: !0 });
-  let I = d();
-  eA(() => {
-    const c = d();
-    (c.scan !== I.scan || c.book !== I.book || c.threshold !== I.threshold || c.hideUnpriced !== I.hideUnpriced || c.chaosOnly !== I.chaosOnly) && cA(A), I = c;
+const fE = 150, aA = "Vivid Watcher Helper";
+let m = null;
+async function KE(A) {
+  const g = await A.storage.get(pA);
+  g && V({ calibration: { ...MA, ...g } });
+  const E = await A.storage.get(SA);
+  (E === "value" || E === "inventory") && V({ order: E });
+  const Q = await A.storage.get(q);
+  typeof Q == "number" && V({ threshold: Q }), await A.storage.get(DA) === !0 && V({ hideUnpriced: !0 }), await A.storage.get(JA) === !0 && V({ chaosOnly: !0 });
+  const I = await A.storage.get(EA);
+  I != null && I.batches && I.snapshot && V({ log: { ...gA, ...I } });
+  const B = await A.storage.get(_);
+  typeof B == "number" && V({ beastOverride: B });
+  let c = d();
+  tA(() => {
+    const o = d();
+    (o.scan !== c.scan || o.book !== c.book || o.threshold !== c.threshold || o.hideUnpriced !== c.hideUnpriced || o.chaosOnly !== c.chaosOnly) && sA(A), c = o;
   });
-  const B = tA(/* @__PURE__ */ o(HA, { theme: "two-tone", fill: ["currentColor", "rgba(255,255,255,0.2)"] }));
+  const i = WA(/* @__PURE__ */ w(OA, { theme: "two-tone", fill: ["currentColor", "rgba(255,255,255,0.2)"] }));
   A.registerHotkey({ label: "Scan inventory gems" }, async () => {
-    if (await A.isOverlayVisible() && (A.closeOverlay(), await new Promise((c) => setTimeout(c, VE))), await Promise.all([hA(A), sA(A).catch(() => {
+    if (await A.isOverlayVisible() && (A.closeOverlay(), await new Promise((o) => setTimeout(o, fE))), await Promise.all([XA(A), YA(A).catch(() => {
     })]), d().error || !d().scan || !d().book) {
       A.openTab();
       return;
     }
-    await cA(A), A.openOverlay();
+    await sA(A), A.openOverlay();
   }), A.registerTab({
-    label: oA,
-    icon: B,
-    render: (c) => (X = $(c), X.render(/* @__PURE__ */ o(YE, { ctx: A })), () => {
-      X == null || X.unmount(), X = null;
+    label: aA,
+    icon: i,
+    render: (o) => (m = IA(o), m.render(/* @__PURE__ */ w(LE, { ctx: A })), () => {
+      m == null || m.unmount(), m = null;
     })
   }), A.registerOverlay(
-    { title: oA, icon: B, mode: "annotation", hotkeyLabel: "Toggle gem overlay", dismissOnEscape: !0 },
-    (c) => {
-      const w = $(c);
-      return w.render(/* @__PURE__ */ o(qA, { ctx: A })), () => w.unmount();
+    // No dismissOnEscape: Esc is a habit key in PoE, so the overlay closes from
+    // its own button or the toggle hotkey.
+    { title: aA, icon: i, mode: "annotation", hotkeyLabel: "Toggle gem overlay" },
+    (o) => {
+      const e = IA(o);
+      return e.render(/* @__PURE__ */ w(cE, { ctx: A })), () => e.unmount();
     }
   );
 }
 export {
-  SE as default
+  KE as default
 };
 //# sourceMappingURL=plugin.js.map
