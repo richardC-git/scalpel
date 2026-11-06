@@ -1,4 +1,5 @@
-import type { PoeItem, PriceEntry, Zone } from '../../shared/types'
+import type { GemListingsResult, PoeItem, PriceEntry, Zone } from '../../shared/types'
+export type { GemListing, GemListingsResult } from '../../shared/types'
 export type { PriceEntry }
 
 export interface PluginManifest {
@@ -160,6 +161,12 @@ export interface PricesApi {
   getPrices(opts?: { category?: string }): Promise<{ prices: PriceEntry[]; updatedAt: number | null }>
   /** Force the host to refetch ninja now, bypassing its cache TTL. */
   refresh(): Promise<void>
+  /**
+   * PoE1 skill-gem lines from poe.ninja with listing counts, which the
+   * `getPrices` snapshot lacks. Fetched on first call and cached for 30
+   * minutes; empty in PoE2.
+   */
+  getGemListings(): Promise<GemListingsResult>
   /**
    * Fire after the host price snapshot refreshes (e.g. after `refresh()` or the
    * host's own periodic refetch completes). Does not fire on initial

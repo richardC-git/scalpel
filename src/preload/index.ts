@@ -435,6 +435,8 @@ export const api = {
     level: number,
   ): Promise<(import('@shared/types').PriceEntry & { sampleSize: number; updatedAt: number }) | null> =>
     ipcRenderer.invoke('plugins:skill-price', name, level),
+  pricesGemListings: (): Promise<import('@shared/types').GemListingsResult> =>
+    ipcRenderer.invoke('plugins:gem-listings'),
   onPricesChange: (cb: () => void): (() => void) => {
     const handler = (): void => cb()
     ipcRenderer.send('plugins:prices-watch')

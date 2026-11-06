@@ -149,6 +149,7 @@ function stubDeps(): PluginContextFactoryDeps {
       getSkillPrice: async () => null,
       getPrices: async () => ({ prices: [], updatedAt: null }),
       refresh: async () => {},
+      getGemListings: async () => ({ lines: [], league: '', updatedAt: null }),
       onChange: () => () => {},
     },
     media: {

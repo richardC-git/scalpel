@@ -148,6 +148,7 @@ export function PluginHost(props: PluginHostProps): JSX.Element | null {
         },
         prices: {
           getSkillPrice: (name, level) => window.api.pricesGetSkill(name, level),
+          getGemListings: () => window.api.pricesGemListings(),
           getPrices: (opts) => window.api.pricesGet(opts),
           refresh: () => window.api.pricesRefresh(),
           onChange: (handler) => {

@@ -113,6 +113,7 @@ export function useActivatePlugin(
         },
         prices: {
           getSkillPrice: (name, level) => window.api.pricesGetSkill(name, level),
+          getGemListings: () => window.api.pricesGemListings(),
           getPrices: (opts) => window.api.pricesGet(opts),
           refresh: () => window.api.pricesRefresh(),
           onChange: (handler) => window.api.onPricesChange(handler),

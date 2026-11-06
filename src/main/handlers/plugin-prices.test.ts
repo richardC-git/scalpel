@@ -19,11 +19,35 @@ const getPriceEntries = vi.fn(() => ({
 const unsubSpy = vi.fn()
 const subscribePriceUpdates = vi.fn(() => unsubSpy)
 
-vi.mock('../trade/prices', () => ({ refreshPrices, invalidatePriceCache, getPriceEntries, subscribePriceUpdates }))
+const fetchJson = vi.fn()
+vi.mock('../trade/prices', () => ({
+  refreshPrices,
+  invalidatePriceCache,
+  getPriceEntries,
+  subscribePriceUpdates,
+  fetchJson,
+}))
+let poeVersion = 1
+vi.mock('../game-state', () => ({ getPoeVersion: () => poeVersion }))
+const getGemListings = vi.fn(async (league: string) => ({ lines: [], league, updatedAt: 5 }))
+vi.mock('../trade/gem-listings', () => ({ getGemListings }))
 vi.mock('../profiles/profile-settings', () => ({ getProfileBackedSetting: () => 'Standard' }))
 vi.mock('../trade/skill-prices', () => ({ getSkillPrice: vi.fn(async () => null) }))
 
 describe('plugin price handlers', () => {
+  it('serves gem listings for the profile league in PoE1 only', async () => {
+    const { registerPluginPriceHandlers } = await import('./plugin-prices')
+    registerPluginPriceHandlers({} as never)
+    poeVersion = 1
+    expect(await handlers.get('plugins:gem-listings')?.()).toEqual({ lines: [], league: 'Standard', updatedAt: 5 })
+    expect(getGemListings).toHaveBeenCalledWith('Standard', fetchJson)
+    poeVersion = 2
+    getGemListings.mockClear()
+    expect(await handlers.get('plugins:gem-listings')?.()).toEqual({ lines: [], league: 'Standard', updatedAt: null })
+    expect(getGemListings).not.toHaveBeenCalled()
+    poeVersion = 1
+  })
+
   it('routes skill lookups through the active profile league', async () => {
     const { getSkillPrice } = await import('../trade/skill-prices')
     const { registerPluginPriceHandlers } = await import('./plugin-prices')

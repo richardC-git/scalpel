@@ -34,6 +34,7 @@ export type PluginContextFactoryDeps = {
       category?: string
     }) => Promise<{ prices: import('@shared/types').PriceEntry[]; updatedAt: number | null }>
     refresh: () => Promise<void>
+    getGemListings: () => Promise<import('@shared/types').GemListingsResult>
     onChange: (handler: () => void) => () => void
   }
   registerTab: (

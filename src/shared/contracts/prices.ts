@@ -23,3 +23,25 @@ export interface PriceEntry {
    *  same-named entries. */
   variant?: string
 }
+
+/** One poe.ninja skill-gem line with its listing count (PoE1). */
+export interface GemListing {
+  name: string
+  /** poe.ninja's level/quality label, e.g. '1', '3c', '20/20' */
+  variant?: string
+  gemLevel: number
+  gemQuality: number
+  corrupted: boolean
+  chaosValue: number
+  /** Listings poe.ninja saw for this line: a proxy for how easy it is to buy */
+  listingCount: number
+}
+
+export interface GemListingsResult {
+  lines: GemListing[]
+  league: string
+  /** Epoch ms of the last successful fetch, or null if there has never been one. */
+  updatedAt: number | null
+  /** Set when the latest attempt failed; `lines` may still hold stale data. */
+  error?: string
+}

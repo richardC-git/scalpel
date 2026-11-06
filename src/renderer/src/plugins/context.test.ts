@@ -43,6 +43,7 @@ const baseDeps = () => ({
     getSkillPrice: vi.fn(async () => null),
     getPrices: vi.fn(async () => ({ prices: [], updatedAt: null })),
     refresh: vi.fn(async () => undefined),
+    getGemListings: vi.fn(async () => ({ lines: [], league: '', updatedAt: null })),
     onChange: vi.fn(() => () => {}),
   },
   media: {

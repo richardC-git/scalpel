@@ -41,7 +41,7 @@ export type {
 
 export { HIDEABLE_TAB_KEYS, isHideableTabKey } from './contracts/items'
 
-export type { PriceInfo, PriceEntry } from './contracts/prices'
+export type { GemListing, GemListingsResult, PriceInfo, PriceEntry } from './contracts/prices'
 
 export type { RegexPresetTag, RegexPreset } from './contracts/regex'
 

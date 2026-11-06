@@ -4,6 +4,9 @@ import type Store from 'electron-store'
 import type { AppSettings } from '@shared/types'
 import { getProfileBackedSetting } from '../profiles/profile-settings'
 import { getPriceEntries, invalidatePriceCache, refreshPrices, subscribePriceUpdates } from '../trade/prices'
+import { getPoeVersion } from '../game-state'
+import { getGemListings } from '../trade/gem-listings'
+import { fetchJson } from '../trade/prices'
 import { getSkillPrice } from '../trade/skill-prices'
 
 const subscribers = new Set<WebContents>()
@@ -27,6 +30,12 @@ export function registerPluginPriceHandlers(store: Store<AppSettings>): void {
   ipcMain.handle('plugins:prices-get', async (_evt, opts?: { category?: string }) => {
     await refreshPrices(getProfileBackedSetting(store, 'league'))
     return getPriceEntries(opts?.category)
+  })
+
+  ipcMain.handle('plugins:gem-listings', async () => {
+    const league = getProfileBackedSetting(store, 'league')
+    if (getPoeVersion() !== 1) return { lines: [], league, updatedAt: null }
+    return getGemListings(league, fetchJson)
   })
 
   ipcMain.handle('plugins:prices-refresh', async () => {
