@@ -140,6 +140,12 @@ const RUNE_SUFFIX = /\s*\((?:rune|added rune)\)\s*$/i
 // Display-only prefix on a vestigial item's base-type line ("Vestigial Simple Robe").
 const VESTIGIAL_PREFIX = /^Vestigial\s+/
 
+// Display-only tier prefix on a 3.30 Viscera name ("Lesser Pocked Leg", "Greater
+// Flaming Goat Hoof"). The base is the bare name: that is what the trade type list
+// carries (the prefixed form answers "Unknown item base type") and what item
+// filters name (BaseType == "Pocked Leg").
+const VISCERA_TIER_PREFIX = /^(?:Lesser|Greater)\s+/
+
 // Name prefix on a foulborn unique ("Foulborn Headhunter").
 const FOULBORN_PREFIX = /^Foulborn\s+/i
 
@@ -190,8 +196,15 @@ export function readItemFromClipboard(): PoeItem | null {
   return parseItemText(text)
 }
 
-export function parseItemText(text: string): PoeItem | null {
-  if (!text?.includes('--------')) return null
+/** PoE1 3.30 prints a zero-width space in front of keyworded effect names
+ *  ("Grants Level 15 <U+200B>Blood Offering"). It is invisible, the trade stat
+ *  text has none, and `\s` does not cover it, so a line that keeps it matches no
+ *  stat. Built from the code point so the source carries no invisible glyph. */
+const ZERO_WIDTH_SPACE = String.fromCharCode(0x200b)
+
+export function parseItemText(rawText: string): PoeItem | null {
+  if (!rawText?.includes('--------')) return null
+  const text = rawText.split(ZERO_WIDTH_SPACE).join('')
 
   const sections = text.split('--------').map((s) => s.trim())
   if (sections.length < 2) return null
@@ -218,15 +231,17 @@ export function parseItemText(text: string): PoeItem | null {
   const itemClassLine = headerLines.find((l) => l.startsWith('Item Class:'))
   const rarityLine = headerLines.find((l) => l.startsWith('Rarity:'))
 
-  if (!itemClassLine || !rarityLine) return null
+  if (!itemClassLine) return null
 
   // Normalize variant class names to canonical forms
   const rawItemClass = itemClassLine.replace('Item Class:', '').trim()
   const itemClass = rawItemClass === 'DivinationCard' ? 'Divination Cards' : rawItemClass
-  const rarity = rarityLine.replace('Rarity:', '').trim() as ItemRarity
+  // 3.30 Viscera print no Rarity line at all: the name follows the class line
+  // directly. Trade lists them as rarity Normal, so that is what they parse as.
+  const rarity = (rarityLine ? rarityLine.replace('Rarity:', '').trim() : 'Normal') as ItemRarity
 
   // Name and base type follow rarity
-  const afterRarity = headerLines.slice(headerLines.indexOf(rarityLine) + 1)
+  const afterRarity = headerLines.slice(headerLines.indexOf(rarityLine ?? itemClassLine) + 1)
   const name = afterRarity[0] ?? ''
   // PoE2 uncut gems inline the gem level in the name: "Uncut Skill Gem (Level 20)".
   // Keep the suffix on `name` (bulk-exchange IDs are per-level, so we need the
@@ -280,6 +295,7 @@ export function parseItemText(text: string): PoeItem | null {
       rawBaseType
         .replace(/^Synthesised /, '')
         .replace(VESTIGIAL_PREFIX, '')
+        .replace(itemClass === 'Viscera' ? VISCERA_TIER_PREFIX : /(?:)/, '')
         .replace(keepBlight ? /(?:)/ : /^Blighted /i, '')
         .replace(keepBlight ? /(?:)/ : /^Blight-[Rr]avaged /i, ''),
       rarity as ItemRarity,
@@ -329,7 +345,10 @@ export function parseItemText(text: string): PoeItem | null {
   const mapPackSize = extractNum(allLines, 'Monster Pack Size:') ?? extractNum(allLines, 'Pack Size:')
   // PoE2 waystone-only property lines.
   const mapRevives = extractNum(allLines, 'Revives Available:')
-  const mapDropChance = extractNum(allLines, 'Waystone Drop Chance:')
+  // Trade key map_bonus in both games: PoE2 waystones print "Waystone Drop
+  // Chance:", and PoE1 maps print "Atlas Drops:" since 3.30 moved map-mod
+  // quantity there (the "Item Quantity:" line above is then quality alone).
+  const mapDropChance = extractNum(allLines, 'Waystone Drop Chance:') ?? extractNum(allLines, 'Atlas Drops:')
   const mapGold = extractNum(allLines, 'Gold Found:')
   // GGG relabeled these waystone properties: "Magic Monsters" -> "Monster Effectiveness",
   // "Rare Monsters" -> "Monster Rarity" (trade keys map_magic_monsters / map_rare_monsters
@@ -733,6 +752,14 @@ export function parseItemText(text: string): PoeItem | null {
         }
       }
     }
+  }
+
+  // A Viscera's roll is an implicit (trade indexes it on implicit.* ids), but a
+  // plain copy prints it bare, with no "(implicit)" suffix and no header, so the
+  // section scan above filed it as an explicit.
+  if (itemClass === 'Viscera' && explicits.length > 0) {
+    implicits.push(...explicits)
+    explicits.length = 0
   }
 
   const itemSize = getItemSizes()[itemClass]
