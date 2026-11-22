@@ -489,6 +489,44 @@ describe('matchItemMods', () => {
       expect(abyssChip?.value).toBe(1)
     })
 
+    it('matches the Eldritch strike-target implicit despite the plural "Enemies"', () => {
+      // Trade singularizes the noun but keeps the number; the clipboard prints the plural.
+      _setStatEntriesForTests([
+        {
+          id: 'implicit.stat_1661253443',
+          text: 'Non-Vaal Strike Skills target # additional nearby Enemy',
+          type: 'implicit',
+        },
+        {
+          id: 'implicit.stat_1524679549',
+          text: 'While a Unique Enemy is in your Presence, Non-Vaal Strike Skills target # additional nearby Enemy',
+          type: 'implicit',
+        },
+        {
+          id: 'implicit.stat_1884100040',
+          text: 'While a Pinnacle Atlas Boss is in your Presence, Non-Vaal Strike Skills target # additional nearby Enemy',
+          type: 'implicit',
+        },
+      ])
+      const gloves = makeItemInfo({ itemClass: 'Gloves', baseType: 'Sharkskin Gloves', rarity: 'Rare', sockets: '' })
+      const cases: Array<[string, string]> = [
+        ['Non-Vaal Strike Skills target 2 additional nearby Enemies', 'implicit.stat_1661253443'],
+        [
+          'While a Unique Enemy is in your Presence, Non-Vaal Strike Skills target 2 additional nearby Enemies',
+          'implicit.stat_1524679549',
+        ],
+        [
+          'While a Pinnacle Atlas Boss is in your Presence, Non-Vaal Strike Skills target 3 additional nearby Enemies',
+          'implicit.stat_1884100040',
+        ],
+      ]
+      for (const [line, id] of cases) {
+        const row = matchItemMods([], [line], undefined, gloves).find((f) => f.id === id)
+        expect(row, line).toBeDefined()
+        expect(row?.value).toBe(Number(line.match(/(\d+) additional/)![1]))
+      }
+    })
+
     it('Stygian Vise: keeps Abyssal Sockets chip and does not emit Has 1 Socket', () => {
       // Clipboard singular "Has 1 Abyssal Socket" must not resolve to trade
       // "Has 1 Socket" (stat_4077843608) — that id is for other bases and zeros

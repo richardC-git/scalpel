@@ -77,6 +77,16 @@ function generateTextVariants(text: string): string[] {
   // singularizing only the noun still matched nothing and the relic lost the row (#582).
   // Scoped to the verb directly after that noun -- a blanket "are"->"is" variant would fire
   // on every mod carrying the word and cost a full catalog scan each time.
+  // The Eldritch strike implicit keeps the number but singularizes "Enemies": the clipboard
+  // prints "Non-Vaal Strike Skills target 2 additional nearby Enemies" while trade indexes
+  // "Non-Vaal Strike Skills target # additional nearby Enemy" (stat_1661253443, plus its
+  // "While a Unique Enemy / Pinnacle Atlas Boss is in your Presence, ..." twins). The
+  // "an additional" singularizer below only drops a trailing 's' ("Enemie"), so without
+  // this variant the implicit matched nothing and the row was dropped.
+  if (/\b\d+ additional (?:\w+ )*?Enemies\b/i.test(text)) {
+    variants.push(text.replace(/\b(\d+ additional (?:\w+ )*?)Enemies\b/i, '$1Enemy'))
+  }
+
   if (/\b\d+ additional\b/i.test(text)) {
     const an = text.replace(/\b\d+ additional\b/i, 'an additional')
     variants.push(an)
