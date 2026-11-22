@@ -5373,7 +5373,9 @@ describe('matchModToStat (Unscalable Value prefix/suffix fallback)', () => {
     const result = matchModToStat("Gain Alchemist's Genius when you use a Flask")
     expect(result).not.toBeNull()
     expect(result?.statId).toBe('explicit.stat_2989883253')
-    expect(result?.value).toBeNull()
+    // The hidden-chance pass restores the clause the game drops at 100%, so the row
+    // carries that 100 instead of searching valueless (same listings either way).
+    expect(result?.value).toBe(100)
   })
 
   it('matches synthesis Intimidate-on-hit when the trade text keeps a fixed duration digit', () => {
@@ -5391,7 +5393,7 @@ describe('matchModToStat (Unscalable Value prefix/suffix fallback)', () => {
     const result = matchModToStat('Intimidate Enemies for 4 seconds on Hit with Attacks', false, 'implicit')
     expect(result).not.toBeNull()
     expect(result?.statId).toBe('implicit.stat_3438201750')
-    expect(result?.value).toBeNull()
+    expect(result?.value).toBe(100)
   })
 
   it('still matches when clipboard text is the leading portion of the stat (existing prefix case)', () => {
@@ -7589,5 +7591,130 @@ describe('mod source badge (#565)', () => {
     ]
     const filters = matchItemMods([], ['Damage Penetrates 15% Elemental Resistances'], undefined, ring(), adv)
     expect(filters.find((f) => f.id === PEN.id)?.modSource).toBe('searing-exarch')
+  })
+})
+
+describe('mod-scan text fixes: hidden 100% chance, numbered plurals, inverted wording', () => {
+  const PINNACLE_INTIMIDATE = {
+    id: 'implicit.stat_3004272949',
+    text: 'While a Pinnacle Atlas Boss is in your Presence, #% chance to Intimidate Enemies for 4 seconds on Hit',
+    type: 'implicit',
+  }
+  const PINNACLE_MAIM = {
+    id: 'implicit.stat_4065516297',
+    text: 'While a Pinnacle Atlas Boss is in your Presence, Attacks have #% chance to Maim on Hit',
+    type: 'implicit',
+  }
+  const MAIM = { id: 'implicit.stat_1510714129', text: 'Attacks have #% chance to Maim on Hit', type: 'implicit' }
+
+  it('restores the hidden 100% chance mid-text on a top Presence-tier Eldritch implicit', () => {
+    _setStatEntriesForTests([PINNACLE_INTIMIDATE, PINNACLE_MAIM, MAIM])
+    expect(
+      matchModToStat(
+        'While a Pinnacle Atlas Boss is in your Presence, Intimidate Enemies for 4 seconds on Hit',
+        false,
+        'implicit',
+      ),
+    ).toEqual({ statId: PINNACLE_INTIMIDATE.id, value: 100 })
+    expect(
+      matchModToStat('While a Pinnacle Atlas Boss is in your Presence, Attacks always Maim on Hit', false, 'implicit'),
+    ).toEqual({ statId: PINNACLE_MAIM.id, value: 100 })
+    expect(matchModToStat('Attacks always Maim on Hit', false, 'implicit')).toEqual({ statId: MAIM.id, value: 100 })
+  })
+
+  it('does not hand a bare line a Presence-conditional stat through the suffix fallback', () => {
+    _setStatEntriesForTests([PINNACLE_INTIMIDATE])
+    expect(matchModToStat('Intimidate Enemies for 4 seconds on Hit', false, 'implicit')).toBeNull()
+  })
+
+  it('still accepts a hidden "#% of" front in the suffix fallback', () => {
+    _setStatEntriesForTests([
+      { id: 'explicit.stat_3967028570', text: '#% of Chaos Damage is taken from Mana before Life', type: 'explicit' },
+    ])
+    expect(matchModToStat('Chaos Damage is taken from Mana before Life')?.statId).toBe('explicit.stat_3967028570')
+  })
+
+  it('rejects a suffix-fallback stat whose dropped front names a different subject', () => {
+    _setStatEntriesForTests([
+      {
+        id: 'explicit.stat_687813731',
+        text: 'Monsters have #% chance to gain an Endurance Charge on Hit',
+        type: 'explicit',
+      },
+    ])
+    expect(matchModToStat('3% chance to gain an Endurance Charge on Hit')).toBeNull()
+  })
+
+  it('singularizes the noun of a numbered phrase, keeping the number', () => {
+    _setStatEntriesForTests([
+      {
+        id: 'enchant.stat_155429578',
+        text: 'Summoned Agony Crawler fires # additional Projectile',
+        type: 'enchant',
+      },
+      { id: 'enchant.stat_4172171622', text: 'Dash has +# Cooldown Use', type: 'enchant' },
+      { id: 'explicit.stat_1434716233', text: 'Warcries Exert # additional Attack', type: 'explicit' },
+    ])
+    expect(matchModToStat('Summoned Agony Crawler fires 2 additional Projectiles', false, 'enchant')).toMatchObject({
+      statId: 'enchant.stat_155429578',
+      value: 2,
+    })
+    expect(matchModToStat('Dash has +2 Cooldown Uses', false, 'enchant')).toMatchObject({
+      statId: 'enchant.stat_4172171622',
+      value: 2,
+    })
+    expect(matchModToStat('Warcries Exert 2 additional Attacks')).toMatchObject({
+      statId: 'explicit.stat_1434716233',
+      value: 2,
+    })
+  })
+
+  it('reads "a Charge" as a count of 1', () => {
+    _setStatEntriesForTests([
+      { id: 'implicit.stat_1193283913', text: 'Flasks gain # Charges every 3 seconds', type: 'implicit' },
+    ])
+    expect(matchModToStat('Flasks gain a Charge every 3 seconds', false, 'implicit')).toMatchObject({
+      statId: 'implicit.stat_1193283913',
+      value: 1,
+    })
+  })
+
+  it('negates "slower" and a leading "Lose" against their positive trade wording', () => {
+    _setStatEntriesForTests([
+      { id: 'implicit.stat_1625982517', text: 'Withered you Inflict expires #% faster', type: 'implicit' },
+      { id: 'explicit.stat_2797971005', text: 'Gain # Life per Enemy Hit with Attacks', type: 'explicit' },
+    ])
+    expect(matchModToStat('Withered you Inflict expires 10% slower', false, 'implicit')).toMatchObject({
+      statId: 'implicit.stat_1625982517',
+      value: -10,
+    })
+    expect(matchModToStat('Lose 20 Life per Enemy Hit with Attacks')).toMatchObject({
+      statId: 'explicit.stat_2797971005',
+      value: -20,
+    })
+    expect(matchModToStat('Gain 20 Life per Enemy Hit with Attacks')?.value).toBe(20)
+  })
+
+  it('joins a two-line enchant whose halves match nothing on their own', () => {
+    _setStatEntriesForTests([
+      {
+        id: 'enchant.stat_1503864797',
+        text: "+#% chance to Suppress Spell Damage if you've\ntaken Spell Damage Recently",
+        type: 'enchant',
+      },
+    ])
+    const filters = matchItemMods(
+      [],
+      [],
+      undefined,
+      makeItemInfo({
+        itemClass: 'Boots',
+        baseType: 'Leviathan Greaves',
+        enchants: ["+5% chance to Suppress Spell Damage if you've", 'taken Spell Damage Recently'],
+      }),
+    )
+    const rows = filters.filter((f) => f.id === 'enchant.stat_1503864797')
+    expect(rows).toHaveLength(1)
+    expect(rows[0].value).toBe(5)
   })
 })

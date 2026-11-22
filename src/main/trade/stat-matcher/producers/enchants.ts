@@ -14,8 +14,25 @@ type EnchantItemInfo = {
 export function buildEnchantFilters(itemInfo: EnchantItemInfo | undefined, preferLocal = false): StatFilter[] {
   const enchantFilters: StatFilter[] = []
   if (itemInfo?.enchants) {
-    for (const enchant of itemInfo.enchants) {
-      const matched = matchModToStat(enchant, preferLocal, 'enchant')
+    const enchants = itemInfo.enchants
+    for (let i = 0; i < enchants.length; i++) {
+      let enchant = enchants[i]
+      let matched = matchModToStat(enchant, preferLocal, 'enchant')
+      // A two-line enchant prints each half as its own "(enchant)" line, e.g. the
+      // boots enchant "+5% chance to Suppress Spell Damage if you've" / "taken Spell
+      // Damage Recently" (enchant.stat_1503864797). When a line matches nothing on its
+      // own, retry it joined with the next one; a line that matches alone is never
+      // merged, so independent enchants (cluster jewel "Adds N Passive Skills" + its
+      // grant line) stay separate rows.
+      if (!matched && i + 1 < enchants.length) {
+        const joined = `${enchant}\n${enchants[i + 1]}`
+        const joinedMatch = matchModToStat(joined, preferLocal, 'enchant')
+        if (joinedMatch) {
+          matched = joinedMatch
+          enchant = joined
+          i++
+        }
+      }
       if (matched) {
         let minVal: number | null = matched.option ? null : matched.value
         let maxVal: number | null = null

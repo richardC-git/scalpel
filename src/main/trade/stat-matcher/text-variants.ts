@@ -22,6 +22,74 @@ function foldedChanceForms(text: string): { texts: string[]; value: number } | n
   return { texts, value: parseFloat(m[1]) }
 }
 
+/** Plural-looking word: ends in "s" but not in "ss"/"is"/"us" ("Synthesis", "Radius",
+ *  "Mass" stay put). */
+const PLURAL_WORD = /^[A-Za-z][A-Za-z'-]*[^siu]s$/
+
+function singularize(word: string): string {
+  return /ies$/.test(word) ? word.replace(/ies$/, 'y') : word.replace(/s$/, '')
+}
+
+/** Variants of `text` with one plural word of a numbered noun phrase singularized:
+ *  the up-to-four words after "N additional" or "+N" (not "+N to ...", the ordinary
+ *  flat-stat shape). See the call site in generateTextVariants. */
+function singularizedNumberedNouns(text: string): string[] {
+  const m = /(?:\b\d+ additional|\+\d+(?!\s+to\b))((?: [A-Za-z'-]+){1,4})/.exec(text)
+  if (!m) return []
+  const start = m.index + m[0].length - m[1].length
+  const words = m[1].slice(1).split(' ')
+  const out: string[] = []
+  let offset = start + 1
+  for (const word of words) {
+    if (PLURAL_WORD.test(word)) {
+      out.push(text.slice(0, offset) + singularize(word) + text.slice(offset + word.length))
+    }
+    offset += word.length + 1
+  }
+  return out
+}
+
+/** Subject verbs the game prints bare once their chance rolls 100%: "Attacks always
+ *  Maim on Hit", "Skills used by this Graft Crush on Hit", "Melee Critical Strikes
+ *  Poison the Enemy". */
+const HIDDEN_CHANCE_VERBS = [
+  'Intimidate',
+  'Unnerve',
+  'Hinder',
+  'Maim',
+  'Blind',
+  'Poison',
+  'Crush',
+  'Ignite',
+  'Shock',
+  'Freeze',
+  'Fortify',
+  'Cover',
+  'inflict',
+  'ignore',
+]
+const PRESENCE_LEAD = /^(While a [^,]+ is in your Presence, )(.+)$/
+const SUBJECT_VERB = new RegExp(`^(.+?) (?:always )?((?:${HIDDEN_CHANCE_VERBS.join('|')})\\b.*)$`)
+
+/** A mod whose "#% chance to" the game hides at 100% while the trade stat keeps it,
+ *  rewritten with the chance restored so the exact pass can capture the 100. Covers
+ *  the top Eldritch Presence tiers -- "While a Pinnacle Atlas Boss is in your Presence,
+ *  Intimidate Enemies for 4 seconds on Hit" is "While a Pinnacle Atlas Boss is in your
+ *  Presence, #% chance to Intimidate Enemies for 4 seconds on Hit" -- where the hidden
+ *  clause sits mid-text, out of reach of mod-matcher's prefix/suffix fallback; and the
+ *  subject-first shape "Attacks always Maim on Hit" -> "Attacks have #% chance to Maim
+ *  on Hit". Empty for any text that already states a chance. */
+function hiddenChanceForms(text: string): string[] {
+  if (/%|\bchance\b/i.test(text)) return []
+  const lead = PRESENCE_LEAD.exec(text)
+  const prefix = lead ? lead[1] : ''
+  const rest = lead ? lead[2] : text
+  const forms = [`${prefix}100% chance to ${rest}`]
+  const sv = SUBJECT_VERB.exec(rest)
+  if (sv) forms.push(`${prefix}${sv[1]} have 100% chance to ${sv[2]}`)
+  return forms
+}
+
 /**
  * Generate singular/alternate text variants for plural PoE mod text.
  * The trade API uses singular stat text but the clipboard may have plural forms.
@@ -61,6 +129,29 @@ function generateTextVariants(text: string): string[] {
     variants.push(`${perOvercapMatch[1]} 0% of Overcapped ${perOvercapMatch[2]}`)
   }
 
+  // Numbered noun phrases the trade stat keeps singular while the clipboard pluralizes
+  // them with the roll, number kept: "Non-Vaal Strike Skills target 2 additional nearby
+  // Enemies" vs "... target # additional nearby Enemy" (stat_1661253443), "Summoned Agony
+  // Crawler fires 2 additional Projectiles" vs "# additional Projectile", "Dash has +2
+  // Cooldown Uses" vs "+# Cooldown Use", "Call the Pyre ... creates +2 Ashen Pillars" vs
+  // "+# Ashen Pillar". pattern.ts relaxes plurals right after a `#` but deliberately not a
+  // last word at end-of-text (gem-name collisions), which is exactly where these nouns sit.
+  // One variant per plural word in the phrase, since the head noun is not always first
+  // ("2 additional nearby Enemies"); they are only tried once the original text failed.
+  for (const v of singularizedNumberedNouns(text)) variants.push(v)
+
+  // "Flasks gain a Charge every 3 seconds" (Searing Exarch body implicit and a few
+  // uniques) is indexed with the count spelled out: "Flasks gain # Charges every 3
+  // seconds" (stat_1193283913). "a" is the roll of 1.
+  if (/\ba Charge\b/.test(text)) variants.push(text.replace(/\ba Charge\b/, '1 Charges'))
+
+  // Trade indexes the negative roll under the positive wording, value negated by the
+  // matcher: "Withered you Inflict expires 10% slower" is "expires #% faster"
+  // (implicit.stat_1625982517), "Lose 20 Life per Enemy Hit with Attacks" is "Gain #
+  // Life per Enemy Hit with Attacks" (explicit.stat_2797971005).
+  if (/\bslower\b/i.test(text)) variants.push(text.replace(/\bslower\b/i, 'faster'))
+  if (/^Lose \d/.test(text)) variants.push(text.replace(/^Lose /, 'Gain '))
+
   // "N additional" -> "an additional" (trade API uses "an" where clipboard has the number).
   // The clipboard also pluralizes the noun head ("2 additional waves of Hiveborn Monsters",
   // "3 additional Rare Monsters when Stabilised", "120 additional seconds to collapse") while
@@ -77,16 +168,6 @@ function generateTextVariants(text: string): string[] {
   // singularizing only the noun still matched nothing and the relic lost the row (#582).
   // Scoped to the verb directly after that noun -- a blanket "are"->"is" variant would fire
   // on every mod carrying the word and cost a full catalog scan each time.
-  // The Eldritch strike implicit keeps the number but singularizes "Enemies": the clipboard
-  // prints "Non-Vaal Strike Skills target 2 additional nearby Enemies" while trade indexes
-  // "Non-Vaal Strike Skills target # additional nearby Enemy" (stat_1661253443, plus its
-  // "While a Unique Enemy / Pinnacle Atlas Boss is in your Presence, ..." twins). The
-  // "an additional" singularizer below only drops a trailing 's' ("Enemie"), so without
-  // this variant the implicit matched nothing and the row was dropped.
-  if (/\b\d+ additional (?:\w+ )*?Enemies\b/i.test(text)) {
-    variants.push(text.replace(/\b(\d+ additional (?:\w+ )*?)Enemies\b/i, '$1Enemy'))
-  }
-
   if (/\b\d+ additional\b/i.test(text)) {
     const an = text.replace(/\b\d+ additional\b/i, 'an additional')
     variants.push(an)
@@ -194,4 +275,4 @@ function generateTextVariants(text: string): string[] {
   return variants
 }
 
-export { foldedChanceForms, generateTextVariants }
+export { foldedChanceForms, generateTextVariants, hiddenChanceForms }

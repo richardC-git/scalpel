@@ -2,7 +2,7 @@ import { STAT_ID_REMAPS } from '../stat-exceptions'
 import { NUMERIC_CAPTURE, statTextToPattern, statTextToRelaxedPattern } from './pattern'
 import type { StatEntry } from './stats-cache'
 import { getStatEntries } from './stats-cache'
-import { foldedChanceForms, generateTextVariants } from './text-variants'
+import { foldedChanceForms, generateTextVariants, hiddenChanceForms } from './text-variants'
 
 /** Direct text-to-stat mappings for mods where clipboard text is completely different
  *  from the trade API stat text (e.g. corruption implicits with different wording) */
@@ -127,6 +127,10 @@ function _matchModToStat(
   // "Require # fewer enemies to be Surrounded"): matched via the fewer->additional
   // variant, the value needs negating just like reduced/less.
   const isFewerMod = /\bfewer\b/i.test(modText)
+  // Same inversion for "slower" (indexed as "faster") and a leading "Lose N" (indexed
+  // as "Gain N"); see generateTextVariants.
+  const isSlowerMod = /\bslower\b/i.test(modText)
+  const isLoseMod = /^Lose \d/.test(modText)
   // Detect if we flipped increased->reduced or more->less (value needs negation)
   const isFlippedToNegative = /\bincreased\b/i.test(modText) || /\bmore\b/i.test(modText)
 
@@ -208,6 +212,8 @@ function _matchModToStat(
         // fewer N is the trade API's -N). Skip if the stat itself says "fewer".
         const statHasFewer = /\bfewer\b/i.test(entry.text)
         if (isFewerMod && !statHasFewer && value != null && value > 0) value = -value
+        if (isSlowerMod && !/\bslower\b/i.test(entry.text) && value != null && value > 0) value = -value
+        if (isLoseMod && !/^Lose\b/.test(entry.text) && value != null && value > 0) value = -value
         // "increased" matched as "reduced" (or "more" as "less") -- negate
         if (variantFlipped && value != null && value > 0) value = -value
         // For option-based stats (like "Map contains #'s Citadel"), resolve the option ID
@@ -288,6 +294,26 @@ function _matchModToStat(
     }
   }
 
+  // Fallback: a "#% chance to" clause the game hides once the chance rolls 100% but the
+  // trade stat keeps (see hiddenChanceForms). Exact patterns only, so the restored
+  // "100%" is what the "#" captures and the row searches the real value. Runs before
+  // the relaxed and prefix/suffix passes: the suffix pass would otherwise reach the
+  // un-prefixed "Intimidate ..." line through a "While a Pinnacle Atlas Boss is in
+  // your Presence, #% chance to ..." stat, or miss the mid-text clause entirely.
+  for (const text of hiddenChanceForms(modText)) {
+    const normalized = text.replace(/\s+/g, ' ')
+    for (const entry of statEntries) {
+      if (!entry.id.startsWith(typePrefix)) continue
+      if (BLOCKED_STAT_IDS.has(entry.id)) continue
+      if (preferIndexableSupport ? !INDEXABLE_SUPPORT_RE.test(entry.id) : INDEXABLE_SUPPORT_RE.test(entry.id))
+        continue
+      if (entry.text.includes('(Local)') || !/#% chance to/.test(entry.text)) continue
+      const match = normalized.match(statTextToPattern(entry.text.replace(TRAILING_QUALIFIER_RE, '')))
+      if (!match || swallowedWords(match)) continue
+      return { statId: entry.id, value: 100 }
+    }
+  }
+
   // Whispering Ice's exposure magnitude is searchable even though trade2 omits
   // the entire lowering clause from stat_533542952's text (issue #627). An exact
   // 56 query was verified against a 56% listing. Keep this fold narrowly scoped
@@ -361,9 +387,16 @@ function _matchModToStat(
       // text instead (e.g. "Allies in your Presence have"), this is a different stat,
       // not a hidden-prefix variant -- reject it so a plain "increased Attack Speed"
       // doesn't grab "Allies in your Presence have #% increased Attack Speed" (#399).
+      // A dropped FRONT must be the hidden roll alone ("% chance to", or "% of" for a
+      // 100% "#% of Chaos Damage is taken from Mana before Life"). "While a Pinnacle
+      // Atlas Boss is in your Presence, % chance to" or "Monsters have % chance to" also
+      // contain a "%", but their lead-in is a condition/subject the clipboard line
+      // doesn't have -- a different stat.
       let dropped: string | null = null
-      if (statPlain.endsWith(variantPlain)) dropped = statPlain.slice(0, statPlain.length - variantPlain.length)
-      else if (statPlain.startsWith(variantPlain)) dropped = statPlain.slice(variantPlain.length)
+      if (statPlain.endsWith(variantPlain)) {
+        dropped = statPlain.slice(0, statPlain.length - variantPlain.length)
+        if (dropped.replace(/%|\bchance\b|\bto\b|\bof\b|\s/g, '') !== '') dropped = null
+      } else if (statPlain.startsWith(variantPlain)) dropped = statPlain.slice(variantPlain.length)
       if (dropped !== null && dropped.includes('%')) {
         if (!bestMatch || entry.text.length > bestMatch._textLen) {
           bestMatch = { statId: entry.id, value: null, _textLen: entry.text.length }
